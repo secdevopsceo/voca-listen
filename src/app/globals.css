@@ -1,0 +1,238 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * voca-listen 디자인 — "밤의 라디오 서재"
+ * 소리로 외우는 앱이라 아날로그 라디오 다이얼의 앰버 불빛을 강조색으로 삼고,
+ * 바탕은 오래된 종이(라이트)와 따뜻한 먹색(다크)으로 둔다.
+ * 색은 전부 여기 변수로만 정의한다 — 화면에서 색을 직접 쓰지 않는다.
+ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-plex-kr);
+  --font-display: var(--font-gowun);
+  --font-mono: var(--font-plex-mono);
+  --font-heading: var(--font-gowun);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+  --radius-3xl: calc(var(--radius) * 2.6);
+  --radius-4xl: calc(var(--radius) * 3.2);
+}
+
+/* 라이트 — 오래된 종이에 잉크 */
+:root {
+  --background: oklch(0.973 0.009 84);
+  --foreground: oklch(0.235 0.016 55);
+  --card: oklch(0.99 0.006 86);
+  --card-foreground: oklch(0.235 0.016 55);
+  --popover: oklch(0.99 0.006 86);
+  --popover-foreground: oklch(0.235 0.016 55);
+  --primary: oklch(0.53 0.145 46);
+  --primary-foreground: oklch(0.98 0.008 86);
+  --secondary: oklch(0.935 0.014 80);
+  --secondary-foreground: oklch(0.32 0.02 52);
+  --muted: oklch(0.943 0.011 82);
+  --muted-foreground: oklch(0.505 0.023 60);
+  --accent: oklch(0.912 0.021 78);
+  --accent-foreground: oklch(0.3 0.024 50);
+  --destructive: oklch(0.525 0.185 27);
+  --border: oklch(0.882 0.016 76);
+  --input: oklch(0.9 0.014 78);
+  --ring: oklch(0.53 0.145 46);
+  --chart-1: oklch(0.58 0.148 52);
+  --chart-2: oklch(0.5 0.078 196);
+  --chart-3: oklch(0.63 0.108 96);
+  --chart-4: oklch(0.46 0.09 28);
+  --chart-5: oklch(0.55 0.048 152);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.955 0.012 82);
+  --sidebar-foreground: oklch(0.235 0.016 55);
+  --sidebar-primary: oklch(0.53 0.145 46);
+  --sidebar-primary-foreground: oklch(0.98 0.008 86);
+  --sidebar-accent: oklch(0.912 0.021 78);
+  --sidebar-accent-foreground: oklch(0.3 0.024 50);
+  --sidebar-border: oklch(0.882 0.016 76);
+  --sidebar-ring: oklch(0.53 0.145 46);
+
+  /* 라디오 다이얼 불빛 — 재생 중 표시에 쓴다 */
+  --dial-glow: oklch(0.53 0.145 46 / 22%);
+  --grain-opacity: 0.035;
+}
+
+/* 다크 — 밤의 라디오, 따뜻한 먹색 위 앰버 불빛 */
+.dark {
+  --background: oklch(0.183 0.012 58);
+  --foreground: oklch(0.925 0.013 82);
+  --card: oklch(0.228 0.014 58);
+  --card-foreground: oklch(0.925 0.013 82);
+  --popover: oklch(0.228 0.014 58);
+  --popover-foreground: oklch(0.925 0.013 82);
+  --primary: oklch(0.762 0.142 66);
+  --primary-foreground: oklch(0.183 0.012 58);
+  --secondary: oklch(0.278 0.014 58);
+  --secondary-foreground: oklch(0.925 0.013 82);
+  --muted: oklch(0.272 0.013 58);
+  --muted-foreground: oklch(0.7 0.017 72);
+  --accent: oklch(0.315 0.019 62);
+  --accent-foreground: oklch(0.925 0.013 82);
+  --destructive: oklch(0.66 0.17 24);
+  --border: oklch(0.86 0.02 76 / 14%);
+  --input: oklch(0.86 0.02 76 / 18%);
+  --ring: oklch(0.762 0.142 66);
+  --chart-1: oklch(0.762 0.142 66);
+  --chart-2: oklch(0.66 0.082 198);
+  --chart-3: oklch(0.8 0.11 96);
+  --chart-4: oklch(0.62 0.12 30);
+  --chart-5: oklch(0.68 0.06 152);
+  --sidebar: oklch(0.21 0.013 58);
+  --sidebar-foreground: oklch(0.925 0.013 82);
+  --sidebar-primary: oklch(0.762 0.142 66);
+  --sidebar-primary-foreground: oklch(0.183 0.012 58);
+  --sidebar-accent: oklch(0.315 0.019 62);
+  --sidebar-accent-foreground: oklch(0.925 0.013 82);
+  --sidebar-border: oklch(0.86 0.02 76 / 14%);
+  --sidebar-ring: oklch(0.762 0.142 66);
+
+  --dial-glow: oklch(0.762 0.142 66 / 26%);
+  --grain-opacity: 0.055;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* 종이 결 — 아주 옅은 세로 줄무늬로 단색 배경을 피한다 */
+    background-image: repeating-linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--foreground) 2.5%, transparent) 0 1px,
+      transparent 1px 96px
+    );
+  }
+
+  /* 화면 전체에 얹는 필름 그레인 — 종이 질감을 만든다 */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+
+  /* 숫자는 폭이 흔들리지 않게 */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* 재생 중 라디오 다이얼처럼 은은하게 번지는 빛 */
+  .dial-glow {
+    box-shadow: 0 0 0 1px var(--dial-glow), 0 0 28px 2px var(--dial-glow);
+  }
+
+  /* 지금 읽고 있는 줄 */
+  .speaking-line {
+    animation: speaking-pulse 1.6s ease-in-out infinite;
+  }
+}
+
+/* 소리 파형 막대 — 재생 중임을 눈으로 보여준다 */
+@keyframes wave-bar {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes speaking-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* 화면이 뜰 때 아래에서 살짝 올라오며 나타난다 */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-in {
+  animation: rise-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 움직임을 줄이고 싶어하는 사용자에게는 애니메이션을 멈춘다 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

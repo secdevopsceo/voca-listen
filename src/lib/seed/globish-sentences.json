@@ -1,0 +1,7502 @@
+[
+  {
+    "word": "a",
+    "sentence": "I have a cat at home.",
+    "sentenceMeaning": "나는 집에 고양이 한 마리가 있다."
+  },
+  {
+    "word": "abandon",
+    "sentence": "Do not abandon your dog.",
+    "sentenceMeaning": "당신의 개를 버리지 마세요."
+  },
+  {
+    "word": "able",
+    "sentence": "She is able to swim.",
+    "sentenceMeaning": "그녀는 수영할 수 있다."
+  },
+  {
+    "word": "about",
+    "sentence": "This book is about animals.",
+    "sentenceMeaning": "이 책은 동물에 관한 것이다."
+  },
+  {
+    "word": "above",
+    "sentence": "The bird flies above the tree.",
+    "sentenceMeaning": "새가 나무 위로 날아간다."
+  },
+  {
+    "word": "accept",
+    "sentence": "Please accept my gift.",
+    "sentenceMeaning": "제 선물을 받아주세요."
+  },
+  {
+    "word": "according to",
+    "sentence": "According to mother, dinner is ready.",
+    "sentenceMeaning": "엄마에 따르면, 저녁이 준비됐다."
+  },
+  {
+    "word": "account",
+    "sentence": "I have a bank account.",
+    "sentenceMeaning": "나는 은행 계좌가 있다."
+  },
+  {
+    "word": "accuse",
+    "sentence": "Do not accuse him without proof.",
+    "sentenceMeaning": "증거 없이 그를 비난하지 마세요."
+  },
+  {
+    "word": "achieve",
+    "sentence": "I want to achieve my goal.",
+    "sentenceMeaning": "나는 내 목표를 달성하고 싶다."
+  },
+  {
+    "word": "across",
+    "sentence": "The cat ran across the road.",
+    "sentenceMeaning": "고양이가 도로를 가로질러 달렸다."
+  },
+  {
+    "word": "act",
+    "sentence": "She can act very well.",
+    "sentenceMeaning": "그녀는 연기를 매우 잘한다."
+  },
+  {
+    "word": "adapt",
+    "sentence": "Animals adapt to cold weather.",
+    "sentenceMeaning": "동물들은 추운 날씨에 적응한다."
+  },
+  {
+    "word": "add",
+    "sentence": "Please add sugar to my tea.",
+    "sentenceMeaning": "제 차에 설탕을 넣어주세요."
+  },
+  {
+    "word": "admit",
+    "sentence": "I admit that I was wrong.",
+    "sentenceMeaning": "내가 틀렸음을 인정한다."
+  },
+  {
+    "word": "adult",
+    "sentence": "My father is an adult.",
+    "sentenceMeaning": "아버지는 어른이다."
+  },
+  {
+    "word": "advertisement",
+    "sentence": "I saw an advertisement on television.",
+    "sentenceMeaning": "나는 텔레비전에서 광고를 봤다."
+  },
+  {
+    "word": "advise",
+    "sentence": "My teacher will advise me.",
+    "sentenceMeaning": "선생님이 나에게 조언해 주실 것이다."
+  },
+  {
+    "word": "affect",
+    "sentence": "Rain can affect our trip.",
+    "sentenceMeaning": "비가 우리 여행에 영향을 줄 수 있다."
+  },
+  {
+    "word": "afraid",
+    "sentence": "The child is afraid of the dark.",
+    "sentenceMeaning": "그 아이는 어둠을 무서워한다."
+  },
+  {
+    "word": "after",
+    "sentence": "I eat fruit after dinner.",
+    "sentenceMeaning": "나는 저녁 식사 후에 과일을 먹는다."
+  },
+  {
+    "word": "again",
+    "sentence": "Please say that again.",
+    "sentenceMeaning": "다시 한번 말해주세요."
+  },
+  {
+    "word": "against",
+    "sentence": "The ball hit against the wall.",
+    "sentenceMeaning": "공이 벽에 부딪혔다."
+  },
+  {
+    "word": "age",
+    "sentence": "What is your age?",
+    "sentenceMeaning": "당신의 나이는 몇 살입니까?"
+  },
+  {
+    "word": "agency",
+    "sentence": "My mother works at a travel agency.",
+    "sentenceMeaning": "어머니는 여행사에서 일하신다."
+  },
+  {
+    "word": "ago",
+    "sentence": "I came here two days ago.",
+    "sentenceMeaning": "나는 이틀 전에 여기 왔다."
+  },
+  {
+    "word": "agree",
+    "sentence": "I agree with you.",
+    "sentenceMeaning": "나는 당신에게 동의한다."
+  },
+  {
+    "word": "ahead",
+    "sentence": "Go ahead and open the door.",
+    "sentenceMeaning": "먼저 가서 문을 열어라."
+  },
+  {
+    "word": "aid",
+    "sentence": "We send aid to poor countries.",
+    "sentenceMeaning": "우리는 가난한 나라에 원조를 보낸다."
+  },
+  {
+    "word": "aim",
+    "sentence": "My aim is to be a doctor.",
+    "sentenceMeaning": "내 목표는 의사가 되는 것이다."
+  },
+  {
+    "word": "air",
+    "sentence": "The air is fresh today.",
+    "sentenceMeaning": "오늘 공기가 신선하다."
+  },
+  {
+    "word": "alive",
+    "sentence": "The fish is still alive.",
+    "sentenceMeaning": "그 물고기는 아직 살아있다."
+  },
+  {
+    "word": "all",
+    "sentence": "All children love to play.",
+    "sentenceMeaning": "모든 아이들은 놀기를 좋아한다."
+  },
+  {
+    "word": "allow",
+    "sentence": "My parents allow me to play.",
+    "sentenceMeaning": "부모님은 내가 놀도록 허락해 주신다."
+  },
+  {
+    "word": "ally",
+    "sentence": "A good friend is a true ally.",
+    "sentenceMeaning": "좋은 친구는 진정한 동맹이다."
+  },
+  {
+    "word": "almost",
+    "sentence": "I almost forgot my bag.",
+    "sentenceMeaning": "나는 거의 가방을 잊을 뻔했다."
+  },
+  {
+    "word": "alone",
+    "sentence": "The boy walked home alone.",
+    "sentenceMeaning": "그 소년은 혼자 집으로 걸어갔다."
+  },
+  {
+    "word": "along",
+    "sentence": "We walked along the river.",
+    "sentenceMeaning": "우리는 강을 따라 걸었다."
+  },
+  {
+    "word": "already",
+    "sentence": "I have already finished my food.",
+    "sentenceMeaning": "나는 이미 음식을 다 먹었다."
+  },
+  {
+    "word": "also",
+    "sentence": "I like apples, and also oranges.",
+    "sentenceMeaning": "나는 사과를 좋아하고, 오렌지도 좋아한다."
+  },
+  {
+    "word": "although",
+    "sentence": "Although it rained, we went out.",
+    "sentenceMeaning": "비가 왔지만, 우리는 나갔다."
+  },
+  {
+    "word": "always",
+    "sentence": "I always brush my teeth.",
+    "sentenceMeaning": "나는 항상 이를 닦는다."
+  },
+  {
+    "word": "among",
+    "sentence": "She sat among her friends.",
+    "sentenceMeaning": "그녀는 친구들 사이에 앉았다."
+  },
+  {
+    "word": "amount",
+    "sentence": "A small amount of water is left.",
+    "sentenceMeaning": "적은 양의 물이 남았다."
+  },
+  {
+    "word": "and",
+    "sentence": "I have a cat and a dog.",
+    "sentenceMeaning": "나는 고양이와 개가 있다."
+  },
+  {
+    "word": "anger",
+    "sentence": "His face showed anger.",
+    "sentenceMeaning": "그의 얼굴에 분노가 드러났다."
+  },
+  {
+    "word": "angle",
+    "sentence": "This angle is ninety degrees.",
+    "sentenceMeaning": "이 각도는 90도이다."
+  },
+  {
+    "word": "announce",
+    "sentence": "The teacher will announce the winner.",
+    "sentenceMeaning": "선생님이 우승자를 발표할 것이다."
+  },
+  {
+    "word": "another",
+    "sentence": "May I have another apple?",
+    "sentenceMeaning": "사과 하나 더 먹어도 될까요?"
+  },
+  {
+    "word": "answer",
+    "sentence": "Please answer my question.",
+    "sentenceMeaning": "제 질문에 답해주세요."
+  },
+  {
+    "word": "any",
+    "sentence": "Do you have any water?",
+    "sentenceMeaning": "물 있어요?"
+  },
+  {
+    "word": "apartment",
+    "sentence": "We live in a big apartment.",
+    "sentenceMeaning": "우리는 큰 아파트에 산다."
+  },
+  {
+    "word": "apologize",
+    "sentence": "I apologize for being late.",
+    "sentenceMeaning": "늦어서 사과드립니다."
+  },
+  {
+    "word": "appeal",
+    "sentence": "The idea has great appeal.",
+    "sentenceMeaning": "그 아이디어는 큰 매력이 있다."
+  },
+  {
+    "word": "appear",
+    "sentence": "Stars appear at night.",
+    "sentenceMeaning": "별들은 밤에 나타난다."
+  },
+  {
+    "word": "apple",
+    "sentence": "I eat an apple every day.",
+    "sentenceMeaning": "나는 매일 사과를 먹는다."
+  },
+  {
+    "word": "apply",
+    "sentence": "I will apply for the job.",
+    "sentenceMeaning": "나는 그 일자리에 지원할 것이다."
+  },
+  {
+    "word": "appoint",
+    "sentence": "They will appoint a new leader.",
+    "sentenceMeaning": "그들은 새 지도자를 임명할 것이다."
+  },
+  {
+    "word": "approve",
+    "sentence": "My parents approve of my plan.",
+    "sentenceMeaning": "부모님은 내 계획을 승인하셨다."
+  },
+  {
+    "word": "area",
+    "sentence": "This area is safe for children.",
+    "sentenceMeaning": "이 지역은 아이들에게 안전하다."
+  },
+  {
+    "word": "argue",
+    "sentence": "Do not argue with your sister.",
+    "sentenceMeaning": "여동생과 다투지 마라."
+  },
+  {
+    "word": "arm",
+    "sentence": "I hurt my arm yesterday.",
+    "sentenceMeaning": "나는 어제 팔을 다쳤다."
+  },
+  {
+    "word": "army",
+    "sentence": "The army protects our country.",
+    "sentenceMeaning": "군대가 우리나라를 보호한다."
+  },
+  {
+    "word": "around",
+    "sentence": "The children ran around the park.",
+    "sentenceMeaning": "아이들이 공원을 빙빙 돌며 뛰었다."
+  },
+  {
+    "word": "arrest",
+    "sentence": "The police will arrest the thief.",
+    "sentenceMeaning": "경찰이 도둑을 체포할 것이다."
+  },
+  {
+    "word": "arrive",
+    "sentence": "The train will arrive soon.",
+    "sentenceMeaning": "기차가 곧 도착할 것이다."
+  },
+  {
+    "word": "art",
+    "sentence": "I love art class at school.",
+    "sentenceMeaning": "나는 학교에서 미술 수업을 좋아한다."
+  },
+  {
+    "word": "as",
+    "sentence": "She works as a teacher.",
+    "sentenceMeaning": "그녀는 선생님으로 일한다."
+  },
+  {
+    "word": "ask",
+    "sentence": "May I ask you a question?",
+    "sentenceMeaning": "질문해도 될까요?"
+  },
+  {
+    "word": "assist",
+    "sentence": "I will assist you with your work.",
+    "sentenceMeaning": "네 일을 도와줄게."
+  },
+  {
+    "word": "at",
+    "sentence": "I am at home now.",
+    "sentenceMeaning": "나는 지금 집에 있다."
+  },
+  {
+    "word": "attach",
+    "sentence": "Please attach a photo to the form.",
+    "sentenceMeaning": "서류에 사진을 첨부해 주세요."
+  },
+  {
+    "word": "attack",
+    "sentence": "The dog will not attack you.",
+    "sentenceMeaning": "그 개는 너를 공격하지 않을 것이다."
+  },
+  {
+    "word": "attempt",
+    "sentence": "I will attempt to climb the hill.",
+    "sentenceMeaning": "나는 언덕을 오르려고 시도할 것이다."
+  },
+  {
+    "word": "attend",
+    "sentence": "I will attend the meeting.",
+    "sentenceMeaning": "나는 회의에 참석할 것이다."
+  },
+  {
+    "word": "attention",
+    "sentence": "Please pay attention in class.",
+    "sentenceMeaning": "수업 시간에 집중해 주세요."
+  },
+  {
+    "word": "authority",
+    "sentence": "The teacher has authority in class.",
+    "sentenceMeaning": "선생님은 교실에서 권위가 있다."
+  },
+  {
+    "word": "automatic",
+    "sentence": "The door is automatic.",
+    "sentenceMeaning": "그 문은 자동이다."
+  },
+  {
+    "word": "autumn",
+    "sentence": "Leaves fall in autumn.",
+    "sentenceMeaning": "가을에 나뭇잎이 떨어진다."
+  },
+  {
+    "word": "available",
+    "sentence": "Is this seat available?",
+    "sentenceMeaning": "이 자리 비어있나요?"
+  },
+  {
+    "word": "average",
+    "sentence": "My score is above average.",
+    "sentenceMeaning": "내 점수는 평균 이상이다."
+  },
+  {
+    "word": "avoid",
+    "sentence": "I try to avoid sugar.",
+    "sentenceMeaning": "나는 설탕을 피하려고 한다."
+  },
+  {
+    "word": "awake",
+    "sentence": "Are you still awake?",
+    "sentenceMeaning": "아직 깨어있니?"
+  },
+  {
+    "word": "award",
+    "sentence": "She won an award for art.",
+    "sentenceMeaning": "그녀는 미술 부문에서 상을 받았다."
+  },
+  {
+    "word": "away",
+    "sentence": "The cat ran away from me.",
+    "sentenceMeaning": "고양이가 나에게서 도망갔다."
+  },
+  {
+    "word": "baby",
+    "sentence": "The baby is sleeping now.",
+    "sentenceMeaning": "아기가 지금 자고 있다."
+  },
+  {
+    "word": "back",
+    "sentence": "Please come back soon.",
+    "sentenceMeaning": "곧 돌아와 주세요."
+  },
+  {
+    "word": "bad",
+    "sentence": "This food tastes bad.",
+    "sentenceMeaning": "이 음식은 맛이 나쁘다."
+  },
+  {
+    "word": "bag",
+    "sentence": "I put my book in my bag.",
+    "sentenceMeaning": "나는 가방에 책을 넣었다."
+  },
+  {
+    "word": "balance",
+    "sentence": "Try to keep your balance.",
+    "sentenceMeaning": "균형을 유지하도록 해라."
+  },
+  {
+    "word": "ball",
+    "sentence": "The boy kicked the ball.",
+    "sentenceMeaning": "그 소년이 공을 찼다."
+  },
+  {
+    "word": "ballot",
+    "sentence": "I put my ballot in the box.",
+    "sentenceMeaning": "나는 투표용지를 상자에 넣었다."
+  },
+  {
+    "word": "ban",
+    "sentence": "They ban smoking here.",
+    "sentenceMeaning": "그들은 여기서 흡연을 금지한다."
+  },
+  {
+    "word": "bank",
+    "sentence": "My father works at a bank.",
+    "sentenceMeaning": "아버지는 은행에서 일하신다."
+  },
+  {
+    "word": "bar",
+    "sentence": "I ate a chocolate bar.",
+    "sentenceMeaning": "나는 초콜릿 바를 먹었다."
+  },
+  {
+    "word": "barrier",
+    "sentence": "The barrier stopped the car.",
+    "sentenceMeaning": "장벽이 차를 멈추게 했다."
+  },
+  {
+    "word": "base",
+    "sentence": "The base of the tree is big.",
+    "sentenceMeaning": "나무의 밑동이 크다."
+  },
+  {
+    "word": "basket",
+    "sentence": "Put the fruit in the basket.",
+    "sentenceMeaning": "과일을 바구니에 넣어라."
+  },
+  {
+    "word": "bath",
+    "sentence": "I take a bath every night.",
+    "sentenceMeaning": "나는 매일 밤 목욕을 한다."
+  },
+  {
+    "word": "battle",
+    "sentence": "The army won the battle.",
+    "sentenceMeaning": "군대가 전투에서 이겼다."
+  },
+  {
+    "word": "be",
+    "sentence": "I want to be a doctor.",
+    "sentenceMeaning": "나는 의사가 되고 싶다."
+  },
+  {
+    "word": "bear",
+    "sentence": "The bear lives in the forest.",
+    "sentenceMeaning": "곰은 숲에 산다."
+  },
+  {
+    "word": "beat",
+    "sentence": "My heart beats fast.",
+    "sentenceMeaning": "내 심장이 빠르게 뛴다."
+  },
+  {
+    "word": "beauty",
+    "sentence": "The flower has great beauty.",
+    "sentenceMeaning": "그 꽃은 대단한 아름다움을 가지고 있다."
+  },
+  {
+    "word": "because",
+    "sentence": "I am happy because it is sunny.",
+    "sentenceMeaning": "날씨가 맑아서 나는 행복하다."
+  },
+  {
+    "word": "become",
+    "sentence": "I want to become a teacher.",
+    "sentenceMeaning": "나는 선생님이 되고 싶다."
+  },
+  {
+    "word": "bed",
+    "sentence": "I sleep in my bed.",
+    "sentenceMeaning": "나는 내 침대에서 잔다."
+  },
+  {
+    "word": "beer",
+    "sentence": "Adults drink beer.",
+    "sentenceMeaning": "어른들은 맥주를 마신다."
+  },
+  {
+    "word": "before",
+    "sentence": "Wash your hands before eating.",
+    "sentenceMeaning": "먹기 전에 손을 씻어라."
+  },
+  {
+    "word": "begin",
+    "sentence": "Let us begin the game.",
+    "sentenceMeaning": "게임을 시작하자."
+  },
+  {
+    "word": "behind",
+    "sentence": "The dog hid behind the tree.",
+    "sentenceMeaning": "개가 나무 뒤에 숨었다."
+  },
+  {
+    "word": "believe",
+    "sentence": "I believe you are right.",
+    "sentenceMeaning": "네가 맞다고 믿는다."
+  },
+  {
+    "word": "bell",
+    "sentence": "The school bell is ringing.",
+    "sentenceMeaning": "학교 종이 울리고 있다."
+  },
+  {
+    "word": "belong",
+    "sentence": "This book belongs to me.",
+    "sentenceMeaning": "이 책은 내 것이다."
+  },
+  {
+    "word": "below",
+    "sentence": "Fish swim below the water.",
+    "sentenceMeaning": "물고기는 물 아래에서 헤엄친다."
+  },
+  {
+    "word": "bend",
+    "sentence": "Please bend your knees.",
+    "sentenceMeaning": "무릎을 구부려 주세요."
+  },
+  {
+    "word": "beside",
+    "sentence": "Sit beside me please.",
+    "sentenceMeaning": "내 옆에 앉아 주세요."
+  },
+  {
+    "word": "best",
+    "sentence": "She is my best friend.",
+    "sentenceMeaning": "그녀는 나의 가장 친한 친구다."
+  },
+  {
+    "word": "betray",
+    "sentence": "A true friend will not betray you.",
+    "sentenceMeaning": "진정한 친구는 너를 배신하지 않을 것이다."
+  },
+  {
+    "word": "better",
+    "sentence": "This apple tastes better.",
+    "sentenceMeaning": "이 사과가 더 맛있다."
+  },
+  {
+    "word": "between",
+    "sentence": "The cat sat between us.",
+    "sentenceMeaning": "고양이가 우리 사이에 앉았다."
+  },
+  {
+    "word": "big",
+    "sentence": "The elephant is very big.",
+    "sentenceMeaning": "코끼리는 매우 크다."
+  },
+  {
+    "word": "bill",
+    "sentence": "I paid the bill at the store.",
+    "sentenceMeaning": "나는 가게에서 계산서를 지불했다."
+  },
+  {
+    "word": "bird",
+    "sentence": "A bird is singing in the tree.",
+    "sentenceMeaning": "새가 나무에서 노래하고 있다."
+  },
+  {
+    "word": "birth",
+    "sentence": "Today is my day of birth.",
+    "sentenceMeaning": "오늘은 내 생일이다."
+  },
+  {
+    "word": "bit",
+    "sentence": "I ate a bit of cake.",
+    "sentenceMeaning": "나는 케이크를 조금 먹었다."
+  },
+  {
+    "word": "bite",
+    "sentence": "The dog will not bite you.",
+    "sentenceMeaning": "그 개는 너를 물지 않을 것이다."
+  },
+  {
+    "word": "black",
+    "sentence": "My cat is black.",
+    "sentenceMeaning": "내 고양이는 검은색이다."
+  },
+  {
+    "word": "blade",
+    "sentence": "The blade is very sharp.",
+    "sentenceMeaning": "그 칼날은 매우 날카롭다."
+  },
+  {
+    "word": "blame",
+    "sentence": "Do not blame others.",
+    "sentenceMeaning": "다른 사람을 탓하지 마라."
+  },
+  {
+    "word": "blank",
+    "sentence": "The paper is blank.",
+    "sentenceMeaning": "그 종이는 빈 종이다."
+  },
+  {
+    "word": "blanket",
+    "sentence": "The blanket is warm.",
+    "sentenceMeaning": "그 담요는 따뜻하다."
+  },
+  {
+    "word": "bleed",
+    "sentence": "My finger started to bleed.",
+    "sentenceMeaning": "내 손가락에서 피가 나기 시작했다."
+  },
+  {
+    "word": "blind",
+    "sentence": "The man is blind.",
+    "sentenceMeaning": "그 남자는 눈이 보이지 않는다."
+  },
+  {
+    "word": "block",
+    "sentence": "The road was blocked.",
+    "sentenceMeaning": "도로가 막혀 있었다."
+  },
+  {
+    "word": "blood",
+    "sentence": "Blood is red.",
+    "sentenceMeaning": "피는 빨간색이다."
+  },
+  {
+    "word": "blow",
+    "sentence": "Blow the candle out.",
+    "sentenceMeaning": "촛불을 불어서 꺼라."
+  },
+  {
+    "word": "blue",
+    "sentence": "The sky is blue today.",
+    "sentenceMeaning": "오늘 하늘이 파랗다."
+  },
+  {
+    "word": "board",
+    "sentence": "Write your name on the board.",
+    "sentenceMeaning": "칠판에 이름을 써라."
+  },
+  {
+    "word": "boat",
+    "sentence": "The boat sails on the sea.",
+    "sentenceMeaning": "배가 바다 위를 항해한다."
+  },
+  {
+    "word": "body",
+    "sentence": "Exercise is good for your body.",
+    "sentenceMeaning": "운동은 몸에 좋다."
+  },
+  {
+    "word": "bomb",
+    "sentence": "The bomb made a loud sound.",
+    "sentenceMeaning": "폭탄이 큰 소리를 냈다."
+  },
+  {
+    "word": "bone",
+    "sentence": "The dog loves to eat bones.",
+    "sentenceMeaning": "개는 뼈를 먹는 것을 좋아한다."
+  },
+  {
+    "word": "bonus",
+    "sentence": "My father got a bonus at work.",
+    "sentenceMeaning": "아버지가 직장에서 보너스를 받았다."
+  },
+  {
+    "word": "book",
+    "sentence": "I read a book every day.",
+    "sentenceMeaning": "나는 매일 책을 읽는다."
+  },
+  {
+    "word": "boot",
+    "sentence": "I wear boots in the rain.",
+    "sentenceMeaning": "나는 비올 때 부츠를 신는다."
+  },
+  {
+    "word": "border",
+    "sentence": "We crossed the border.",
+    "sentenceMeaning": "우리는 국경을 넘었다."
+  },
+  {
+    "word": "born",
+    "sentence": "I was born in Korea.",
+    "sentenceMeaning": "나는 한국에서 태어났다."
+  },
+  {
+    "word": "borrow",
+    "sentence": "May I borrow your pen?",
+    "sentenceMeaning": "펜 좀 빌려도 될까요?"
+  },
+  {
+    "word": "boss",
+    "sentence": "My boss is very kind.",
+    "sentenceMeaning": "내 상사는 매우 친절하다."
+  },
+  {
+    "word": "both",
+    "sentence": "Both children are happy.",
+    "sentenceMeaning": "두 아이 모두 행복하다."
+  },
+  {
+    "word": "bottle",
+    "sentence": "The bottle is full of water.",
+    "sentenceMeaning": "그 병은 물로 가득 차 있다."
+  },
+  {
+    "word": "bottom",
+    "sentence": "The fish swims at the bottom.",
+    "sentenceMeaning": "물고기가 바닥에서 헤엄친다."
+  },
+  {
+    "word": "box",
+    "sentence": "Put the toys in the box.",
+    "sentenceMeaning": "장난감을 상자에 넣어라."
+  },
+  {
+    "word": "boy",
+    "sentence": "The boy is playing outside.",
+    "sentenceMeaning": "그 소년은 밖에서 놀고 있다."
+  },
+  {
+    "word": "boycott",
+    "sentence": "They decided to boycott the store.",
+    "sentenceMeaning": "그들은 그 가게를 보이콧하기로 결정했다."
+  },
+  {
+    "word": "brain",
+    "sentence": "Use your brain to think.",
+    "sentenceMeaning": "생각하기 위해 뇌를 써라."
+  },
+  {
+    "word": "brake",
+    "sentence": "Press the brake to stop.",
+    "sentenceMeaning": "멈추려면 브레이크를 밟아라."
+  },
+  {
+    "word": "branch",
+    "sentence": "The bird sat on the branch.",
+    "sentenceMeaning": "새가 나뭇가지 위에 앉았다."
+  },
+  {
+    "word": "brave",
+    "sentence": "The soldier is very brave.",
+    "sentenceMeaning": "그 군인은 매우 용감하다."
+  },
+  {
+    "word": "bread",
+    "sentence": "I eat bread for breakfast.",
+    "sentenceMeaning": "나는 아침으로 빵을 먹는다."
+  },
+  {
+    "word": "break",
+    "sentence": "Be careful not to break the glass.",
+    "sentenceMeaning": "유리를 깨지 않도록 조심해라."
+  },
+  {
+    "word": "breathe",
+    "sentence": "Take a deep breath and breathe.",
+    "sentenceMeaning": "깊이 숨을 들이쉬고 숨을 쉬어라."
+  },
+  {
+    "word": "brick",
+    "sentence": "The house is made of bricks.",
+    "sentenceMeaning": "그 집은 벽돌로 만들어졌다."
+  },
+  {
+    "word": "bridge",
+    "sentence": "We walked across the bridge.",
+    "sentenceMeaning": "우리는 다리를 건너 걸었다."
+  },
+  {
+    "word": "brief",
+    "sentence": "The meeting was very brief.",
+    "sentenceMeaning": "회의는 매우 짧았다."
+  },
+  {
+    "word": "bright",
+    "sentence": "The sun is very bright today.",
+    "sentenceMeaning": "오늘 태양이 매우 밝다."
+  },
+  {
+    "word": "bring",
+    "sentence": "Please bring your book to class.",
+    "sentenceMeaning": "수업에 책을 가져와 주세요."
+  },
+  {
+    "word": "broad",
+    "sentence": "The river is very broad.",
+    "sentenceMeaning": "그 강은 매우 넓다."
+  },
+  {
+    "word": "broadcast",
+    "sentence": "They broadcast the news at night.",
+    "sentenceMeaning": "그들은 밤에 뉴스를 방송한다."
+  },
+  {
+    "word": "brother",
+    "sentence": "My brother is older than me.",
+    "sentenceMeaning": "내 형은 나보다 나이가 많다."
+  },
+  {
+    "word": "brown",
+    "sentence": "The dog is brown.",
+    "sentenceMeaning": "그 개는 갈색이다."
+  },
+  {
+    "word": "brush",
+    "sentence": "I brush my teeth every morning.",
+    "sentenceMeaning": "나는 매일 아침 이를 닦는다."
+  },
+  {
+    "word": "budget",
+    "sentence": "We must stay within our budget.",
+    "sentenceMeaning": "우리는 예산 안에서 지내야 한다."
+  },
+  {
+    "word": "build",
+    "sentence": "They will build a new house.",
+    "sentenceMeaning": "그들은 새 집을 지을 것이다."
+  },
+  {
+    "word": "bullet",
+    "sentence": "The bullet is made of metal.",
+    "sentenceMeaning": "총알은 금속으로 만들어졌다."
+  },
+  {
+    "word": "burn",
+    "sentence": "Do not burn the paper.",
+    "sentenceMeaning": "종이를 태우지 마라."
+  },
+  {
+    "word": "burst",
+    "sentence": "The balloon will burst.",
+    "sentenceMeaning": "풍선이 터질 것이다."
+  },
+  {
+    "word": "bury",
+    "sentence": "The dog likes to bury bones.",
+    "sentenceMeaning": "개는 뼈를 묻는 것을 좋아한다."
+  },
+  {
+    "word": "business",
+    "sentence": "My uncle has a small business.",
+    "sentenceMeaning": "삼촌은 작은 사업을 하신다."
+  },
+  {
+    "word": "busy",
+    "sentence": "My mother is very busy today.",
+    "sentenceMeaning": "어머니는 오늘 매우 바쁘다."
+  },
+  {
+    "word": "but",
+    "sentence": "I want to go, but I am tired.",
+    "sentenceMeaning": "가고 싶지만 피곤하다."
+  },
+  {
+    "word": "butter",
+    "sentence": "I put butter on my bread.",
+    "sentenceMeaning": "나는 빵에 버터를 바른다."
+  },
+  {
+    "word": "button",
+    "sentence": "Press the button to open the door.",
+    "sentenceMeaning": "문을 열려면 버튼을 눌러라."
+  },
+  {
+    "word": "buy",
+    "sentence": "I want to buy a new toy.",
+    "sentenceMeaning": "나는 새 장난감을 사고 싶다."
+  },
+  {
+    "word": "by",
+    "sentence": "The book is by the window.",
+    "sentenceMeaning": "책이 창문 옆에 있다."
+  },
+  {
+    "word": "cabinet",
+    "sentence": "The cups are in the cabinet.",
+    "sentenceMeaning": "컵들은 캐비닛 안에 있다."
+  },
+  {
+    "word": "call",
+    "sentence": "I will call you later.",
+    "sentenceMeaning": "나중에 전화할게."
+  },
+  {
+    "word": "calm",
+    "sentence": "Please stay calm.",
+    "sentenceMeaning": "침착하게 있어 주세요."
+  },
+  {
+    "word": "camera",
+    "sentence": "I took a photo with my camera.",
+    "sentenceMeaning": "나는 카메라로 사진을 찍었다."
+  },
+  {
+    "word": "camp",
+    "sentence": "We went to camp in the summer.",
+    "sentenceMeaning": "우리는 여름에 캠프에 갔다."
+  },
+  {
+    "word": "campaign",
+    "sentence": "They started a campaign to help.",
+    "sentenceMeaning": "그들은 돕기 위한 캠페인을 시작했다."
+  },
+  {
+    "word": "can",
+    "sentence": "I can swim very well.",
+    "sentenceMeaning": "나는 수영을 매우 잘할 수 있다."
+  },
+  {
+    "word": "cancel",
+    "sentence": "We had to cancel the trip.",
+    "sentenceMeaning": "우리는 여행을 취소해야 했다."
+  },
+  {
+    "word": "capture",
+    "sentence": "The police will capture the thief.",
+    "sentenceMeaning": "경찰이 도둑을 잡을 것이다."
+  },
+  {
+    "word": "car",
+    "sentence": "My father drives a car.",
+    "sentenceMeaning": "아버지는 자동차를 운전하신다."
+  },
+  {
+    "word": "card",
+    "sentence": "I gave her a birthday card.",
+    "sentenceMeaning": "나는 그녀에게 생일 카드를 주었다."
+  },
+  {
+    "word": "care",
+    "sentence": "I care about my family.",
+    "sentenceMeaning": "나는 가족을 소중히 여긴다."
+  },
+  {
+    "word": "carriage",
+    "sentence": "The baby sleeps in the carriage.",
+    "sentenceMeaning": "아기가 유모차에서 잔다."
+  },
+  {
+    "word": "carry",
+    "sentence": "Can you carry this bag for me?",
+    "sentenceMeaning": "이 가방 좀 들어줄 수 있어요?"
+  },
+  {
+    "word": "case",
+    "sentence": "Put your phone in the case.",
+    "sentenceMeaning": "핸드폰을 케이스에 넣어라."
+  },
+  {
+    "word": "cash",
+    "sentence": "I have no cash with me.",
+    "sentenceMeaning": "나는 현금이 없다."
+  },
+  {
+    "word": "cat",
+    "sentence": "The cat is sleeping on the bed.",
+    "sentenceMeaning": "고양이가 침대에서 자고 있다."
+  },
+  {
+    "word": "catch",
+    "sentence": "Try to catch the ball.",
+    "sentenceMeaning": "공을 잡아봐."
+  },
+  {
+    "word": "cause",
+    "sentence": "Rain can cause a flood.",
+    "sentenceMeaning": "비는 홍수를 일으킬 수 있다."
+  },
+  {
+    "word": "celebrate",
+    "sentence": "We celebrate her birthday today.",
+    "sentenceMeaning": "우리는 오늘 그녀의 생일을 축하한다."
+  },
+  {
+    "word": "cell",
+    "sentence": "Every living thing has cells.",
+    "sentenceMeaning": "모든 생물은 세포를 가지고 있다."
+  },
+  {
+    "word": "center",
+    "sentence": "The park is in the center of town.",
+    "sentenceMeaning": "공원은 마을 중심에 있다."
+  },
+  {
+    "word": "century",
+    "sentence": "We live in the twenty-first century.",
+    "sentenceMeaning": "우리는 21세기에 살고 있다."
+  },
+  {
+    "word": "ceremony",
+    "sentence": "The ceremony was very beautiful.",
+    "sentenceMeaning": "그 행사는 매우 아름다웠다."
+  },
+  {
+    "word": "certain",
+    "sentence": "I am certain that he will come.",
+    "sentenceMeaning": "그가 올 것이라고 확신한다."
+  },
+  {
+    "word": "chain",
+    "sentence": "The dog is on a chain.",
+    "sentenceMeaning": "개가 사슬에 묶여 있다."
+  },
+  {
+    "word": "chair",
+    "sentence": "Please sit on the chair.",
+    "sentenceMeaning": "의자에 앉아 주세요."
+  },
+  {
+    "word": "chairman",
+    "sentence": "The chairman spoke at the meeting.",
+    "sentenceMeaning": "회장이 회의에서 연설했다."
+  },
+  {
+    "word": "challenge",
+    "sentence": "This game is a big challenge.",
+    "sentenceMeaning": "이 게임은 큰 도전이다."
+  },
+  {
+    "word": "champion",
+    "sentence": "She is the champion of the race.",
+    "sentenceMeaning": "그녀는 경주의 챔피언이다."
+  },
+  {
+    "word": "chance",
+    "sentence": "Give me one more chance.",
+    "sentenceMeaning": "한 번 더 기회를 주세요."
+  },
+  {
+    "word": "change",
+    "sentence": "I need to change my clothes.",
+    "sentenceMeaning": "나는 옷을 갈아입어야 한다."
+  },
+  {
+    "word": "channel",
+    "sentence": "Change the television channel.",
+    "sentenceMeaning": "텔레비전 채널을 바꿔라."
+  },
+  {
+    "word": "character",
+    "sentence": "He has a good character.",
+    "sentenceMeaning": "그는 좋은 성격을 가지고 있다."
+  },
+  {
+    "word": "charge",
+    "sentence": "I need to charge my phone.",
+    "sentenceMeaning": "핸드폰을 충전해야 한다."
+  },
+  {
+    "word": "chart",
+    "sentence": "Look at the chart on the wall.",
+    "sentenceMeaning": "벽에 있는 도표를 봐라."
+  },
+  {
+    "word": "chase",
+    "sentence": "The dog likes to chase cats.",
+    "sentenceMeaning": "개는 고양이를 쫓는 것을 좋아한다."
+  },
+  {
+    "word": "cheap",
+    "sentence": "This toy is very cheap.",
+    "sentenceMeaning": "이 장난감은 매우 싸다."
+  },
+  {
+    "word": "check",
+    "sentence": "Please check your answer.",
+    "sentenceMeaning": "답을 확인해 주세요."
+  },
+  {
+    "word": "cheer",
+    "sentence": "The crowd began to cheer.",
+    "sentenceMeaning": "군중이 환호하기 시작했다."
+  },
+  {
+    "word": "cheese",
+    "sentence": "I like cheese on my bread.",
+    "sentenceMeaning": "나는 빵에 치즈를 좋아한다."
+  },
+  {
+    "word": "chemical",
+    "sentence": "This chemical is dangerous.",
+    "sentenceMeaning": "이 화학물질은 위험하다."
+  },
+  {
+    "word": "chest",
+    "sentence": "He put his hand on his chest.",
+    "sentenceMeaning": "그는 손을 가슴에 얹었다."
+  },
+  {
+    "word": "chief",
+    "sentence": "The chief gave the order.",
+    "sentenceMeaning": "대장이 명령을 내렸다."
+  },
+  {
+    "word": "child",
+    "sentence": "The child is playing in the park.",
+    "sentenceMeaning": "아이가 공원에서 놀고 있다."
+  },
+  {
+    "word": "choose",
+    "sentence": "You can choose any color.",
+    "sentenceMeaning": "어떤 색이든 고를 수 있어요."
+  },
+  {
+    "word": "church",
+    "sentence": "We go to church on Sunday.",
+    "sentenceMeaning": "우리는 일요일에 교회에 간다."
+  },
+  {
+    "word": "circle",
+    "sentence": "Draw a circle on the paper.",
+    "sentenceMeaning": "종이에 원을 그려라."
+  },
+  {
+    "word": "citizen",
+    "sentence": "She is a citizen of Korea.",
+    "sentenceMeaning": "그녀는 한국 시민이다."
+  },
+  {
+    "word": "city",
+    "sentence": "Seoul is a big city.",
+    "sentenceMeaning": "서울은 큰 도시다."
+  },
+  {
+    "word": "civilian",
+    "sentence": "The civilian was not hurt.",
+    "sentenceMeaning": "그 민간인은 다치지 않았다."
+  },
+  {
+    "word": "claim",
+    "sentence": "He claims that he is right.",
+    "sentenceMeaning": "그는 자신이 옳다고 주장한다."
+  },
+  {
+    "word": "clash",
+    "sentence": "The two teams will clash today.",
+    "sentenceMeaning": "두 팀이 오늘 맞붙을 것이다."
+  },
+  {
+    "word": "class",
+    "sentence": "I have class at nine.",
+    "sentenceMeaning": "나는 9시에 수업이 있다."
+  },
+  {
+    "word": "clean",
+    "sentence": "Please clean your room.",
+    "sentenceMeaning": "방을 청소해 주세요."
+  },
+  {
+    "word": "clear",
+    "sentence": "The sky is clear today.",
+    "sentenceMeaning": "오늘 하늘이 맑다."
+  },
+  {
+    "word": "climate",
+    "sentence": "The climate here is warm.",
+    "sentenceMeaning": "여기 기후는 따뜻하다."
+  },
+  {
+    "word": "climb",
+    "sentence": "We will climb the mountain.",
+    "sentenceMeaning": "우리는 산을 오를 것이다."
+  },
+  {
+    "word": "clock",
+    "sentence": "Look at the clock on the wall.",
+    "sentenceMeaning": "벽에 있는 시계를 봐라."
+  },
+  {
+    "word": "close",
+    "sentence": "Please close the door.",
+    "sentenceMeaning": "문을 닫아 주세요."
+  },
+  {
+    "word": "cloth",
+    "sentence": "Wipe the table with a cloth.",
+    "sentenceMeaning": "천으로 테이블을 닦아라."
+  },
+  {
+    "word": "cloud",
+    "sentence": "There are many clouds in the sky.",
+    "sentenceMeaning": "하늘에 구름이 많다."
+  },
+  {
+    "word": "coal",
+    "sentence": "Coal is black and burns well.",
+    "sentenceMeaning": "석탄은 검고 잘 탄다."
+  },
+  {
+    "word": "coast",
+    "sentence": "We live near the coast.",
+    "sentenceMeaning": "우리는 해안 근처에 산다."
+  },
+  {
+    "word": "coat",
+    "sentence": "Wear your coat, it is cold.",
+    "sentenceMeaning": "추우니까 코트를 입어라."
+  },
+  {
+    "word": "code",
+    "sentence": "What is the door code?",
+    "sentenceMeaning": "문 비밀번호가 뭐야?"
+  },
+  {
+    "word": "cold",
+    "sentence": "It is very cold outside.",
+    "sentenceMeaning": "밖이 매우 춥다."
+  },
+  {
+    "word": "collect",
+    "sentence": "I collect stamps as a hobby.",
+    "sentenceMeaning": "나는 취미로 우표를 수집한다."
+  },
+  {
+    "word": "college",
+    "sentence": "My sister goes to college.",
+    "sentenceMeaning": "언니는 대학교에 다닌다."
+  },
+  {
+    "word": "colony",
+    "sentence": "Ants live in a colony.",
+    "sentenceMeaning": "개미는 군락에서 산다."
+  },
+  {
+    "word": "color",
+    "sentence": "What is your favorite color?",
+    "sentenceMeaning": "가장 좋아하는 색이 뭐야?"
+  },
+  {
+    "word": "combine",
+    "sentence": "Combine the two colors together.",
+    "sentenceMeaning": "두 색을 함께 섞어라."
+  },
+  {
+    "word": "come",
+    "sentence": "Please come to my house.",
+    "sentenceMeaning": "우리 집에 와 주세요."
+  },
+  {
+    "word": "comfort",
+    "sentence": "She gave me comfort when I was sad.",
+    "sentenceMeaning": "내가 슬플 때 그녀가 위로해 주었다."
+  },
+  {
+    "word": "command",
+    "sentence": "The captain gave the command.",
+    "sentenceMeaning": "대장이 명령을 내렸다."
+  },
+  {
+    "word": "comment",
+    "sentence": "Do you have any comment?",
+    "sentenceMeaning": "의견이 있으신가요?"
+  },
+  {
+    "word": "committee",
+    "sentence": "The committee will decide.",
+    "sentenceMeaning": "위원회가 결정할 것이다."
+  },
+  {
+    "word": "common",
+    "sentence": "This bird is very common here.",
+    "sentenceMeaning": "이 새는 여기서 매우 흔하다."
+  },
+  {
+    "word": "communicate",
+    "sentence": "We communicate by phone.",
+    "sentenceMeaning": "우리는 전화로 소통한다."
+  },
+  {
+    "word": "community",
+    "sentence": "We help our community.",
+    "sentenceMeaning": "우리는 지역사회를 돕는다."
+  },
+  {
+    "word": "company",
+    "sentence": "My father works for a big company.",
+    "sentenceMeaning": "아버지는 큰 회사에서 일하신다."
+  },
+  {
+    "word": "compare",
+    "sentence": "Compare these two pictures.",
+    "sentenceMeaning": "이 두 그림을 비교해 봐라."
+  },
+  {
+    "word": "compete",
+    "sentence": "We will compete in the race.",
+    "sentenceMeaning": "우리는 경주에서 경쟁할 것이다."
+  },
+  {
+    "word": "complete",
+    "sentence": "I will complete my homework.",
+    "sentenceMeaning": "나는 숙제를 완료할 것이다."
+  },
+  {
+    "word": "compromise",
+    "sentence": "We need to compromise.",
+    "sentenceMeaning": "우리는 타협해야 한다."
+  },
+  {
+    "word": "computer",
+    "sentence": "I use a computer at school.",
+    "sentenceMeaning": "나는 학교에서 컴퓨터를 사용한다."
+  },
+  {
+    "word": "concern",
+    "sentence": "Your health is my concern.",
+    "sentenceMeaning": "네 건강이 내 걱정이다."
+  },
+  {
+    "word": "condemn",
+    "sentence": "They condemn the bad action.",
+    "sentenceMeaning": "그들은 나쁜 행동을 비난한다."
+  },
+  {
+    "word": "condition",
+    "sentence": "The car is in good condition.",
+    "sentenceMeaning": "그 차는 상태가 좋다."
+  },
+  {
+    "word": "conference",
+    "sentence": "The conference starts at ten.",
+    "sentenceMeaning": "회의는 10시에 시작한다."
+  },
+  {
+    "word": "confirm",
+    "sentence": "Please confirm your order.",
+    "sentenceMeaning": "주문을 확인해 주세요."
+  },
+  {
+    "word": "congratulate",
+    "sentence": "I congratulate you on your success.",
+    "sentenceMeaning": "성공을 축하해요."
+  },
+  {
+    "word": "congress",
+    "sentence": "The congress passed a new law.",
+    "sentenceMeaning": "의회가 새 법을 통과시켰다."
+  },
+  {
+    "word": "connect",
+    "sentence": "Connect the wire to the machine.",
+    "sentenceMeaning": "전선을 기계에 연결해라."
+  },
+  {
+    "word": "consider",
+    "sentence": "Please consider my idea.",
+    "sentenceMeaning": "제 아이디어를 고려해 주세요."
+  },
+  {
+    "word": "consumption",
+    "sentence": "Water consumption is high in summer.",
+    "sentenceMeaning": "여름에 물 소비량이 높다."
+  },
+  {
+    "word": "contact",
+    "sentence": "I will contact you soon.",
+    "sentenceMeaning": "곧 연락할게요."
+  },
+  {
+    "word": "contain",
+    "sentence": "This box contains toys.",
+    "sentenceMeaning": "이 상자에는 장난감이 들어있다."
+  },
+  {
+    "word": "continent",
+    "sentence": "Africa is a large continent.",
+    "sentenceMeaning": "아프리카는 큰 대륙이다."
+  },
+  {
+    "word": "continue",
+    "sentence": "Please continue reading.",
+    "sentenceMeaning": "계속 읽어 주세요."
+  },
+  {
+    "word": "control",
+    "sentence": "He can control the machine.",
+    "sentenceMeaning": "그는 기계를 제어할 수 있다."
+  },
+  {
+    "word": "cook",
+    "sentence": "My mother can cook well.",
+    "sentenceMeaning": "어머니는 요리를 잘하신다."
+  },
+  {
+    "word": "cool",
+    "sentence": "The weather is cool today.",
+    "sentenceMeaning": "오늘 날씨가 시원하다."
+  },
+  {
+    "word": "cooperate",
+    "sentence": "We must cooperate to win.",
+    "sentenceMeaning": "이기려면 협력해야 한다."
+  },
+  {
+    "word": "copy",
+    "sentence": "Do not copy my homework.",
+    "sentenceMeaning": "내 숙제를 베끼지 마라."
+  },
+  {
+    "word": "cork",
+    "sentence": "The bottle has a cork.",
+    "sentenceMeaning": "그 병에는 코르크가 있다."
+  },
+  {
+    "word": "corn",
+    "sentence": "I like to eat corn.",
+    "sentenceMeaning": "나는 옥수수 먹는 것을 좋아한다."
+  },
+  {
+    "word": "corner",
+    "sentence": "Wait for me at the corner.",
+    "sentenceMeaning": "모퉁이에서 나를 기다려."
+  },
+  {
+    "word": "correct",
+    "sentence": "Your answer is correct.",
+    "sentenceMeaning": "네 답이 맞다."
+  },
+  {
+    "word": "cost",
+    "sentence": "How much does this cost?",
+    "sentenceMeaning": "이것은 얼마입니까?"
+  },
+  {
+    "word": "cotton",
+    "sentence": "This shirt is made of cotton.",
+    "sentenceMeaning": "이 셔츠는 면으로 만들어졌다."
+  },
+  {
+    "word": "count",
+    "sentence": "Can you count to ten?",
+    "sentenceMeaning": "열까지 셀 수 있어?"
+  },
+  {
+    "word": "country",
+    "sentence": "Korea is a beautiful country.",
+    "sentenceMeaning": "한국은 아름다운 나라다."
+  },
+  {
+    "word": "course",
+    "sentence": "I am taking a math course.",
+    "sentenceMeaning": "나는 수학 과목을 듣고 있다."
+  },
+  {
+    "word": "court",
+    "sentence": "The judge works in the court.",
+    "sentenceMeaning": "판사는 법원에서 일한다."
+  },
+  {
+    "word": "cover",
+    "sentence": "Cover the pot with a lid.",
+    "sentenceMeaning": "냄비를 뚜껑으로 덮어라."
+  },
+  {
+    "word": "cow",
+    "sentence": "The cow gives us milk.",
+    "sentenceMeaning": "소는 우리에게 우유를 준다."
+  },
+  {
+    "word": "crash",
+    "sentence": "The two cars had a crash.",
+    "sentenceMeaning": "두 차가 충돌했다."
+  },
+  {
+    "word": "create",
+    "sentence": "I want to create a new game.",
+    "sentenceMeaning": "나는 새 게임을 만들고 싶다."
+  },
+  {
+    "word": "credit",
+    "sentence": "He paid by credit card.",
+    "sentenceMeaning": "그는 신용카드로 결제했다."
+  },
+  {
+    "word": "crew",
+    "sentence": "The crew works on the ship.",
+    "sentenceMeaning": "선원들이 배에서 일한다."
+  },
+  {
+    "word": "crime",
+    "sentence": "Stealing is a crime.",
+    "sentenceMeaning": "훔치는 것은 범죄다."
+  },
+  {
+    "word": "crisis",
+    "sentence": "We must solve this crisis.",
+    "sentenceMeaning": "우리는 이 위기를 해결해야 한다."
+  },
+  {
+    "word": "criteria",
+    "sentence": "What are the criteria for the job?",
+    "sentenceMeaning": "그 직업의 기준이 뭐야?"
+  },
+  {
+    "word": "criticize",
+    "sentence": "Do not criticize others.",
+    "sentenceMeaning": "다른 사람을 비판하지 마라."
+  },
+  {
+    "word": "crop",
+    "sentence": "The farmer grows crops.",
+    "sentenceMeaning": "농부는 농작물을 기른다."
+  },
+  {
+    "word": "cross",
+    "sentence": "Look both ways before you cross.",
+    "sentenceMeaning": "건너기 전에 양쪽을 봐라."
+  },
+  {
+    "word": "crowd",
+    "sentence": "There was a big crowd at the game.",
+    "sentenceMeaning": "경기에 큰 군중이 있었다."
+  },
+  {
+    "word": "crush",
+    "sentence": "Do not crush the flowers.",
+    "sentenceMeaning": "꽃을 짓밟지 마라."
+  },
+  {
+    "word": "cry",
+    "sentence": "The baby started to cry.",
+    "sentenceMeaning": "아기가 울기 시작했다."
+  },
+  {
+    "word": "culture",
+    "sentence": "I want to learn about Korean culture.",
+    "sentenceMeaning": "나는 한국 문화에 대해 배우고 싶다."
+  },
+  {
+    "word": "cup",
+    "sentence": "I drink water from a cup.",
+    "sentenceMeaning": "나는 컵으로 물을 마신다."
+  },
+  {
+    "word": "cure",
+    "sentence": "The doctor can cure the disease.",
+    "sentenceMeaning": "의사가 그 병을 치료할 수 있다."
+  },
+  {
+    "word": "current",
+    "sentence": "The current news is important.",
+    "sentenceMeaning": "현재 뉴스가 중요하다."
+  },
+  {
+    "word": "custom",
+    "sentence": "This is an old custom.",
+    "sentenceMeaning": "이것은 오래된 풍습이다."
+  },
+  {
+    "word": "cut",
+    "sentence": "Be careful not to cut your finger.",
+    "sentenceMeaning": "손가락을 베지 않도록 조심해라."
+  },
+  {
+    "word": "damage",
+    "sentence": "The storm caused damage to the house.",
+    "sentenceMeaning": "폭풍이 집에 피해를 입혔다."
+  },
+  {
+    "word": "dance",
+    "sentence": "I like to dance to music.",
+    "sentenceMeaning": "나는 음악에 맞춰 춤추는 것을 좋아한다."
+  },
+  {
+    "word": "danger",
+    "sentence": "There is danger in the forest.",
+    "sentenceMeaning": "숲에 위험이 있다."
+  },
+  {
+    "word": "dark",
+    "sentence": "It is dark at night.",
+    "sentenceMeaning": "밤에는 어둡다."
+  },
+  {
+    "word": "date",
+    "sentence": "What is the date today?",
+    "sentenceMeaning": "오늘 날짜가 며칠이야?"
+  },
+  {
+    "word": "daughter",
+    "sentence": "She is my daughter.",
+    "sentenceMeaning": "그녀는 내 딸이다."
+  },
+  {
+    "word": "day",
+    "sentence": "Today is a beautiful day.",
+    "sentenceMeaning": "오늘은 아름다운 날이다."
+  },
+  {
+    "word": "dead",
+    "sentence": "The flowers are dead.",
+    "sentenceMeaning": "꽃들이 죽었다."
+  },
+  {
+    "word": "deaf",
+    "sentence": "He is deaf and cannot hear.",
+    "sentenceMeaning": "그는 귀가 들리지 않는다."
+  },
+  {
+    "word": "deal",
+    "sentence": "We made a deal.",
+    "sentenceMeaning": "우리는 거래를 했다."
+  },
+  {
+    "word": "dear",
+    "sentence": "She is my dear friend.",
+    "sentenceMeaning": "그녀는 내 소중한 친구다."
+  },
+  {
+    "word": "debate",
+    "sentence": "They will have a debate today.",
+    "sentenceMeaning": "그들은 오늘 토론을 할 것이다."
+  },
+  {
+    "word": "debt",
+    "sentence": "He paid all his debt.",
+    "sentenceMeaning": "그는 모든 빚을 갚았다."
+  },
+  {
+    "word": "decide",
+    "sentence": "I cannot decide what to eat.",
+    "sentenceMeaning": "뭘 먹을지 결정할 수가 없다."
+  },
+  {
+    "word": "declare",
+    "sentence": "The president will declare peace.",
+    "sentenceMeaning": "대통령이 평화를 선언할 것이다."
+  },
+  {
+    "word": "decrease",
+    "sentence": "The price will decrease soon.",
+    "sentenceMeaning": "가격이 곧 내려갈 것이다."
+  },
+  {
+    "word": "deep",
+    "sentence": "The lake is very deep.",
+    "sentenceMeaning": "그 호수는 매우 깊다."
+  },
+  {
+    "word": "defeat",
+    "sentence": "We will defeat the other team.",
+    "sentenceMeaning": "우리는 상대 팀을 이길 것이다."
+  },
+  {
+    "word": "defend",
+    "sentence": "The army will defend the country.",
+    "sentenceMeaning": "군대가 나라를 방어할 것이다."
+  },
+  {
+    "word": "define",
+    "sentence": "Can you define this word?",
+    "sentenceMeaning": "이 단어를 정의할 수 있어?"
+  },
+  {
+    "word": "degree",
+    "sentence": "The temperature is thirty degrees.",
+    "sentenceMeaning": "온도가 30도다."
+  },
+  {
+    "word": "delay",
+    "sentence": "The flight has a delay.",
+    "sentenceMeaning": "비행기가 지연되었다."
+  },
+  {
+    "word": "delicate",
+    "sentence": "This glass is very delicate.",
+    "sentenceMeaning": "이 유리는 매우 섬세하다."
+  },
+  {
+    "word": "deliver",
+    "sentence": "They will deliver the package.",
+    "sentenceMeaning": "그들이 소포를 배달할 것이다."
+  },
+  {
+    "word": "demand",
+    "sentence": "There is high demand for this toy.",
+    "sentenceMeaning": "이 장난감에 대한 수요가 높다."
+  },
+  {
+    "word": "demonstrate",
+    "sentence": "He will demonstrate how to do it.",
+    "sentenceMeaning": "그가 하는 방법을 보여줄 것이다."
+  },
+  {
+    "word": "denounce",
+    "sentence": "They denounce the bad action.",
+    "sentenceMeaning": "그들은 나쁜 행동을 비난한다."
+  },
+  {
+    "word": "deny",
+    "sentence": "He will deny the story.",
+    "sentenceMeaning": "그는 그 이야기를 부인할 것이다."
+  },
+  {
+    "word": "departure",
+    "sentence": "The departure time is at noon.",
+    "sentenceMeaning": "출발 시간은 정오다."
+  },
+  {
+    "word": "depend",
+    "sentence": "Children depend on their parents.",
+    "sentenceMeaning": "아이들은 부모에게 의존한다."
+  },
+  {
+    "word": "deploy",
+    "sentence": "The army will deploy soldiers.",
+    "sentenceMeaning": "군대가 병사들을 배치할 것이다."
+  },
+  {
+    "word": "depression",
+    "sentence": "She felt depression after the loss.",
+    "sentenceMeaning": "그녀는 상실 후 우울감을 느꼈다."
+  },
+  {
+    "word": "describe",
+    "sentence": "Please describe your house.",
+    "sentenceMeaning": "당신의 집을 묘사해 주세요."
+  },
+  {
+    "word": "desert",
+    "sentence": "The desert is very hot and dry.",
+    "sentenceMeaning": "사막은 매우 덥고 건조하다."
+  },
+  {
+    "word": "design",
+    "sentence": "I like the design of this dress.",
+    "sentenceMeaning": "이 드레스 디자인이 마음에 든다."
+  },
+  {
+    "word": "desire",
+    "sentence": "I have a desire to travel.",
+    "sentenceMeaning": "나는 여행하고 싶은 욕구가 있다."
+  },
+  {
+    "word": "destroy",
+    "sentence": "Fire can destroy the forest.",
+    "sentenceMeaning": "불은 숲을 파괴할 수 있다."
+  },
+  {
+    "word": "detail",
+    "sentence": "Please explain in detail.",
+    "sentenceMeaning": "자세히 설명해 주세요."
+  },
+  {
+    "word": "develop",
+    "sentence": "We will develop a new product.",
+    "sentenceMeaning": "우리는 새 제품을 개발할 것이다."
+  },
+  {
+    "word": "device",
+    "sentence": "This device is very useful.",
+    "sentenceMeaning": "이 장치는 매우 유용하다."
+  },
+  {
+    "word": "die",
+    "sentence": "Plants die without water.",
+    "sentenceMeaning": "식물은 물 없이 죽는다."
+  },
+  {
+    "word": "diet",
+    "sentence": "I am on a diet.",
+    "sentenceMeaning": "나는 다이어트 중이다."
+  },
+  {
+    "word": "differ",
+    "sentence": "Our opinions differ.",
+    "sentenceMeaning": "우리 의견은 다르다."
+  },
+  {
+    "word": "difficult",
+    "sentence": "This test is very difficult.",
+    "sentenceMeaning": "이 시험은 매우 어렵다."
+  },
+  {
+    "word": "dig",
+    "sentence": "The dog likes to dig holes.",
+    "sentenceMeaning": "개는 구멍 파는 것을 좋아한다."
+  },
+  {
+    "word": "dinner",
+    "sentence": "We eat dinner at seven.",
+    "sentenceMeaning": "우리는 7시에 저녁을 먹는다."
+  },
+  {
+    "word": "diplomat",
+    "sentence": "The diplomat works for peace.",
+    "sentenceMeaning": "그 외교관은 평화를 위해 일한다."
+  },
+  {
+    "word": "direct",
+    "sentence": "Go in a direct line.",
+    "sentenceMeaning": "직선으로 가라."
+  },
+  {
+    "word": "dirt",
+    "sentence": "Wash the dirt off your hands.",
+    "sentenceMeaning": "손에서 흙을 씻어라."
+  },
+  {
+    "word": "disappear",
+    "sentence": "The rabbit will disappear.",
+    "sentenceMeaning": "토끼가 사라질 것이다."
+  },
+  {
+    "word": "discover",
+    "sentence": "I want to discover new places.",
+    "sentenceMeaning": "나는 새로운 곳을 발견하고 싶다."
+  },
+  {
+    "word": "discuss",
+    "sentence": "Let us discuss this problem.",
+    "sentenceMeaning": "이 문제를 논의하자."
+  },
+  {
+    "word": "disease",
+    "sentence": "The doctor can cure the disease.",
+    "sentenceMeaning": "의사가 그 병을 치료할 수 있다."
+  },
+  {
+    "word": "disk",
+    "sentence": "Save the file on the disk.",
+    "sentenceMeaning": "파일을 디스크에 저장해라."
+  },
+  {
+    "word": "dismiss",
+    "sentence": "The teacher will dismiss the class.",
+    "sentenceMeaning": "선생님이 수업을 마칠 것이다."
+  },
+  {
+    "word": "dispute",
+    "sentence": "They had a dispute about money.",
+    "sentenceMeaning": "그들은 돈에 관해 분쟁이 있었다."
+  },
+  {
+    "word": "distance",
+    "sentence": "The distance to school is short.",
+    "sentenceMeaning": "학교까지의 거리는 짧다."
+  },
+  {
+    "word": "divide",
+    "sentence": "Divide the cake into four pieces.",
+    "sentenceMeaning": "케이크를 네 조각으로 나눠라."
+  },
+  {
+    "word": "do",
+    "sentence": "I will do my best.",
+    "sentenceMeaning": "나는 최선을 다할 것이다."
+  },
+  {
+    "word": "doctor",
+    "sentence": "The doctor helps sick people.",
+    "sentenceMeaning": "의사는 아픈 사람들을 돕는다."
+  },
+  {
+    "word": "document",
+    "sentence": "Please sign this document.",
+    "sentenceMeaning": "이 서류에 서명해 주세요."
+  },
+  {
+    "word": "dog",
+    "sentence": "My dog is very friendly.",
+    "sentenceMeaning": "내 개는 매우 친절하다."
+  },
+  {
+    "word": "door",
+    "sentence": "Please open the door.",
+    "sentenceMeaning": "문을 열어 주세요."
+  },
+  {
+    "word": "doubt",
+    "sentence": "I have no doubt about it.",
+    "sentenceMeaning": "나는 그것에 대해 의심이 없다."
+  },
+  {
+    "word": "down",
+    "sentence": "The ball rolled down the hill.",
+    "sentenceMeaning": "공이 언덕 아래로 굴러갔다."
+  },
+  {
+    "word": "drain",
+    "sentence": "The water will drain away.",
+    "sentenceMeaning": "물이 빠져나갈 것이다."
+  },
+  {
+    "word": "draw",
+    "sentence": "I like to draw pictures.",
+    "sentenceMeaning": "나는 그림 그리는 것을 좋아한다."
+  },
+  {
+    "word": "dream",
+    "sentence": "I had a good dream last night.",
+    "sentenceMeaning": "어젯밤 좋은 꿈을 꿨다."
+  },
+  {
+    "word": "dress",
+    "sentence": "She wears a pretty dress.",
+    "sentenceMeaning": "그녀는 예쁜 드레스를 입는다."
+  },
+  {
+    "word": "drink",
+    "sentence": "I drink water every day.",
+    "sentenceMeaning": "나는 매일 물을 마신다."
+  },
+  {
+    "word": "drive",
+    "sentence": "My father can drive a car.",
+    "sentenceMeaning": "아버지는 자동차를 운전할 수 있다."
+  },
+  {
+    "word": "drop",
+    "sentence": "Do not drop the glass.",
+    "sentenceMeaning": "유리컵을 떨어뜨리지 마라."
+  },
+  {
+    "word": "drug",
+    "sentence": "The doctor gave me a drug.",
+    "sentenceMeaning": "의사가 나에게 약을 주었다."
+  },
+  {
+    "word": "dry",
+    "sentence": "The clothes are dry now.",
+    "sentenceMeaning": "옷이 이제 말랐다."
+  },
+  {
+    "word": "during",
+    "sentence": "I sleep during the night.",
+    "sentenceMeaning": "나는 밤 동안 잔다."
+  },
+  {
+    "word": "dust",
+    "sentence": "There is dust on the table.",
+    "sentenceMeaning": "테이블 위에 먼지가 있다."
+  },
+  {
+    "word": "duty",
+    "sentence": "It is my duty to help.",
+    "sentenceMeaning": "돕는 것은 내 의무다."
+  },
+  {
+    "word": "each",
+    "sentence": "Each child got a gift.",
+    "sentenceMeaning": "각 아이가 선물을 받았다."
+  },
+  {
+    "word": "ear",
+    "sentence": "I can hear with my ears.",
+    "sentenceMeaning": "나는 귀로 들을 수 있다."
+  },
+  {
+    "word": "early",
+    "sentence": "I wake up early in the morning.",
+    "sentenceMeaning": "나는 아침에 일찍 일어난다."
+  },
+  {
+    "word": "earn",
+    "sentence": "I want to earn money.",
+    "sentenceMeaning": "나는 돈을 벌고 싶다."
+  },
+  {
+    "word": "earth",
+    "sentence": "The earth goes around the sun.",
+    "sentenceMeaning": "지구는 태양 주위를 돈다."
+  },
+  {
+    "word": "east",
+    "sentence": "The sun rises in the east.",
+    "sentenceMeaning": "해는 동쪽에서 뜬다."
+  },
+  {
+    "word": "easy",
+    "sentence": "This question is very easy.",
+    "sentenceMeaning": "이 질문은 매우 쉽다."
+  },
+  {
+    "word": "eat",
+    "sentence": "I eat breakfast every morning.",
+    "sentenceMeaning": "나는 매일 아침을 먹는다."
+  },
+  {
+    "word": "edge",
+    "sentence": "Stand at the edge of the road.",
+    "sentenceMeaning": "도로 가장자리에 서라."
+  },
+  {
+    "word": "education",
+    "sentence": "Education is very important.",
+    "sentenceMeaning": "교육은 매우 중요하다."
+  },
+  {
+    "word": "effect",
+    "sentence": "The drug has a good effect.",
+    "sentenceMeaning": "그 약은 좋은 효과가 있다."
+  },
+  {
+    "word": "effort",
+    "sentence": "I put a lot of effort into my work.",
+    "sentenceMeaning": "나는 일에 많은 노력을 기울인다."
+  },
+  {
+    "word": "egg",
+    "sentence": "I eat an egg for breakfast.",
+    "sentenceMeaning": "나는 아침으로 달걀을 먹는다."
+  },
+  {
+    "word": "either",
+    "sentence": "You can choose either one.",
+    "sentenceMeaning": "둘 중 하나를 고를 수 있다."
+  },
+  {
+    "word": "elastic",
+    "sentence": "The band is elastic.",
+    "sentenceMeaning": "그 밴드는 탄력이 있다."
+  },
+  {
+    "word": "electricity",
+    "sentence": "We need electricity for light.",
+    "sentenceMeaning": "우리는 빛을 위해 전기가 필요하다."
+  },
+  {
+    "word": "element",
+    "sentence": "Water is an important element.",
+    "sentenceMeaning": "물은 중요한 요소다."
+  },
+  {
+    "word": "else",
+    "sentence": "Is there anything else?",
+    "sentenceMeaning": "다른 것이 있나요?"
+  },
+  {
+    "word": "embassy",
+    "sentence": "The embassy is in the city center.",
+    "sentenceMeaning": "대사관은 도시 중심에 있다."
+  },
+  {
+    "word": "emergency",
+    "sentence": "Call for help in an emergency.",
+    "sentenceMeaning": "비상시에는 도움을 요청해라."
+  },
+  {
+    "word": "emotion",
+    "sentence": "She showed her emotion.",
+    "sentenceMeaning": "그녀는 감정을 드러냈다."
+  },
+  {
+    "word": "employ",
+    "sentence": "The company will employ new workers.",
+    "sentenceMeaning": "그 회사는 새 직원을 고용할 것이다."
+  },
+  {
+    "word": "empty",
+    "sentence": "The box is empty.",
+    "sentenceMeaning": "상자가 비어있다."
+  },
+  {
+    "word": "end",
+    "sentence": "This is the end of the story.",
+    "sentenceMeaning": "이것이 이야기의 끝이다."
+  },
+  {
+    "word": "enemy",
+    "sentence": "We must defeat the enemy.",
+    "sentenceMeaning": "우리는 적을 물리쳐야 한다."
+  },
+  {
+    "word": "enforce",
+    "sentence": "The police enforce the law.",
+    "sentenceMeaning": "경찰은 법을 집행한다."
+  },
+  {
+    "word": "engine",
+    "sentence": "The car has a big engine.",
+    "sentenceMeaning": "그 차는 큰 엔진을 가지고 있다."
+  },
+  {
+    "word": "enjoy",
+    "sentence": "I enjoy playing with my friends.",
+    "sentenceMeaning": "나는 친구들과 노는 것을 즐긴다."
+  },
+  {
+    "word": "enough",
+    "sentence": "I have enough food.",
+    "sentenceMeaning": "나는 충분한 음식이 있다."
+  },
+  {
+    "word": "enter",
+    "sentence": "Please enter the room.",
+    "sentenceMeaning": "방에 들어가세요."
+  },
+  {
+    "word": "entertain",
+    "sentence": "The clown will entertain us.",
+    "sentenceMeaning": "광대가 우리를 즐겁게 해줄 것이다."
+  },
+  {
+    "word": "environment",
+    "sentence": "We must protect the environment.",
+    "sentenceMeaning": "우리는 환경을 보호해야 한다."
+  },
+  {
+    "word": "equal",
+    "sentence": "All people are equal.",
+    "sentenceMeaning": "모든 사람은 평등하다."
+  },
+  {
+    "word": "equate",
+    "sentence": "You cannot equate money with happiness.",
+    "sentenceMeaning": "돈과 행복을 동일시할 수 없다."
+  },
+  {
+    "word": "equipment",
+    "sentence": "We need sports equipment.",
+    "sentenceMeaning": "우리는 스포츠 장비가 필요하다."
+  },
+  {
+    "word": "erase",
+    "sentence": "Please erase the board.",
+    "sentenceMeaning": "칠판을 지워주세요."
+  },
+  {
+    "word": "escape",
+    "sentence": "The bird will escape from the cage.",
+    "sentenceMeaning": "새가 새장에서 탈출할 것이다."
+  },
+  {
+    "word": "especially",
+    "sentence": "I like fruit, especially apples.",
+    "sentenceMeaning": "나는 과일을, 특히 사과를 좋아한다."
+  },
+  {
+    "word": "establish",
+    "sentence": "They will establish a new school.",
+    "sentenceMeaning": "그들은 새 학교를 설립할 것이다."
+  },
+  {
+    "word": "estimate",
+    "sentence": "I estimate the cost is high.",
+    "sentenceMeaning": "비용이 높을 것으로 추정한다."
+  },
+  {
+    "word": "ethnic",
+    "sentence": "We respect all ethnic groups.",
+    "sentenceMeaning": "우리는 모든 민족 집단을 존중한다."
+  },
+  {
+    "word": "evaporate",
+    "sentence": "Water will evaporate in the sun.",
+    "sentenceMeaning": "물은 햇볕에 증발한다."
+  },
+  {
+    "word": "even",
+    "sentence": "Even children can do this.",
+    "sentenceMeaning": "아이들도 이것을 할 수 있다."
+  },
+  {
+    "word": "event",
+    "sentence": "The school event is tomorrow.",
+    "sentenceMeaning": "학교 행사가 내일이다."
+  },
+  {
+    "word": "ever",
+    "sentence": "Have you ever been to Japan?",
+    "sentenceMeaning": "일본에 가본 적 있어?"
+  },
+  {
+    "word": "every",
+    "sentence": "I go to school every day.",
+    "sentenceMeaning": "나는 매일 학교에 간다."
+  },
+  {
+    "word": "evidence",
+    "sentence": "There is no evidence of crime.",
+    "sentenceMeaning": "범죄의 증거가 없다."
+  },
+  {
+    "word": "evil",
+    "sentence": "The villain in the story is evil.",
+    "sentenceMeaning": "이야기 속 악당은 사악하다."
+  },
+  {
+    "word": "exact",
+    "sentence": "What is the exact time?",
+    "sentenceMeaning": "정확한 시간이 몇 시야?"
+  },
+  {
+    "word": "example",
+    "sentence": "Give me an example.",
+    "sentenceMeaning": "예를 들어줘."
+  },
+  {
+    "word": "except",
+    "sentence": "Everyone came except Tom.",
+    "sentenceMeaning": "톰을 제외하고 모두 왔다."
+  },
+  {
+    "word": "exchange",
+    "sentence": "We can exchange gifts.",
+    "sentenceMeaning": "우리는 선물을 교환할 수 있다."
+  },
+  {
+    "word": "excuse",
+    "sentence": "Excuse me, may I pass?",
+    "sentenceMeaning": "실례합니다, 지나가도 될까요?"
+  },
+  {
+    "word": "execute",
+    "sentence": "We will execute the plan.",
+    "sentenceMeaning": "우리는 계획을 실행할 것이다."
+  },
+  {
+    "word": "exercise",
+    "sentence": "Exercise is good for health.",
+    "sentenceMeaning": "운동은 건강에 좋다."
+  },
+  {
+    "word": "exist",
+    "sentence": "Do aliens exist?",
+    "sentenceMeaning": "외계인이 존재할까?"
+  },
+  {
+    "word": "exit",
+    "sentence": "The exit is over there.",
+    "sentenceMeaning": "출구가 저기 있다."
+  },
+  {
+    "word": "expand",
+    "sentence": "The company will expand.",
+    "sentenceMeaning": "그 회사는 확장할 것이다."
+  },
+  {
+    "word": "expect",
+    "sentence": "I expect you to come.",
+    "sentenceMeaning": "나는 네가 오길 기대한다."
+  },
+  {
+    "word": "expense",
+    "sentence": "The expense is too high.",
+    "sentenceMeaning": "비용이 너무 높다."
+  },
+  {
+    "word": "experience",
+    "sentence": "I have a lot of experience.",
+    "sentenceMeaning": "나는 경험이 많다."
+  },
+  {
+    "word": "experiment",
+    "sentence": "We did an experiment in class.",
+    "sentenceMeaning": "우리는 수업에서 실험을 했다."
+  },
+  {
+    "word": "expert",
+    "sentence": "He is an expert in computers.",
+    "sentenceMeaning": "그는 컴퓨터 전문가다."
+  },
+  {
+    "word": "explain",
+    "sentence": "Please explain this to me.",
+    "sentenceMeaning": "이것을 설명해 주세요."
+  },
+  {
+    "word": "explode",
+    "sentence": "The balloon will explode.",
+    "sentenceMeaning": "풍선이 터질 것이다."
+  },
+  {
+    "word": "explore",
+    "sentence": "I want to explore the forest.",
+    "sentenceMeaning": "나는 숲을 탐험하고 싶다."
+  },
+  {
+    "word": "export",
+    "sentence": "Korea exports cars.",
+    "sentenceMeaning": "한국은 자동차를 수출한다."
+  },
+  {
+    "word": "express",
+    "sentence": "I want to express my thanks.",
+    "sentenceMeaning": "감사를 표현하고 싶다."
+  },
+  {
+    "word": "extend",
+    "sentence": "We will extend the deadline.",
+    "sentenceMeaning": "우리는 마감일을 연장할 것이다."
+  },
+  {
+    "word": "extra",
+    "sentence": "I need extra time.",
+    "sentenceMeaning": "시간이 더 필요하다."
+  },
+  {
+    "word": "extreme",
+    "sentence": "The weather is extreme today.",
+    "sentenceMeaning": "오늘 날씨가 극심하다."
+  },
+  {
+    "word": "eye",
+    "sentence": "I can see with my eyes.",
+    "sentenceMeaning": "나는 눈으로 볼 수 있다."
+  },
+  {
+    "word": "face",
+    "sentence": "Wash your face every morning.",
+    "sentenceMeaning": "매일 아침 얼굴을 씻어라."
+  },
+  {
+    "word": "fact",
+    "sentence": "That is a fact.",
+    "sentenceMeaning": "그것은 사실이다."
+  },
+  {
+    "word": "factory",
+    "sentence": "The factory makes cars.",
+    "sentenceMeaning": "그 공장은 자동차를 만든다."
+  },
+  {
+    "word": "fail",
+    "sentence": "Do not be afraid to fail.",
+    "sentenceMeaning": "실패하는 것을 두려워하지 마라."
+  },
+  {
+    "word": "fair",
+    "sentence": "The game must be fair.",
+    "sentenceMeaning": "게임은 공정해야 한다."
+  },
+  {
+    "word": "fall",
+    "sentence": "Leaves fall in autumn.",
+    "sentenceMeaning": "가을에 나뭇잎이 떨어진다."
+  },
+  {
+    "word": "false",
+    "sentence": "The answer is false.",
+    "sentenceMeaning": "그 답은 틀렸다."
+  },
+  {
+    "word": "family",
+    "sentence": "I love my family.",
+    "sentenceMeaning": "나는 내 가족을 사랑한다."
+  },
+  {
+    "word": "famous",
+    "sentence": "This singer is very famous.",
+    "sentenceMeaning": "이 가수는 매우 유명하다."
+  },
+  {
+    "word": "far",
+    "sentence": "The school is not far from here.",
+    "sentenceMeaning": "학교는 여기서 멀지 않다."
+  },
+  {
+    "word": "fast",
+    "sentence": "The car is very fast.",
+    "sentenceMeaning": "그 차는 매우 빠르다."
+  },
+  {
+    "word": "fat",
+    "sentence": "The cat is fat.",
+    "sentenceMeaning": "그 고양이는 뚱뚱하다."
+  },
+  {
+    "word": "father",
+    "sentence": "My father is a teacher.",
+    "sentenceMeaning": "아버지는 선생님이다."
+  },
+  {
+    "word": "fear",
+    "sentence": "Do not have fear.",
+    "sentenceMeaning": "두려워하지 마라."
+  },
+  {
+    "word": "feather",
+    "sentence": "The bird has soft feathers.",
+    "sentenceMeaning": "그 새는 부드러운 깃털을 가지고 있다."
+  },
+  {
+    "word": "feature",
+    "sentence": "This phone has a new feature.",
+    "sentenceMeaning": "이 핸드폰은 새 기능이 있다."
+  },
+  {
+    "word": "feed",
+    "sentence": "I feed my cat every day.",
+    "sentenceMeaning": "나는 매일 고양이에게 먹이를 준다."
+  },
+  {
+    "word": "feel",
+    "sentence": "I feel happy today.",
+    "sentenceMeaning": "오늘 기분이 좋다."
+  },
+  {
+    "word": "female",
+    "sentence": "The female cat has kittens.",
+    "sentenceMeaning": "암컷 고양이가 새끼를 낳았다."
+  },
+  {
+    "word": "fertile",
+    "sentence": "The soil is fertile.",
+    "sentenceMeaning": "그 토양은 비옥하다."
+  },
+  {
+    "word": "few",
+    "sentence": "I have a few friends.",
+    "sentenceMeaning": "나는 친구가 몇 명 있다."
+  },
+  {
+    "word": "field",
+    "sentence": "The children play in the field.",
+    "sentenceMeaning": "아이들이 들판에서 놀고 있다."
+  },
+  {
+    "word": "fierce",
+    "sentence": "The lion is fierce.",
+    "sentenceMeaning": "사자는 사납다."
+  },
+  {
+    "word": "fight",
+    "sentence": "Do not fight with your brother.",
+    "sentenceMeaning": "형제와 싸우지 마라."
+  },
+  {
+    "word": "figure",
+    "sentence": "Look at this figure.",
+    "sentenceMeaning": "이 도형을 봐라."
+  },
+  {
+    "word": "file",
+    "sentence": "Save the file on the computer.",
+    "sentenceMeaning": "파일을 컴퓨터에 저장해라."
+  },
+  {
+    "word": "fill",
+    "sentence": "Please fill the glass with water.",
+    "sentenceMeaning": "컵에 물을 채워주세요."
+  },
+  {
+    "word": "film",
+    "sentence": "I watched a good film.",
+    "sentenceMeaning": "나는 좋은 영화를 봤다."
+  },
+  {
+    "word": "final",
+    "sentence": "This is the final game.",
+    "sentenceMeaning": "이것이 마지막 경기다."
+  },
+  {
+    "word": "finance",
+    "sentence": "He works in finance.",
+    "sentenceMeaning": "그는 금융 분야에서 일한다."
+  },
+  {
+    "word": "find",
+    "sentence": "I cannot find my book.",
+    "sentenceMeaning": "책을 찾을 수가 없다."
+  },
+  {
+    "word": "fine",
+    "sentence": "I am fine, thank you.",
+    "sentenceMeaning": "저는 괜찮아요, 감사합니다."
+  },
+  {
+    "word": "finger",
+    "sentence": "I hurt my finger.",
+    "sentenceMeaning": "손가락을 다쳤다."
+  },
+  {
+    "word": "finish",
+    "sentence": "I will finish my homework.",
+    "sentenceMeaning": "숙제를 끝낼 것이다."
+  },
+  {
+    "word": "fire",
+    "sentence": "Fire is hot and dangerous.",
+    "sentenceMeaning": "불은 뜨겁고 위험하다."
+  },
+  {
+    "word": "firm",
+    "sentence": "The table is firm.",
+    "sentenceMeaning": "그 테이블은 단단하다."
+  },
+  {
+    "word": "first",
+    "sentence": "I came in first place.",
+    "sentenceMeaning": "나는 1등을 했다."
+  },
+  {
+    "word": "fish",
+    "sentence": "Fish live in water.",
+    "sentenceMeaning": "물고기는 물에 산다."
+  },
+  {
+    "word": "fist",
+    "sentence": "He made a fist.",
+    "sentenceMeaning": "그는 주먹을 쥐었다."
+  },
+  {
+    "word": "fit",
+    "sentence": "This shirt does not fit me.",
+    "sentenceMeaning": "이 셔츠는 나에게 맞지 않는다."
+  },
+  {
+    "word": "fix",
+    "sentence": "I will fix the broken chair.",
+    "sentenceMeaning": "부서진 의자를 고칠 것이다."
+  },
+  {
+    "word": "flag",
+    "sentence": "The flag is blowing in the wind.",
+    "sentenceMeaning": "깃발이 바람에 펄럭인다."
+  },
+  {
+    "word": "flat",
+    "sentence": "The road is flat.",
+    "sentenceMeaning": "도로가 평평하다."
+  },
+  {
+    "word": "float",
+    "sentence": "The boat can float on water.",
+    "sentenceMeaning": "배는 물에 뜰 수 있다."
+  },
+  {
+    "word": "floor",
+    "sentence": "Please clean the floor.",
+    "sentenceMeaning": "바닥을 청소해 주세요."
+  },
+  {
+    "word": "flow",
+    "sentence": "Water flows down the river.",
+    "sentenceMeaning": "물이 강을 따라 흐른다."
+  },
+  {
+    "word": "flower",
+    "sentence": "The flower is very pretty.",
+    "sentenceMeaning": "그 꽃은 매우 예쁘다."
+  },
+  {
+    "word": "fluid",
+    "sentence": "Water is a fluid.",
+    "sentenceMeaning": "물은 유체다."
+  },
+  {
+    "word": "fly",
+    "sentence": "Birds can fly in the sky.",
+    "sentenceMeaning": "새들은 하늘을 날 수 있다."
+  },
+  {
+    "word": "fog",
+    "sentence": "There is fog in the morning.",
+    "sentenceMeaning": "아침에 안개가 있다."
+  },
+  {
+    "word": "fold",
+    "sentence": "Please fold the paper in half.",
+    "sentenceMeaning": "종이를 반으로 접어주세요."
+  },
+  {
+    "word": "follow",
+    "sentence": "Please follow me.",
+    "sentenceMeaning": "저를 따라오세요."
+  },
+  {
+    "word": "food",
+    "sentence": "Food gives us energy.",
+    "sentenceMeaning": "음식은 우리에게 에너지를 준다."
+  },
+  {
+    "word": "fool",
+    "sentence": "Do not be a fool.",
+    "sentenceMeaning": "바보같이 굴지 마라."
+  },
+  {
+    "word": "foot",
+    "sentence": "I hurt my foot.",
+    "sentenceMeaning": "발을 다쳤다."
+  },
+  {
+    "word": "for",
+    "sentence": "This gift is for you.",
+    "sentenceMeaning": "이 선물은 너를 위한 거야."
+  },
+  {
+    "word": "forbid",
+    "sentence": "The rules forbid running.",
+    "sentenceMeaning": "규칙은 뛰는 것을 금지한다."
+  },
+  {
+    "word": "force",
+    "sentence": "Do not use force.",
+    "sentenceMeaning": "힘을 사용하지 마라."
+  },
+  {
+    "word": "foreign",
+    "sentence": "She speaks a foreign language.",
+    "sentenceMeaning": "그녀는 외국어를 한다."
+  },
+  {
+    "word": "forest",
+    "sentence": "The forest has many trees.",
+    "sentenceMeaning": "숲에는 많은 나무가 있다."
+  },
+  {
+    "word": "forget",
+    "sentence": "Do not forget your bag.",
+    "sentenceMeaning": "가방을 잊지 마라."
+  },
+  {
+    "word": "forgive",
+    "sentence": "Please forgive me.",
+    "sentenceMeaning": "저를 용서해 주세요."
+  },
+  {
+    "word": "form",
+    "sentence": "Please fill out this form.",
+    "sentenceMeaning": "이 양식을 작성해 주세요."
+  },
+  {
+    "word": "former",
+    "sentence": "He is my former teacher.",
+    "sentenceMeaning": "그는 나의 이전 선생님이다."
+  },
+  {
+    "word": "forward",
+    "sentence": "Move forward slowly.",
+    "sentenceMeaning": "천천히 앞으로 이동해라."
+  },
+  {
+    "word": "frame",
+    "sentence": "Put the picture in the frame.",
+    "sentenceMeaning": "사진을 액자에 넣어라."
+  },
+  {
+    "word": "free",
+    "sentence": "The bird is free now.",
+    "sentenceMeaning": "새는 이제 자유롭다."
+  },
+  {
+    "word": "freeze",
+    "sentence": "Water will freeze in winter.",
+    "sentenceMeaning": "물은 겨울에 얼 것이다."
+  },
+  {
+    "word": "fresh",
+    "sentence": "The fruit is fresh.",
+    "sentenceMeaning": "과일이 신선하다."
+  },
+  {
+    "word": "friend",
+    "sentence": "She is my best friend.",
+    "sentenceMeaning": "그녀는 나의 가장 친한 친구다."
+  },
+  {
+    "word": "frighten",
+    "sentence": "The loud noise will frighten her.",
+    "sentenceMeaning": "큰 소리가 그녀를 놀라게 할 것이다."
+  },
+  {
+    "word": "from",
+    "sentence": "I am from Korea.",
+    "sentenceMeaning": "나는 한국에서 왔다."
+  },
+  {
+    "word": "front",
+    "sentence": "Stand in front of the class.",
+    "sentenceMeaning": "반 앞에 서라."
+  },
+  {
+    "word": "fruit",
+    "sentence": "I like to eat fruit.",
+    "sentenceMeaning": "나는 과일 먹는 것을 좋아한다."
+  },
+  {
+    "word": "fuel",
+    "sentence": "The car needs fuel.",
+    "sentenceMeaning": "차에 연료가 필요하다."
+  },
+  {
+    "word": "full",
+    "sentence": "The glass is full of water.",
+    "sentenceMeaning": "컵이 물로 가득 차 있다."
+  },
+  {
+    "word": "fun",
+    "sentence": "We had a lot of fun.",
+    "sentenceMeaning": "우리는 정말 재미있었다."
+  },
+  {
+    "word": "future",
+    "sentence": "I hope for a good future.",
+    "sentenceMeaning": "좋은 미래를 바란다."
+  },
+  {
+    "word": "gain",
+    "sentence": "I want to gain more knowledge.",
+    "sentenceMeaning": "나는 더 많은 지식을 얻고 싶다."
+  },
+  {
+    "word": "gallon",
+    "sentence": "I bought a gallon of milk.",
+    "sentenceMeaning": "나는 우유 1갤런을 샀다."
+  },
+  {
+    "word": "game",
+    "sentence": "Let us play a game.",
+    "sentenceMeaning": "게임하자."
+  },
+  {
+    "word": "gang",
+    "sentence": "A gang of friends went to the park.",
+    "sentenceMeaning": "친구들 무리가 공원에 갔다."
+  },
+  {
+    "word": "garden",
+    "sentence": "We have flowers in the garden.",
+    "sentenceMeaning": "우리 정원에 꽃이 있다."
+  },
+  {
+    "word": "gas",
+    "sentence": "The car needs gas.",
+    "sentenceMeaning": "차에 기름이 필요하다."
+  },
+  {
+    "word": "gather",
+    "sentence": "We will gather in the park.",
+    "sentenceMeaning": "우리는 공원에 모일 것이다."
+  },
+  {
+    "word": "general",
+    "sentence": "The general rule is simple.",
+    "sentenceMeaning": "일반적인 규칙은 간단하다."
+  },
+  {
+    "word": "gentle",
+    "sentence": "Be gentle with the baby.",
+    "sentenceMeaning": "아기에게 부드럽게 대해라."
+  },
+  {
+    "word": "get",
+    "sentence": "I will get a new book.",
+    "sentenceMeaning": "새 책을 살 것이다."
+  },
+  {
+    "word": "gift",
+    "sentence": "I gave her a gift.",
+    "sentenceMeaning": "나는 그녀에게 선물을 주었다."
+  },
+  {
+    "word": "girl",
+    "sentence": "The girl is very smart.",
+    "sentenceMeaning": "그 소녀는 매우 똑똒하다."
+  },
+  {
+    "word": "give",
+    "sentence": "Please give me the book.",
+    "sentenceMeaning": "책 좀 주세요."
+  },
+  {
+    "word": "glass",
+    "sentence": "The glass is full of water.",
+    "sentenceMeaning": "컵에 물이 가득 차 있다."
+  },
+  {
+    "word": "global",
+    "sentence": "This is a global problem.",
+    "sentenceMeaning": "이것은 전 세계적인 문제다."
+  },
+  {
+    "word": "go",
+    "sentence": "I go to school every day.",
+    "sentenceMeaning": "나는 매일 학교에 간다."
+  },
+  {
+    "word": "goal",
+    "sentence": "My goal is to be a doctor.",
+    "sentenceMeaning": "내 목표는 의사가 되는 것이다."
+  },
+  {
+    "word": "god",
+    "sentence": "Many people believe in God.",
+    "sentenceMeaning": "많은 사람들이 신을 믿는다."
+  },
+  {
+    "word": "gold",
+    "sentence": "Gold is very valuable.",
+    "sentenceMeaning": "금은 매우 가치가 있다."
+  },
+  {
+    "word": "good",
+    "sentence": "This is a good book.",
+    "sentenceMeaning": "이것은 좋은 책이다."
+  },
+  {
+    "word": "govern",
+    "sentence": "The president will govern the country.",
+    "sentenceMeaning": "대통령이 나라를 통치할 것이다."
+  },
+  {
+    "word": "grass",
+    "sentence": "The grass is green.",
+    "sentenceMeaning": "잔디가 초록색이다."
+  },
+  {
+    "word": "gray",
+    "sentence": "The sky is gray today.",
+    "sentenceMeaning": "오늘 하늘이 회색이다."
+  },
+  {
+    "word": "great",
+    "sentence": "This is a great idea.",
+    "sentenceMeaning": "이것은 훌륭한 아이디어다."
+  },
+  {
+    "word": "green",
+    "sentence": "The leaves are green.",
+    "sentenceMeaning": "나뭇잎이 초록색이다."
+  },
+  {
+    "word": "ground",
+    "sentence": "The ball fell to the ground.",
+    "sentenceMeaning": "공이 땅에 떨어졌다."
+  },
+  {
+    "word": "group",
+    "sentence": "A group of children is playing.",
+    "sentenceMeaning": "아이들 무리가 놀고 있다."
+  },
+  {
+    "word": "grow",
+    "sentence": "Plants grow in the sun.",
+    "sentenceMeaning": "식물은 햇볕에서 자란다."
+  },
+  {
+    "word": "guarantee",
+    "sentence": "I guarantee this is true.",
+    "sentenceMeaning": "이것이 사실임을 보장한다."
+  },
+  {
+    "word": "guard",
+    "sentence": "The guard protects the building.",
+    "sentenceMeaning": "경비원이 건물을 지킨다."
+  },
+  {
+    "word": "guess",
+    "sentence": "Can you guess the answer?",
+    "sentenceMeaning": "답을 맞출 수 있어?"
+  },
+  {
+    "word": "guide",
+    "sentence": "The guide will show us the way.",
+    "sentenceMeaning": "가이드가 길을 안내해 줄 것이다."
+  },
+  {
+    "word": "guilty",
+    "sentence": "He feels guilty about his mistake.",
+    "sentenceMeaning": "그는 자신의 실수에 죄책감을 느낀다."
+  },
+  {
+    "word": "gun",
+    "sentence": "Guns are dangerous.",
+    "sentenceMeaning": "총은 위험하다."
+  },
+  {
+    "word": "guy",
+    "sentence": "That guy is my friend.",
+    "sentenceMeaning": "저 사람은 내 친구다."
+  },
+  {
+    "word": "hair",
+    "sentence": "She has long hair.",
+    "sentenceMeaning": "그녀는 긴 머리카락을 가지고 있다."
+  },
+  {
+    "word": "half",
+    "sentence": "I ate half of the cake.",
+    "sentenceMeaning": "나는 케이크 반을 먹었다."
+  },
+  {
+    "word": "halt",
+    "sentence": "The car came to a halt.",
+    "sentenceMeaning": "차가 멈췄다."
+  },
+  {
+    "word": "hand",
+    "sentence": "Wash your hands before eating.",
+    "sentenceMeaning": "먹기 전에 손을 씻어라."
+  },
+  {
+    "word": "hang",
+    "sentence": "Hang your coat on the hook.",
+    "sentenceMeaning": "코트를 고리에 걸어라."
+  },
+  {
+    "word": "happen",
+    "sentence": "What will happen next?",
+    "sentenceMeaning": "다음에 무슨 일이 일어날까?"
+  },
+  {
+    "word": "happy",
+    "sentence": "I am very happy today.",
+    "sentenceMeaning": "오늘 매우 행복하다."
+  },
+  {
+    "word": "hard",
+    "sentence": "This rock is very hard.",
+    "sentenceMeaning": "이 바위는 매우 단단하다."
+  },
+  {
+    "word": "harm",
+    "sentence": "Do not harm the animals.",
+    "sentenceMeaning": "동물을 해치지 마라."
+  },
+  {
+    "word": "hat",
+    "sentence": "I wear a hat in the sun.",
+    "sentenceMeaning": "나는 햇볕에 모자를 쓴다."
+  },
+  {
+    "word": "hate",
+    "sentence": "I hate when it rains.",
+    "sentenceMeaning": "비가 올 때 싫다."
+  },
+  {
+    "word": "have",
+    "sentence": "I have a big family.",
+    "sentenceMeaning": "나는 대가족이다."
+  },
+  {
+    "word": "he",
+    "sentence": "He is my brother.",
+    "sentenceMeaning": "그는 내 형이다."
+  },
+  {
+    "word": "head",
+    "sentence": "I have a pain in my head.",
+    "sentenceMeaning": "머리가 아프다."
+  },
+  {
+    "word": "heal",
+    "sentence": "The wound will heal soon.",
+    "sentenceMeaning": "상처가 곧 나을 것이다."
+  },
+  {
+    "word": "health",
+    "sentence": "Good health is important.",
+    "sentenceMeaning": "건강은 중요하다."
+  },
+  {
+    "word": "hear",
+    "sentence": "I can hear music.",
+    "sentenceMeaning": "음악 소리가 들린다."
+  },
+  {
+    "word": "heart",
+    "sentence": "My heart beats fast.",
+    "sentenceMeaning": "심장이 빨리 뛴다."
+  },
+  {
+    "word": "heat",
+    "sentence": "The heat from the sun is strong.",
+    "sentenceMeaning": "햇볕의 열기가 강하다."
+  },
+  {
+    "word": "heavy",
+    "sentence": "This box is very heavy.",
+    "sentenceMeaning": "이 상자는 매우 무겁다."
+  },
+  {
+    "word": "help",
+    "sentence": "Can you help me please?",
+    "sentenceMeaning": "도와주실 수 있나요?"
+  },
+  {
+    "word": "her",
+    "sentence": "This is her book.",
+    "sentenceMeaning": "이것은 그녀의 책이다."
+  },
+  {
+    "word": "here",
+    "sentence": "Come here please.",
+    "sentenceMeaning": "여기 오세요."
+  },
+  {
+    "word": "hide",
+    "sentence": "The cat likes to hide.",
+    "sentenceMeaning": "고양이는 숨는 것을 좋아한다."
+  },
+  {
+    "word": "high",
+    "sentence": "The mountain is very high.",
+    "sentenceMeaning": "그 산은 매우 높다."
+  },
+  {
+    "word": "hijack",
+    "sentence": "The criminals will hijack the plane.",
+    "sentenceMeaning": "범인들이 비행기를 납치할 것이다."
+  },
+  {
+    "word": "hill",
+    "sentence": "We climbed up the hill.",
+    "sentenceMeaning": "우리는 언덕을 올라갔다."
+  },
+  {
+    "word": "him",
+    "sentence": "I gave him the book.",
+    "sentenceMeaning": "나는 그에게 책을 주었다."
+  },
+  {
+    "word": "hire",
+    "sentence": "The company will hire new workers.",
+    "sentenceMeaning": "회사가 새 직원을 고용할 것이다."
+  },
+  {
+    "word": "his",
+    "sentence": "This is his bag.",
+    "sentenceMeaning": "이것은 그의 가방이다."
+  },
+  {
+    "word": "history",
+    "sentence": "I like to study history.",
+    "sentenceMeaning": "나는 역사를 공부하는 것을 좋아한다."
+  },
+  {
+    "word": "hit",
+    "sentence": "The ball hit the window.",
+    "sentenceMeaning": "공이 창문에 맞았다."
+  },
+  {
+    "word": "hold",
+    "sentence": "Please hold my hand.",
+    "sentenceMeaning": "내 손을 잡아주세요."
+  },
+  {
+    "word": "hole",
+    "sentence": "There is a hole in my sock.",
+    "sentenceMeaning": "양말에 구멍이 있다."
+  },
+  {
+    "word": "holiday",
+    "sentence": "We go on holiday in summer.",
+    "sentenceMeaning": "우리는 여름에 휴가를 간다."
+  },
+  {
+    "word": "hollow",
+    "sentence": "The tree is hollow inside.",
+    "sentenceMeaning": "나무 안이 비어 있다."
+  },
+  {
+    "word": "holy",
+    "sentence": "This is a holy place.",
+    "sentenceMeaning": "이곳은 신성한 장소다."
+  },
+  {
+    "word": "home",
+    "sentence": "I go home after school.",
+    "sentenceMeaning": "나는 학교 후에 집에 간다."
+  },
+  {
+    "word": "honest",
+    "sentence": "Please be honest with me.",
+    "sentenceMeaning": "저에게 솔직해 주세요."
+  },
+  {
+    "word": "hope",
+    "sentence": "I hope you feel better.",
+    "sentenceMeaning": "네가 나아지길 바란다."
+  },
+  {
+    "word": "horrible",
+    "sentence": "The movie was horrible.",
+    "sentenceMeaning": "그 영화는 끔찍했다."
+  },
+  {
+    "word": "horse",
+    "sentence": "The horse runs fast.",
+    "sentenceMeaning": "말이 빨리 달린다."
+  },
+  {
+    "word": "hospital",
+    "sentence": "My father works at a hospital.",
+    "sentenceMeaning": "아버지는 병원에서 일하신다."
+  },
+  {
+    "word": "hostage",
+    "sentence": "The criminal took a hostage.",
+    "sentenceMeaning": "범인이 인질을 잡았다."
+  },
+  {
+    "word": "hostile",
+    "sentence": "The dog looks hostile.",
+    "sentenceMeaning": "그 개가 적대적으로 보인다."
+  },
+  {
+    "word": "hot",
+    "sentence": "The soup is very hot.",
+    "sentenceMeaning": "수프가 매우 뜨겁다."
+  },
+  {
+    "word": "hour",
+    "sentence": "I waited for one hour.",
+    "sentenceMeaning": "나는 한 시간을 기다렸다."
+  },
+  {
+    "word": "house",
+    "sentence": "We live in a big house.",
+    "sentenceMeaning": "우리는 큰 집에 산다."
+  },
+  {
+    "word": "how",
+    "sentence": "How are you today?",
+    "sentenceMeaning": "오늘 기분이 어때요?"
+  },
+  {
+    "word": "however",
+    "sentence": "I tried hard, however I failed.",
+    "sentenceMeaning": "열심히 노력했지만 실패했다."
+  },
+  {
+    "word": "huge",
+    "sentence": "The elephant is huge.",
+    "sentenceMeaning": "코끼리는 거대하다."
+  },
+  {
+    "word": "human",
+    "sentence": "Humans need food and water.",
+    "sentenceMeaning": "인간은 음식과 물이 필요하다."
+  },
+  {
+    "word": "humor",
+    "sentence": "He has a good sense of humor.",
+    "sentenceMeaning": "그는 유머 감각이 좋다."
+  },
+  {
+    "word": "hunger",
+    "sentence": "I feel hunger before lunch.",
+    "sentenceMeaning": "점심 전에 배가 고프다."
+  },
+  {
+    "word": "hunt",
+    "sentence": "Lions hunt for food.",
+    "sentenceMeaning": "사자는 먹이를 사냥한다."
+  },
+  {
+    "word": "hurry",
+    "sentence": "We must hurry to catch the bus.",
+    "sentenceMeaning": "버스를 타려면 서둘러야 한다."
+  },
+  {
+    "word": "hurt",
+    "sentence": "My leg hurts.",
+    "sentenceMeaning": "다리가 아프다."
+  },
+  {
+    "word": "husband",
+    "sentence": "Her husband is a doctor.",
+    "sentenceMeaning": "그녀의 남편은 의사다."
+  },
+  {
+    "word": "I",
+    "sentence": "I am a student.",
+    "sentenceMeaning": "나는 학생이다."
+  },
+  {
+    "word": "ice",
+    "sentence": "Ice is cold.",
+    "sentenceMeaning": "얼음은 차갑다."
+  },
+  {
+    "word": "idea",
+    "sentence": "I have a good idea.",
+    "sentenceMeaning": "좋은 생각이 있다."
+  },
+  {
+    "word": "identify",
+    "sentence": "Can you identify this bird?",
+    "sentenceMeaning": "이 새를 알아볼 수 있어?"
+  },
+  {
+    "word": "if",
+    "sentence": "I will go if it does not rain.",
+    "sentenceMeaning": "비가 안 오면 갈 것이다."
+  },
+  {
+    "word": "illegal",
+    "sentence": "Stealing is illegal.",
+    "sentenceMeaning": "도둑질은 불법이다."
+  },
+  {
+    "word": "ill",
+    "sentence": "She is ill today.",
+    "sentenceMeaning": "그녀는 오늘 아프다."
+  },
+  {
+    "word": "imagine",
+    "sentence": "Imagine a world without war.",
+    "sentenceMeaning": "전쟁 없는 세상을 상상해 보라."
+  },
+  {
+    "word": "import",
+    "sentence": "Korea imports oil.",
+    "sentenceMeaning": "한국은 석유를 수입한다."
+  },
+  {
+    "word": "important",
+    "sentence": "Health is very important.",
+    "sentenceMeaning": "건강은 매우 중요하다."
+  },
+  {
+    "word": "improve",
+    "sentence": "I want to improve my English.",
+    "sentenceMeaning": "영어를 향상시키고 싶다."
+  },
+  {
+    "word": "in",
+    "sentence": "The cat is in the box.",
+    "sentenceMeaning": "고양이가 상자 안에 있다."
+  },
+  {
+    "word": "inch",
+    "sentence": "The ruler is twelve inches long.",
+    "sentenceMeaning": "자가 12인치 길이다."
+  },
+  {
+    "word": "incident",
+    "sentence": "There was an incident at school.",
+    "sentenceMeaning": "학교에서 사건이 있었다."
+  },
+  {
+    "word": "include",
+    "sentence": "The price includes lunch.",
+    "sentenceMeaning": "가격에 점심이 포함되어 있다."
+  },
+  {
+    "word": "increase",
+    "sentence": "The price will increase.",
+    "sentenceMeaning": "가격이 오를 것이다."
+  },
+  {
+    "word": "independent",
+    "sentence": "She is very independent.",
+    "sentenceMeaning": "그녀는 매우 독립적이다."
+  },
+  {
+    "word": "indicate",
+    "sentence": "The sign indicates the exit.",
+    "sentenceMeaning": "표지판이 출구를 가리킨다."
+  },
+  {
+    "word": "individual",
+    "sentence": "Each individual is different.",
+    "sentenceMeaning": "각 개인은 다르다."
+  },
+  {
+    "word": "industry",
+    "sentence": "The car industry is big.",
+    "sentenceMeaning": "자동차 산업은 크다."
+  },
+  {
+    "word": "infect",
+    "sentence": "The virus can infect people.",
+    "sentenceMeaning": "바이러스는 사람들을 감염시킬 수 있다."
+  },
+  {
+    "word": "influence",
+    "sentence": "Parents influence their children.",
+    "sentenceMeaning": "부모는 자녀에게 영향을 준다."
+  },
+  {
+    "word": "inform",
+    "sentence": "Please inform me of any change.",
+    "sentenceMeaning": "변경 사항이 있으면 알려주세요."
+  },
+  {
+    "word": "inject",
+    "sentence": "The doctor will inject the medicine.",
+    "sentenceMeaning": "의사가 약을 주사할 것이다."
+  },
+  {
+    "word": "injure",
+    "sentence": "Be careful not to injure yourself.",
+    "sentenceMeaning": "다치지 않도록 조심해라."
+  },
+  {
+    "word": "innocent",
+    "sentence": "The man is innocent.",
+    "sentenceMeaning": "그 남자는 무죄다."
+  },
+  {
+    "word": "insane",
+    "sentence": "That idea is insane.",
+    "sentenceMeaning": "그 생각은 미친 짓이다."
+  },
+  {
+    "word": "insect",
+    "sentence": "A bee is an insect.",
+    "sentenceMeaning": "벌은 곤충이다."
+  },
+  {
+    "word": "inspect",
+    "sentence": "They will inspect the building.",
+    "sentenceMeaning": "그들이 건물을 점검할 것이다."
+  },
+  {
+    "word": "instead",
+    "sentence": "I will go instead of you.",
+    "sentenceMeaning": "네 대신 내가 갈게."
+  },
+  {
+    "word": "insult",
+    "sentence": "Do not insult other people.",
+    "sentenceMeaning": "다른 사람을 모욕하지 마라."
+  },
+  {
+    "word": "insurance",
+    "sentence": "I have health insurance.",
+    "sentenceMeaning": "나는 건강 보험이 있다."
+  },
+  {
+    "word": "intelligence",
+    "sentence": "She has great intelligence.",
+    "sentenceMeaning": "그녀는 지능이 뛰어나다."
+  },
+  {
+    "word": "intense",
+    "sentence": "The heat is intense today.",
+    "sentenceMeaning": "오늘 열기가 강렬하다."
+  },
+  {
+    "word": "interest",
+    "sentence": "I have interest in music.",
+    "sentenceMeaning": "나는 음악에 관심이 있다."
+  },
+  {
+    "word": "interfere",
+    "sentence": "Do not interfere with my work.",
+    "sentenceMeaning": "내 일에 간섭하지 마라."
+  },
+  {
+    "word": "international",
+    "sentence": "This is an international event.",
+    "sentenceMeaning": "이것은 국제 행사다."
+  },
+  {
+    "word": "into",
+    "sentence": "The cat jumped into the box.",
+    "sentenceMeaning": "고양이가 상자 안으로 뛰어들었다."
+  },
+  {
+    "word": "invade",
+    "sentence": "Ants will invade the kitchen.",
+    "sentenceMeaning": "개미들이 부엌을 침입할 것이다."
+  },
+  {
+    "word": "invent",
+    "sentence": "Who will invent the next big thing?",
+    "sentenceMeaning": "누가 다음 큰 것을 발명할까?"
+  },
+  {
+    "word": "invest",
+    "sentence": "I want to invest my money.",
+    "sentenceMeaning": "돈을 투자하고 싶다."
+  },
+  {
+    "word": "investigate",
+    "sentence": "The police will investigate the crime.",
+    "sentenceMeaning": "경찰이 범죄를 조사할 것이다."
+  },
+  {
+    "word": "invite",
+    "sentence": "I will invite you to my party.",
+    "sentenceMeaning": "내 파티에 초대할게."
+  },
+  {
+    "word": "involve",
+    "sentence": "This job will involve travel.",
+    "sentenceMeaning": "이 일은 여행을 포함할 것이다."
+  },
+  {
+    "word": "iron",
+    "sentence": "Iron is a strong metal.",
+    "sentenceMeaning": "철은 강한 금속이다."
+  },
+  {
+    "word": "island",
+    "sentence": "We visited a small island.",
+    "sentenceMeaning": "우리는 작은 섬을 방문했다."
+  },
+  {
+    "word": "issue",
+    "sentence": "This is an important issue.",
+    "sentenceMeaning": "이것은 중요한 문제다."
+  },
+  {
+    "word": "it",
+    "sentence": "It is a nice day.",
+    "sentenceMeaning": "좋은 날이다."
+  },
+  {
+    "word": "item",
+    "sentence": "I bought three items.",
+    "sentenceMeaning": "나는 세 가지 물건을 샀다."
+  },
+  {
+    "word": "jacket",
+    "sentence": "Wear your jacket, it is cold.",
+    "sentenceMeaning": "추우니까 재킷을 입어라."
+  },
+  {
+    "word": "jail",
+    "sentence": "The thief went to jail.",
+    "sentenceMeaning": "도둑이 감옥에 갔다."
+  },
+  {
+    "word": "jewel",
+    "sentence": "The ring has a beautiful jewel.",
+    "sentenceMeaning": "반지에 아름다운 보석이 있다."
+  },
+  {
+    "word": "job",
+    "sentence": "I have a good job.",
+    "sentenceMeaning": "나는 좋은 직업이 있다."
+  },
+  {
+    "word": "join",
+    "sentence": "Can I join your team?",
+    "sentenceMeaning": "팀에 합류해도 될까요?"
+  },
+  {
+    "word": "joint",
+    "sentence": "My knee joint hurts.",
+    "sentenceMeaning": "무릎 관절이 아프다."
+  },
+  {
+    "word": "joke",
+    "sentence": "He told a funny joke.",
+    "sentenceMeaning": "그가 재미있는 농담을 했다."
+  },
+  {
+    "word": "joy",
+    "sentence": "The child felt great joy.",
+    "sentenceMeaning": "아이가 큰 기쁨을 느꼈다."
+  },
+  {
+    "word": "judge",
+    "sentence": "The judge will decide the case.",
+    "sentenceMeaning": "판사가 사건을 결정할 것이다."
+  },
+  {
+    "word": "jump",
+    "sentence": "The dog can jump high.",
+    "sentenceMeaning": "그 개는 높이 뛸 수 있다."
+  },
+  {
+    "word": "jury",
+    "sentence": "The jury made a decision.",
+    "sentenceMeaning": "배심원이 결정을 내렸다."
+  },
+  {
+    "word": "just",
+    "sentence": "I just got home.",
+    "sentenceMeaning": "방금 집에 왔다."
+  },
+  {
+    "word": "keep",
+    "sentence": "Keep the book safe.",
+    "sentenceMeaning": "책을 안전하게 보관해라."
+  },
+  {
+    "word": "key",
+    "sentence": "I lost my key.",
+    "sentenceMeaning": "열쇠를 잃어버렸다."
+  },
+  {
+    "word": "kick",
+    "sentence": "The boy kicked the ball.",
+    "sentenceMeaning": "소년이 공을 찼다."
+  },
+  {
+    "word": "kid",
+    "sentence": "The kid is playing outside.",
+    "sentenceMeaning": "아이가 밖에서 놀고 있다."
+  },
+  {
+    "word": "kill",
+    "sentence": "Do not kill animals.",
+    "sentenceMeaning": "동물을 죽이지 마라."
+  },
+  {
+    "word": "kind",
+    "sentence": "She is a kind person.",
+    "sentenceMeaning": "그녀는 친절한 사람이다."
+  },
+  {
+    "word": "king",
+    "sentence": "The king rules the country.",
+    "sentenceMeaning": "왕이 나라를 다스린다."
+  },
+  {
+    "word": "kiss",
+    "sentence": "She gave him a kiss.",
+    "sentenceMeaning": "그녀가 그에게 키스했다."
+  },
+  {
+    "word": "kit",
+    "sentence": "I have a first aid kit.",
+    "sentenceMeaning": "나는 구급 상자가 있다."
+  },
+  {
+    "word": "kitchen",
+    "sentence": "Mother is cooking in the kitchen.",
+    "sentenceMeaning": "어머니가 부엌에서 요리하고 있다."
+  },
+  {
+    "word": "knife",
+    "sentence": "Be careful with the knife.",
+    "sentenceMeaning": "칼 조심해라."
+  },
+  {
+    "word": "know",
+    "sentence": "I know the answer.",
+    "sentenceMeaning": "답을 안다."
+  },
+  {
+    "word": "labor",
+    "sentence": "Hard labor makes you strong.",
+    "sentenceMeaning": "힘든 노동이 너를 강하게 만든다."
+  },
+  {
+    "word": "laboratory",
+    "sentence": "The scientist works in a laboratory.",
+    "sentenceMeaning": "과학자가 실험실에서 일한다."
+  },
+  {
+    "word": "lack",
+    "sentence": "There is a lack of water.",
+    "sentenceMeaning": "물이 부족하다."
+  },
+  {
+    "word": "lake",
+    "sentence": "We swim in the lake.",
+    "sentenceMeaning": "우리는 호수에서 수영한다."
+  },
+  {
+    "word": "land",
+    "sentence": "The plane will land soon.",
+    "sentenceMeaning": "비행기가 곧 착륙할 것이다."
+  },
+  {
+    "word": "language",
+    "sentence": "I am learning a new language.",
+    "sentenceMeaning": "새 언어를 배우고 있다."
+  },
+  {
+    "word": "large",
+    "sentence": "The house is very large.",
+    "sentenceMeaning": "그 집은 매우 크다."
+  },
+  {
+    "word": "last",
+    "sentence": "This is the last day.",
+    "sentenceMeaning": "오늘이 마지막 날이다."
+  },
+  {
+    "word": "late",
+    "sentence": "I am late for school.",
+    "sentenceMeaning": "학교에 늦었다."
+  },
+  {
+    "word": "laugh",
+    "sentence": "The joke made me laugh.",
+    "sentenceMeaning": "그 농담이 나를 웃게 했다."
+  },
+  {
+    "word": "law",
+    "sentence": "We must follow the law.",
+    "sentenceMeaning": "우리는 법을 따라야 한다."
+  },
+  {
+    "word": "lay",
+    "sentence": "Lay the book on the table.",
+    "sentenceMeaning": "책을 테이블에 놓아라."
+  },
+  {
+    "word": "lead",
+    "sentence": "She will lead the team.",
+    "sentenceMeaning": "그녀가 팀을 이끌 것이다."
+  },
+  {
+    "word": "leak",
+    "sentence": "There is a leak in the roof.",
+    "sentenceMeaning": "지붕에 새는 곳이 있다."
+  },
+  {
+    "word": "learn",
+    "sentence": "I want to learn English.",
+    "sentenceMeaning": "영어를 배우고 싶다."
+  },
+  {
+    "word": "least",
+    "sentence": "This is the least expensive.",
+    "sentenceMeaning": "이것이 가장 저렴하다."
+  },
+  {
+    "word": "leave",
+    "sentence": "I will leave at noon.",
+    "sentenceMeaning": "정오에 떠날 것이다."
+  },
+  {
+    "word": "left",
+    "sentence": "Turn left at the corner.",
+    "sentenceMeaning": "모퉁이에서 왼쪽으로 돌아라."
+  },
+  {
+    "word": "leg",
+    "sentence": "I hurt my leg.",
+    "sentenceMeaning": "다리를 다쳤다."
+  },
+  {
+    "word": "legal",
+    "sentence": "This action is legal.",
+    "sentenceMeaning": "이 행동은 합법적이다."
+  },
+  {
+    "word": "lend",
+    "sentence": "Can you lend me your pen?",
+    "sentenceMeaning": "펜 좀 빌려줄 수 있어?"
+  },
+  {
+    "word": "length",
+    "sentence": "What is the length of this room?",
+    "sentenceMeaning": "이 방의 길이가 얼마야?"
+  },
+  {
+    "word": "less",
+    "sentence": "I have less money than you.",
+    "sentenceMeaning": "나는 너보다 돈이 적다."
+  },
+  {
+    "word": "let",
+    "sentence": "Let me help you.",
+    "sentenceMeaning": "도와줄게."
+  },
+  {
+    "word": "letter",
+    "sentence": "I wrote a letter to my friend.",
+    "sentenceMeaning": "친구에게 편지를 썼다."
+  },
+  {
+    "word": "level",
+    "sentence": "The water level is rising.",
+    "sentenceMeaning": "수위가 오르고 있다."
+  },
+  {
+    "word": "lie",
+    "sentence": "Do not tell a lie.",
+    "sentenceMeaning": "거짓말하지 마라."
+  },
+  {
+    "word": "life",
+    "sentence": "Life is beautiful.",
+    "sentenceMeaning": "인생은 아름답다."
+  },
+  {
+    "word": "lift",
+    "sentence": "Can you lift this box?",
+    "sentenceMeaning": "이 상자를 들 수 있어?"
+  },
+  {
+    "word": "light",
+    "sentence": "Turn on the light please.",
+    "sentenceMeaning": "불 좀 켜주세요."
+  },
+  {
+    "word": "like",
+    "sentence": "I like ice cream.",
+    "sentenceMeaning": "아이스크림을 좋아한다."
+  },
+  {
+    "word": "limit",
+    "sentence": "There is a speed limit here.",
+    "sentenceMeaning": "여기 속도 제한이 있다."
+  },
+  {
+    "word": "line",
+    "sentence": "Draw a straight line.",
+    "sentenceMeaning": "직선을 그려라."
+  },
+  {
+    "word": "link",
+    "sentence": "Click on the link.",
+    "sentenceMeaning": "링크를 클릭해라."
+  },
+  {
+    "word": "lip",
+    "sentence": "Her lips are red.",
+    "sentenceMeaning": "그녀의 입술이 빨갛다."
+  },
+  {
+    "word": "liquid",
+    "sentence": "Water is a liquid.",
+    "sentenceMeaning": "물은 액체다."
+  },
+  {
+    "word": "list",
+    "sentence": "I made a shopping list.",
+    "sentenceMeaning": "쇼핑 목록을 만들었다."
+  },
+  {
+    "word": "listen",
+    "sentence": "Please listen to me.",
+    "sentenceMeaning": "제 말을 들어주세요."
+  },
+  {
+    "word": "little",
+    "sentence": "I have a little cat.",
+    "sentenceMeaning": "나는 작은 고양이가 있다."
+  },
+  {
+    "word": "live",
+    "sentence": "I live in Seoul.",
+    "sentenceMeaning": "나는 서울에 산다."
+  },
+  {
+    "word": "load",
+    "sentence": "Load the boxes onto the truck.",
+    "sentenceMeaning": "상자들을 트럭에 실어라."
+  },
+  {
+    "word": "loan",
+    "sentence": "I took a loan from the bank.",
+    "sentenceMeaning": "은행에서 대출을 받았다."
+  },
+  {
+    "word": "local",
+    "sentence": "I shop at the local store.",
+    "sentenceMeaning": "동네 가게에서 쇼핑한다."
+  },
+  {
+    "word": "locate",
+    "sentence": "Can you locate the building?",
+    "sentenceMeaning": "건물을 찾을 수 있어?"
+  },
+  {
+    "word": "lock",
+    "sentence": "Lock the door when you leave.",
+    "sentenceMeaning": "나갈 때 문을 잠가라."
+  },
+  {
+    "word": "log",
+    "sentence": "Put the log on the fire.",
+    "sentenceMeaning": "통나무를 불에 넣어라."
+  },
+  {
+    "word": "lone",
+    "sentence": "A lone tree stands in the field.",
+    "sentenceMeaning": "들판에 외로운 나무가 서 있다."
+  },
+  {
+    "word": "long",
+    "sentence": "The road is very long.",
+    "sentenceMeaning": "그 도로는 매우 길다."
+  },
+  {
+    "word": "look",
+    "sentence": "Look at the sky.",
+    "sentenceMeaning": "하늘을 봐라."
+  },
+  {
+    "word": "loose",
+    "sentence": "My shoe is loose.",
+    "sentenceMeaning": "신발이 헐렁하다."
+  },
+  {
+    "word": "lose",
+    "sentence": "Do not lose your key.",
+    "sentenceMeaning": "열쇠를 잃어버리지 마라."
+  },
+  {
+    "word": "lot",
+    "sentence": "I have a lot of books.",
+    "sentenceMeaning": "책이 많다."
+  },
+  {
+    "word": "loud",
+    "sentence": "The music is too loud.",
+    "sentenceMeaning": "음악이 너무 시끄럽다."
+  },
+  {
+    "word": "love",
+    "sentence": "I love my family.",
+    "sentenceMeaning": "가족을 사랑한다."
+  },
+  {
+    "word": "low",
+    "sentence": "The ceiling is low.",
+    "sentenceMeaning": "천장이 낮다."
+  },
+  {
+    "word": "luck",
+    "sentence": "Good luck on your test.",
+    "sentenceMeaning": "시험 잘 봐."
+  },
+  {
+    "word": "mail",
+    "sentence": "I will mail the letter today.",
+    "sentenceMeaning": "오늘 편지를 부칠 것이다."
+  },
+  {
+    "word": "main",
+    "sentence": "This is the main road.",
+    "sentenceMeaning": "이것이 주요 도로다."
+  },
+  {
+    "word": "major",
+    "sentence": "This is a major problem.",
+    "sentenceMeaning": "이것은 큰 문제다."
+  },
+  {
+    "word": "make",
+    "sentence": "I will make a cake.",
+    "sentenceMeaning": "케이크를 만들 것이다."
+  },
+  {
+    "word": "male",
+    "sentence": "The male bird sings.",
+    "sentenceMeaning": "수컷 새가 노래한다."
+  },
+  {
+    "word": "man",
+    "sentence": "The man is tall.",
+    "sentenceMeaning": "그 남자는 키가 크다."
+  },
+  {
+    "word": "manufacture",
+    "sentence": "They manufacture cars.",
+    "sentenceMeaning": "그들은 자동차를 제조한다."
+  },
+  {
+    "word": "many",
+    "sentence": "I have many friends.",
+    "sentenceMeaning": "나는 친구가 많다."
+  },
+  {
+    "word": "map",
+    "sentence": "Look at the map.",
+    "sentenceMeaning": "지도를 봐라."
+  },
+  {
+    "word": "march",
+    "sentence": "The soldiers march in line.",
+    "sentenceMeaning": "군인들이 줄지어 행진한다."
+  },
+  {
+    "word": "mark",
+    "sentence": "Put a mark on the paper.",
+    "sentenceMeaning": "종이에 표시해라."
+  },
+  {
+    "word": "market",
+    "sentence": "I go to the market every week.",
+    "sentenceMeaning": "매주 시장에 간다."
+  },
+  {
+    "word": "marry",
+    "sentence": "They will marry next year.",
+    "sentenceMeaning": "그들은 내년에 결혼할 것이다."
+  },
+  {
+    "word": "master",
+    "sentence": "He is a master of art.",
+    "sentenceMeaning": "그는 예술의 대가다."
+  },
+  {
+    "word": "match",
+    "sentence": "The colors match well.",
+    "sentenceMeaning": "색들이 잘 어울린다."
+  },
+  {
+    "word": "material",
+    "sentence": "This material is soft.",
+    "sentenceMeaning": "이 재료는 부드럽다."
+  },
+  {
+    "word": "matter",
+    "sentence": "What is the matter?",
+    "sentenceMeaning": "무슨 일이야?"
+  },
+  {
+    "word": "may",
+    "sentence": "May I go now?",
+    "sentenceMeaning": "지금 가도 될까요?"
+  },
+  {
+    "word": "mayor",
+    "sentence": "The mayor leads the city.",
+    "sentenceMeaning": "시장이 도시를 이끈다."
+  },
+  {
+    "word": "me",
+    "sentence": "Give it to me.",
+    "sentenceMeaning": "그것을 나에게 줘."
+  },
+  {
+    "word": "meal",
+    "sentence": "We eat three meals a day.",
+    "sentenceMeaning": "하루에 세 끼를 먹는다."
+  },
+  {
+    "word": "mean",
+    "sentence": "What does this word mean?",
+    "sentenceMeaning": "이 단어는 무슨 뜻이야?"
+  },
+  {
+    "word": "measure",
+    "sentence": "Measure the length of the room.",
+    "sentenceMeaning": "방의 길이를 재라."
+  },
+  {
+    "word": "meat",
+    "sentence": "I eat meat for dinner.",
+    "sentenceMeaning": "나는 저녁으로 고기를 먹는다."
+  },
+  {
+    "word": "media",
+    "sentence": "The media reports the news.",
+    "sentenceMeaning": "미디어가 뉴스를 보도한다."
+  },
+  {
+    "word": "meet",
+    "sentence": "I will meet you at noon.",
+    "sentenceMeaning": "정오에 만나자."
+  },
+  {
+    "word": "member",
+    "sentence": "I am a member of the club.",
+    "sentenceMeaning": "나는 클럽 회원이다."
+  },
+  {
+    "word": "memory",
+    "sentence": "I have a good memory.",
+    "sentenceMeaning": "기억력이 좋다."
+  },
+  {
+    "word": "mental",
+    "sentence": "Mental health is important.",
+    "sentenceMeaning": "정신 건강은 중요하다."
+  },
+  {
+    "word": "mercy",
+    "sentence": "The king showed mercy.",
+    "sentenceMeaning": "왕이 자비를 베풀었다."
+  },
+  {
+    "word": "message",
+    "sentence": "I got your message.",
+    "sentenceMeaning": "메시지 받았어."
+  },
+  {
+    "word": "metal",
+    "sentence": "Iron is a metal.",
+    "sentenceMeaning": "철은 금속이다."
+  },
+  {
+    "word": "method",
+    "sentence": "This is a good method.",
+    "sentenceMeaning": "이것은 좋은 방법이다."
+  },
+  {
+    "word": "middle",
+    "sentence": "Stand in the middle.",
+    "sentenceMeaning": "가운데 서라."
+  },
+  {
+    "word": "might",
+    "sentence": "It might rain today.",
+    "sentenceMeaning": "오늘 비가 올지도 모른다."
+  },
+  {
+    "word": "mile",
+    "sentence": "The school is one mile away.",
+    "sentenceMeaning": "학교가 1마일 거리에 있다."
+  },
+  {
+    "word": "military",
+    "sentence": "He joined the military.",
+    "sentenceMeaning": "그는 군대에 입대했다."
+  },
+  {
+    "word": "milk",
+    "sentence": "I drink milk every day.",
+    "sentenceMeaning": "매일 우유를 마신다."
+  },
+  {
+    "word": "mind",
+    "sentence": "Keep an open mind.",
+    "sentenceMeaning": "열린 마음을 가져라."
+  },
+  {
+    "word": "mine",
+    "sentence": "This book is mine.",
+    "sentenceMeaning": "이 책은 내 것이다."
+  },
+  {
+    "word": "minister",
+    "sentence": "The minister gave a speech.",
+    "sentenceMeaning": "장관이 연설했다."
+  },
+  {
+    "word": "minor",
+    "sentence": "This is a minor problem.",
+    "sentenceMeaning": "이것은 사소한 문제다."
+  },
+  {
+    "word": "miscellaneous",
+    "sentence": "There are miscellaneous items here.",
+    "sentenceMeaning": "여기에 여러 가지 물건들이 있다."
+  },
+  {
+    "word": "miss",
+    "sentence": "I miss my family.",
+    "sentenceMeaning": "가족이 보고 싶다."
+  },
+  {
+    "word": "mistake",
+    "sentence": "I made a mistake.",
+    "sentenceMeaning": "실수했다."
+  },
+  {
+    "word": "mix",
+    "sentence": "Mix the colors together.",
+    "sentenceMeaning": "색들을 함께 섞어라."
+  },
+  {
+    "word": "mob",
+    "sentence": "A mob gathered in the street.",
+    "sentenceMeaning": "군중이 거리에 모였다."
+  },
+  {
+    "word": "model",
+    "sentence": "She is a fashion model.",
+    "sentenceMeaning": "그녀는 패션 모델이다."
+  },
+  {
+    "word": "moderate",
+    "sentence": "The temperature is moderate.",
+    "sentenceMeaning": "온도가 적당하다."
+  },
+  {
+    "word": "modern",
+    "sentence": "This is a modern building.",
+    "sentenceMeaning": "이것은 현대적인 건물이다."
+  },
+  {
+    "word": "money",
+    "sentence": "I need more money.",
+    "sentenceMeaning": "돈이 더 필요하다."
+  },
+  {
+    "word": "month",
+    "sentence": "January is the first month.",
+    "sentenceMeaning": "1월은 첫 번째 달이다."
+  },
+  {
+    "word": "moon",
+    "sentence": "The moon is bright tonight.",
+    "sentenceMeaning": "오늘 밤 달이 밝다."
+  },
+  {
+    "word": "moral",
+    "sentence": "He has good moral values.",
+    "sentenceMeaning": "그는 좋은 도덕적 가치관을 가지고 있다."
+  },
+  {
+    "word": "more",
+    "sentence": "I want more food.",
+    "sentenceMeaning": "음식을 더 원한다."
+  },
+  {
+    "word": "morning",
+    "sentence": "I wake up early in the morning.",
+    "sentenceMeaning": "아침에 일찍 일어난다."
+  },
+  {
+    "word": "most",
+    "sentence": "Most people like music.",
+    "sentenceMeaning": "대부분의 사람들은 음악을 좋아한다."
+  },
+  {
+    "word": "mother",
+    "sentence": "My mother is very kind.",
+    "sentenceMeaning": "어머니는 매우 친절하다."
+  },
+  {
+    "word": "motion",
+    "sentence": "The car is in motion.",
+    "sentenceMeaning": "차가 움직이고 있다."
+  },
+  {
+    "word": "mountain",
+    "sentence": "The mountain is very high.",
+    "sentenceMeaning": "그 산은 매우 높다."
+  },
+  {
+    "word": "mouth",
+    "sentence": "Open your mouth.",
+    "sentenceMeaning": "입을 벌려라."
+  },
+  {
+    "word": "move",
+    "sentence": "Do not move.",
+    "sentenceMeaning": "움직이지 마라."
+  },
+  {
+    "word": "much",
+    "sentence": "Thank you very much.",
+    "sentenceMeaning": "정말 감사합니다."
+  },
+  {
+    "word": "murder",
+    "sentence": "Murder is a serious crime.",
+    "sentenceMeaning": "살인은 심각한 범죄다."
+  },
+  {
+    "word": "muscle",
+    "sentence": "Exercise builds muscle.",
+    "sentenceMeaning": "운동은 근육을 만든다."
+  },
+  {
+    "word": "music",
+    "sentence": "I love to listen to music.",
+    "sentenceMeaning": "음악 듣는 것을 좋아한다."
+  },
+  {
+    "word": "must",
+    "sentence": "You must study hard.",
+    "sentenceMeaning": "열심히 공부해야 한다."
+  },
+  {
+    "word": "my",
+    "sentence": "This is my book.",
+    "sentenceMeaning": "이것은 내 책이다."
+  },
+  {
+    "word": "mystery",
+    "sentence": "The mystery was solved.",
+    "sentenceMeaning": "미스터리가 풀렸다."
+  },
+  {
+    "word": "nail",
+    "sentence": "I hit the nail with a hammer.",
+    "sentenceMeaning": "망치로 못을 쳤다."
+  },
+  {
+    "word": "name",
+    "sentence": "My name is Tom.",
+    "sentenceMeaning": "내 이름은 톰이다."
+  },
+  {
+    "word": "narrow",
+    "sentence": "The road is narrow.",
+    "sentenceMeaning": "도로가 좁다."
+  },
+  {
+    "word": "nation",
+    "sentence": "Korea is a great nation.",
+    "sentenceMeaning": "한국은 훌륭한 나라다."
+  },
+  {
+    "word": "native",
+    "sentence": "He is a native of Seoul.",
+    "sentenceMeaning": "그는 서울 토박이다."
+  },
+  {
+    "word": "navy",
+    "sentence": "The navy protects the sea.",
+    "sentenceMeaning": "해군이 바다를 지킨다."
+  },
+  {
+    "word": "near",
+    "sentence": "The store is near my house.",
+    "sentenceMeaning": "가게가 집 근처에 있다."
+  },
+  {
+    "word": "necessary",
+    "sentence": "Water is necessary for life.",
+    "sentenceMeaning": "물은 생명에 필수적이다."
+  },
+  {
+    "word": "neck",
+    "sentence": "I have pain in my neck.",
+    "sentenceMeaning": "목이 아프다."
+  },
+  {
+    "word": "need",
+    "sentence": "I need your help.",
+    "sentenceMeaning": "도움이 필요해요."
+  },
+  {
+    "word": "neighbor",
+    "sentence": "My neighbor is very friendly.",
+    "sentenceMeaning": "이웃이 매우 친절하다."
+  },
+  {
+    "word": "neither",
+    "sentence": "Neither answer is correct.",
+    "sentenceMeaning": "두 답 모두 틀렸다."
+  },
+  {
+    "word": "nerve",
+    "sentence": "The doctor checked my nerve.",
+    "sentenceMeaning": "의사가 신경을 검사했다."
+  },
+  {
+    "word": "neutral",
+    "sentence": "I will stay neutral.",
+    "sentenceMeaning": "중립을 지킬 것이다."
+  },
+  {
+    "word": "never",
+    "sentence": "I will never give up.",
+    "sentenceMeaning": "절대 포기하지 않을 것이다."
+  },
+  {
+    "word": "new",
+    "sentence": "I have a new phone.",
+    "sentenceMeaning": "새 핸드폰이 있다."
+  },
+  {
+    "word": "news",
+    "sentence": "I watch the news every day.",
+    "sentenceMeaning": "매일 뉴스를 본다."
+  },
+  {
+    "word": "next",
+    "sentence": "I will see you next week.",
+    "sentenceMeaning": "다음 주에 만나자."
+  },
+  {
+    "word": "nice",
+    "sentence": "It is a nice day.",
+    "sentenceMeaning": "좋은 날이다."
+  },
+  {
+    "word": "night",
+    "sentence": "I sleep at night.",
+    "sentenceMeaning": "밤에 잔다."
+  },
+  {
+    "word": "no",
+    "sentence": "No, I do not want it.",
+    "sentenceMeaning": "아니, 원하지 않아."
+  },
+  {
+    "word": "noise",
+    "sentence": "The noise is too loud.",
+    "sentenceMeaning": "소음이 너무 크다."
+  },
+  {
+    "word": "noon",
+    "sentence": "I will meet you at noon.",
+    "sentenceMeaning": "정오에 만나자."
+  },
+  {
+    "word": "normal",
+    "sentence": "This is normal.",
+    "sentenceMeaning": "이것은 정상이다."
+  },
+  {
+    "word": "north",
+    "sentence": "The wind blows from the north.",
+    "sentenceMeaning": "바람이 북쪽에서 분다."
+  },
+  {
+    "word": "nose",
+    "sentence": "I can smell with my nose.",
+    "sentenceMeaning": "코로 냄새를 맡을 수 있다."
+  },
+  {
+    "word": "not",
+    "sentence": "I do not like it.",
+    "sentenceMeaning": "그것이 좋지 않다."
+  },
+  {
+    "word": "note",
+    "sentence": "I wrote a note to her.",
+    "sentenceMeaning": "그녀에게 쪽지를 썼다."
+  },
+  {
+    "word": "nothing",
+    "sentence": "There is nothing here.",
+    "sentenceMeaning": "여기엔 아무것도 없다."
+  },
+  {
+    "word": "notice",
+    "sentence": "Did you notice the sign?",
+    "sentenceMeaning": "표지판을 보았니?"
+  },
+  {
+    "word": "now",
+    "sentence": "I am busy now.",
+    "sentenceMeaning": "지금 바쁘다."
+  },
+  {
+    "word": "nowhere",
+    "sentence": "The key is nowhere to be found.",
+    "sentenceMeaning": "열쇠가 어디에도 없다."
+  },
+  {
+    "word": "number",
+    "sentence": "What is your phone number?",
+    "sentenceMeaning": "전화번호가 뭐야?"
+  },
+  {
+    "word": "obey",
+    "sentence": "You must obey the rules.",
+    "sentenceMeaning": "규칙을 따라야 한다."
+  },
+  {
+    "word": "object",
+    "sentence": "What is this object?",
+    "sentenceMeaning": "이 물체는 뭐야?"
+  },
+  {
+    "word": "observe",
+    "sentence": "Observe the animals carefully.",
+    "sentenceMeaning": "동물들을 주의 깊게 관찰해라."
+  },
+  {
+    "word": "occupy",
+    "sentence": "The army will occupy the city.",
+    "sentenceMeaning": "군대가 도시를 점령할 것이다."
+  },
+  {
+    "word": "occur",
+    "sentence": "When did the accident occur?",
+    "sentenceMeaning": "사고가 언제 발생했어?"
+  },
+  {
+    "word": "of",
+    "sentence": "This is a cup of water.",
+    "sentenceMeaning": "이것은 물 한 컵이다."
+  },
+  {
+    "word": "off",
+    "sentence": "Turn off the light.",
+    "sentenceMeaning": "불을 꺼라."
+  },
+  {
+    "word": "offensive",
+    "sentence": "His words were offensive.",
+    "sentenceMeaning": "그의 말은 공격적이었다."
+  },
+  {
+    "word": "offer",
+    "sentence": "I will offer my help.",
+    "sentenceMeaning": "도움을 제안할 것이다."
+  },
+  {
+    "word": "office",
+    "sentence": "I work in an office.",
+    "sentenceMeaning": "사무실에서 일한다."
+  },
+  {
+    "word": "officer",
+    "sentence": "The police officer helped us.",
+    "sentenceMeaning": "경찰관이 우리를 도와주었다."
+  },
+  {
+    "word": "often",
+    "sentence": "I often go to the park.",
+    "sentenceMeaning": "자주 공원에 간다."
+  },
+  {
+    "word": "oil",
+    "sentence": "We need oil for cooking.",
+    "sentenceMeaning": "요리에 기름이 필요하다."
+  },
+  {
+    "word": "old",
+    "sentence": "My grandmother is old.",
+    "sentenceMeaning": "할머니는 나이가 드셨다."
+  },
+  {
+    "word": "on",
+    "sentence": "The book is on the table.",
+    "sentenceMeaning": "책이 테이블 위에 있다."
+  },
+  {
+    "word": "once",
+    "sentence": "I go there once a week.",
+    "sentenceMeaning": "일주일에 한 번 거기 간다."
+  },
+  {
+    "word": "only",
+    "sentence": "I have only one brother.",
+    "sentenceMeaning": "형이 한 명뿐이다."
+  },
+  {
+    "word": "open",
+    "sentence": "Please open the door.",
+    "sentenceMeaning": "문을 열어주세요."
+  },
+  {
+    "word": "operate",
+    "sentence": "The doctor will operate tomorrow.",
+    "sentenceMeaning": "의사가 내일 수술할 것이다."
+  },
+  {
+    "word": "opinion",
+    "sentence": "What is your opinion?",
+    "sentenceMeaning": "의견이 뭐야?"
+  },
+  {
+    "word": "opportunity",
+    "sentence": "This is a good opportunity.",
+    "sentenceMeaning": "이것은 좋은 기회다."
+  },
+  {
+    "word": "opposite",
+    "sentence": "My house is opposite the park.",
+    "sentenceMeaning": "내 집은 공원 맞은편에 있다."
+  },
+  {
+    "word": "oppress",
+    "sentence": "Do not oppress the weak.",
+    "sentenceMeaning": "약자를 억압하지 마라."
+  },
+  {
+    "word": "or",
+    "sentence": "Do you want tea or coffee?",
+    "sentenceMeaning": "차 아니면 커피 마실래?"
+  },
+  {
+    "word": "order",
+    "sentence": "I will order food.",
+    "sentenceMeaning": "음식을 주문할 것이다."
+  },
+  {
+    "word": "organize",
+    "sentence": "Please organize your room.",
+    "sentenceMeaning": "방을 정리해라."
+  },
+  {
+    "word": "other",
+    "sentence": "I have no other choice.",
+    "sentenceMeaning": "다른 선택이 없다."
+  },
+  {
+    "word": "ounce",
+    "sentence": "Add one ounce of salt.",
+    "sentenceMeaning": "소금 1온스를 넣어라."
+  },
+  {
+    "word": "our",
+    "sentence": "This is our house.",
+    "sentenceMeaning": "이것은 우리 집이다."
+  },
+  {
+    "word": "ours",
+    "sentence": "The victory is ours.",
+    "sentenceMeaning": "승리는 우리 것이다."
+  },
+  {
+    "word": "oust",
+    "sentence": "They will oust the leader.",
+    "sentenceMeaning": "그들은 지도자를 몰아낼 것이다."
+  },
+  {
+    "word": "out",
+    "sentence": "I went out for a walk.",
+    "sentenceMeaning": "산책하러 나갔다."
+  },
+  {
+    "word": "over",
+    "sentence": "The game is over.",
+    "sentenceMeaning": "게임이 끝났다."
+  },
+  {
+    "word": "owe",
+    "sentence": "I owe you money.",
+    "sentenceMeaning": "너에게 돈을 빚졌다."
+  },
+  {
+    "word": "own",
+    "sentence": "I own a car.",
+    "sentenceMeaning": "차가 있다."
+  },
+  {
+    "word": "page",
+    "sentence": "Turn to page ten.",
+    "sentenceMeaning": "10페이지를 펴라."
+  },
+  {
+    "word": "pain",
+    "sentence": "I feel pain in my back.",
+    "sentenceMeaning": "등이 아프다."
+  },
+  {
+    "word": "paint",
+    "sentence": "I will paint the wall.",
+    "sentenceMeaning": "벽을 페인트칠 할 것이다."
+  },
+  {
+    "word": "pan",
+    "sentence": "Cook the egg in the pan.",
+    "sentenceMeaning": "팬에 달걀을 요리해라."
+  },
+  {
+    "word": "pants",
+    "sentence": "I bought new pants.",
+    "sentenceMeaning": "새 바지를 샀다."
+  },
+  {
+    "word": "paper",
+    "sentence": "Write on the paper.",
+    "sentenceMeaning": "종이에 써라."
+  },
+  {
+    "word": "parade",
+    "sentence": "We watched the parade.",
+    "sentenceMeaning": "퍼레이드를 봤다."
+  },
+  {
+    "word": "parcel",
+    "sentence": "The parcel arrived today.",
+    "sentenceMeaning": "소포가 오늘 도착했다."
+  },
+  {
+    "word": "parent",
+    "sentence": "My parents love me.",
+    "sentenceMeaning": "부모님은 나를 사랑한다."
+  },
+  {
+    "word": "parliament",
+    "sentence": "The parliament passed a law.",
+    "sentenceMeaning": "의회가 법을 통과시켰다."
+  },
+  {
+    "word": "part",
+    "sentence": "This is part of the plan.",
+    "sentenceMeaning": "이것은 계획의 일부다."
+  },
+  {
+    "word": "party",
+    "sentence": "I went to a birthday party.",
+    "sentenceMeaning": "생일 파티에 갔다."
+  },
+  {
+    "word": "pass",
+    "sentence": "Please pass me the salt.",
+    "sentenceMeaning": "소금 좀 건네주세요."
+  },
+  {
+    "word": "passenger",
+    "sentence": "The passenger got on the bus.",
+    "sentenceMeaning": "승객이 버스에 탔다."
+  },
+  {
+    "word": "past",
+    "sentence": "I walked past the store.",
+    "sentenceMeaning": "가게를 지나서 걸었다."
+  },
+  {
+    "word": "paste",
+    "sentence": "Use paste to stick the paper.",
+    "sentenceMeaning": "종이를 붙이려면 풀을 사용해라."
+  },
+  {
+    "word": "path",
+    "sentence": "Walk along the path.",
+    "sentenceMeaning": "길을 따라 걸어라."
+  },
+  {
+    "word": "patient",
+    "sentence": "Be patient and wait.",
+    "sentenceMeaning": "참을성 있게 기다려라."
+  },
+  {
+    "word": "pattern",
+    "sentence": "I like this pattern.",
+    "sentenceMeaning": "이 패턴이 마음에 든다."
+  },
+  {
+    "word": "pay",
+    "sentence": "I will pay for the food.",
+    "sentenceMeaning": "음식값을 낼게."
+  },
+  {
+    "word": "peace",
+    "sentence": "We want peace in the world.",
+    "sentenceMeaning": "우리는 세계 평화를 원한다."
+  },
+  {
+    "word": "pen",
+    "sentence": "I write with a pen.",
+    "sentenceMeaning": "펜으로 글을 쓴다."
+  },
+  {
+    "word": "pencil",
+    "sentence": "I draw with a pencil.",
+    "sentenceMeaning": "연필로 그림을 그린다."
+  },
+  {
+    "word": "people",
+    "sentence": "Many people live here.",
+    "sentenceMeaning": "많은 사람들이 여기 산다."
+  },
+  {
+    "word": "percent",
+    "sentence": "I got ninety percent.",
+    "sentenceMeaning": "90퍼센트를 받았다."
+  },
+  {
+    "word": "perfect",
+    "sentence": "Your answer is perfect.",
+    "sentenceMeaning": "네 답이 완벽해."
+  },
+  {
+    "word": "perform",
+    "sentence": "She will perform on stage.",
+    "sentenceMeaning": "그녀는 무대에서 공연할 것이다."
+  },
+  {
+    "word": "perhaps",
+    "sentence": "Perhaps it will rain.",
+    "sentenceMeaning": "아마 비가 올 것이다."
+  },
+  {
+    "word": "period",
+    "sentence": "This is a short period.",
+    "sentenceMeaning": "이것은 짧은 기간이다."
+  },
+  {
+    "word": "permanent",
+    "sentence": "This is a permanent change.",
+    "sentenceMeaning": "이것은 영구적인 변화다."
+  },
+  {
+    "word": "permit",
+    "sentence": "I have a work permit.",
+    "sentenceMeaning": "취업 허가가 있다."
+  },
+  {
+    "word": "person",
+    "sentence": "She is a kind person.",
+    "sentenceMeaning": "그녀는 친절한 사람이다."
+  },
+  {
+    "word": "physical",
+    "sentence": "Physical exercise is good.",
+    "sentenceMeaning": "신체 운동은 좋다."
+  },
+  {
+    "word": "pick",
+    "sentence": "Pick a card.",
+    "sentenceMeaning": "카드 하나를 골라."
+  },
+  {
+    "word": "picture",
+    "sentence": "I took a picture.",
+    "sentenceMeaning": "사진을 찍었다."
+  },
+  {
+    "word": "piece",
+    "sentence": "Give me a piece of cake.",
+    "sentenceMeaning": "케이크 한 조각 줘."
+  },
+  {
+    "word": "pig",
+    "sentence": "The pig lives on the farm.",
+    "sentenceMeaning": "돼지는 농장에 산다."
+  },
+  {
+    "word": "pilot",
+    "sentence": "The pilot flies the plane.",
+    "sentenceMeaning": "조종사가 비행기를 조종한다."
+  },
+  {
+    "word": "pint",
+    "sentence": "I drank a pint of milk.",
+    "sentenceMeaning": "우유 1파인트를 마셨다."
+  },
+  {
+    "word": "pipe",
+    "sentence": "Water flows through the pipe.",
+    "sentenceMeaning": "물이 파이프를 통해 흐른다."
+  },
+  {
+    "word": "place",
+    "sentence": "This is a nice place.",
+    "sentenceMeaning": "여기는 좋은 곳이다."
+  },
+  {
+    "word": "plain",
+    "sentence": "The answer is plain.",
+    "sentenceMeaning": "답은 명백하다."
+  },
+  {
+    "word": "plan",
+    "sentence": "I have a plan.",
+    "sentenceMeaning": "계획이 있다."
+  },
+  {
+    "word": "plane",
+    "sentence": "The plane flies in the sky.",
+    "sentenceMeaning": "비행기가 하늘을 난다."
+  },
+  {
+    "word": "plant",
+    "sentence": "I will plant a tree.",
+    "sentenceMeaning": "나무를 심을 것이다."
+  },
+  {
+    "word": "plastic",
+    "sentence": "This bag is made of plastic.",
+    "sentenceMeaning": "이 가방은 플라스틱으로 만들어졌다."
+  },
+  {
+    "word": "plate",
+    "sentence": "Put the food on the plate.",
+    "sentenceMeaning": "음식을 접시에 놓아라."
+  },
+  {
+    "word": "play",
+    "sentence": "Let us play together.",
+    "sentenceMeaning": "같이 놀자."
+  },
+  {
+    "word": "please",
+    "sentence": "Please help me.",
+    "sentenceMeaning": "도와주세요."
+  },
+  {
+    "word": "plenty",
+    "sentence": "There is plenty of food.",
+    "sentenceMeaning": "음식이 충분히 있다."
+  },
+  {
+    "word": "pocket",
+    "sentence": "Put it in your pocket.",
+    "sentenceMeaning": "주머니에 넣어라."
+  },
+  {
+    "word": "point",
+    "sentence": "What is the point?",
+    "sentenceMeaning": "요점이 뭐야?"
+  },
+  {
+    "word": "poison",
+    "sentence": "This plant has poison.",
+    "sentenceMeaning": "이 식물에는 독이 있다."
+  },
+  {
+    "word": "policy",
+    "sentence": "This is our policy.",
+    "sentenceMeaning": "이것이 우리 정책이다."
+  },
+  {
+    "word": "politics",
+    "sentence": "He is interested in politics.",
+    "sentenceMeaning": "그는 정치에 관심이 있다."
+  },
+  {
+    "word": "pollute",
+    "sentence": "Do not pollute the water.",
+    "sentenceMeaning": "물을 오염시키지 마라."
+  },
+  {
+    "word": "poor",
+    "sentence": "He is very poor.",
+    "sentenceMeaning": "그는 매우 가난하다."
+  },
+  {
+    "word": "popular",
+    "sentence": "This song is very popular.",
+    "sentenceMeaning": "이 노래는 매우 인기가 있다."
+  },
+  {
+    "word": "port",
+    "sentence": "The ship arrived at the port.",
+    "sentenceMeaning": "배가 항구에 도착했다."
+  },
+  {
+    "word": "position",
+    "sentence": "What is your position?",
+    "sentenceMeaning": "당신의 위치가 어디야?"
+  },
+  {
+    "word": "possess",
+    "sentence": "I possess a car.",
+    "sentenceMeaning": "차를 소유하고 있다."
+  },
+  {
+    "word": "possible",
+    "sentence": "Anything is possible.",
+    "sentenceMeaning": "뭐든 가능하다."
+  },
+  {
+    "word": "postpone",
+    "sentence": "We will postpone the meeting.",
+    "sentenceMeaning": "회의를 연기할 것이다."
+  },
+  {
+    "word": "potato",
+    "sentence": "I like to eat potatoes.",
+    "sentenceMeaning": "감자 먹는 것을 좋아한다."
+  },
+  {
+    "word": "pound",
+    "sentence": "It weighs one pound.",
+    "sentenceMeaning": "무게가 1파운드다."
+  },
+  {
+    "word": "pour",
+    "sentence": "Pour the water into the glass.",
+    "sentenceMeaning": "물을 컵에 따라라."
+  },
+  {
+    "word": "powder",
+    "sentence": "Add the powder to the water.",
+    "sentenceMeaning": "가루를 물에 넣어라."
+  },
+  {
+    "word": "power",
+    "sentence": "The machine needs power.",
+    "sentenceMeaning": "기계에 전력이 필요하다."
+  },
+  {
+    "word": "practice",
+    "sentence": "Practice makes perfect.",
+    "sentenceMeaning": "연습이 완벽을 만든다."
+  },
+  {
+    "word": "praise",
+    "sentence": "I will praise your work.",
+    "sentenceMeaning": "네 작업을 칭찬할게."
+  },
+  {
+    "word": "pray",
+    "sentence": "I pray every day.",
+    "sentenceMeaning": "매일 기도한다."
+  },
+  {
+    "word": "pregnant",
+    "sentence": "She is pregnant.",
+    "sentenceMeaning": "그녀는 임신 중이다."
+  },
+  {
+    "word": "present",
+    "sentence": "I gave her a present.",
+    "sentenceMeaning": "그녀에게 선물을 주었다."
+  },
+  {
+    "word": "press",
+    "sentence": "Press the button.",
+    "sentenceMeaning": "버튼을 눌러라."
+  },
+  {
+    "word": "pretty",
+    "sentence": "She is very pretty.",
+    "sentenceMeaning": "그녀는 매우 예쁘다."
+  },
+  {
+    "word": "prevent",
+    "sentence": "We must prevent the fire.",
+    "sentenceMeaning": "화재를 예방해야 한다."
+  },
+  {
+    "word": "price",
+    "sentence": "What is the price?",
+    "sentenceMeaning": "가격이 얼마야?"
+  },
+  {
+    "word": "print",
+    "sentence": "Please print this document.",
+    "sentenceMeaning": "이 문서를 인쇄해 주세요."
+  },
+  {
+    "word": "prison",
+    "sentence": "He went to prison.",
+    "sentenceMeaning": "그는 감옥에 갔다."
+  },
+  {
+    "word": "private",
+    "sentence": "This is a private room.",
+    "sentenceMeaning": "이것은 개인 방이다."
+  },
+  {
+    "word": "prize",
+    "sentence": "She won the first prize.",
+    "sentenceMeaning": "그녀가 1등 상을 받았다."
+  },
+  {
+    "word": "problem",
+    "sentence": "I have a problem.",
+    "sentenceMeaning": "문제가 있다."
+  },
+  {
+    "word": "process",
+    "sentence": "This is a long process.",
+    "sentenceMeaning": "이것은 긴 과정이다."
+  },
+  {
+    "word": "product",
+    "sentence": "This is a good product.",
+    "sentenceMeaning": "이것은 좋은 제품이다."
+  },
+  {
+    "word": "professor",
+    "sentence": "The professor teaches math.",
+    "sentenceMeaning": "교수님이 수학을 가르친다."
+  },
+  {
+    "word": "profit",
+    "sentence": "The company made a profit.",
+    "sentenceMeaning": "회사가 이익을 냈다."
+  },
+  {
+    "word": "program",
+    "sentence": "I watched a television program.",
+    "sentenceMeaning": "텔레비전 프로그램을 봤다."
+  },
+  {
+    "word": "progress",
+    "sentence": "We are making progress.",
+    "sentenceMeaning": "진전을 보이고 있다."
+  },
+  {
+    "word": "project",
+    "sentence": "I am working on a project.",
+    "sentenceMeaning": "프로젝트를 하고 있다."
+  },
+  {
+    "word": "property",
+    "sentence": "This is my property.",
+    "sentenceMeaning": "이것은 내 재산이다."
+  },
+  {
+    "word": "propose",
+    "sentence": "I will propose a new idea.",
+    "sentenceMeaning": "새 아이디어를 제안할 것이다."
+  },
+  {
+    "word": "protect",
+    "sentence": "We must protect the environment.",
+    "sentenceMeaning": "환경을 보호해야 한다."
+  },
+  {
+    "word": "protest",
+    "sentence": "People will protest.",
+    "sentenceMeaning": "사람들이 항의할 것이다."
+  },
+  {
+    "word": "prove",
+    "sentence": "I can prove it.",
+    "sentenceMeaning": "증명할 수 있다."
+  },
+  {
+    "word": "provide",
+    "sentence": "I will provide help.",
+    "sentenceMeaning": "도움을 제공할 것이다."
+  },
+  {
+    "word": "public",
+    "sentence": "This is a public place.",
+    "sentenceMeaning": "이곳은 공공장소다."
+  },
+  {
+    "word": "publish",
+    "sentence": "He will publish a book.",
+    "sentenceMeaning": "그는 책을 출판할 것이다."
+  },
+  {
+    "word": "pull",
+    "sentence": "Pull the door to open it.",
+    "sentenceMeaning": "문을 당겨서 열어라."
+  },
+  {
+    "word": "punish",
+    "sentence": "Do not punish the child.",
+    "sentenceMeaning": "아이를 벌주지 마라."
+  },
+  {
+    "word": "purchase",
+    "sentence": "I will purchase a new phone.",
+    "sentenceMeaning": "새 핸드폰을 구매할 것이다."
+  },
+  {
+    "word": "pure",
+    "sentence": "This water is pure.",
+    "sentenceMeaning": "이 물은 순수하다."
+  },
+  {
+    "word": "purpose",
+    "sentence": "What is your purpose?",
+    "sentenceMeaning": "목적이 뭐야?"
+  },
+  {
+    "word": "push",
+    "sentence": "Push the door to close it.",
+    "sentenceMeaning": "문을 밀어서 닫아라."
+  },
+  {
+    "word": "put",
+    "sentence": "Put the book on the table.",
+    "sentenceMeaning": "책을 테이블에 놓아라."
+  },
+  {
+    "word": "quality",
+    "sentence": "This is good quality.",
+    "sentenceMeaning": "이것은 좋은 품질이다."
+  },
+  {
+    "word": "quart",
+    "sentence": "Buy a quart of milk.",
+    "sentenceMeaning": "우유 1쿼트를 사라."
+  },
+  {
+    "word": "quarter",
+    "sentence": "I will meet you in a quarter hour.",
+    "sentenceMeaning": "15분 후에 만나자."
+  },
+  {
+    "word": "queen",
+    "sentence": "The queen lives in the palace.",
+    "sentenceMeaning": "여왕은 궁전에 산다."
+  },
+  {
+    "word": "question",
+    "sentence": "May I ask a question?",
+    "sentenceMeaning": "질문해도 될까요?"
+  },
+  {
+    "word": "quick",
+    "sentence": "Be quick.",
+    "sentenceMeaning": "빨리 해."
+  },
+  {
+    "word": "quiet",
+    "sentence": "Please be quiet.",
+    "sentenceMeaning": "조용히 해주세요."
+  },
+  {
+    "word": "quit",
+    "sentence": "I will quit smoking.",
+    "sentenceMeaning": "담배를 끊을 것이다."
+  },
+  {
+    "word": "quite",
+    "sentence": "I am quite tired.",
+    "sentenceMeaning": "꽤 피곤하다."
+  },
+  {
+    "word": "race",
+    "sentence": "I will run in the race.",
+    "sentenceMeaning": "경주에 참가할 것이다."
+  },
+  {
+    "word": "radiation",
+    "sentence": "Radiation can be dangerous.",
+    "sentenceMeaning": "방사선은 위험할 수 있다."
+  },
+  {
+    "word": "raid",
+    "sentence": "The police made a raid.",
+    "sentenceMeaning": "경찰이 급습했다."
+  },
+  {
+    "word": "rail",
+    "sentence": "Hold the rail.",
+    "sentenceMeaning": "난간을 잡아라."
+  },
+  {
+    "word": "rain",
+    "sentence": "It will rain today.",
+    "sentenceMeaning": "오늘 비가 올 것이다."
+  },
+  {
+    "word": "raise",
+    "sentence": "Raise your hand.",
+    "sentenceMeaning": "손을 들어라."
+  },
+  {
+    "word": "range",
+    "sentence": "The price range is wide.",
+    "sentenceMeaning": "가격 범위가 넓다."
+  },
+  {
+    "word": "rare",
+    "sentence": "This flower is rare.",
+    "sentenceMeaning": "이 꽃은 희귀하다."
+  },
+  {
+    "word": "rate",
+    "sentence": "What is the interest rate?",
+    "sentenceMeaning": "이자율이 얼마야?"
+  },
+  {
+    "word": "rather",
+    "sentence": "I would rather stay home.",
+    "sentenceMeaning": "차라리 집에 있겠다."
+  },
+  {
+    "word": "ray",
+    "sentence": "The ray of light is bright.",
+    "sentenceMeaning": "빛줄기가 밝다."
+  },
+  {
+    "word": "reach",
+    "sentence": "I cannot reach the shelf.",
+    "sentenceMeaning": "선반에 손이 닿지 않는다."
+  },
+  {
+    "word": "react",
+    "sentence": "How did he react?",
+    "sentenceMeaning": "그는 어떻게 반응했어?"
+  },
+  {
+    "word": "read",
+    "sentence": "I read a book every day.",
+    "sentenceMeaning": "매일 책을 읽는다."
+  },
+  {
+    "word": "ready",
+    "sentence": "I am ready to go.",
+    "sentenceMeaning": "갈 준비가 되었다."
+  },
+  {
+    "word": "real",
+    "sentence": "Is this story real?",
+    "sentenceMeaning": "이 이야기가 진짜야?"
+  },
+  {
+    "word": "reason",
+    "sentence": "What is the reason?",
+    "sentenceMeaning": "이유가 뭐야?"
+  },
+  {
+    "word": "receive",
+    "sentence": "I will receive a gift.",
+    "sentenceMeaning": "선물을 받을 것이다."
+  },
+  {
+    "word": "recognize",
+    "sentence": "I did not recognize her.",
+    "sentenceMeaning": "그녀를 알아보지 못했다."
+  },
+  {
+    "word": "record",
+    "sentence": "I will record the song.",
+    "sentenceMeaning": "노래를 녹음할 것이다."
+  },
+  {
+    "word": "recover",
+    "sentence": "I hope you recover soon.",
+    "sentenceMeaning": "빨리 회복하길 바란다."
+  },
+  {
+    "word": "red",
+    "sentence": "The apple is red.",
+    "sentenceMeaning": "사과가 빨간색이다."
+  },
+  {
+    "word": "reduce",
+    "sentence": "We must reduce waste.",
+    "sentenceMeaning": "쓰레기를 줄여야 한다."
+  },
+  {
+    "word": "refugee",
+    "sentence": "The refugee needs help.",
+    "sentenceMeaning": "난민은 도움이 필요하다."
+  },
+  {
+    "word": "refuse",
+    "sentence": "I will refuse the offer.",
+    "sentenceMeaning": "제안을 거절할 것이다."
+  },
+  {
+    "word": "regret",
+    "sentence": "I regret my mistake.",
+    "sentenceMeaning": "실수를 후회한다."
+  },
+  {
+    "word": "regular",
+    "sentence": "I take a regular bus.",
+    "sentenceMeaning": "정규 버스를 탄다."
+  },
+  {
+    "word": "reject",
+    "sentence": "They will reject the plan.",
+    "sentenceMeaning": "그들은 계획을 거부할 것이다."
+  },
+  {
+    "word": "relation",
+    "sentence": "We have a good relation.",
+    "sentenceMeaning": "우리는 좋은 관계다."
+  },
+  {
+    "word": "release",
+    "sentence": "They will release the bird.",
+    "sentenceMeaning": "그들은 새를 놓아줄 것이다."
+  },
+  {
+    "word": "remain",
+    "sentence": "I will remain here.",
+    "sentenceMeaning": "여기 남아있을 것이다."
+  },
+  {
+    "word": "remember",
+    "sentence": "I will remember you.",
+    "sentenceMeaning": "너를 기억할 것이다."
+  },
+  {
+    "word": "remove",
+    "sentence": "Please remove your shoes.",
+    "sentenceMeaning": "신발을 벗어주세요."
+  },
+  {
+    "word": "repair",
+    "sentence": "I will repair the car.",
+    "sentenceMeaning": "차를 수리할 것이다."
+  },
+  {
+    "word": "repeat",
+    "sentence": "Please repeat after me.",
+    "sentenceMeaning": "저를 따라 해주세요."
+  },
+  {
+    "word": "report",
+    "sentence": "I will report the news.",
+    "sentenceMeaning": "뉴스를 보도할 것이다."
+  },
+  {
+    "word": "represent",
+    "sentence": "I will represent our team.",
+    "sentenceMeaning": "우리 팀을 대표할 것이다."
+  },
+  {
+    "word": "request",
+    "sentence": "I have a request.",
+    "sentenceMeaning": "부탁이 있다."
+  },
+  {
+    "word": "require",
+    "sentence": "This job requires skill.",
+    "sentenceMeaning": "이 일은 기술이 필요하다."
+  },
+  {
+    "word": "rescue",
+    "sentence": "They will rescue the dog.",
+    "sentenceMeaning": "그들이 개를 구출할 것이다."
+  },
+  {
+    "word": "research",
+    "sentence": "I do research at school.",
+    "sentenceMeaning": "학교에서 연구를 한다."
+  },
+  {
+    "word": "resign",
+    "sentence": "He will resign from his job.",
+    "sentenceMeaning": "그는 직장을 그만둘 것이다."
+  },
+  {
+    "word": "resist",
+    "sentence": "I cannot resist the food.",
+    "sentenceMeaning": "음식을 참을 수 없다."
+  },
+  {
+    "word": "resolution",
+    "sentence": "I made a new year resolution.",
+    "sentenceMeaning": "새해 결심을 했다."
+  },
+  {
+    "word": "resource",
+    "sentence": "Water is a valuable resource.",
+    "sentenceMeaning": "물은 귀중한 자원이다."
+  },
+  {
+    "word": "respect",
+    "sentence": "I respect my teacher.",
+    "sentenceMeaning": "선생님을 존경한다."
+  },
+  {
+    "word": "responsible",
+    "sentence": "I am responsible for this.",
+    "sentenceMeaning": "이것에 대해 책임이 있다."
+  },
+  {
+    "word": "rest",
+    "sentence": "I need to rest.",
+    "sentenceMeaning": "쉬어야 한다."
+  },
+  {
+    "word": "restrain",
+    "sentence": "Please restrain yourself.",
+    "sentenceMeaning": "자제해 주세요."
+  },
+  {
+    "word": "result",
+    "sentence": "What is the result?",
+    "sentenceMeaning": "결과가 뭐야?"
+  },
+  {
+    "word": "retire",
+    "sentence": "My father will retire soon.",
+    "sentenceMeaning": "아버지가 곧 은퇴할 것이다."
+  },
+  {
+    "word": "return",
+    "sentence": "I will return the book.",
+    "sentenceMeaning": "책을 반납할 것이다."
+  },
+  {
+    "word": "revolt",
+    "sentence": "The people will revolt.",
+    "sentenceMeaning": "사람들이 반란을 일으킬 것이다."
+  },
+  {
+    "word": "reward",
+    "sentence": "I got a reward for my work.",
+    "sentenceMeaning": "일에 대한 보상을 받았다."
+  },
+  {
+    "word": "rice",
+    "sentence": "I eat rice every day.",
+    "sentenceMeaning": "매일 밥을 먹는다."
+  },
+  {
+    "word": "rich",
+    "sentence": "He is very rich.",
+    "sentenceMeaning": "그는 매우 부자다."
+  },
+  {
+    "word": "ride",
+    "sentence": "I ride a bicycle.",
+    "sentenceMeaning": "자전거를 탄다."
+  },
+  {
+    "word": "right",
+    "sentence": "Turn right at the corner.",
+    "sentenceMeaning": "모퉁이에서 오른쪽으로 돌아라."
+  },
+  {
+    "word": "ring",
+    "sentence": "The bell will ring.",
+    "sentenceMeaning": "종이 울릴 것이다."
+  },
+  {
+    "word": "riot",
+    "sentence": "A riot broke out.",
+    "sentenceMeaning": "폭동이 일어났다."
+  },
+  {
+    "word": "rise",
+    "sentence": "The sun will rise.",
+    "sentenceMeaning": "해가 뜰 것이다."
+  },
+  {
+    "word": "risk",
+    "sentence": "There is a risk.",
+    "sentenceMeaning": "위험이 있다."
+  },
+  {
+    "word": "river",
+    "sentence": "The river is long.",
+    "sentenceMeaning": "강이 길다."
+  },
+  {
+    "word": "road",
+    "sentence": "The road is wide.",
+    "sentenceMeaning": "도로가 넓다."
+  },
+  {
+    "word": "rob",
+    "sentence": "Do not rob the store.",
+    "sentenceMeaning": "가게를 털지 마라."
+  },
+  {
+    "word": "rock",
+    "sentence": "The rock is heavy.",
+    "sentenceMeaning": "바위가 무겁다."
+  },
+  {
+    "word": "rocket",
+    "sentence": "The rocket flew to space.",
+    "sentenceMeaning": "로켓이 우주로 날아갔다."
+  },
+  {
+    "word": "roll",
+    "sentence": "The ball will roll.",
+    "sentenceMeaning": "공이 굴러갈 것이다."
+  },
+  {
+    "word": "roof",
+    "sentence": "The roof is red.",
+    "sentenceMeaning": "지붕이 빨간색이다."
+  },
+  {
+    "word": "room",
+    "sentence": "My room is clean.",
+    "sentenceMeaning": "내 방은 깨끗하다."
+  },
+  {
+    "word": "root",
+    "sentence": "The tree has deep roots.",
+    "sentenceMeaning": "나무는 깊은 뿌리를 가지고 있다."
+  },
+  {
+    "word": "rope",
+    "sentence": "Hold the rope tight.",
+    "sentenceMeaning": "밧줄을 꽉 잡아라."
+  },
+  {
+    "word": "rough",
+    "sentence": "The road is rough.",
+    "sentenceMeaning": "도로가 거칠다."
+  },
+  {
+    "word": "round",
+    "sentence": "The ball is round.",
+    "sentenceMeaning": "공은 둥글다."
+  },
+  {
+    "word": "row",
+    "sentence": "Sit in the front row.",
+    "sentenceMeaning": "앞줄에 앉아라."
+  },
+  {
+    "word": "rub",
+    "sentence": "Rub your hands together.",
+    "sentenceMeaning": "손을 비벼라."
+  },
+  {
+    "word": "rubber",
+    "sentence": "This is made of rubber.",
+    "sentenceMeaning": "이것은 고무로 만들어졌다."
+  },
+  {
+    "word": "ruin",
+    "sentence": "Rain will ruin the trip.",
+    "sentenceMeaning": "비가 여행을 망칠 것이다."
+  },
+  {
+    "word": "rule",
+    "sentence": "Follow the rules.",
+    "sentenceMeaning": "규칙을 따라라."
+  },
+  {
+    "word": "run",
+    "sentence": "I like to run.",
+    "sentenceMeaning": "달리는 것을 좋아한다."
+  },
+  {
+    "word": "sad",
+    "sentence": "She looks sad today.",
+    "sentenceMeaning": "그녀는 오늘 슬퍼 보인다."
+  },
+  {
+    "word": "safe",
+    "sentence": "Keep the baby safe.",
+    "sentenceMeaning": "아기를 안전하게 지켜라."
+  },
+  {
+    "word": "sail",
+    "sentence": "The boat will sail soon.",
+    "sentenceMeaning": "배가 곧 항해할 것이다."
+  },
+  {
+    "word": "salt",
+    "sentence": "Add some salt to the food.",
+    "sentenceMeaning": "음식에 소금을 조금 넣어라."
+  },
+  {
+    "word": "same",
+    "sentence": "We have the same bag.",
+    "sentenceMeaning": "우리는 같은 가방을 가지고 있다."
+  },
+  {
+    "word": "sand",
+    "sentence": "I play in the sand.",
+    "sentenceMeaning": "모래에서 논다."
+  },
+  {
+    "word": "satisfy",
+    "sentence": "The food will satisfy you.",
+    "sentenceMeaning": "음식이 너를 만족시킬 것이다."
+  },
+  {
+    "word": "save",
+    "sentence": "Save money for later.",
+    "sentenceMeaning": "나중을 위해 돈을 저축해라."
+  },
+  {
+    "word": "say",
+    "sentence": "What did you say?",
+    "sentenceMeaning": "뭐라고 했니?"
+  },
+  {
+    "word": "scale",
+    "sentence": "Use a scale to weigh it.",
+    "sentenceMeaning": "저울을 사용해서 무게를 재라."
+  },
+  {
+    "word": "scare",
+    "sentence": "Do not scare the cat.",
+    "sentenceMeaning": "고양이를 놀라게 하지 마라."
+  },
+  {
+    "word": "school",
+    "sentence": "I go to school every day.",
+    "sentenceMeaning": "매일 학교에 간다."
+  },
+  {
+    "word": "science",
+    "sentence": "I like science class.",
+    "sentenceMeaning": "과학 수업을 좋아한다."
+  },
+  {
+    "word": "score",
+    "sentence": "The score is two to one.",
+    "sentenceMeaning": "점수가 2대 1이다."
+  },
+  {
+    "word": "script",
+    "sentence": "Read the script carefully.",
+    "sentenceMeaning": "대본을 주의 깊게 읽어라."
+  },
+  {
+    "word": "sea",
+    "sentence": "The sea is blue.",
+    "sentenceMeaning": "바다가 파랗다."
+  },
+  {
+    "word": "search",
+    "sentence": "Search for the lost key.",
+    "sentenceMeaning": "잃어버린 열쇠를 찾아라."
+  },
+  {
+    "word": "season",
+    "sentence": "Spring is my favorite season.",
+    "sentenceMeaning": "봄이 가장 좋아하는 계절이다."
+  },
+  {
+    "word": "seat",
+    "sentence": "Please take a seat.",
+    "sentenceMeaning": "자리에 앉아주세요."
+  },
+  {
+    "word": "second",
+    "sentence": "Wait just one second.",
+    "sentenceMeaning": "잠깐만 기다려."
+  },
+  {
+    "word": "secret",
+    "sentence": "Keep it a secret.",
+    "sentenceMeaning": "비밀로 해라."
+  },
+  {
+    "word": "section",
+    "sentence": "Read this section first.",
+    "sentenceMeaning": "이 부분을 먼저 읽어라."
+  },
+  {
+    "word": "security",
+    "sentence": "Security is important.",
+    "sentenceMeaning": "보안이 중요하다."
+  },
+  {
+    "word": "see",
+    "sentence": "I can see you.",
+    "sentenceMeaning": "너를 볼 수 있다."
+  },
+  {
+    "word": "seed",
+    "sentence": "Plant the seed in the ground.",
+    "sentenceMeaning": "씨앗을 땅에 심어라."
+  },
+  {
+    "word": "seek",
+    "sentence": "Seek help when you need it.",
+    "sentenceMeaning": "도움이 필요하면 도움을 구해라."
+  },
+  {
+    "word": "seem",
+    "sentence": "You seem happy today.",
+    "sentenceMeaning": "오늘 행복해 보인다."
+  },
+  {
+    "word": "seize",
+    "sentence": "Seize the opportunity.",
+    "sentenceMeaning": "기회를 잡아라."
+  },
+  {
+    "word": "seldom",
+    "sentence": "I seldom eat candy.",
+    "sentenceMeaning": "나는 사탕을 거의 먹지 않는다."
+  },
+  {
+    "word": "self",
+    "sentence": "Be true to yourself.",
+    "sentenceMeaning": "자신에게 솔직해라."
+  },
+  {
+    "word": "sell",
+    "sentence": "We sell fresh fruit.",
+    "sentenceMeaning": "우리는 신선한 과일을 판다."
+  },
+  {
+    "word": "senate",
+    "sentence": "The senate voted today.",
+    "sentenceMeaning": "상원이 오늘 투표했다."
+  },
+  {
+    "word": "send",
+    "sentence": "Send me a letter.",
+    "sentenceMeaning": "편지를 보내줘."
+  },
+  {
+    "word": "sense",
+    "sentence": "I sense something is wrong.",
+    "sentenceMeaning": "뭔가 잘못된 것을 느낀다."
+  },
+  {
+    "word": "sentence",
+    "sentence": "Write a short sentence.",
+    "sentenceMeaning": "짧은 문장을 써라."
+  },
+  {
+    "word": "separate",
+    "sentence": "Separate the white and black.",
+    "sentenceMeaning": "흰색과 검은색을 분리해라."
+  },
+  {
+    "word": "series",
+    "sentence": "I watch a TV series.",
+    "sentenceMeaning": "TV 시리즈를 본다."
+  },
+  {
+    "word": "serious",
+    "sentence": "This is a serious matter.",
+    "sentenceMeaning": "이것은 심각한 문제이다."
+  },
+  {
+    "word": "serve",
+    "sentence": "I will serve the food.",
+    "sentenceMeaning": "음식을 대접하겠다."
+  },
+  {
+    "word": "set",
+    "sentence": "Set the table for dinner.",
+    "sentenceMeaning": "저녁 식사를 위해 식탁을 차려라."
+  },
+  {
+    "word": "settle",
+    "sentence": "Let us settle this problem.",
+    "sentenceMeaning": "이 문제를 해결하자."
+  },
+  {
+    "word": "several",
+    "sentence": "I have several books.",
+    "sentenceMeaning": "여러 권의 책이 있다."
+  },
+  {
+    "word": "severe",
+    "sentence": "The storm was severe.",
+    "sentenceMeaning": "폭풍이 심했다."
+  },
+  {
+    "word": "sex",
+    "sentence": "What is the sex of the baby?",
+    "sentenceMeaning": "아기의 성별이 뭐니?"
+  },
+  {
+    "word": "shade",
+    "sentence": "Rest in the shade.",
+    "sentenceMeaning": "그늘에서 쉬어라."
+  },
+  {
+    "word": "shake",
+    "sentence": "Shake the bottle well.",
+    "sentenceMeaning": "병을 잘 흔들어라."
+  },
+  {
+    "word": "shall",
+    "sentence": "Shall we go now?",
+    "sentenceMeaning": "지금 갈까?"
+  },
+  {
+    "word": "shame",
+    "sentence": "It is a shame to lie.",
+    "sentenceMeaning": "거짓말하는 것은 부끄러운 일이다."
+  },
+  {
+    "word": "shape",
+    "sentence": "What shape is it?",
+    "sentenceMeaning": "이것은 무슨 모양이니?"
+  },
+  {
+    "word": "share",
+    "sentence": "Share the cake with me.",
+    "sentenceMeaning": "케이크를 나와 나눠 먹자."
+  },
+  {
+    "word": "sharp",
+    "sentence": "The knife is sharp.",
+    "sentenceMeaning": "칼이 날카롭다."
+  },
+  {
+    "word": "she",
+    "sentence": "She is my friend.",
+    "sentenceMeaning": "그녀는 내 친구이다."
+  },
+  {
+    "word": "sheet",
+    "sentence": "Change the bed sheet.",
+    "sentenceMeaning": "침대 시트를 바꿔라."
+  },
+  {
+    "word": "shelf",
+    "sentence": "Put the book on the shelf.",
+    "sentenceMeaning": "책을 선반에 올려놔라."
+  },
+  {
+    "word": "shell",
+    "sentence": "I found a shell at the sea.",
+    "sentenceMeaning": "바다에서 조개를 발견했다."
+  },
+  {
+    "word": "shelter",
+    "sentence": "Find shelter from the rain.",
+    "sentenceMeaning": "비를 피할 곳을 찾아라."
+  },
+  {
+    "word": "shine",
+    "sentence": "The sun will shine.",
+    "sentenceMeaning": "해가 빛날 것이다."
+  },
+  {
+    "word": "ship",
+    "sentence": "The ship is big.",
+    "sentenceMeaning": "배가 크다."
+  },
+  {
+    "word": "shirt",
+    "sentence": "Wear a clean shirt.",
+    "sentenceMeaning": "깨끗한 셔츠를 입어라."
+  },
+  {
+    "word": "shock",
+    "sentence": "The news was a shock.",
+    "sentenceMeaning": "그 소식은 충격이었다."
+  },
+  {
+    "word": "shoe",
+    "sentence": "Put on your shoes.",
+    "sentenceMeaning": "신발을 신어라."
+  },
+  {
+    "word": "shoot",
+    "sentence": "Do not shoot the bird.",
+    "sentenceMeaning": "새를 쏘지 마라."
+  },
+  {
+    "word": "shop",
+    "sentence": "I shop for food.",
+    "sentenceMeaning": "음식을 사러 간다."
+  },
+  {
+    "word": "short",
+    "sentence": "The rope is too short.",
+    "sentenceMeaning": "밧줄이 너무 짧다."
+  },
+  {
+    "word": "should",
+    "sentence": "You should sleep early.",
+    "sentenceMeaning": "일찍 자야 한다."
+  },
+  {
+    "word": "shout",
+    "sentence": "Do not shout in class.",
+    "sentenceMeaning": "교실에서 소리 지르지 마라."
+  },
+  {
+    "word": "show",
+    "sentence": "Show me your drawing.",
+    "sentenceMeaning": "그림을 보여줘."
+  },
+  {
+    "word": "shrink",
+    "sentence": "The shirt will shrink.",
+    "sentenceMeaning": "셔츠가 줄어들 것이다."
+  },
+  {
+    "word": "shut",
+    "sentence": "Shut the door, please.",
+    "sentenceMeaning": "문 좀 닫아줘."
+  },
+  {
+    "word": "sick",
+    "sentence": "I feel sick today.",
+    "sentenceMeaning": "오늘 아프다."
+  },
+  {
+    "word": "side",
+    "sentence": "Stand on this side.",
+    "sentenceMeaning": "이쪽에 서라."
+  },
+  {
+    "word": "sign",
+    "sentence": "Sign your name here.",
+    "sentenceMeaning": "여기에 이름을 쓰세요."
+  },
+  {
+    "word": "signal",
+    "sentence": "Wait for the signal.",
+    "sentenceMeaning": "신호를 기다려라."
+  },
+  {
+    "word": "silence",
+    "sentence": "Silence in the library.",
+    "sentenceMeaning": "도서관에서는 조용히."
+  },
+  {
+    "word": "silk",
+    "sentence": "The dress is made of silk.",
+    "sentenceMeaning": "드레스는 실크로 만들어졌다."
+  },
+  {
+    "word": "silver",
+    "sentence": "The ring is silver.",
+    "sentenceMeaning": "반지가 은이다."
+  },
+  {
+    "word": "similar",
+    "sentence": "The two cats look similar.",
+    "sentenceMeaning": "두 고양이가 비슷하게 생겼다."
+  },
+  {
+    "word": "simple",
+    "sentence": "The answer is simple.",
+    "sentenceMeaning": "답은 간단하다."
+  },
+  {
+    "word": "since",
+    "sentence": "I have lived here since birth.",
+    "sentenceMeaning": "태어날 때부터 여기 살았다."
+  },
+  {
+    "word": "sing",
+    "sentence": "She can sing well.",
+    "sentenceMeaning": "그녀는 노래를 잘한다."
+  },
+  {
+    "word": "single",
+    "sentence": "I want a single room.",
+    "sentenceMeaning": "1인실을 원한다."
+  },
+  {
+    "word": "sister",
+    "sentence": "My sister is kind.",
+    "sentenceMeaning": "내 여동생은 친절하다."
+  },
+  {
+    "word": "sit",
+    "sentence": "Please sit down.",
+    "sentenceMeaning": "앉으세요."
+  },
+  {
+    "word": "situation",
+    "sentence": "This is a bad situation.",
+    "sentenceMeaning": "이것은 나쁜 상황이다."
+  },
+  {
+    "word": "size",
+    "sentence": "What size do you want?",
+    "sentenceMeaning": "어떤 사이즈를 원하니?"
+  },
+  {
+    "word": "skill",
+    "sentence": "Reading is an important skill.",
+    "sentenceMeaning": "읽기는 중요한 기술이다."
+  },
+  {
+    "word": "skin",
+    "sentence": "Her skin is soft.",
+    "sentenceMeaning": "그녀의 피부는 부드럽다."
+  },
+  {
+    "word": "skirt",
+    "sentence": "She wears a blue skirt.",
+    "sentenceMeaning": "그녀는 파란 치마를 입는다."
+  },
+  {
+    "word": "sky",
+    "sentence": "The sky is blue.",
+    "sentenceMeaning": "하늘이 파랗다."
+  },
+  {
+    "word": "slave",
+    "sentence": "The slave wanted freedom.",
+    "sentenceMeaning": "노예는 자유를 원했다."
+  },
+  {
+    "word": "sleep",
+    "sentence": "I sleep at nine.",
+    "sentenceMeaning": "9시에 잔다."
+  },
+  {
+    "word": "slide",
+    "sentence": "The kids slide down.",
+    "sentenceMeaning": "아이들이 미끄럼을 탄다."
+  },
+  {
+    "word": "slip",
+    "sentence": "Do not slip on the ice.",
+    "sentenceMeaning": "얼음에서 미끄러지지 마라."
+  },
+  {
+    "word": "slow",
+    "sentence": "The turtle is slow.",
+    "sentenceMeaning": "거북이는 느리다."
+  },
+  {
+    "word": "small",
+    "sentence": "The ant is small.",
+    "sentenceMeaning": "개미는 작다."
+  },
+  {
+    "word": "smart",
+    "sentence": "He is a smart boy.",
+    "sentenceMeaning": "그는 똑똑한 소년이다."
+  },
+  {
+    "word": "smash",
+    "sentence": "Do not smash the glass.",
+    "sentenceMeaning": "유리를 깨뜨리지 마라."
+  },
+  {
+    "word": "smell",
+    "sentence": "The flower smells good.",
+    "sentenceMeaning": "꽃 냄새가 좋다."
+  },
+  {
+    "word": "smile",
+    "sentence": "Smile for the picture.",
+    "sentenceMeaning": "사진 찍을 때 웃어."
+  },
+  {
+    "word": "smoke",
+    "sentence": "Do not smoke here.",
+    "sentenceMeaning": "여기서 담배 피우지 마라."
+  },
+  {
+    "word": "smooth",
+    "sentence": "The table is smooth.",
+    "sentenceMeaning": "테이블이 매끄럽다."
+  },
+  {
+    "word": "snack",
+    "sentence": "I want a snack.",
+    "sentenceMeaning": "간식이 먹고 싶다."
+  },
+  {
+    "word": "snake",
+    "sentence": "The snake is long.",
+    "sentenceMeaning": "뱀이 길다."
+  },
+  {
+    "word": "sneeze",
+    "sentence": "Cover your mouth when you sneeze.",
+    "sentenceMeaning": "재채기할 때 입을 가려라."
+  },
+  {
+    "word": "snow",
+    "sentence": "Snow is white.",
+    "sentenceMeaning": "눈은 하얗다."
+  },
+  {
+    "word": "so",
+    "sentence": "I am so happy.",
+    "sentenceMeaning": "너무 행복하다."
+  },
+  {
+    "word": "soap",
+    "sentence": "Wash your hands with soap.",
+    "sentenceMeaning": "비누로 손을 씻어라."
+  },
+  {
+    "word": "social",
+    "sentence": "He has good social skills.",
+    "sentenceMeaning": "그는 사회성이 좋다."
+  },
+  {
+    "word": "society",
+    "sentence": "We live in a society.",
+    "sentenceMeaning": "우리는 사회에 산다."
+  },
+  {
+    "word": "soft",
+    "sentence": "The pillow is soft.",
+    "sentenceMeaning": "베개가 부드럽다."
+  },
+  {
+    "word": "soil",
+    "sentence": "The soil is wet.",
+    "sentenceMeaning": "흙이 젖어 있다."
+  },
+  {
+    "word": "soldier",
+    "sentence": "The soldier is brave.",
+    "sentenceMeaning": "군인은 용감하다."
+  },
+  {
+    "word": "solid",
+    "sentence": "Ice is solid water.",
+    "sentenceMeaning": "얼음은 고체 물이다."
+  },
+  {
+    "word": "solve",
+    "sentence": "Solve this problem.",
+    "sentenceMeaning": "이 문제를 풀어라."
+  },
+  {
+    "word": "some",
+    "sentence": "I want some water.",
+    "sentenceMeaning": "물 좀 주세요."
+  },
+  {
+    "word": "son",
+    "sentence": "He is my son.",
+    "sentenceMeaning": "그는 내 아들이다."
+  },
+  {
+    "word": "song",
+    "sentence": "I like this song.",
+    "sentenceMeaning": "이 노래가 좋다."
+  },
+  {
+    "word": "soon",
+    "sentence": "I will come back soon.",
+    "sentenceMeaning": "곧 돌아올게."
+  },
+  {
+    "word": "sorry",
+    "sentence": "I am sorry.",
+    "sentenceMeaning": "미안해."
+  },
+  {
+    "word": "sort",
+    "sentence": "Sort the cards by color.",
+    "sentenceMeaning": "카드를 색깔별로 분류해라."
+  },
+  {
+    "word": "soul",
+    "sentence": "Music feeds the soul.",
+    "sentenceMeaning": "음악은 영혼을 살찌운다."
+  },
+  {
+    "word": "sound",
+    "sentence": "I hear a sound.",
+    "sentenceMeaning": "소리가 들린다."
+  },
+  {
+    "word": "south",
+    "sentence": "We went south.",
+    "sentenceMeaning": "남쪽으로 갔다."
+  },
+  {
+    "word": "space",
+    "sentence": "There is no space here.",
+    "sentenceMeaning": "여기 공간이 없다."
+  },
+  {
+    "word": "speak",
+    "sentence": "Please speak slowly.",
+    "sentenceMeaning": "천천히 말해주세요."
+  },
+  {
+    "word": "special",
+    "sentence": "Today is a special day.",
+    "sentenceMeaning": "오늘은 특별한 날이다."
+  },
+  {
+    "word": "speech",
+    "sentence": "He gave a good speech.",
+    "sentenceMeaning": "그는 좋은 연설을 했다."
+  },
+  {
+    "word": "speed",
+    "sentence": "Do not drive at high speed.",
+    "sentenceMeaning": "고속으로 운전하지 마라."
+  },
+  {
+    "word": "spell",
+    "sentence": "How do you spell your name?",
+    "sentenceMeaning": "이름 철자가 어떻게 되니?"
+  },
+  {
+    "word": "spend",
+    "sentence": "Do not spend all your money.",
+    "sentenceMeaning": "돈을 다 쓰지 마라."
+  },
+  {
+    "word": "spirit",
+    "sentence": "She has a strong spirit.",
+    "sentenceMeaning": "그녀는 강한 정신을 가졌다."
+  },
+  {
+    "word": "spot",
+    "sentence": "I found a good spot.",
+    "sentenceMeaning": "좋은 자리를 찾았다."
+  },
+  {
+    "word": "spread",
+    "sentence": "Spread butter on the bread.",
+    "sentenceMeaning": "빵에 버터를 발라라."
+  },
+  {
+    "word": "spring",
+    "sentence": "Spring is warm.",
+    "sentenceMeaning": "봄은 따뜻하다."
+  },
+  {
+    "word": "spy",
+    "sentence": "The spy was caught.",
+    "sentenceMeaning": "스파이가 잡혔다."
+  },
+  {
+    "word": "square",
+    "sentence": "Draw a square.",
+    "sentenceMeaning": "정사각형을 그려라."
+  },
+  {
+    "word": "stage",
+    "sentence": "Sing on the stage.",
+    "sentenceMeaning": "무대에서 노래해라."
+  },
+  {
+    "word": "stairs",
+    "sentence": "Walk up the stairs.",
+    "sentenceMeaning": "계단을 올라가라."
+  },
+  {
+    "word": "stamp",
+    "sentence": "Put a stamp on the letter.",
+    "sentenceMeaning": "편지에 우표를 붙여라."
+  },
+  {
+    "word": "stand",
+    "sentence": "Please stand up.",
+    "sentenceMeaning": "일어나세요."
+  },
+  {
+    "word": "star",
+    "sentence": "The star shines at night.",
+    "sentenceMeaning": "별이 밤에 빛난다."
+  },
+  {
+    "word": "start",
+    "sentence": "Let us start now.",
+    "sentenceMeaning": "지금 시작하자."
+  },
+  {
+    "word": "starve",
+    "sentence": "Do not let the dog starve.",
+    "sentenceMeaning": "개를 굶기지 마라."
+  },
+  {
+    "word": "state",
+    "sentence": "What state do you live in?",
+    "sentenceMeaning": "어느 주에 사니?"
+  },
+  {
+    "word": "station",
+    "sentence": "Meet me at the station.",
+    "sentenceMeaning": "역에서 만나."
+  },
+  {
+    "word": "status",
+    "sentence": "What is the status?",
+    "sentenceMeaning": "상태가 어떻니?"
+  },
+  {
+    "word": "stay",
+    "sentence": "Stay here.",
+    "sentenceMeaning": "여기 있어."
+  },
+  {
+    "word": "steal",
+    "sentence": "Do not steal.",
+    "sentenceMeaning": "훔치지 마라."
+  },
+  {
+    "word": "steam",
+    "sentence": "Steam comes from hot water.",
+    "sentenceMeaning": "뜨거운 물에서 증기가 난다."
+  },
+  {
+    "word": "steel",
+    "sentence": "The bridge is made of steel.",
+    "sentenceMeaning": "다리는 철강으로 만들어졌다."
+  },
+  {
+    "word": "step",
+    "sentence": "Take one step forward.",
+    "sentenceMeaning": "한 걸음 앞으로 나와라."
+  },
+  {
+    "word": "stick",
+    "sentence": "The dog has a stick.",
+    "sentenceMeaning": "개가 막대기를 가지고 있다."
+  },
+  {
+    "word": "still",
+    "sentence": "Stand still.",
+    "sentenceMeaning": "가만히 서 있어."
+  },
+  {
+    "word": "stomach",
+    "sentence": "My stomach hurts.",
+    "sentenceMeaning": "배가 아프다."
+  },
+  {
+    "word": "stone",
+    "sentence": "The stone is heavy.",
+    "sentenceMeaning": "돌이 무겁다."
+  },
+  {
+    "word": "stop",
+    "sentence": "Stop the car.",
+    "sentenceMeaning": "차를 세워라."
+  },
+  {
+    "word": "store",
+    "sentence": "I buy food at the store.",
+    "sentenceMeaning": "가게에서 음식을 산다."
+  },
+  {
+    "word": "storm",
+    "sentence": "A storm is coming.",
+    "sentenceMeaning": "폭풍이 오고 있다."
+  },
+  {
+    "word": "story",
+    "sentence": "Tell me a story.",
+    "sentenceMeaning": "이야기 해줘."
+  },
+  {
+    "word": "straight",
+    "sentence": "Walk straight ahead.",
+    "sentenceMeaning": "똑바로 걸어가라."
+  },
+  {
+    "word": "strange",
+    "sentence": "This is strange.",
+    "sentenceMeaning": "이상하다."
+  },
+  {
+    "word": "stream",
+    "sentence": "Fish live in the stream.",
+    "sentenceMeaning": "물고기가 개울에 산다."
+  },
+  {
+    "word": "street",
+    "sentence": "Cross the street carefully.",
+    "sentenceMeaning": "길을 조심히 건너라."
+  },
+  {
+    "word": "stretch",
+    "sentence": "Stretch your arms.",
+    "sentenceMeaning": "팔을 쭉 펴라."
+  },
+  {
+    "word": "strike",
+    "sentence": "The workers went on strike.",
+    "sentenceMeaning": "노동자들이 파업했다."
+  },
+  {
+    "word": "string",
+    "sentence": "I need a piece of string.",
+    "sentenceMeaning": "끈 한 조각이 필요하다."
+  },
+  {
+    "word": "strong",
+    "sentence": "He is very strong.",
+    "sentenceMeaning": "그는 매우 힘이 세다."
+  },
+  {
+    "word": "structure",
+    "sentence": "The structure is safe.",
+    "sentenceMeaning": "구조물이 안전하다."
+  },
+  {
+    "word": "struggle",
+    "sentence": "Life is a struggle.",
+    "sentenceMeaning": "삶은 투쟁이다."
+  },
+  {
+    "word": "study",
+    "sentence": "I study every day.",
+    "sentenceMeaning": "매일 공부한다."
+  },
+  {
+    "word": "stupid",
+    "sentence": "That was a stupid idea.",
+    "sentenceMeaning": "그것은 바보 같은 생각이었다."
+  },
+  {
+    "word": "subject",
+    "sentence": "Math is my favorite subject.",
+    "sentenceMeaning": "수학은 내가 좋아하는 과목이다."
+  },
+  {
+    "word": "substance",
+    "sentence": "Water is a clear substance.",
+    "sentenceMeaning": "물은 투명한 물질이다."
+  },
+  {
+    "word": "substitute",
+    "sentence": "Find a substitute teacher.",
+    "sentenceMeaning": "대체 선생님을 찾아라."
+  },
+  {
+    "word": "succeed",
+    "sentence": "Work hard to succeed.",
+    "sentenceMeaning": "성공하려면 열심히 일해라."
+  },
+  {
+    "word": "such",
+    "sentence": "I have no such thing.",
+    "sentenceMeaning": "그런 것 없다."
+  },
+  {
+    "word": "sudden",
+    "sentence": "There was a sudden noise.",
+    "sentenceMeaning": "갑자기 소리가 났다."
+  },
+  {
+    "word": "suffer",
+    "sentence": "Do not let animals suffer.",
+    "sentenceMeaning": "동물이 고통받게 하지 마라."
+  },
+  {
+    "word": "sugar",
+    "sentence": "Add sugar to the tea.",
+    "sentenceMeaning": "차에 설탕을 넣어라."
+  },
+  {
+    "word": "suggest",
+    "sentence": "I suggest we leave now.",
+    "sentenceMeaning": "지금 떠나자고 제안한다."
+  },
+  {
+    "word": "suit",
+    "sentence": "He wears a suit.",
+    "sentenceMeaning": "그는 정장을 입는다."
+  },
+  {
+    "word": "summer",
+    "sentence": "Summer is hot.",
+    "sentenceMeaning": "여름은 덥다."
+  },
+  {
+    "word": "sun",
+    "sentence": "The sun is bright.",
+    "sentenceMeaning": "해가 밝다."
+  },
+  {
+    "word": "supervise",
+    "sentence": "She will supervise the work.",
+    "sentenceMeaning": "그녀가 일을 감독할 것이다."
+  },
+  {
+    "word": "supply",
+    "sentence": "We have a good supply of food.",
+    "sentenceMeaning": "음식 공급이 충분하다."
+  },
+  {
+    "word": "support",
+    "sentence": "I support my team.",
+    "sentenceMeaning": "내 팀을 응원한다."
+  },
+  {
+    "word": "suppose",
+    "sentence": "I suppose you are right.",
+    "sentenceMeaning": "네가 맞는 것 같다."
+  },
+  {
+    "word": "suppress",
+    "sentence": "Do not suppress your feelings.",
+    "sentenceMeaning": "감정을 억누르지 마라."
+  },
+  {
+    "word": "sure",
+    "sentence": "Are you sure?",
+    "sentenceMeaning": "확실해?"
+  },
+  {
+    "word": "surface",
+    "sentence": "The surface is smooth.",
+    "sentenceMeaning": "표면이 매끄럽다."
+  },
+  {
+    "word": "surprise",
+    "sentence": "It was a surprise.",
+    "sentenceMeaning": "그것은 놀라움이었다."
+  },
+  {
+    "word": "surround",
+    "sentence": "Trees surround the house.",
+    "sentenceMeaning": "나무가 집을 둘러싸고 있다."
+  },
+  {
+    "word": "survive",
+    "sentence": "She will survive.",
+    "sentenceMeaning": "그녀는 살아남을 것이다."
+  },
+  {
+    "word": "suspect",
+    "sentence": "I suspect he is lying.",
+    "sentenceMeaning": "그가 거짓말하는 것 같다."
+  },
+  {
+    "word": "suspend",
+    "sentence": "They will suspend the game.",
+    "sentenceMeaning": "경기를 중단할 것이다."
+  },
+  {
+    "word": "swallow",
+    "sentence": "Swallow your food slowly.",
+    "sentenceMeaning": "음식을 천천히 삼켜라."
+  },
+  {
+    "word": "swear",
+    "sentence": "I swear to tell the truth.",
+    "sentenceMeaning": "진실만 말하겠다고 맹세한다."
+  },
+  {
+    "word": "sweet",
+    "sentence": "The candy is sweet.",
+    "sentenceMeaning": "사탕이 달다."
+  },
+  {
+    "word": "swim",
+    "sentence": "I can swim.",
+    "sentenceMeaning": "수영할 수 있다."
+  },
+  {
+    "word": "symbol",
+    "sentence": "The heart is a symbol of love.",
+    "sentenceMeaning": "하트는 사랑의 상징이다."
+  },
+  {
+    "word": "sympathy",
+    "sentence": "I feel sympathy for her.",
+    "sentenceMeaning": "그녀에게 동정심을 느낀다."
+  },
+  {
+    "word": "system",
+    "sentence": "The system works well.",
+    "sentenceMeaning": "시스템이 잘 작동한다."
+  },
+  {
+    "word": "table",
+    "sentence": "Put the book on the table.",
+    "sentenceMeaning": "책을 테이블에 올려놔라."
+  },
+  {
+    "word": "tail",
+    "sentence": "The dog wags its tail.",
+    "sentenceMeaning": "개가 꼬리를 흔든다."
+  },
+  {
+    "word": "take",
+    "sentence": "Take your bag with you.",
+    "sentenceMeaning": "가방을 가져가라."
+  },
+  {
+    "word": "talk",
+    "sentence": "Let us talk later.",
+    "sentenceMeaning": "나중에 이야기하자."
+  },
+  {
+    "word": "tall",
+    "sentence": "He is very tall.",
+    "sentenceMeaning": "그는 매우 키가 크다."
+  },
+  {
+    "word": "target",
+    "sentence": "Hit the target.",
+    "sentenceMeaning": "목표물을 맞혀라."
+  },
+  {
+    "word": "task",
+    "sentence": "Finish the task first.",
+    "sentenceMeaning": "작업을 먼저 끝내라."
+  },
+  {
+    "word": "taste",
+    "sentence": "Taste the food.",
+    "sentenceMeaning": "음식을 맛봐라."
+  },
+  {
+    "word": "tax",
+    "sentence": "We must pay tax.",
+    "sentenceMeaning": "세금을 내야 한다."
+  },
+  {
+    "word": "tea",
+    "sentence": "I like green tea.",
+    "sentenceMeaning": "녹차를 좋아한다."
+  },
+  {
+    "word": "teach",
+    "sentence": "She will teach you.",
+    "sentenceMeaning": "그녀가 너를 가르칠 것이다."
+  },
+  {
+    "word": "team",
+    "sentence": "Our team won the game.",
+    "sentenceMeaning": "우리 팀이 경기를 이겼다."
+  },
+  {
+    "word": "tear",
+    "sentence": "A tear fell from her eye.",
+    "sentenceMeaning": "눈물이 그녀의 눈에서 떨어졌다."
+  },
+  {
+    "word": "tell",
+    "sentence": "Tell me the truth.",
+    "sentenceMeaning": "진실을 말해줘."
+  },
+  {
+    "word": "term",
+    "sentence": "The school term starts soon.",
+    "sentenceMeaning": "학기가 곧 시작된다."
+  },
+  {
+    "word": "terrible",
+    "sentence": "The weather is terrible.",
+    "sentenceMeaning": "날씨가 끔찍하다."
+  },
+  {
+    "word": "territory",
+    "sentence": "This is our territory.",
+    "sentenceMeaning": "여기는 우리 영토이다."
+  },
+  {
+    "word": "terror",
+    "sentence": "The people lived in terror.",
+    "sentenceMeaning": "사람들은 공포 속에 살았다."
+  },
+  {
+    "word": "test",
+    "sentence": "I have a test tomorrow.",
+    "sentenceMeaning": "내일 시험이 있다."
+  },
+  {
+    "word": "than",
+    "sentence": "She is taller than me.",
+    "sentenceMeaning": "그녀는 나보다 키가 크다."
+  },
+  {
+    "word": "thank",
+    "sentence": "Thank you for your help.",
+    "sentenceMeaning": "도와줘서 고마워."
+  },
+  {
+    "word": "that",
+    "sentence": "That is my book.",
+    "sentenceMeaning": "저것은 내 책이다."
+  },
+  {
+    "word": "the",
+    "sentence": "The sun is bright.",
+    "sentenceMeaning": "해가 밝다."
+  },
+  {
+    "word": "theater",
+    "sentence": "We went to the theater.",
+    "sentenceMeaning": "극장에 갔다."
+  },
+  {
+    "word": "their",
+    "sentence": "This is their house.",
+    "sentenceMeaning": "이것은 그들의 집이다."
+  },
+  {
+    "word": "theirs",
+    "sentence": "The car is theirs.",
+    "sentenceMeaning": "그 차는 그들의 것이다."
+  },
+  {
+    "word": "them",
+    "sentence": "Give it to them.",
+    "sentenceMeaning": "그것을 그들에게 줘라."
+  },
+  {
+    "word": "then",
+    "sentence": "I will see you then.",
+    "sentenceMeaning": "그때 보자."
+  },
+  {
+    "word": "theory",
+    "sentence": "This is just a theory.",
+    "sentenceMeaning": "이것은 그냥 이론이다."
+  },
+  {
+    "word": "there",
+    "sentence": "Go over there.",
+    "sentenceMeaning": "저쪽으로 가라."
+  },
+  {
+    "word": "these",
+    "sentence": "These are my shoes.",
+    "sentenceMeaning": "이것들은 내 신발이다."
+  },
+  {
+    "word": "they",
+    "sentence": "They are my friends.",
+    "sentenceMeaning": "그들은 내 친구들이다."
+  },
+  {
+    "word": "thick",
+    "sentence": "The book is thick.",
+    "sentenceMeaning": "책이 두껍다."
+  },
+  {
+    "word": "thin",
+    "sentence": "The paper is thin.",
+    "sentenceMeaning": "종이가 얇다."
+  },
+  {
+    "word": "thing",
+    "sentence": "What is that thing?",
+    "sentenceMeaning": "저것은 무엇이니?"
+  },
+  {
+    "word": "think",
+    "sentence": "I think you are right.",
+    "sentenceMeaning": "네가 맞는 것 같아."
+  },
+  {
+    "word": "third",
+    "sentence": "I am in third place.",
+    "sentenceMeaning": "3등이다."
+  },
+  {
+    "word": "this",
+    "sentence": "This is my pen.",
+    "sentenceMeaning": "이것은 내 펜이다."
+  },
+  {
+    "word": "those",
+    "sentence": "Those are her books.",
+    "sentenceMeaning": "저것들은 그녀의 책들이다."
+  },
+  {
+    "word": "though",
+    "sentence": "I went, though it was late.",
+    "sentenceMeaning": "늦었지만 갔다."
+  },
+  {
+    "word": "thought",
+    "sentence": "I had a good thought.",
+    "sentenceMeaning": "좋은 생각이 났다."
+  },
+  {
+    "word": "threaten",
+    "sentence": "Do not threaten anyone.",
+    "sentenceMeaning": "누구도 위협하지 마라."
+  },
+  {
+    "word": "through",
+    "sentence": "Walk through the door.",
+    "sentenceMeaning": "문을 통과해서 걸어가라."
+  },
+  {
+    "word": "throw",
+    "sentence": "Throw the ball to me.",
+    "sentenceMeaning": "공을 나에게 던져라."
+  },
+  {
+    "word": "thus",
+    "sentence": "Thus, we decided to go.",
+    "sentenceMeaning": "그래서 가기로 결정했다."
+  },
+  {
+    "word": "tie",
+    "sentence": "He wears a tie.",
+    "sentenceMeaning": "그는 넥타이를 맨다."
+  },
+  {
+    "word": "tight",
+    "sentence": "Hold on tight.",
+    "sentenceMeaning": "꽉 잡아라."
+  },
+  {
+    "word": "time",
+    "sentence": "What time is it?",
+    "sentenceMeaning": "몇 시야?"
+  },
+  {
+    "word": "tin",
+    "sentence": "The box is made of tin.",
+    "sentenceMeaning": "상자는 주석으로 만들어졌다."
+  },
+  {
+    "word": "tiny",
+    "sentence": "The ant is tiny.",
+    "sentenceMeaning": "개미가 아주 작다."
+  },
+  {
+    "word": "tire",
+    "sentence": "The car has a flat tire.",
+    "sentenceMeaning": "차 타이어가 펑크났다."
+  },
+  {
+    "word": "title",
+    "sentence": "What is the title of the book?",
+    "sentenceMeaning": "책 제목이 뭐니?"
+  },
+  {
+    "word": "to",
+    "sentence": "I go to school.",
+    "sentenceMeaning": "학교에 간다."
+  },
+  {
+    "word": "today",
+    "sentence": "Today is a good day.",
+    "sentenceMeaning": "오늘은 좋은 날이다."
+  },
+  {
+    "word": "together",
+    "sentence": "Let us work together.",
+    "sentenceMeaning": "같이 일하자."
+  },
+  {
+    "word": "tomorrow",
+    "sentence": "I will come tomorrow.",
+    "sentenceMeaning": "내일 올게."
+  },
+  {
+    "word": "tone",
+    "sentence": "Speak in a kind tone.",
+    "sentenceMeaning": "친절한 말투로 말해라."
+  },
+  {
+    "word": "tongue",
+    "sentence": "The dog shows its tongue.",
+    "sentenceMeaning": "개가 혀를 내밀었다."
+  },
+  {
+    "word": "tonight",
+    "sentence": "Let us meet tonight.",
+    "sentenceMeaning": "오늘 밤 만나자."
+  },
+  {
+    "word": "too",
+    "sentence": "I want to go too.",
+    "sentenceMeaning": "나도 가고 싶다."
+  },
+  {
+    "word": "tool",
+    "sentence": "Use the right tool.",
+    "sentenceMeaning": "적절한 도구를 사용해라."
+  },
+  {
+    "word": "tooth",
+    "sentence": "Brush your tooth well.",
+    "sentenceMeaning": "이를 잘 닦아라."
+  },
+  {
+    "word": "top",
+    "sentence": "Put it on top.",
+    "sentenceMeaning": "위에 올려놔라."
+  },
+  {
+    "word": "total",
+    "sentence": "What is the total?",
+    "sentenceMeaning": "총합이 얼마야?"
+  },
+  {
+    "word": "touch",
+    "sentence": "Do not touch the paint.",
+    "sentenceMeaning": "페인트를 만지지 마라."
+  },
+  {
+    "word": "toward",
+    "sentence": "Walk toward the door.",
+    "sentenceMeaning": "문 쪽으로 걸어가라."
+  },
+  {
+    "word": "town",
+    "sentence": "I live in a small town.",
+    "sentenceMeaning": "작은 마을에 산다."
+  },
+  {
+    "word": "track",
+    "sentence": "Run on the track.",
+    "sentenceMeaning": "트랙에서 달려라."
+  },
+  {
+    "word": "trade",
+    "sentence": "Trade is important.",
+    "sentenceMeaning": "무역이 중요하다."
+  },
+  {
+    "word": "tradition",
+    "sentence": "It is our tradition.",
+    "sentenceMeaning": "그것은 우리 전통이다."
+  },
+  {
+    "word": "traffic",
+    "sentence": "Traffic is heavy today.",
+    "sentenceMeaning": "오늘 교통이 혼잡하다."
+  },
+  {
+    "word": "train",
+    "sentence": "The train is fast.",
+    "sentenceMeaning": "기차가 빠르다."
+  },
+  {
+    "word": "transport",
+    "sentence": "Transport the goods safely.",
+    "sentenceMeaning": "물건을 안전하게 운송해라."
+  },
+  {
+    "word": "travel",
+    "sentence": "I like to travel.",
+    "sentenceMeaning": "여행하는 것을 좋아한다."
+  },
+  {
+    "word": "treason",
+    "sentence": "Treason is a crime.",
+    "sentenceMeaning": "반역은 범죄이다."
+  },
+  {
+    "word": "treasure",
+    "sentence": "Find the treasure.",
+    "sentenceMeaning": "보물을 찾아라."
+  },
+  {
+    "word": "treat",
+    "sentence": "Treat others with respect.",
+    "sentenceMeaning": "다른 사람을 존중해라."
+  },
+  {
+    "word": "treaty",
+    "sentence": "The two countries signed a treaty.",
+    "sentenceMeaning": "두 나라가 조약을 체결했다."
+  },
+  {
+    "word": "tree",
+    "sentence": "The tree is tall.",
+    "sentenceMeaning": "나무가 크다."
+  },
+  {
+    "word": "trial",
+    "sentence": "The trial begins tomorrow.",
+    "sentenceMeaning": "재판이 내일 시작된다."
+  },
+  {
+    "word": "tribe",
+    "sentence": "The tribe lives in the forest.",
+    "sentenceMeaning": "부족이 숲에 산다."
+  },
+  {
+    "word": "trick",
+    "sentence": "Do not play tricks.",
+    "sentenceMeaning": "장난치지 마라."
+  },
+  {
+    "word": "trip",
+    "sentence": "We had a nice trip.",
+    "sentenceMeaning": "좋은 여행을 했다."
+  },
+  {
+    "word": "troop",
+    "sentence": "The troop moved forward.",
+    "sentenceMeaning": "부대가 전진했다."
+  },
+  {
+    "word": "trouble",
+    "sentence": "Do not get into trouble.",
+    "sentenceMeaning": "문제를 일으키지 마라."
+  },
+  {
+    "word": "truck",
+    "sentence": "The truck is big.",
+    "sentenceMeaning": "트럭이 크다."
+  },
+  {
+    "word": "true",
+    "sentence": "Is this true?",
+    "sentenceMeaning": "이게 사실이야?"
+  },
+  {
+    "word": "trust",
+    "sentence": "I trust you.",
+    "sentenceMeaning": "너를 믿는다."
+  },
+  {
+    "word": "try",
+    "sentence": "Try your best.",
+    "sentenceMeaning": "최선을 다해라."
+  },
+  {
+    "word": "tube",
+    "sentence": "Put the cream in the tube.",
+    "sentenceMeaning": "크림을 튜브에 넣어라."
+  },
+  {
+    "word": "turn",
+    "sentence": "Turn left here.",
+    "sentenceMeaning": "여기서 왼쪽으로 돌아라."
+  },
+  {
+    "word": "twice",
+    "sentence": "I go there twice a week.",
+    "sentenceMeaning": "일주일에 두 번 거기 간다."
+  },
+  {
+    "word": "tyre",
+    "sentence": "Change the tyre.",
+    "sentenceMeaning": "타이어를 교체해라."
+  },
+  {
+    "word": "under",
+    "sentence": "The cat is under the table.",
+    "sentenceMeaning": "고양이가 테이블 아래에 있다."
+  },
+  {
+    "word": "understand",
+    "sentence": "I understand you.",
+    "sentenceMeaning": "이해해."
+  },
+  {
+    "word": "unit",
+    "sentence": "This is one unit.",
+    "sentenceMeaning": "이것은 한 단위이다."
+  },
+  {
+    "word": "universe",
+    "sentence": "The universe is big.",
+    "sentenceMeaning": "우주는 크다."
+  },
+  {
+    "word": "unless",
+    "sentence": "I will go unless it rains.",
+    "sentenceMeaning": "비가 오지 않으면 갈 것이다."
+  },
+  {
+    "word": "until",
+    "sentence": "Wait until I come back.",
+    "sentenceMeaning": "내가 돌아올 때까지 기다려라."
+  },
+  {
+    "word": "up",
+    "sentence": "Look up at the sky.",
+    "sentenceMeaning": "하늘을 올려다봐라."
+  },
+  {
+    "word": "upon",
+    "sentence": "Once upon a time.",
+    "sentenceMeaning": "옛날 옛적에."
+  },
+  {
+    "word": "urge",
+    "sentence": "I urge you to study.",
+    "sentenceMeaning": "공부하라고 권한다."
+  },
+  {
+    "word": "us",
+    "sentence": "Come with us.",
+    "sentenceMeaning": "우리와 함께 가자."
+  },
+  {
+    "word": "use",
+    "sentence": "Use a pen to write.",
+    "sentenceMeaning": "펜을 사용해서 써라."
+  },
+  {
+    "word": "valley",
+    "sentence": "The valley is green.",
+    "sentenceMeaning": "계곡이 푸르다."
+  },
+  {
+    "word": "value",
+    "sentence": "This has great value.",
+    "sentenceMeaning": "이것은 큰 가치가 있다."
+  },
+  {
+    "word": "vary",
+    "sentence": "Prices vary by store.",
+    "sentenceMeaning": "가격은 가게마다 다르다."
+  },
+  {
+    "word": "vegetable",
+    "sentence": "Eat your vegetables.",
+    "sentenceMeaning": "채소를 먹어라."
+  },
+  {
+    "word": "vehicle",
+    "sentence": "A car is a vehicle.",
+    "sentenceMeaning": "자동차는 탈것이다."
+  },
+  {
+    "word": "version",
+    "sentence": "This is the new version.",
+    "sentenceMeaning": "이것은 새 버전이다."
+  },
+  {
+    "word": "very",
+    "sentence": "I am very happy.",
+    "sentenceMeaning": "매우 행복하다."
+  },
+  {
+    "word": "veto",
+    "sentence": "The leader used a veto.",
+    "sentenceMeaning": "지도자가 거부권을 사용했다."
+  },
+  {
+    "word": "vicious",
+    "sentence": "The dog was vicious.",
+    "sentenceMeaning": "그 개는 사나웠다."
+  },
+  {
+    "word": "victim",
+    "sentence": "Help the victim.",
+    "sentenceMeaning": "피해자를 도와라."
+  },
+  {
+    "word": "victory",
+    "sentence": "We won a victory.",
+    "sentenceMeaning": "승리를 거뒀다."
+  },
+  {
+    "word": "view",
+    "sentence": "The view is beautiful.",
+    "sentenceMeaning": "경치가 아름답다."
+  },
+  {
+    "word": "violence",
+    "sentence": "Violence is bad.",
+    "sentenceMeaning": "폭력은 나쁘다."
+  },
+  {
+    "word": "visit",
+    "sentence": "I will visit you.",
+    "sentenceMeaning": "방문할게."
+  },
+  {
+    "word": "voice",
+    "sentence": "She has a nice voice.",
+    "sentenceMeaning": "그녀는 목소리가 좋다."
+  },
+  {
+    "word": "volume",
+    "sentence": "Turn down the volume.",
+    "sentenceMeaning": "볼륨을 낮춰라."
+  },
+  {
+    "word": "vote",
+    "sentence": "Vote for your leader.",
+    "sentenceMeaning": "지도자에게 투표해라."
+  },
+  {
+    "word": "wage",
+    "sentence": "I earn a good wage.",
+    "sentenceMeaning": "좋은 임금을 번다."
+  },
+  {
+    "word": "wait",
+    "sentence": "Wait for me.",
+    "sentenceMeaning": "기다려줘."
+  },
+  {
+    "word": "walk",
+    "sentence": "I walk to school.",
+    "sentenceMeaning": "학교까지 걸어간다."
+  },
+  {
+    "word": "wall",
+    "sentence": "The wall is white.",
+    "sentenceMeaning": "벽이 하얗다."
+  },
+  {
+    "word": "want",
+    "sentence": "I want some water.",
+    "sentenceMeaning": "물이 좀 마시고 싶다."
+  },
+  {
+    "word": "war",
+    "sentence": "War is terrible.",
+    "sentenceMeaning": "전쟁은 끔찍하다."
+  },
+  {
+    "word": "warm",
+    "sentence": "The sun is warm.",
+    "sentenceMeaning": "햇빛이 따뜻하다."
+  },
+  {
+    "word": "warn",
+    "sentence": "I warn you to be careful.",
+    "sentenceMeaning": "조심하라고 경고한다."
+  },
+  {
+    "word": "wash",
+    "sentence": "Wash your hands.",
+    "sentenceMeaning": "손을 씻어라."
+  },
+  {
+    "word": "waste",
+    "sentence": "Do not waste food.",
+    "sentenceMeaning": "음식을 낭비하지 마라."
+  },
+  {
+    "word": "watch",
+    "sentence": "Watch the movie with me.",
+    "sentenceMeaning": "나와 영화 보자."
+  },
+  {
+    "word": "water",
+    "sentence": "Drink some water.",
+    "sentenceMeaning": "물을 마셔라."
+  },
+  {
+    "word": "wave",
+    "sentence": "Wave goodbye.",
+    "sentenceMeaning": "손 흔들며 인사해."
+  },
+  {
+    "word": "way",
+    "sentence": "This is the way.",
+    "sentenceMeaning": "이쪽이 길이다."
+  },
+  {
+    "word": "we",
+    "sentence": "We are friends.",
+    "sentenceMeaning": "우리는 친구이다."
+  },
+  {
+    "word": "weak",
+    "sentence": "The baby is weak.",
+    "sentenceMeaning": "아기가 약하다."
+  },
+  {
+    "word": "wealth",
+    "sentence": "Health is true wealth.",
+    "sentenceMeaning": "건강이 진정한 부이다."
+  },
+  {
+    "word": "weapon",
+    "sentence": "Put down the weapon.",
+    "sentenceMeaning": "무기를 내려놔라."
+  },
+  {
+    "word": "wear",
+    "sentence": "Wear warm clothes.",
+    "sentenceMeaning": "따뜻한 옷을 입어라."
+  },
+  {
+    "word": "weather",
+    "sentence": "The weather is nice today.",
+    "sentenceMeaning": "오늘 날씨가 좋다."
+  },
+  {
+    "word": "week",
+    "sentence": "See you next week.",
+    "sentenceMeaning": "다음 주에 보자."
+  },
+  {
+    "word": "weight",
+    "sentence": "Check your weight.",
+    "sentenceMeaning": "몸무게를 확인해라."
+  },
+  {
+    "word": "welcome",
+    "sentence": "Welcome to my home.",
+    "sentenceMeaning": "우리 집에 온 것을 환영해."
+  },
+  {
+    "word": "well",
+    "sentence": "I am doing well.",
+    "sentenceMeaning": "잘 지내고 있다."
+  },
+  {
+    "word": "west",
+    "sentence": "The sun sets in the west.",
+    "sentenceMeaning": "해가 서쪽으로 진다."
+  },
+  {
+    "word": "wet",
+    "sentence": "My shoes are wet.",
+    "sentenceMeaning": "내 신발이 젖었다."
+  },
+  {
+    "word": "what",
+    "sentence": "What is your name?",
+    "sentenceMeaning": "이름이 뭐니?"
+  },
+  {
+    "word": "wheat",
+    "sentence": "Bread is made from wheat.",
+    "sentenceMeaning": "빵은 밀로 만든다."
+  },
+  {
+    "word": "wheel",
+    "sentence": "The wheel is round.",
+    "sentenceMeaning": "바퀴가 둥글다."
+  },
+  {
+    "word": "when",
+    "sentence": "When will you come?",
+    "sentenceMeaning": "언제 올 거니?"
+  },
+  {
+    "word": "where",
+    "sentence": "Where do you live?",
+    "sentenceMeaning": "어디 사니?"
+  },
+  {
+    "word": "whether",
+    "sentence": "I do not know whether to go.",
+    "sentenceMeaning": "갈지 말지 모르겠다."
+  },
+  {
+    "word": "which",
+    "sentence": "Which one do you want?",
+    "sentenceMeaning": "어떤 것을 원하니?"
+  },
+  {
+    "word": "while",
+    "sentence": "Wait a while.",
+    "sentenceMeaning": "잠시 기다려라."
+  },
+  {
+    "word": "white",
+    "sentence": "Snow is white.",
+    "sentenceMeaning": "눈은 하얗다."
+  },
+  {
+    "word": "who",
+    "sentence": "Who are you?",
+    "sentenceMeaning": "누구니?"
+  },
+  {
+    "word": "whole",
+    "sentence": "I ate the whole apple.",
+    "sentenceMeaning": "사과 전체를 먹었다."
+  },
+  {
+    "word": "why",
+    "sentence": "Why are you sad?",
+    "sentenceMeaning": "왜 슬프니?"
+  },
+  {
+    "word": "wide",
+    "sentence": "The road is wide.",
+    "sentenceMeaning": "길이 넓다."
+  },
+  {
+    "word": "wife",
+    "sentence": "She is my wife.",
+    "sentenceMeaning": "그녀는 내 아내이다."
+  },
+  {
+    "word": "wild",
+    "sentence": "The lion is wild.",
+    "sentenceMeaning": "사자는 야생이다."
+  },
+  {
+    "word": "will",
+    "sentence": "I will help you.",
+    "sentenceMeaning": "도와줄게."
+  },
+  {
+    "word": "win",
+    "sentence": "I want to win the game.",
+    "sentenceMeaning": "경기에서 이기고 싶다."
+  },
+  {
+    "word": "wind",
+    "sentence": "The wind is strong.",
+    "sentenceMeaning": "바람이 강하다."
+  },
+  {
+    "word": "window",
+    "sentence": "Open the window.",
+    "sentenceMeaning": "창문을 열어라."
+  },
+  {
+    "word": "wine",
+    "sentence": "Wine is made from grapes.",
+    "sentenceMeaning": "와인은 포도로 만든다."
+  },
+  {
+    "word": "wing",
+    "sentence": "The bird has two wings.",
+    "sentenceMeaning": "새는 날개가 두 개 있다."
+  },
+  {
+    "word": "winter",
+    "sentence": "Winter is cold.",
+    "sentenceMeaning": "겨울은 춥다."
+  },
+  {
+    "word": "wire",
+    "sentence": "Connect the wire.",
+    "sentenceMeaning": "전선을 연결해라."
+  },
+  {
+    "word": "wise",
+    "sentence": "The old man is wise.",
+    "sentenceMeaning": "노인은 현명하다."
+  },
+  {
+    "word": "wish",
+    "sentence": "I wish you good luck.",
+    "sentenceMeaning": "행운을 빈다."
+  },
+  {
+    "word": "with",
+    "sentence": "Come with me.",
+    "sentenceMeaning": "나와 같이 가자."
+  },
+  {
+    "word": "withdraw",
+    "sentence": "I will withdraw money.",
+    "sentenceMeaning": "돈을 인출할 것이다."
+  },
+  {
+    "word": "without",
+    "sentence": "I cannot live without you.",
+    "sentenceMeaning": "너 없이 살 수 없다."
+  },
+  {
+    "word": "woman",
+    "sentence": "The woman is kind.",
+    "sentenceMeaning": "그 여자는 친절하다."
+  },
+  {
+    "word": "wonder",
+    "sentence": "I wonder what will happen.",
+    "sentenceMeaning": "무슨 일이 일어날지 궁금하다."
+  },
+  {
+    "word": "wood",
+    "sentence": "The table is made of wood.",
+    "sentenceMeaning": "테이블은 나무로 만들어졌다."
+  },
+  {
+    "word": "wool",
+    "sentence": "The sweater is made of wool.",
+    "sentenceMeaning": "스웨터는 양모로 만들어졌다."
+  },
+  {
+    "word": "word",
+    "sentence": "Learn a new word every day.",
+    "sentenceMeaning": "매일 새 단어를 배워라."
+  },
+  {
+    "word": "work",
+    "sentence": "I work hard.",
+    "sentenceMeaning": "열심히 일한다."
+  },
+  {
+    "word": "world",
+    "sentence": "The world is big.",
+    "sentenceMeaning": "세계는 크다."
+  },
+  {
+    "word": "worry",
+    "sentence": "Do not worry.",
+    "sentenceMeaning": "걱정하지 마라."
+  },
+  {
+    "word": "worse",
+    "sentence": "It is getting worse.",
+    "sentenceMeaning": "점점 나빠지고 있다."
+  },
+  {
+    "word": "worth",
+    "sentence": "This book is worth reading.",
+    "sentenceMeaning": "이 책은 읽을 가치가 있다."
+  },
+  {
+    "word": "wound",
+    "sentence": "Clean the wound.",
+    "sentenceMeaning": "상처를 닦아라."
+  },
+  {
+    "word": "wreck",
+    "sentence": "The car was a wreck.",
+    "sentenceMeaning": "차가 망가졌다."
+  },
+  {
+    "word": "write",
+    "sentence": "Write your name.",
+    "sentenceMeaning": "이름을 써라."
+  },
+  {
+    "word": "wrong",
+    "sentence": "This answer is wrong.",
+    "sentenceMeaning": "이 답은 틀렸다."
+  },
+  {
+    "word": "yard",
+    "sentence": "Play in the yard.",
+    "sentenceMeaning": "마당에서 놀아라."
+  },
+  {
+    "word": "year",
+    "sentence": "Happy new year!",
+    "sentenceMeaning": "새해 복 많이 받으세요!"
+  },
+  {
+    "word": "yellow",
+    "sentence": "The sun is yellow.",
+    "sentenceMeaning": "해는 노랗다."
+  },
+  {
+    "word": "yes",
+    "sentence": "Yes, I agree.",
+    "sentenceMeaning": "네, 동의해."
+  },
+  {
+    "word": "yesterday",
+    "sentence": "I saw him yesterday.",
+    "sentenceMeaning": "어제 그를 봤다."
+  },
+  {
+    "word": "yet",
+    "sentence": "I am not done yet.",
+    "sentenceMeaning": "아직 끝나지 않았다."
+  },
+  {
+    "word": "you",
+    "sentence": "I like you.",
+    "sentenceMeaning": "너를 좋아해."
+  },
+  {
+    "word": "young",
+    "sentence": "The boy is young.",
+    "sentenceMeaning": "소년은 어리다."
+  }
+]
