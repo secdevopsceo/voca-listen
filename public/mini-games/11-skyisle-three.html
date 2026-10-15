@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Skyisle Living 11 — three.js</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Marcellus&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/","cannon-es":"https://cdn.jsdelivr.net/npm/cannon-es@0.20.0/dist/cannon-es.js"}}</script>
+<style>
+/* ── 시안 11 : SKYISLE LIVING 11 (three.js 판) ──────────────────────────────
+   10번과 같은 게임 규칙 · 같은 화면 부품 자리를 three.js(WebGL 2)로 다시 그렸다. 화면 장식(종이 카드 · 금색 테두리 · 글꼴 · 칩)은
+   10번의 CSS 를 그대로 옮겼다(2026-10-06 15:34 KST 판). WebGL 2 라서 WebGPU 가 꺼진 브라우저와 https 가 아닌 주소에서도 열린다.
+   ☁️ 구름 바다: 높이 지도 구름을 광선 행진으로 그린다 — 해 쪽 은빛 테두리 · 골짜기 그늘 · 먼 구름은 지평선 빛에 녹는다
+   🌤 햇살 줄기: 그림자 지도를 따라 시선 방향으로 걸으며 빛이 닿는 공기만 모은다(반 해상도 · 깊이를 보며 다시 키운다)
+   🌸 벚나무: 휘어진 관으로 만든 가지 + 꽃송이 카드 · 역광에 분홍빛이 비친다 · 꽃잎은 10번의 공기역학 계산 그대로
+   🌿 풀밭 · 💧 폭포와 샘 · 💎 수정 · 빛의 정령(빛으로 주사위를 들어 올려 던진다) · 🎥 시작 섬 돌기 · BEGIN 날아 들어가기 · 6 다가가기 · 승리 한 바퀴
+   9·10번에서 대표가 정한 것(아침으로 시작 · 모션 블러 없음 · 초점 흐림 없음 · 원목 주사위와 빨간 1 · 별빛 요정 효과)은 그대로 지킨다.
+   10번의 돼지는 옮기지 않았다 — 구·원뿔로 조립한 캐릭터라 새 코드에 쓸 수 없다(그림은 Draw Things 규칙). 내 굴림에 대한 반응은 정령이 맡는다.
+   ──────────────────────────────────────────────────────────────────── */
+:root{--gold:#d8b96b;--gold2:#a8862f;--ink:#3a3552;--muted:#7b7690;--paper:#fbf6ea;--btn-a:#ffffff;--btn-b:#f6f0e1;--btn-ring:rgba(255,255,255,.6);--gate:#f4ecdc;--shade:rgba(40,30,90,.18);
+  --vig:rgba(84,54,30,.30);--flash:rgba(156,138,201,.42);--veil:rgba(30,24,20,.58);
+  --teal:#5fd4b8;--water:#5aa8ff;--spark:#ffcfe8;--fairy:#f2a6d6;--fizzle:#9c8ac9;
+  --font-d:'Marcellus','Gowun Batang',serif;--font-b:'Noto Sans KR',sans-serif}
+/* 어두운 테마: 먹색 카드 · 금색 테두리 그대로 · 크림색 글자. 처음엔 기기 설정을 따르고 오른쪽 위 칩으로 바꾼다 */
+:root[data-theme="dark"]{--ink:#f2e8d2;--muted:#b8ab92;--gold2:#d8b96b;--paper:#26221d;--btn-a:#342e27;--btn-b:#221e19;--btn-ring:rgba(255,255,255,.07);--gate:#1d1a16;--shade:rgba(0,0,0,.42)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--gate);color:var(--ink);font-family:var(--font-b);overflow:hidden;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+#stage{position:fixed;inset:0;width:100%;height:100%;display:block}
+/* 가장자리 그늘: 9번의 남보랏빛 대신 따뜻한 갈색빛 (금지 목록 — 보라색 그라데이션) */
+.vig{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,var(--vig) 100%)}
+/* 1이 나올 때 번쩍임: 같은 보랏빛을 그라데이션 없이 한 색으로 */
+.flash{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:0;background:var(--flash)}
+.flash.on{animation:flash .7s ease-out}@keyframes flash{0%{opacity:1}100%{opacity:0}}
+.hud{position:fixed;inset:0;z-index:4;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between;padding:max(16px,env(safe-area-inset-top)) 16px max(34px,calc(env(safe-area-inset-bottom) + 20px))}
+/* 카드: 9번의 반투명 흐림 종이 대신 같은 종이색 불투명 (금지 목록 — 유리처럼 비치는 카드) */
+.card{background:var(--paper);border:1px solid var(--gold);border-radius:6px;position:relative;box-shadow:0 6px 24px var(--shade)}
+.card::before,.card::after{content:"◆";position:absolute;top:50%;transform:translateY(-50%);font-size:9px;color:var(--gold2)}
+.card::before{left:-5px}.card::after{right:-5px}
+.top{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:start}
+.brand{padding:10px 14px}
+.brand h1{font-family:var(--font-d);font-size:clamp(15px,4vw,22px);letter-spacing:.14em}
+.brand small{display:block;font-size:10px;letter-spacing:.2em;color:var(--gold2);margin-top:3px}
+.bank{padding:8px 18px;text-align:center}
+.bank .n{font-size:10px;letter-spacing:.3em;color:var(--gold2)}
+.bank b{display:block;font-family:var(--font-d);font-size:clamp(26px,7vw,40px);line-height:1.1}
+.bank.bump b{animation:bump .4s cubic-bezier(.2,1.6,.4,1)}
+@keyframes bump{35%{transform:scale(1.18);color:var(--gold2)}}
+/* 설정 칩 4개(시간 · 소리 · 언어 · 테마): 넓은 화면은 한 줄, 좁은 화면은 2줄 — 자리는 9번처럼 오른쪽 위 */
+.right{justify-self:end;display:grid;grid-auto-flow:column;gap:8px;pointer-events:auto}
+@media (max-width:640px){.right{grid-auto-flow:row;grid-template-columns:repeat(2,auto)}}
+.chip{padding:8px 12px;font-size:10px;letter-spacing:.2em;cursor:pointer;font-family:var(--font-b);color:var(--ink);white-space:nowrap}
+.chip b{font-family:var(--font-d);font-weight:400;letter-spacing:.14em;display:block;font-size:12px;margin-top:2px}
+.chip.off{opacity:.55}
+.scores{display:flex;justify-content:space-between;margin-top:12px;gap:10px}
+.p{padding:10px 16px;min-width:110px;transition:transform .3s}
+.p.cpu{text-align:right}
+.p .n{font-size:10px;letter-spacing:.3em;color:var(--muted)}
+.p b{display:block;font-family:var(--font-d);font-size:clamp(30px,8vw,52px);line-height:1;margin-top:2px}
+.p.active{transform:scale(1.04);border-color:var(--gold2);box-shadow:0 0 0 2px rgba(216,185,107,.5),0 6px 24px rgba(40,30,90,.18)}
+.p.active .n{color:var(--gold2)}
+.p.bump b{animation:bump .5s cubic-bezier(.2,1.6,.4,1)}
+.bottom{pointer-events:auto;display:grid;gap:10px;max-width:640px;width:100%;margin:0 auto}
+.status{text-align:center;font-size:13px;color:#fff;text-shadow:0 1px 6px rgba(40,30,90,.7);min-height:18px;letter-spacing:.04em}
+.status b{font-family:var(--font-d);letter-spacing:.12em;font-weight:400}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button.act{font-family:var(--font-d);font-size:clamp(14px,3.8vw,18px);letter-spacing:.2em;color:var(--ink);cursor:pointer;padding:15px 10px;border:1px solid var(--gold);border-radius:999px;
+  background:linear-gradient(180deg,var(--btn-a),var(--btn-b));box-shadow:0 6px 20px var(--shade),inset 0 0 0 3px var(--btn-ring);position:relative;transition:transform .08s,filter .2s}
+button.act::before{content:"◆";position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:9px;color:var(--gold2)}
+button.act:active{transform:scale(.97)}
+button.act:disabled{opacity:.45;cursor:not-allowed;transform:none;filter:grayscale(.6)}
+.callout{position:fixed;left:50%;top:30%;transform:translateX(-50%);z-index:5;font-family:var(--font-d);font-size:clamp(30px,9vw,64px);letter-spacing:.12em;color:#fff;opacity:0;pointer-events:none;white-space:nowrap;text-shadow:0 0 14px var(--teal),0 2px 0 rgba(40,30,90,.5),0 0 40px rgba(95,212,184,.7)}
+.callout.on{animation:callout 1.2s cubic-bezier(.2,1.3,.3,1) forwards}
+.callout.bad{text-shadow:0 0 14px var(--fizzle),0 2px 0 rgba(50,40,70,.6),0 0 40px rgba(156,138,201,.8)}
+.callout.water{text-shadow:0 0 14px var(--fairy),0 2px 0 rgba(80,20,60,.55),0 0 40px rgba(242,166,214,.8)}
+.callout.spark{text-shadow:0 0 14px var(--spark),0 2px 0 rgba(70,40,80,.5),0 0 40px rgba(255,207,232,.85)}
+@keyframes callout{0%{opacity:0;transform:translate(-50%,30px) scale(.5)}25%{opacity:1;transform:translate(-50%,0) scale(1.1)}70%{opacity:1}100%{opacity:0;transform:translate(-50%,-40px)}}
+.fly{position:fixed;z-index:8;pointer-events:none;font-family:var(--font-d);font-size:26px;color:#fff;text-shadow:0 0 14px var(--water),0 2px 0 rgba(20,40,90,.6)}
+.hint{position:fixed;left:0;right:0;bottom:max(6px,env(safe-area-inset-bottom));z-index:4;text-align:center;font-size:9px;letter-spacing:.3em;color:rgba(255,255,255,.7);pointer-events:none;white-space:pre}
+/* 시작 창: 초기화 중에는 종이색 한 색(9번의 하늘색 그라데이션 대신 — 금지 목록), 준비되면 바탕이 걷혀 섬을 도는 실제 3D 장면 위에 카드만 남는다 */
+.gate{position:fixed;inset:0;z-index:9;display:grid;place-items:center;background:var(--gate);text-align:center;padding:30px;transition:opacity .6s,background-color 1.4s}
+.gate.ready{background-color:transparent}
+.gate.off{opacity:0;pointer-events:none}
+.gate .card{padding:30px 36px;display:inline-block}
+.gate b{display:block;font-family:var(--font-d);font-size:clamp(20px,5vw,32px);letter-spacing:.3em;margin-bottom:10px}
+.gate p{font-size:12px;letter-spacing:.1em;color:var(--muted);line-height:1.8}
+.gate button{margin-top:22px}
+/* 결과 창 뒤: 9번의 보랏빛 반투명 + 흐림 대신 흐림 없는 어두운 먹색 (금지 목록) */
+.overlay{position:fixed;inset:0;z-index:9;display:grid;place-items:center;background:var(--veil);opacity:0;pointer-events:none;transition:opacity .5s}
+.overlay.on{opacity:1;pointer-events:auto}
+.overlay .card{padding:32px 40px;text-align:center}
+.big{font-family:var(--font-d);font-size:clamp(28px,8vw,64px);letter-spacing:.2em;line-height:1.1}
+.big.lose{color:#8a4a3a}
+.overlay.on .big{animation:zoom .8s cubic-bezier(.2,1.4,.3,1)}
+@keyframes zoom{from{transform:scale(2);opacity:0;letter-spacing:.6em}}
+.final{margin:14px 0 24px;font-size:12px;letter-spacing:.3em;color:var(--muted)}
+:root[data-theme="dark"] .big.lose{color:#e3937a}
+/* 한국어: 넓은 자간은 영문 대문자에 맞춘 값이라 한글에는 좁힌다. 한글 제목은 고운바탕(Marcellus 에 한글이 없어 글자 단위로 넘어간다) */
+html[lang="ko"] body{word-break:keep-all}   /* 한글은 낱말 단위로만 줄을 바꾼다('하늘 / 섬', '준비됐습 / 니다' 같은 쪼개짐 방지) */
+.gate button,.overlay button{min-width:160px}   /* '시작'·'다시'처럼 짧은 글자에서도 알약 모양을 지킨다 */
+html[lang="ko"] .brand h1,html[lang="ko"] .gate b,html[lang="ko"] .big{letter-spacing:.08em}
+html[lang="ko"] .brand small,html[lang="ko"] .bank .n,html[lang="ko"] .p .n,html[lang="ko"] .chip,html[lang="ko"] .final,html[lang="ko"] .hint,html[lang="ko"] button.act,html[lang="ko"] .callout{letter-spacing:.06em}
+/* 한글 버튼 글자가 고운바탕 글꼴 탓에 상자 중심보다 아래로 처진다 — 10번과 같은 보정(위 여백 -1px · 아래 +1px · 높이 그대로).
+   2026-10-06 · 11번 버튼 2개 실측(보정 전) 굴리기 +0.84px · 지키기 +0.5px, 같은 버튼의 영어는 -0.02/-0.09px */
+html[lang="ko"] button.act{padding-top:14px;padding-bottom:16px}
+/* 글자 덩어리 세로 중심 보정(frontend-ui 글자 세로 정렬 · 축 B): 큰 숫자 줄은 숫자 아래 여백 때문에 잉크가 위로, 제목 카드는 아래로 치우친다.
+   위아래 여백만 나눠 바꿔 상자 높이는 그대로 둔다. 2026-10-06 · 창 1868×1559 · Marcellus · Gowun Batang · Noto Sans KR · ko/en 각 1회 실측(보정 전):
+   모라 -1.8/-1.4px · 점수판 -1.5/-1.1px · 제목 +2.1/+1.3px (음수 = 위로 치우침). 글꼴이 바뀌면 다시 잰다 */
+.bank{padding:9.5px 18px 6.5px}
+.p{padding:11.5px 16px 8.5px}
+.brand{padding:8.3px 14px 11.7px}
+/* 화면 안 프레임 표시: 주소 뒤에 ?fps 를 붙였을 때만 보인다(성능 확인용) */
+.fps{position:fixed;right:12px;bottom:max(6px,env(safe-area-inset-bottom));z-index:4;font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,.8);pointer-events:none;display:none;font-family:var(--font-b)}
+</style>
+</head>
+<body>
+<!-- 화면 글자는 불러올 때 I18N 사전으로 덮어쓴다. 아래 영어 기본값은 사전 en 의 사본이라, 사전을 고치면 여기도 같이 고친다 -->
+<canvas id="stage"></canvas>
+<div class="vig"></div><div class="flash" id="flash"></div>
+<div class="callout" id="callout"></div>
+<div class="hud">
+  <div>
+    <div class="top">
+      <div class="card brand"><h1 data-i18n="title">SKYISLE LIVING</h1><small data-i18n="tagline">THREE.JS · CLOUD SEA · WATERFALL · SPIRIT · LIGHT SHAFTS</small></div>
+      <div class="card bank" id="bankbox"><div class="n" data-i18n="bank">MORA</div><b id="bank">0</b></div>
+      <div class="right">
+        <div class="card chip" id="todBtn"><span data-i18n="time">TIME</span> ▸<b id="todLbl">MORNING</b></div>
+        <div class="card chip" id="snd"><span data-i18n="sound">SOUND</span><b id="sndLbl">ON</b></div>
+        <div class="card chip" id="langBtn"><span data-i18n="lang">LANGUAGE</span><b id="langLbl">EN</b></div>
+        <div class="card chip" id="themeBtn"><span data-i18n="theme">THEME</span><b id="themeLbl">LIGHT</b></div>
+      </div>
+    </div>
+    <div class="scores">
+      <div class="card p me active" id="pMe"><div class="n" data-i18n="me">TRAVELER</div><b id="sMe">0</b></div>
+      <div class="card p cpu" id="pCpu"><div class="n" data-i18n="cpu">SPIRIT</div><b id="sCpu">0</b></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="status" id="status"></div>
+    <div class="actions"><button class="act" id="roll" data-i18n="roll">ROLL</button><button class="act" id="hold" data-i18n="keep" disabled>KEEP</button></div>
+  </div>
+</div>
+<div class="hint" data-i18n="hint">SPACE · ROLL   H · KEEP   T · TIME</div>
+<div class="fps" id="fps"></div>
+<div class="gate" id="gate"><div class="card"><b data-i18n="title">SKYISLE LIVING</b><p id="gatemsg"></p><button class="act" id="enter" data-i18n="begin" style="display:none">BEGIN</button></div></div>
+<div class="overlay" id="overlay"><div class="card"><div class="big" id="big">ASCENSION</div><div class="final" id="final"></div><button class="act" id="again" data-i18n="again">AGAIN</button></div></div>
+
+<script type="module">
+import * as THREE from 'three';
+import * as CANNON from 'cannon-es';
+import { mergeGeometries, mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
+import { SimplexNoise } from 'three/addons/math/SimplexNoise.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { FullScreenQuad } from 'three/addons/postprocessing/Pass.js';
+
+const $=id=>document.getElementById(id),rnd=(a,b)=>a+Math.random()*(b-a),wait=ms=>new Promise(r=>setTimeout(r,ms));
+const clamp=(x,a,b)=>Math.min(b,Math.max(a,x)),mix=(a,b,k)=>a+(b-a)*k,smooth=(a,b,x)=>{const k=clamp((x-a)/(b-a),0,1);return k*k*(3-2*k);};
+const easeInOut=k=>k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+const V3=(x=0,y=0,z=0)=>new THREE.Vector3(x,y,z);
+const lin=c=>c.map(x=>Math.pow(x,2.2));   // 10번이 화면값으로 쓴 색 → three 의 선형 색
+const frameYield=()=>new Promise(r=>requestAnimationFrame(()=>r()));
+// 장면 배치용 고정 난수: 새로고침해도 섬 · 나무 · 풀밭 모양이 같다
+function seeded(s){return()=>{s=s+0x6D2B79F5|0;let k=Math.imul(s^s>>>15,1|s);k=k+Math.imul(k^k>>>7,61|k)^k;return((k^k>>>14)>>>0)/4294967296;};}
+
+/* ═══════════ 🔊 합성 효과음 (10번 그대로 + 물소리 · 정령 소리) ═══════════ */
+// TODO(미검증 · 2026-10-06 16:27 KST): 물소리 · 정령 소리(들어 올림 · 날기 · 울타리)의 크기와 느낌 — 자동 브라우저로는 들을 수 없다
+const SFX=(()=>{let ac=null,master=null,on=true,windGain=null,waterGain=null;
+  function ctx(){if(!ac){ac=new (window.AudioContext||window.webkitAudioContext)();master=ac.createGain();master.gain.value=.45;master.connect(ac.destination);}if(ac.state==='suspended')ac.resume();return ac;}
+  function tone({f=440,type='sine',dur=.3,gain=.4,attack=.005,slide=null,delay=0,filter=null,fq=1}){if(!on)return;const c=ctx(),t0=c.currentTime+delay;const o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.setValueAtTime(f,t0);if(slide)o.frequency.exponentialRampToValueAtTime(slide,t0+dur);
+    g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(gain,t0+attack);g.gain.exponentialRampToValueAtTime(.0001,t0+dur);let node=o;
+    if(filter){const fl=c.createBiquadFilter();fl.type=filter.type||'lowpass';fl.frequency.setValueAtTime(filter.f,t0);if(filter.to)fl.frequency.exponentialRampToValueAtTime(filter.to,t0+dur);fl.Q.value=fq;o.connect(fl);node=fl;}
+    node.connect(g);g.connect(master);o.start(t0);o.stop(t0+dur+.05);}
+  function noise({dur=.2,gain=.3,f=2000,q=1,delay=0,to=null,type='bandpass'}){if(!on)return;const c=ctx(),t0=c.currentTime+delay;const n=Math.floor(c.sampleRate*dur),b=c.createBuffer(1,n,c.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;
+    const s=c.createBufferSource();s.buffer=b;const fl=c.createBiquadFilter();fl.type=type;fl.frequency.setValueAtTime(f,t0);if(to)fl.frequency.exponentialRampToValueAtTime(to,t0+dur);fl.Q.value=q;const g=c.createGain();g.gain.setValueAtTime(gain,t0);g.gain.exponentialRampToValueAtTime(.0001,t0+dur);s.connect(fl);fl.connect(g);g.connect(master);s.start(t0);}
+  // 4초짜리 잡음을 되풀이하는 배경 소리 — 바람(낮은 음) · 폭포 물소리(가운데 음)
+  function bed(c,{type,f,q=1,gain,lfo,depth}){const n=Math.floor(c.sampleRate*4),b=c.createBuffer(1,n,c.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;
+    const s=c.createBufferSource();s.buffer=b;s.loop=true;const fl=c.createBiquadFilter();fl.type=type;fl.frequency.value=f;fl.Q.value=q;const lo=c.createOscillator();lo.frequency.value=lfo;const lg=c.createGain();lg.gain.value=depth;lo.connect(lg);lg.connect(fl.frequency);lo.start();
+    const g=c.createGain();g.gain.value=on?gain:0;s.connect(fl);fl.connect(g);g.connect(master);s.start();return g;}
+  const SCALE=[0,261.6,329.6,392,440,523.3,659.3],BED={wind:.045,water:.026};
+  return{
+    unlock(){const c=ctx();if(!windGain){windGain=bed(c,{type:'lowpass',f:380,gain:BED.wind,lfo:.09,depth:220});waterGain=bed(c,{type:'bandpass',f:900,q:.5,gain:BED.water,lfo:.21,depth:180});}},
+    toggle(){on=!on;if(windGain){windGain.gain.value=on?BED.wind:0;waterGain.gain.value=on?BED.water:0;}if(on)ctx();return on;},
+    isOn(){return on;},
+    pause(){if(ac&&ac.state==='running')ac.suspend();},resume(){if(ac&&ac.state==='suspended')ac.resume();},
+    roll(){for(let i=0;i<6;i++)noise({dur:.05,gain:.22,f:700+i*180,q:5,delay:i*.08+Math.random()*.03});},
+    knock(k){noise({dur:.07,gain:.25*k,f:520,q:3,to:220,type:'bandpass'});tone({f:180,type:'triangle',dur:.09,gain:.18*k,slide:90});},
+    good(v){const f=SCALE[v];tone({f,type:'triangle',dur:.5,gain:.3});tone({f:f*1.5,type:'triangle',dur:.45,gain:.22,delay:.06});tone({f:f*2,type:'sine',dur:.7,gain:.18,delay:.12,filter:{f:4000}});noise({dur:.35,gain:.1,f:9000,to:5000,type:'highpass'});
+      if(v>=5)for(let i=0;i<3;i++)tone({f:f*(2.5+i*.5),type:'sine',dur:.35,gain:.09,delay:.18+i*.06});},
+    bust(){noise({dur:.28,gain:.22,f:1200,to:300,q:.8,type:'lowpass'});tone({f:520,type:'sine',dur:.35,gain:.16,slide:260,filter:{f:1800,to:600}});tone({f:390,type:'sine',dur:.4,gain:.12,delay:.08,slide:180});tone({f:260,type:'sine',dur:.5,gain:.1,delay:.16,slide:110});noise({dur:.15,gain:.08,f:6000,to:3000,type:'highpass',delay:.05});},
+    hold(n){const cnt=Math.min(6,3+Math.ceil(n/10)),base=[392,493.9,587.3,659.3,784,987.8];for(let i=0;i<cnt;i++)tone({f:base[i],type:'triangle',dur:.3,gain:.24,delay:i*.055,attack:.002});noise({dur:.5,gain:.1,f:8500,to:4000,type:'highpass',delay:cnt*.055});},
+    win(){[[523.3,0],[659.3,.12],[784,.24],[1046.5,.4],[1318.5,.55]].forEach(([f,d])=>{tone({f,type:'triangle',dur:1.1,gain:.22,delay:d});tone({f:f/2,type:'square',dur:.9,gain:.06,delay:d,filter:{f:1800}});});},
+    lose(){tone({f:392,type:'triangle',dur:.6,gain:.28});tone({f:349.2,type:'triangle',dur:.6,gain:.28,delay:.3});tone({f:293.7,type:'sawtooth',dur:1.4,gain:.25,delay:.6,slide:146.8,filter:{f:1000,to:200}});},
+    tick(){tone({f:1400,type:'sine',dur:.05,gain:.1});},
+    chime(){[659.3,987.8,1318.5].forEach((f,i)=>tone({f,type:'sine',dur:.55,gain:.075,delay:i*.055,attack:.004}));},   // 빛이 주사위를 들어 올릴 때
+    whoosh(){noise({dur:.42,gain:.09,f:420,to:1700,q:1.1,type:'bandpass'});},                                           // 정령이 날 때
+    ping(k){tone({f:1568,type:'sine',dur:.4,gain:.07*k});tone({f:2349.3,type:'sine',dur:.28,gain:.045*k,delay:.025});}  // 보이지 않는 울타리에 부딪힐 때
+  };})();
+
+/* ═══════════ 🌐 언어 · 테마 (10번과 같은 사전 구조 · 사전에 없는 말은 영어로 보인다) ═══════════ */
+const I18N={
+  en:{title:'SKYISLE LIVING',tagline:'THREE.JS · CLOUD SEA · WATERFALL · SPIRIT · LIGHT SHAFTS',bank:'MORA',time:'TIME',sound:'SOUND',lang:'LANGUAGE',theme:'THEME',
+    on:'ON',off:'OFF',light:'LIGHT',dark:'DARK',langName:'EN',me:'TRAVELER',cpu:'SPIRIT',roll:'ROLL',keep:'KEEP',begin:'BEGIN',again:'AGAIN',
+    hint:'SPACE · ROLL   H · KEEP   T · TIME',tod:['MIDNIGHT','DAWN','MORNING','NOON','AFTERNOON','DUSK','EVENING','NIGHT'],
+    yourRoll:'YOUR ROLL',windFair:'the wind is fair',rolling:'ROLLING',rollOrKeep:'roll again or keep',keepSecured:'mora secured',
+    burnedYou:'<b>BURNED.</b> the mora scatters — the spirit rolls',burnedCpu:'<b>THE SPIRIT BURNED.</b> your roll',spiritRolls:'THE SPIRIT ROLLS',
+    spiritPlus:(v,b)=>`<b>SPIRIT +${v}</b> mora ${b}`,spiritKeeps:'THE SPIRIT KEEPS',callBurned:'BURNED',callKeep:'KEEP',win:'ASCENSION',lose:'FALLEN',
+    gateInit:'Waking the island…',gateReady:'Cloud sea · waterfall · light shafts · spirit — ready<br>Sound will play; check your volume',
+    errNoGL:'This browser cannot run WebGL 2 — open it in a recent Chrome, Edge, Safari or Firefox',errInit:'Could not start the 3D scene'},
+  ko:{title:'살아 있는 하늘섬',tagline:'THREE.JS · 구름 바다 · 폭포 · 정령 · 햇살 줄기',bank:'모라',time:'시간',sound:'소리',lang:'언어',theme:'테마',
+    on:'켬',off:'끔',light:'밝게',dark:'어둡게',langName:'한국어',me:'여행자',cpu:'정령',roll:'굴리기',keep:'지키기',begin:'시작',again:'다시',
+    hint:'스페이스 · 굴리기   H · 지키기   T · 시간',tod:['자정','새벽','아침','정오','오후','해 질 녘','저녁','밤'],
+    yourRoll:'내 차례',windFair:'바람이 순합니다',rolling:'굴리는 중',rollOrKeep:'더 굴리거나 지키세요',keepSecured:'모라를 지켰습니다',
+    burnedYou:'<b>타 버렸다.</b> 모라가 흩어집니다 — 정령 차례',burnedCpu:'<b>정령이 타 버렸다.</b> 내 차례',spiritRolls:'정령이 굴립니다',
+    spiritPlus:(v,b)=>`<b>정령 +${v}</b> 모라 ${b}`,spiritKeeps:'정령이 지킵니다',callBurned:'타 버림',callKeep:'지킴',win:'승천',lose:'추락',
+    gateInit:'섬을 깨우는 중…',gateReady:'구름 바다 · 폭포 · 햇살 줄기 · 정령 — 준비됐습니다<br>소리가 납니다, 볼륨을 확인하세요',
+    errNoGL:'이 브라우저는 WebGL 2 를 지원하지 않습니다 — 최신 Chrome · Edge · Safari · Firefox 로 열어 주세요',errInit:'3D 장면을 시작하지 못했습니다'}};
+const PREF=(()=>{const K='skyisle11.';const get=k=>{try{return localStorage.getItem(K+k);}catch{return null;}};const set=(k,v)=>{try{localStorage.setItem(K+k,v);}catch{}};
+  const sysDark=matchMedia('(prefers-color-scheme: dark)');
+  const p={lang:get('lang')||((navigator.language||'').toLowerCase().startsWith('ko')?'ko':'en'),theme:get('theme')||(sysDark.matches?'dark':'light'),themeSaved:!!get('theme'),set};
+  sysDark.addEventListener('change',e=>{if(!p.themeSaved){p.theme=e.matches?'dark':'light';applyI18n();}});return p;})();
+function t(key,...a){const v=(I18N[PREF.lang]||I18N.en)[key]??I18N.en[key]??key;return typeof v==='function'?v(...a):v;}
+let lastStatus=()=>`<b>${t('yourRoll')}</b> — ${t('windFair')}`,gateState={k:'gateInit'},lastTodIdx=-1;
+function applyI18n(){const root=document.documentElement;root.lang=PREF.lang;root.dataset.theme=PREF.theme;
+  document.querySelectorAll('[data-i18n]').forEach(n=>{n.textContent=t(n.dataset.i18n);});
+  $('sndLbl').textContent=t(SFX.isOn()?'on':'off');$('langLbl').textContent=t('langName');$('themeLbl').textContent=t(PREF.theme);
+  if(lastTodIdx>=0)$('todLbl').textContent=t('tod')[lastTodIdx];
+  $('status').innerHTML=lastStatus();$('gatemsg').innerHTML=t(gateState.k);}
+$('snd').addEventListener('click',()=>{const on=SFX.toggle();$('snd').classList.toggle('off',!on);applyI18n();});
+$('langBtn').addEventListener('click',()=>{PREF.lang=PREF.lang==='ko'?'en':'ko';PREF.set('lang',PREF.lang);applyI18n();SFX.tick();});
+$('themeBtn').addEventListener('click',()=>{PREF.theme=PREF.theme==='dark'?'light':'dark';PREF.themeSaved=true;PREF.set('theme',PREF.theme);applyI18n();SFX.tick();});
+applyI18n();
+
+/* ═══════════ 화질 단계 ═══════════
+   손가락으로 쓰는 기기는 풀잎 · 꽃송이 · 구름 걸음 수 · 햇살 걸음 수 · 그림자 지도를 낮춰 시작한다.
+   프레임이 느려지면 그리는 해상도를 100% → 85% → 70% → 55% 로 낮추고, 여유가 생기면 되돌린다(아래 perf). */
+// TODO(미검증 · 2026-10-06 16:27 KST): 실제 휴대폰에서 열기 — 반정밀 부동소수 · 4배 다중 표본 렌더 타깃 지원과 프레임. 휴대폰 크기 흉내(390×844 · 손가락 입력)로 배치와 낮춘 화질만 봤다
+const TOUCH=matchMedia('(pointer: coarse)').matches;
+const Q={scale:1,dprCap:TOUCH?1.3:1.5,grass:TOUCH?14000:44000,cards:TOUCH?1000:1900,petals:TOUCH?220:340,cloudSteps:TOUCH?26:46,shaftSteps:TOUCH?10:20,shadow:TOUCH?1024:2048,atmo:.36};
+const SCALES=[1,.85,.7,.55];
+const RM=matchMedia('(prefers-reduced-motion: reduce)');   // 기기의 '동작 줄이기' — 카메라 날기 · 돌기 · 다가가기 · 흔들림을 끈다
+const DBG={force:null,noAtmo:false,noBloom:false,showFps:new URLSearchParams(location.search).has('fps')};   // 확인용 손잡이: force = 다음 눈(1~6) · noAtmo · noBloom = 구름과 햇살 · 빛 번짐 끄기 · 주소 뒤 ?fps = 프레임 표시
+if(DBG.showFps)$('fps').style.display='block';
+/* ═══════════ 장면 공용 값 — 모든 셰이더가 같은 객체를 나눠 쓴다(한 번 바꾸면 전부 바뀐다) ═══════════ */
+const U={uTime:{value:0},uSunDir:{value:V3(0,1,0)},uMoonDir:{value:V3(.55,.5,-.67).normalize()},
+  uZenith:{value:new THREE.Color()},uHorizon:{value:new THREE.Color()},uBelow:{value:new THREE.Color()},uGlow:{value:new THREE.Color()},uSunDisk:{value:new THREE.Color()},uNight:{value:0},
+  uLightDir:{value:V3(0,1,0)},uLightCol:{value:new THREE.Color()},uSkyAmb:{value:new THREE.Color()},uGroundAmb:{value:new THREE.Color()},uAmbTop:{value:new THREE.Color()},uAmbBot:{value:new THREE.Color()},
+  uShadowMap:{value:null},uShadowMatrix:{value:new THREE.Matrix4()},uSpiritPos:{value:V3(0,-60,0)},uSpiritCol:{value:new THREE.Color(0,0,0)},
+  uWind:{value:.45},uGust:{value:0},uPushA:{value:new THREE.Vector4()},uPushB:{value:new THREE.Vector4()},uCloudTop:{value:-9.6},uCloudBase:{value:-15.2}};
+
+/* ═══════════ GLSL 공용 조각 ═══════════ */
+const GL_NOISE=`
+float hash12(vec2 p){vec3 p3=fract(vec3(p.xyx)*.1031);p3+=dot(p3,p3.yzx+33.33);return fract((p3.x+p3.y)*p3.z);}
+float hash13(vec3 p3){p3=fract(p3*.1031);p3+=dot(p3,p3.zyx+31.32);return fract((p3.x+p3.y)*p3.z);}
+float vnoise(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);return mix(mix(hash12(i),hash12(i+vec2(1.,0.)),u.x),mix(hash12(i+vec2(0.,1.)),hash12(i+vec2(1.,1.)),u.x),u.y);}
+float vnoise3(vec3 p){vec3 i=floor(p),f=fract(p);vec3 u=f*f*(3.-2.*f);
+  return mix(mix(mix(hash13(i),hash13(i+vec3(1.,0.,0.)),u.x),mix(hash13(i+vec3(0.,1.,0.)),hash13(i+vec3(1.,1.,0.)),u.x),u.y),
+             mix(mix(hash13(i+vec3(0.,0.,1.)),hash13(i+vec3(1.,0.,1.)),u.x),mix(hash13(i+vec3(0.,1.,1.)),hash13(i+vec3(1.,1.,1.)),u.x),u.y),u.z);}
+float fbm(vec2 p){float v=0.,a=.5;for(int k=0;k<5;k++){v+=a*vnoise(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}
+`;
+// 하늘 바탕(지평선 · 천정 · 해 둘레 빛) — 하늘 구 · 안개 · 먼 구름이 같은 식을 쓴다
+const GL_SKY=`
+uniform vec3 uSunDir;uniform vec3 uMoonDir;uniform vec3 uZenith;uniform vec3 uHorizon;uniform vec3 uBelow;uniform vec3 uGlow;uniform vec3 uSunDisk;uniform float uNight;uniform float uTime;
+vec3 skyBase(vec3 d){
+  float h=d.y;
+  vec3 col=mix(uHorizon,uZenith,1.-pow(1.-clamp(h,0.,1.),2.6));
+  col=mix(col,uBelow,smoothstep(0.,-.22,h));
+  float cs=max(dot(d,uSunDir),0.);float up=smoothstep(-.14,.04,uSunDir.y);
+  col+=uGlow*(pow(cs,3.)*.11+pow(cs,14.)*.24+pow(cs,160.)*.8)*up;
+  col+=uHorizon*.1*exp(-abs(h)*28.);
+  return col;}
+`;
+// 하늘 구 전용: 높은 구름 · 해 · 달 · 별 · 밤의 오로라
+const GL_SKYFULL=`
+vec3 skyFull(vec3 d){
+  vec3 col=skyBase(d);float h=d.y;
+  if(h>0.){vec2 uv=d.xz/(h+.12)*.6+vec2(uTime*.003,0.);float n=fbm(uv*2.);float c=smoothstep(.5,.78,n)*smoothstep(0.,.3,h);
+    float sl=max(dot(d,uSunDir),0.);vec3 cc=mix(uHorizon*1.15,vec3(1.),.35)*(.75+.25*sl)+uGlow*.3*pow(sl,5.);cc=mix(cc,uZenith*1.6,uNight*.85);
+    col=mix(col,cc,c*.8);}
+  float cs=dot(d,uSunDir);col+=uSunDisk*smoothstep(.99955,.9998,cs);
+  float cm=dot(d,uMoonDir);col+=vec3(1.,.97,.9)*smoothstep(.99925,.99945,cm)*2.4*uNight+vec3(.4,.5,.9)*pow(max(cm,0.),300.)*.35*uNight;
+  if(uNight>.01&&h>-.05){vec3 p=d*240.;vec3 ip=floor(p);vec3 fp=fract(p)-.5;float r=hash13(ip);
+    if(r>.982){vec3 o=vec3(hash13(ip+11.),hash13(ip+23.),hash13(ip+37.))-.5;float s=smoothstep(.17,0.,length(fp-o*.6));
+      float tw=.55+.45*sin(uTime*(1.3+r*3.)+r*40.);col+=vec3(.85,.9,1.)*s*tw*uNight*smoothstep(-.05,.18,h)*(r>.997?3.:1.2);}}
+  if(uNight>.15&&h>0.){float az=atan(d.z,d.x);float a=0.;
+    for(int k=0;k<3;k++){float fk=float(k);float base=.17+fk*.06+.05*sin(az*2.+fk*1.7+uTime*.03);
+      float band=exp(-pow((h-base)*8.,2.));float cur=pow(vnoise(vec2(az*7.+fk*5.,uTime*.1+fk)),2.5)*1.8;float rays=.55+.45*vnoise(vec2(az*55.,uTime*.4));a+=band*cur*rays;}
+    vec3 ac=mix(vec3(.12,1.,.55),vec3(.8,.3,.85),smoothstep(.16,.36,h));col+=ac*a*.32*smoothstep(.15,1.,uNight);}
+  return col;}
+`;
+// three 의 햇빛 그림자 지도를 사용자 셰이더에서 읽는다(하드웨어 비교 샘플러 · 2×2 걸러짐)
+const GL_SHADOW=`
+uniform sampler2DShadow uShadowMap;uniform mat4 uShadowMatrix;
+float shadowAt(vec3 wp,float bias){vec4 sc=uShadowMatrix*vec4(wp,1.);sc.xyz/=sc.w;
+  if(sc.x<0.||sc.x>1.||sc.y<0.||sc.y>1.||sc.z>1.)return 1.;return texture(uShadowMap,vec3(sc.xy,sc.z-bias));}
+`;
+// 정령의 빛: 거리 제곱으로 줄고 정령 쪽을 향한 면이 더 밝다
+const GL_SPIRIT=`
+uniform vec3 uSpiritPos;uniform vec3 uSpiritCol;
+vec3 spiritLight(vec3 p,vec3 n){vec3 d=uSpiritPos-p;float r2=dot(d,d);return uSpiritCol*(.35+.65*max(dot(n,d*inversesqrt(max(r2,1e-4))),0.))/(1.+r2*1.6);}
+`;
+// 역광 투과: 해를 등진 얇은 잎 · 꽃 · 풀끝이 비쳐 빛난다(기본 재질의 조명 계산 끝에 덧붙인다 · 그림자 안에서는 꺼진다)
+const GL_BACKLIGHT=(tint,k,tip)=>`
+#if NUM_DIR_LIGHTS > 0
+{ float bsh=1.;
+  #if defined( USE_SHADOWMAP ) && NUM_DIR_LIGHT_SHADOWS > 0
+  bsh=receiveShadow?getShadow(directionalShadowMap[0],directionalLightShadows[0].shadowMapSize,directionalLightShadows[0].shadowIntensity,directionalLightShadows[0].shadowBias,directionalLightShadows[0].shadowRadius,vDirectionalShadowCoord[0]):1.;
+  #endif
+  float bk=pow(saturate(dot(-geometryViewDir,directionalLights[0].direction)),3.);
+  float wr=saturate(-dot(geometryNormal,directionalLights[0].direction)*.6+.4);
+  reflectedLight.directDiffuse+=diffuseColor.rgb*${tint}*directionalLights[0].color*(bk*.85+wr*.22)*bsh*${k}*${tip};}
+#endif`;
+
+/* ═══════════ 🌸 절차적 꽃잎 아틀라스 (10번과 같은 그림 — 캔버스로 그린다, 사진 없음) ═══════════ */
+function makePetalAtlas(){
+  const T=512,cv=document.createElement('canvas');cv.width=cv.height=T*2;const g=cv.getContext('2d');
+  const VAR=[{wk:.78,nd:.11,wav:.025,hue:0},{wk:.86,nd:.14,wav:.035,hue:1},{wk:.72,nd:.09,wav:.02,hue:2},{wk:.82,nd:.12,wav:.04,hue:3}];   // wk 폭 · nd 홈 깊이 · wav 가장자리 굴곡
+  const R=(seed=>()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;})(7);
+  VAR.forEach((V,k)=>{const ox=(k%2)*T+T/2,oy=Math.floor(k/2)*T+T/2;const L=440,sc=L/26.5;
+    // 벚꽃잎 윤곽: 도란형(밑동 좁고 끝이 넓음) + 끝의 얕은 V홈. t=0 밑동 → 1 끝, y 위가 끝
+    const W=L*.5*V.wk,nd=V.nd;const half=[];
+    for(let i=0;i<=80;i++){const t=i/80;const x=W*(.03+.97*Math.pow(Math.sin(Math.PI*Math.pow(t,.72)),.85));let y=L*t;   // 밑동 뾰족 · 최대폭 70% · 끝은 매끈한 돔
+      const nw=.26*W;if(t>.78&&x<nw){y-=nd*L*Math.pow(1-x/nw,1.4);}                                                       // 가운데만 V홈으로 파기
+      half.push([x,y]);}
+    const raw=half.concat(half.slice(0,-1).reverse().map(([x,y])=>[-x,y]));
+    const cx0=0,cy0=L*.5;const pts=raw.map(([x,y],i)=>{const a=Math.atan2(y-cy0,x-cx0);const wob=1+V.wav*Math.sin(5*a+k)+V.wav*.6*Math.sin(11*a+k*2.1)+.01*Math.sin(31*a);
+      return [ox+(cx0+(x-cx0)*wob),oy+L/2-(cy0+(y-cy0)*wob)];});
+    const path=new Path2D();pts.forEach((p,i)=>i?path.lineTo(p[0],p[1]):path.moveTo(p[0],p[1]));path.closePath();
+    g.save();g.clip(path);
+    const top=oy-L/2,bot=oy+L/2;const hueShift=[0,-6,4,-2][V.hue];
+    const grad=g.createLinearGradient(0,bot,0,top);grad.addColorStop(0,`hsl(${333+hueShift},70%,70%)`);grad.addColorStop(.14,`hsl(${338+hueShift},78%,88%)`);grad.addColorStop(.4,`hsl(${341+hueShift},70%,95.5%)`);grad.addColorStop(1,`hsl(${343+hueShift},60%,98%)`);
+    g.fillStyle=grad;g.fillRect(ox-T/2,oy-T/2,T,T);
+    // 세포 결: 미세 타원 알갱이
+    for(let i=0;i<3200;i++){const x=ox+(R()-.5)*T*.8,y=oy+(R()-.5)*T*.95;const t=(bot-y)/L;g.fillStyle=`hsla(${338+hueShift},60%,${R()<.5?55:98}%,${.03+.03*(1-t)})`;g.beginPath();g.ellipse(x,y,1.2+R()*2.2,.6+R()*1.2,R()*3,0,7);g.fill();}
+    // 잎맥: 주맥 + 가지
+    g.lineCap='round';
+    const vein=(x0,y0,x1,y1,cx,cy,w,a)=>{g.strokeStyle=`hsla(${332+hueShift},55%,60%,${a})`;g.lineWidth=w;g.beginPath();g.moveTo(x0,y0);g.quadraticCurveTo(cx,cy,x1,y1);g.stroke();};
+    vein(ox,bot-6,ox+(R()-.5)*8,top+L*.14,ox+(R()-.5)*20,oy,2.2,.2);
+    for(let j=0;j<11;j++){const t=.08+j*.078;const y=bot-L*t;const len=L*(.22+.25*Math.sin(Math.PI*t))*(.8+R()*.4);
+      for(const sgn of[-1,1]){const ang=(.55+.35*t)*sgn+(R()-.5)*.2;const x1=ox+Math.sin(ang)*len*sgn*sgn,y1=y-Math.cos(ang)*len;
+        vein(ox,y,ox+Math.sin(ang)*len,y1,ox+Math.sin(ang)*len*.45,y-Math.cos(ang)*len*.6,1.1,.13);
+        if(R()<.7){const bx=ox+Math.sin(ang)*len*.6,by=y-Math.cos(ang)*len*.65;vein(bx,by,bx+Math.sin(ang+.6*sgn)*len*.35,by-Math.cos(ang+.6*sgn)*len*.35,bx+Math.sin(ang)*len*.15,by-Math.cos(ang)*len*.2,.7,.09);}}}
+    // 밑동 진한 번짐 · 반점
+    const rg=g.createRadialGradient(ox,bot,0,ox,bot,L*.22);rg.addColorStop(0,`hsla(${328+hueShift},80%,55%,.5)`);rg.addColorStop(1,'hsla(330,80%,55%,0)');g.fillStyle=rg;g.fillRect(ox-T/2,oy-T/2,T,T);
+    for(let i=0;i<7;i++){const x=ox+(R()-.5)*T*.5,y=oy+(R()-.3)*T*.6;g.fillStyle=`hsla(${330+hueShift},60%,70%,${.08+R()*.1})`;g.beginPath();g.ellipse(x,y,3+R()*9,2+R()*5,R()*3,0,7);g.fill();}
+    // 가장자리 분홍 테 + 안쪽 밝은 림
+    g.restore();g.save();g.clip(path);g.strokeStyle=`hsla(${335+hueShift},70%,78%,.35)`;g.lineWidth=7;g.stroke(path);g.strokeStyle='hsla(340,80%,99%,.4)';g.lineWidth=3;g.stroke(path);g.restore();
+  });
+  return cv;}
+
+/* ═══════════ 🌸 꽃송이 카드 그림 (벚꽃 일곱 송이 · 다섯 잎 · 끝이 파인 꽃잎 · 꽃술) ═══════════ */
+function makeBlossomCanvas(){const S=256,cv=document.createElement('canvas');cv.width=cv.height=S;const g=cv.getContext('2d');const R=seeded(23);
+  const flower=(x,y,r,rot,hue,lum)=>{for(let k=0;k<5;k++){const a=rot+k*Math.PI*2/5;g.save();g.translate(x,y);g.rotate(a);
+      const gr=g.createLinearGradient(0,0,0,-r);gr.addColorStop(0,`hsl(${hue-6},72%,${lum-16}%)`);gr.addColorStop(.45,`hsl(${hue},78%,${lum}%)`);gr.addColorStop(1,`hsl(${hue+4},70%,${Math.min(97,lum+8)}%)`);
+      g.fillStyle=gr;g.beginPath();g.moveTo(0,0);g.bezierCurveTo(-r*.6,-r*.22,-r*.62,-r*.86,-r*.15,-r);g.lineTo(0,-r*.84);g.lineTo(r*.15,-r);g.bezierCurveTo(r*.62,-r*.86,r*.6,-r*.22,0,0);g.fill();g.restore();}
+    g.fillStyle=`hsl(${hue-12},70%,48%)`;g.beginPath();g.arc(x,y,r*.17,0,7);g.fill();
+    for(let k=0;k<10;k++){const a=R()*6.28,d=r*(.18+R()*.2);g.strokeStyle='rgba(200,120,140,.6)';g.lineWidth=1;g.beginPath();g.moveTo(x,y);g.lineTo(x+Math.cos(a)*d,y+Math.sin(a)*d);g.stroke();
+      g.fillStyle='hsl(46,92%,62%)';g.beginPath();g.arc(x+Math.cos(a)*d,y+Math.sin(a)*d,r*.04,0,7);g.fill();}};
+  for(let i=0;i<8;i++){const a=R()*6.28,d=Math.sqrt(R())*S*.27;flower(S/2+Math.cos(a)*d,S/2+Math.sin(a)*d,S*(.12+R()*.05),R()*6.28,336+R()*10,i<3?78:86+R()*6);}
+  return cv;}
+
+/* ═══════════ ☁️ 구름 잡음 지도 (이음매 없이 반복되는 256² — R: 큰 물결, G: 잔 물결, B: 큰 뭉게, A: 작은 뭉게) ═══════════ */
+function makeCloudNoise(S=256){
+  const H=(x,y,s)=>{let h=Math.imul(x,374761393)^Math.imul(y,668265263)^Math.imul(s+1,1442695041);h=Math.imul(h^(h>>>13),1274126177);h^=h>>>16;return (h>>>0)/4294967296;};
+  const wrap=(i,P)=>((i%P)+P)%P,fade=k=>k*k*k*(k*(k*6-15)+10);
+  const pn=(x,y,P,s)=>{const xi=Math.floor(x),yi=Math.floor(y),xf=x-xi,yf=y-yi;const gr=(ix,iy)=>{const a=H(wrap(ix,P),wrap(iy,P),s)*6.2831853;return [Math.cos(a),Math.sin(a)];};
+    const g00=gr(xi,yi),g10=gr(xi+1,yi),g01=gr(xi,yi+1),g11=gr(xi+1,yi+1);const u=fade(xf),v=fade(yf);
+    return mix(mix(g00[0]*xf+g00[1]*yf,g10[0]*(xf-1)+g10[1]*yf,u),mix(g01[0]*xf+g01[1]*(yf-1),g11[0]*(xf-1)+g11[1]*(yf-1),u),v);};
+  const fbm=(x,y,P,oct,s)=>{let v=0,a=.5,f=1,n=0;for(let o=0;o<oct;o++){v+=a*pn(x*f,y*f,P*f,s+o);n+=a;a*=.5;f*=2;}return v/n;};
+  const wor=(x,y,P,s)=>{const xi=Math.floor(x),yi=Math.floor(y);let d=9;for(let j=-1;j<=1;j++)for(let i=-1;i<=1;i++){const cx=xi+i,cy=yi+j,wx=wrap(cx,P),wy=wrap(cy,P);
+    const dx=cx+H(wx,wy,s)-x,dy=cy+H(wx,wy,s+7)-y;d=Math.min(d,dx*dx+dy*dy);}return Math.sqrt(d);};
+  const dome=f=>Math.sqrt(Math.max(0,1-(f/.8)**2));   // 가장 가까운 씨앗까지 거리 → 둥근 지붕 높이(뭉게구름 꼭대기)
+  const data=new Uint8Array(S*S*4);
+  for(let j=0;j<S;j++)for(let i=0;i<S;i++){const u=i/S,v=j/S,o=(j*S+i)*4;
+    data[o]=clamp((fbm(u*4,v*4,4,5,1)*.75+.5)*255,0,255);data[o+1]=clamp((fbm(u*16,v*16,16,4,11)*.75+.5)*255,0,255);
+    data[o+2]=clamp(dome(wor(u*7,v*7,7,21))*255,0,255);data[o+3]=clamp(dome(wor(u*15,v*15,15,31))*255,0,255);}
+  const tex=new THREE.DataTexture(data,S,S,THREE.RGBAFormat);tex.wrapS=tex.wrapT=THREE.RepeatWrapping;tex.magFilter=THREE.LinearFilter;tex.minFilter=THREE.LinearMipmapLinearFilter;tex.generateMipmaps=true;tex.needsUpdate=true;return tex;}
+
+/* ═══════════ 지오메트리 도우미 ═══════════ */
+// 굵기가 줄어드는 관(가지 · 뿌리) — 바깥을 향한 면이 앞면
+function tube(curve,segs,radial,r0,r1){const pos=[],nrm=[],idx=[];const fr=curve.computeFrenetFrames(segs,false);
+  for(let i=0;i<=segs;i++){const k=i/segs,P=curve.getPointAt(k),N=fr.normals[i],B=fr.binormals[i],r=mix(r0,r1,k);
+    for(let j=0;j<=radial;j++){const a=j/radial*Math.PI*2,c=Math.cos(a),s=Math.sin(a);const nx=N.x*c+B.x*s,ny=N.y*c+B.y*s,nz=N.z*c+B.z*s;pos.push(P.x+nx*r,P.y+ny*r,P.z+nz*r);nrm.push(nx,ny,nz);}}
+  for(let i=0;i<segs;i++)for(let j=0;j<radial;j++){const a=i*(radial+1)+j,b=a+radial+1;idx.push(a,a+1,b,b,a+1,b+1);}
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('normal',new THREE.Float32BufferAttribute(nrm,3));g.setIndex(idx);return g;}
+// 지오메트리에 한 가지 정점색을 입힌다(합치기 전에 색을 정한다)
+function colored(g,c){const n=g.attributes.position.count,a=new Float32Array(n*3);for(let i=0;i<n;i++){a[i*3]=c[0];a[i*3+1]=c[1];a[i*3+2]=c[2];}g.setAttribute('color',new THREE.BufferAttribute(a,3));if(g.attributes.uv)g.deleteAttribute('uv');return g;}
+// 울퉁불퉁한 돌: 정이십면체를 잡음으로 밀고, 위를 향한 면에는 이끼를 얹는다
+function rockGeo(seed,detail=2,moss=.6){const sn=new SimplexNoise({random:seeded(seed)});const ico=new THREE.IcosahedronGeometry(1,detail);ico.deleteAttribute('normal');ico.deleteAttribute('uv');const g=mergeVertices(ico);const p=g.attributes.position,col=new Float32Array(p.count*3);
+  for(let i=0;i<p.count;i++){const x=p.getX(i),y=p.getY(i),z=p.getZ(i);const n=1+sn.noise3d(x*1.3,y*1.3,z*1.3)*.22+sn.noise3d(x*3.1,y*3.1,z*3.1)*.08;p.setXYZ(i,x*n,y*n*.78,z*n);
+    const m=smooth(.25,.8,y+sn.noise3d(x*2,y*2,z*2)*.3)*moss;const base=[.2,.17,.14].map(v=>v*(.85+.3*(sn.noise3d(x*5,y*5,z*5)*.5+.5)));
+    col[i*3]=mix(base[0],.05,m);col[i*3+1]=mix(base[1],.09,m);col[i*3+2]=mix(base[2],.025,m);}
+  g.setAttribute('color',new THREE.BufferAttribute(col,3));g.computeVertexNormals();return g.toNonIndexed();}
+
+/* ═══════════ 🏝 섬 ═══════════
+   반지름 식은 10번과 같은 꼴(조금 넓혔다). FLAT_R 안은 물리 바닥(y=0)과 같은 높이로 평평하다 — 울타리(3.15) 안에서 주사위가 뜨거나 묻히지 않게 */
+const ISLE_R=a=>4.05*(1+.06*Math.sin(3*a+.4)+.04*Math.sin(7*a+1.3)+.03*Math.sin(11*a));
+const FLAT_R=3.3;
+const MAIN_SN=new SimplexNoise({random:seeded(3)});
+function rimY(r,a,Rt,flat,sn){if(r<=flat)return 0;const k=(r-flat)/Math.max(.08,Rt-flat);return .12*Math.sin(Math.PI*Math.min(1,k*1.1))-.13*smooth(.72,1,k)+sn.noise3d(Math.cos(a)*2.3,Math.sin(a)*2.3,.5)*.035*k;}
+function groundY(x,z){const r=Math.hypot(x,z),a=Math.atan2(z,x);return rimY(Math.min(r,ISLE_R(a)),a,ISLE_R(a),FLAT_R,MAIN_SN);}
+const RK=[[0,1],[-.22,.99],[-.5,.965],[-.88,.91],[-1.35,.82],[-1.9,.7],[-2.5,.57],[-3.1,.43],[-3.65,.3],[-4.15,.18],[-4.6,.08]];
+const RK2=RK.flatMap((r,i)=>i?[[(RK[i-1][0]+r[0])/2,(RK[i-1][1]+r[1])/2],r]:[r]);   // 큰 섬은 고리를 두 배로 촘촘하게(잔 잡음이 계단처럼 보이지 않게)
+function rockColor(y,a,depth,sn){const f=clamp(-y/depth,0,1);const n=sn.noise3d(Math.cos(a)*2,y*.8,Math.sin(a)*2);const band=.5+.5*Math.sin(y*5.2+n*2.4);
+  let c=[mix(.2,.3,band),mix(.125,.19,band),mix(.07,.1,band)];
+  if(n>.35)c=c.map((v,i)=>mix(v,[.16,.075,.045][i],smooth(.35,.7,n)));                                  // 녹슨 띠
+  c=c.map((v,i)=>mix([.05,.032,.018][i],v,smooth(0,.06,f)));                                            // 맨 위는 흙
+  const moss=(1-smooth(.04,.28,f))*smooth(.1,.55,sn.noise3d(Math.cos(a)*3.1,y*2,Math.sin(a)*3.1));c=c.map((v,i)=>mix(v,[.05,.085,.025][i],moss*.75));
+  return c.map(v=>v*mix(1,.42,f));}                                                                      // 아래로 갈수록 그늘
+function islandGeometry(Rf,{flat=FLAT_R,seg=128,depth=5,sn,rough=1,rk=RK}){
+  const TR=[.12,.26,.4,.53,.64,.73,.8,.86,.905,.94,.965,.985,1];
+  const tp=[0,0,0],tc=[],ti=[];const gA=[.032,.06,.018],gB=[.05,.075,.024],soil=[.06,.04,.022];tc.push(...gA);
+  for(const rn of TR)for(let s=0;s<seg;s++){const a=s/seg*Math.PI*2,Rt=Rf(a),r=rn*Rt;tp.push(Math.cos(a)*r,rimY(r,a,Rt,flat,sn),Math.sin(a)*r);
+    const n=sn.noise3d(Math.cos(a)*r*.6,1.3,Math.sin(a)*r*.6)*.5+.5,e=smooth(.88,1,rn);for(let c=0;c<3;c++)tc.push(mix(gA[c],gB[c],n)*(1-e)+soil[c]*e);}
+  for(let s=0;s<seg;s++)ti.push(0,1+(s+1)%seg,1+s);
+  for(let i=0;i<TR.length-1;i++)for(let s=0;s<seg;s++){const a=1+i*seg+s,b=1+i*seg+(s+1)%seg,c=a+seg,d=b+seg;ti.push(a,b,c,b,d,c);}
+  const top=new THREE.BufferGeometry();top.setAttribute('position',new THREE.Float32BufferAttribute(tp,3));top.setAttribute('color',new THREE.Float32BufferAttribute(tc,3));top.setIndex(ti);top.computeVertexNormals();
+  const rp=[],rc=[],ri=[];
+  rk.forEach(([y0,k],ring)=>{for(let s=0;s<seg;s++){const a=s/seg*Math.PI*2,Rt=Rf(a),ly=rimY(Rt,a,Rt,flat,sn);let x,y,z;
+    if(ring===0){x=Math.cos(a)*Rt;y=ly;z=Math.sin(a)*Rt;}
+    else{const yy=y0*depth/5,f=-yy/depth;const n1=sn.noise3d(Math.cos(a)*1.6,yy*.55,Math.sin(a)*1.6),n2=sn.noise3d(Math.cos(a)*4.2+9,yy*1.4,Math.sin(a)*4.2),n3=sn.noise3d(Math.cos(a)*9.5,yy*3.1,Math.sin(a)*9.5);
+      const rr=Rt*k*(1+(n1*.19+n2*.08+n3*.035)*rough*(.35+.65*f));y=yy+ly+(n2*.16+n3*.06)*rough;x=Math.cos(a)*rr;z=Math.sin(a)*rr;}
+    rp.push(x,y,z);rc.push(...rockColor(y,a,depth,sn));}});
+  const tipI=rp.length/3;rp.push(0,-4.95*depth/5,0);rc.push(.03,.025,.03);
+  for(let i=0;i<rk.length-1;i++)for(let s=0;s<seg;s++){const a=i*seg+s,b=i*seg+(s+1)%seg,c=a+seg,d=b+seg;ri.push(a,b,c,b,d,c);}
+  const last=(rk.length-1)*seg;for(let s=0;s<seg;s++)ri.push(last+s,last+(s+1)%seg,tipI);
+  const rock=new THREE.BufferGeometry();rock.setAttribute('position',new THREE.Float32BufferAttribute(rp,3));rock.setAttribute('color',new THREE.Float32BufferAttribute(rc,3));rock.setIndex(ri);rock.computeVertexNormals();
+  return{top,rock};}
+// 바위 재질: 정점색 위에 잔 얼룩 · 갈라진 틈을 얹는다(월드 좌표 잡음)
+function makeRockMat(){const m=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.93});
+  m.onBeforeCompile=sh=>{sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 vRP;').replace('#include <begin_vertex>','#include <begin_vertex>\nvRP=(modelMatrix*vec4(position,1.)).xyz;');
+    sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>\nvarying vec3 vRP;'+GL_NOISE).replace('#include <color_fragment>','#include <color_fragment>\n{float n=vnoise3(vRP*3.1)*.6+vnoise3(vRP*9.3)*.4;diffuseColor.rgb*=.78+.42*n;float cr=smoothstep(.62,.7,vnoise3(vRP*vec3(1.4,6.,1.4)));diffuseColor.rgb*=1.-cr*.35;}');};
+  m.customProgramCacheKey=()=>'rock';return m;}
+
+/* ═══════════ 장면 전역 ═══════════ */
+let renderer,scene,camera,pmrem,envScene,envRT=null,sunLight,spiritLight,skyMesh,skyMat,crystalMat;
+let rtOpaque,rtMain,rtAtmo,atmoMat,compMat,fsqAtmo,fsqComp,bloom,output;
+let dieMesh,dieShadow,petalGeo,petalMesh,grassMat,fxGeo,canopyMesh;
+const fxAttr={};const FAR=[],ORBIT=[];
+const TREE={pos:V3(-2.55,0,-1.85),tips:[],center:V3()};
+const TW=-.42,RW=ISLE_R(TW),OUT=V3(Math.cos(TW),0,Math.sin(TW)),TANG=V3(-Math.sin(TW),0,Math.cos(TW));   // 폭포: 섬 오른편 가장자리(조금 뒤쪽)
+const POOL={x:Math.cos(TW)*(RW-.58),z:Math.sin(TW)*(RW-.58),r:.4,y:0};
+const SPRING=[];   // 샘 둘레 바위 {x,z,s}
+const LIP=V3();
+
+/* ═══════════ 🌲 벚나무 — 가지 4단 분기(굵은 줄기 → 큰 가지 4 → 3 → 2 → 2) ═══════════ */
+function buildTree(){const rng=seeded(7),r=()=>rng()*2-1,parts=[];
+  function grow(p,dir,len,r0,r1,depth){const pts=[p.clone()];let d=dir.clone(),q=p.clone();
+    for(let k=1;k<=3;k++){d.add(V3(r()*.2,r()*.1,r()*.2));if(depth>0)d.y=Math.max(d.y,.1);d.normalize();q=q.clone().addScaledVector(d,len/3);pts.push(q);}
+    parts.push(tube(new THREE.CatmullRomCurve3(pts),depth<2?10:6,depth<2?9:6,r0,r1));
+    if(depth>=4){TREE.tips.push(q.clone());return;}
+    if(depth>=2)TREE.tips.push(q.clone());
+    const n=depth===0?4:depth===1?3:2,base=rng()*6.28,spread=[.6,.55,.5,.45][depth];
+    for(let i=0;i<n;i++){const az=base+i/n*Math.PI*2+r()*.5,out=V3(Math.cos(az),0,Math.sin(az));
+      const nd=d.clone().multiplyScalar(1-spread).addScaledVector(out,spread).add(V3(0,depth<2?.15:.06,0)).normalize();
+      grow(q,nd,len*(depth===0?.8:.72)*(.85+rng()*.3),r1,r1*.62,depth+1);}}
+  grow(V3(0,-.1,0),V3(.08,1,.04).normalize(),1.2,.22,.15,0);
+  for(let i=0;i<5;i++){const a=i/5*6.28+r()*.3;parts.push(tube(new THREE.CatmullRomCurve3([V3(Math.cos(a)*.1,.14,Math.sin(a)*.1),V3(Math.cos(a)*.4,.02,Math.sin(a)*.4),V3(Math.cos(a)*.62,-.06,Math.sin(a)*.62)]),6,6,.08,.02));}   // 땅 위로 드러난 뿌리
+  const g=mergeGeometries(parts);g.translate(TREE.pos.x,TREE.pos.y,TREE.pos.z);
+  TREE.tips.forEach(p=>p.add(TREE.pos));TREE.tips.forEach(p=>TREE.center.add(p));TREE.center.divideScalar(TREE.tips.length);TREE.center.y-=.3;
+  const mesh=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:new THREE.Color('#3a2a24'),roughness:.92}));mesh.castShadow=mesh.receiveShadow=true;return mesh;}
+// 꽃송이 카드 수천 장: 가지 끝 둘레에 흩뿌리고, 빛은 '나무 전체를 감싼 구'의 노멀로 받는다(카드마다 얼룩지지 않게)
+function buildCanopy(tex){const rng=seeded(19),gauss=()=>(rng()+rng()+rng()-1.5)*1.15;
+  const N=Q.cards,per=Math.ceil(N/TREE.tips.length);const geo=new THREE.PlaneGeometry(1,1);
+  const mat=new THREE.MeshStandardMaterial({map:tex,alphaTest:.42,side:THREE.DoubleSide,roughness:.78,alphaToCoverage:true});
+  const mesh=new THREE.InstancedMesh(geo,mat,N);const nrm=new Float32Array(N*3);const m=new THREE.Matrix4(),q=new THREE.Quaternion(),p=V3(),s=V3(),c=new THREE.Color(),e=new THREE.Euler();let i=0;
+  for(const tip of TREE.tips){for(let k=0;k<per&&i<N;k++,i++){p.set(tip.x+gauss()*.3,tip.y+gauss()*.2+.1,tip.z+gauss()*.3);e.set(rng()*6.28,rng()*6.28,rng()*6.28);q.setFromEuler(e);const sc=.3+rng()*.24;s.set(sc,sc,sc);
+    m.compose(p,q,s);mesh.setMatrixAt(i,m);const n=p.clone().sub(TREE.center);n.y*=.75;n.normalize();nrm[i*3]=n.x;nrm[i*3+1]=n.y;nrm[i*3+2]=n.z;
+    c.setHSL(.94+rng()*.03,.45+rng()*.25,.8+rng()*.14,THREE.SRGBColorSpace);mesh.setColorAt(i,c);}}
+  mesh.count=i;geo.setAttribute('iNrm',new THREE.InstancedBufferAttribute(nrm,3));
+  const sway=`{vec3 o=instanceMatrix[3].xyz;float ph=dot(o,vec3(1.3,.7,1.1));vec3 sw=vec3(sin(uTime*1.3+ph)*.035+uGust*.07,sin(uTime*1.7+ph*1.3)*.02,cos(uTime*1.1+ph)*.03)*smoothstep(1.,2.4,o.y);transformed+=inverse(mat3(instanceMatrix))*sw;}`;
+  mat.onBeforeCompile=sh=>{sh.uniforms.uTime=U.uTime;sh.uniforms.uGust=U.uGust;
+    sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nattribute vec3 iNrm;uniform float uTime;uniform float uGust;')
+      .replace('#include <defaultnormal_vertex>','#include <defaultnormal_vertex>\ntransformedNormal=normalize(mat3(viewMatrix)*iNrm);').replace('#include <begin_vertex>','#include <begin_vertex>\n'+sway);
+    sh.fragmentShader=sh.fragmentShader.replace('#include <normal_fragment_begin>',THREE.ShaderChunk.normal_fragment_begin.replace('normal *= faceDirection;',''))
+      .replace('#include <lights_fragment_end>','#include <lights_fragment_end>\n'+GL_BACKLIGHT('vec3(1.,.62,.72)','1.1','1.'));};
+  mat.customProgramCacheKey=()=>'canopy';
+  const dm=new THREE.MeshDepthMaterial({map:tex,alphaTest:.42,side:THREE.DoubleSide});
+  dm.onBeforeCompile=sh=>{sh.uniforms.uTime=U.uTime;sh.uniforms.uGust=U.uGust;sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nuniform float uTime;uniform float uGust;varying vec3 vCW;').replace('#include <begin_vertex>','#include <begin_vertex>\n'+sway+'\nvCW=(modelMatrix*instanceMatrix*vec4(transformed,1.)).xyz;');
+    sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>\nuniform float uTime;varying vec3 vCW;'+GL_NOISE).replace('#include <alphatest_fragment>','#include <alphatest_fragment>\nif(vnoise3(vCW*2.1+vec3(uTime*.05,0.,uTime*.025))>.54)discard;   // 그림자에만 난 구멍');};
+  dm.customProgramCacheKey=()=>'canopyDepth';mesh.customDepthMaterial=dm;mesh.castShadow=mesh.receiveShadow=true;return mesh;}
+
+/* ═══════════ 🌿 풀밭 — 풀잎 한 장(5마디 + 끝)을 수만 번 찍는다. 바람 물결 · 주사위와 정령 둘레 눌림 · 그림자 · 역광 ═══════════ */
+function buildGrass(){const P=[],I=[];for(let i=0;i<=5;i++){const k=i/6,w=.5*Math.pow(1-k,.8),z=.1*k*k;P.push(-w,k,z,w,k,z);}P.push(0,1,.1);
+  for(let i=0;i<5;i++){const a=i*2;I.push(a,a+1,a+2,a+1,a+3,a+2);}I.push(10,11,12);
+  const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(P,3));geo.setAttribute('normal',new THREE.Float32BufferAttribute(P.map((v,i)=>i%3===1?1:0),3));geo.setIndex(I);
+  grassMat=new THREE.MeshStandardMaterial({color:0xffffff,roughness:.82,side:THREE.DoubleSide});
+  grassMat.onBeforeCompile=sh=>{Object.assign(sh.uniforms,{uTime:U.uTime,uWind:U.uWind,uPushA:U.uPushA,uPushB:U.uPushB});
+    sh.vertexShader=sh.vertexShader.replace('#include <common>',`#include <common>
+uniform float uTime;uniform float uWind;uniform vec4 uPushA;uniform vec4 uPushB;varying float vH;varying float vVar;
+vec2 pushAway(vec2 p,vec2 c,float r){vec2 d=p-c;float l=length(d);if(l>=r||r<=0.)return vec2(0.);return d/max(l,1e-3)*(1.-l/r)*1.7;}`)
+      .replace('#include <beginnormal_vertex>',`#include <beginnormal_vertex>
+mat3 gIM=mat3(instanceMatrix);vec3 gO=instanceMatrix[3].xyz;float gHash=fract(sin(dot(gO.xz,vec2(12.9898,78.233)))*43758.5453);float gH=position.y;float gLen=length(gIM[1]);
+vec2 wdir=normalize(vec2(1.,.35));float wave=.5+.5*sin(dot(gO.xz,wdir)*1.25-uTime*2.1+gHash*6.28);
+vec2 bend=wdir*(uWind*(.35+.65*wave)*.9+.12*sin(uTime*1.7+gHash*6.28))+pushAway(gO.xz,uPushA.xy,uPushA.z)*uPushA.w+pushAway(gO.xz,uPushB.xy,uPushB.z)*uPushB.w;
+float gBl=min(length(bend),1.3);vec3 gOff=vec3(bend.x,-gBl*.35*gH,bend.y)*gH*gH*gLen;
+objectNormal=vec3(0.,1.,0.);vH=gH;vVar=gHash;`)
+      .replace('#include <begin_vertex>','#include <begin_vertex>\ntransformed+=inverse(gIM)*gOff;');
+    sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>\nvarying float vH;varying float vVar;')
+      .replace('#include <color_fragment>',`#include <color_fragment>
+diffuseColor.rgb=mix(vec3(.05,.13,.03),vec3(.36,.6,.14),smoothstep(0.,1.,vH))*(.8+.4*vVar);
+if(vVar>.968&&vH>.78){diffuseColor.rgb=vVar>.988?vec3(1.,.55,.7):vVar>.978?vec3(1.,.86,.3):vec3(.95,.95,.9);}   // 풀끝 몇 개는 작은 꽃(분홍 · 노랑 · 흰색)`)
+      .replace('#include <normal_fragment_begin>',THREE.ShaderChunk.normal_fragment_begin.replace('normal *= faceDirection;',''))
+      .replace('#include <lights_fragment_end>','#include <lights_fragment_end>\n'+GL_BACKLIGHT('vec3(.9,1.,.55)','1.3','vH*vH'));};
+  grassMat.customProgramCacheKey=()=>'grass';
+  const rng=seeded(5),N=Q.grass,mesh=new THREE.InstancedMesh(geo,grassMat,N);const m=new THREE.Matrix4(),q=new THREE.Quaternion(),s=V3(),p=V3(),Y=V3(0,1,0);let n=0,guard=0;
+  while(n<N&&guard++<N*5){const a=rng()*Math.PI*2,Rr=ISLE_R(a)-.08,r=Math.sqrt(rng())*Rr;const x=Math.cos(a)*r,z=Math.sin(a)*r;
+    if(Math.hypot(x-TREE.pos.x,z-TREE.pos.z)<.3)continue;if(Math.hypot(x-POOL.x,z-POOL.z)<POOL.r+.1)continue;if(SPRING.some(o=>Math.hypot(x-o.x,z-o.z)<o.s*.85))continue;
+    const edge=smooth(2.6,3.5,r);const h=mix(.09,.19,rng())+edge*mix(.1,.3,rng())+(Math.hypot(x-TREE.pos.x,z-TREE.pos.z)<1.3?.08:0);
+    p.set(x,groundY(x,z)-.01,z);q.setFromAxisAngle(Y,rng()*6.28);const w=mix(.032,.058,rng());s.set(w,h,w);m.compose(p,q,s);mesh.setMatrixAt(n++,m);}
+  mesh.count=n;mesh.receiveShadow=true;mesh.frustumCulled=false;return mesh;}
+
+/* ═══════════ 💧 샘 · 폭포 ═══════════ */
+function buildWater(){
+  const g=new THREE.Group();const rockMatS=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.9});
+  const place=[[TANG.clone().multiplyScalar(.55).addScaledVector(OUT,.12),.3],[TANG.clone().multiplyScalar(-.55).addScaledVector(OUT,.1),.27],[OUT.clone().multiplyScalar(-.48).addScaledVector(TANG,.14),.46],[OUT.clone().multiplyScalar(-.3).addScaledVector(TANG,-.42),.24]];
+  const parts=[];place.forEach(([o,s],i)=>{const x=POOL.x+o.x,z=POOL.z+o.z;SPRING.push({x,z,s});const r=rockGeo(40+i);r.scale(s,s*(i===2?1.25:1),s);r.rotateY(i*1.7);r.translate(x,groundY(x,z)+s*.25,z);parts.push(r);});
+  const rocks=new THREE.Mesh(mergeGeometries(parts),rockMatS);rocks.castShadow=rocks.receiveShadow=true;g.add(rocks);
+  POOL.y=groundY(POOL.x,POOL.z)+.035;
+  const poolMat=new THREE.ShaderMaterial({uniforms:{...U},vertexShader:`varying vec3 vW;void main(){vec4 w=modelMatrix*vec4(position,1.);vW=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}`,
+    fragmentShader:GL_NOISE+GL_SKY+`uniform vec3 uLightDir;uniform vec3 uLightCol;varying vec3 vW;
+      void main(){vec2 q=vW.xz*7.;vec3 n=normalize(vec3((vnoise(q+uTime*.9)-.5)*.3,1.,(vnoise(q*1.3-uTime*.8+4.)-.5)*.3));vec3 v=normalize(cameraPosition-vW);vec3 r=reflect(-v,n);
+        float fr=.04+.96*pow(1.-max(dot(n,v),0.),5.);vec3 col=mix(vec3(.015,.07,.08),skyBase(r),clamp(fr*1.1+.12,0.,1.));col+=uLightCol*pow(max(dot(r,uLightDir),0.),220.)*1.6;
+        float rim=smoothstep(.75,1.,length(vW.xz-vec2(${POOL.x.toFixed(3)},${POOL.z.toFixed(3)}))/${POOL.r.toFixed(3)});col=mix(col,vec3(.75,.85,.85)*uLightCol*.12+vec3(.08),rim*.5);
+        gl_FragColor=vec4(col,1.);}`});
+  const pool=new THREE.Mesh(new THREE.CircleGeometry(POOL.r,40).rotateX(-Math.PI/2),poolMat);pool.position.set(POOL.x,POOL.y,POOL.z);g.add(pool);
+  // 물줄기: 샘에서 넘쳐 가장자리를 지나 구름 바다로 떨어지는 휘어진 띠
+  LIP.set(Math.cos(TW)*(RW+.02),groundY(Math.cos(TW)*RW*.998,Math.sin(TW)*RW*.998)-.03,Math.sin(TW)*(RW+.02));
+  const NS=56,NC=7,pos=[],uv=[],nrm=[],idx=[];const start=V3(POOL.x,POOL.y,POOL.z).addScaledVector(OUT,POOL.r*.85);
+  for(let i=0;i<=NS;i++){const k=i/NS;let c,tg;
+    if(k<.08){const u=k/.08;c=start.clone().lerp(LIP,u);tg=LIP.clone().sub(start).normalize();}
+    else{const tau=(k-.08)/.92*2.4;c=LIP.clone().addScaledVector(OUT,1.05*tau);c.y-=.5*4.3*tau*tau;tg=OUT.clone().multiplyScalar(1.05).add(V3(0,-4.3*tau,0)).normalize();}
+    const w=mix(.5,1.35,smooth(0,1,k));const n=new THREE.Vector3().crossVectors(TANG,tg).normalize();if(n.dot(OUT)<0)n.negate();
+    for(let j=0;j<NC;j++){const u=j/(NC-1);const p=c.clone().addScaledVector(TANG,(u-.5)*w);pos.push(p.x,p.y,p.z);uv.push(u,k);nrm.push(n.x,n.y,n.z);}}
+  for(let i=0;i<NS;i++)for(let j=0;j<NC-1;j++){const a=i*NC+j,b=a+NC;idx.push(a,b,a+1,a+1,b,b+1);}
+  const fg=new THREE.BufferGeometry();fg.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));fg.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));fg.setAttribute('normal',new THREE.Float32BufferAttribute(nrm,3));fg.setIndex(idx);
+  const fallMat=new THREE.ShaderMaterial({uniforms:{...U},transparent:true,depthWrite:false,side:THREE.DoubleSide,blending:THREE.CustomBlending,blendSrc:THREE.OneFactor,blendDst:THREE.OneMinusSrcAlphaFactor,
+    vertexShader:`varying vec2 vUv;varying vec3 vW;varying vec3 vN;void main(){vUv=uv;vN=normalize(mat3(modelMatrix)*normal);vec4 w=modelMatrix*vec4(position,1.);vW=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}`,
+    fragmentShader:GL_NOISE+`uniform float uTime;uniform vec3 uLightDir;uniform vec3 uLightCol;uniform vec3 uSkyAmb;uniform float uCloudTop;varying vec2 vUv;varying vec3 vW;varying vec3 vN;
+      void main(){float u=vUv.x,v=vUv.y;float fl=v*10.-uTime*2.9;
+        float s1=vnoise(vec2(u*10.,fl)),s2=vnoise(vec2(u*21.+3.1,fl*1.8-uTime*.9));float streak=smoothstep(.45,.85,s1*.6+s2*.5);
+        float foam=clamp(streak+smoothstep(.14,.0,v)*.85,0.,1.);vec3 base=mix(vec3(.2,.45,.6),vec3(1.),foam);
+        float lit=.5+.5*max(dot(normalize(vN),uLightDir),0.);vec3 col=base*(uLightCol*.33*lit+uSkyAmb*1.1)+uLightCol*pow(streak,5.)*.45;
+        float edge=smoothstep(0.,.2,u)*smoothstep(1.,.8,u);float fade=smoothstep(uCloudTop-.6,uCloudTop+2.4,vW.y);
+        float a=edge*(.5+.5*foam)*fade;gl_FragColor=vec4(col*a,a);}`});
+  const fall=new THREE.Mesh(fg,fallMat);fall.layers.set(1);fall.frustumCulled=false;fall.renderOrder=2;g.add(fall);
+  return g;}
+
+/* ═══════════ 💎 수정 · 매달린 뿌리 · 가장자리 돌 · 떠다니는 바위 ═══════════ */
+function crystalCluster(rng,n,scale){const parts=[];for(let i=0;i<n;i++){const h=(.45+rng()*.9)*scale,r=(.07+rng()*.07)*scale;
+  const c=new THREE.CylinderGeometry(r*.82,r,h,6,1);c.translate(0,h/2,0);const tp=new THREE.ConeGeometry(r*.82,r*1.9,6);tp.translate(0,h+r*.95,0);
+  const m=mergeGeometries([c,tp]);m.rotateX((rng()-.5)*1.1);m.rotateZ((rng()-.5)*1.1);m.translate((rng()-.5)*.12*scale,0,(rng()-.5)*.12*scale);parts.push(m);}
+  const g=mergeGeometries(parts);g.deleteAttribute('uv');return g;}
+const rockRadiusAt=y=>{for(let i=1;i<RK.length;i++){if(y>=RK[i][0]*1.04)return mix(RK[i-1][1],RK[i][1],(RK[i-1][0]*1.04-y)/((RK[i-1][0]-RK[i][0])*1.04));}return .05;};
+function buildDecor(){const g=new THREE.Group();const rng=seeded(31);
+  crystalMat=new THREE.MeshStandardMaterial({color:new THREE.Color('#9ff7e6'),emissive:new THREE.Color('#33e6c4'),emissiveIntensity:1.4,roughness:.18,metalness:.05});
+  const cr=[];
+  for(let i=0;i<7;i++){const a=i/7*6.28+.4+rng()*.3,y=-1-rng()*2.4;const k=rockRadiusAt(y)*.93,R=ISLE_R(a)*k;const geo=crystalCluster(rng,4+Math.floor(rng()*3),.55+rng()*.35);
+    const dir=V3(Math.cos(a)*.55,-.83,Math.sin(a)*.55).normalize();geo.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(V3(0,1,0),dir));geo.translate(Math.cos(a)*R,y,Math.sin(a)*R);cr.push(geo);}
+  {const geo=crystalCluster(rng,5,.42);const x=POOL.x-TANG.x*.95,z=POOL.z-TANG.z*.95;geo.translate(x,groundY(x,z)-.05,z);cr.push(geo);}
+  const crys=new THREE.Mesh(mergeGeometries(cr),crystalMat);crys.castShadow=true;g.add(crys);
+  // 섬 밑에 매달린 뿌리
+  const roots=[];for(let i=0;i<18;i++){const a=i/18*6.28+rng()*.2;if(Math.abs(Math.atan2(Math.sin(a-TW),Math.cos(a-TW)))<.35)continue;const y0=-.25-rng()*1.2,R=ISLE_R(a)*rockRadiusAt(y0)*.96;
+    const p0=V3(Math.cos(a)*R,y0,Math.sin(a)*R),len=.8+rng()*1.5;const pts=[p0];for(let k=1;k<=4;k++){const pk=pts[k-1].clone();pk.y-=len/4;pk.x+=(rng()-.5)*.25-Math.cos(a)*.05;pk.z+=(rng()-.5)*.25-Math.sin(a)*.05;pts.push(pk);}
+    roots.push(tube(new THREE.CatmullRomCurve3(pts),10,5,.05+rng()*.03,.006));}
+  const rootMesh=new THREE.Mesh(mergeGeometries(roots),new THREE.MeshStandardMaterial({color:new THREE.Color('#2a1c14'),roughness:1}));g.add(rootMesh);
+  // 가장자리에 흩어진 돌
+  const st=[];for(let i=0;i<20;i++){const a=rng()*6.28;if(Math.abs(Math.atan2(Math.sin(a-TW),Math.cos(a-TW)))<.45)continue;const r=ISLE_R(a)-.15-rng()*.45,x=Math.cos(a)*r,z=Math.sin(a)*r;if(Math.hypot(x-TREE.pos.x,z-TREE.pos.z)<.6)continue;
+    const s=.08+rng()*.17;const geo=rockGeo(60+i,1);geo.scale(s,s,s);geo.rotateY(rng()*6);geo.translate(x,groundY(x,z)+s*.25,z);st.push(geo);}
+  const stones=new THREE.Mesh(mergeGeometries(st),new THREE.MeshStandardMaterial({vertexColors:true,roughness:.9}));stones.castShadow=stones.receiveShadow=true;g.add(stones);
+  // 섬 둘레를 천천히 도는 바위 (10번과 같은 궤도 계산)
+  for(let k=0;k<6;k++){const geo=rockGeo(80+k,2);const s=.35+k*.09;geo.scale(s,s,s);const m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,roughness:.9}));m.castShadow=true;
+    m.userData.orbit={a:Math.PI+.3+k/6*(Math.PI-.6)+(k%2?2.4:0),r:6.6+k*.65,y:-1.6+k*.5,spd:.12+k*.025};g.add(m);ORBIT.push(m);}
+  return g;}
+
+/* ═══════════ 🏝 먼 섬들 — 같은 섬 생성기를 작게 · 거칠게. 공기 원근으로 멀수록 하늘빛에 녹는다 ═══════════ */
+function buildFarIslands(){const g=new THREE.Group();const rockMat=makeRockMat();const topMat=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1});const treeMat=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.85});
+  const L=[{p:[-24,-3.4,-31],R:3,seed:11,trees:5,pink:1},{p:[27,-4.6,-39],R:4.1,seed:12,trees:6,pink:0},{p:[-56,-2.8,-76],R:6.4,seed:13,trees:9,pink:2},{p:[11,-6.5,-62],R:2.3,seed:14,trees:2,pink:1},
+    {p:[52,-1.5,-98],R:7.5,seed:15,trees:10,pink:0},{p:[-33,-4,26],R:3.6,seed:16,trees:5,pink:1},{p:[38,-5.5,31],R:4.6,seed:17,trees:6,pink:0},{p:[-14,-7.2,-48],R:1.8,seed:18,trees:1,pink:1}];
+  for(const o of L){const sn=new SimplexNoise({random:seeded(o.seed)}),ph=o.seed*1.7;const Rf=a=>o.R*(1+.08*Math.sin(3*a+ph)+.05*Math.sin(5*a+ph*1.3));
+    const ig=islandGeometry(Rf,{flat:o.R*.78,seg:44,depth:o.R*1.35,sn,rough:1.4});const grp=new THREE.Group();grp.add(new THREE.Mesh(ig.top,topMat),new THREE.Mesh(ig.rock,rockMat));
+    const rng=seeded(o.seed+100),tr=[];
+    for(let i=0;i<o.trees;i++){const a=rng()*6.28,r=Math.sqrt(rng())*o.R*.62,x=Math.cos(a)*r,z=Math.sin(a)*r,s=(.55+rng()*.5)*Math.min(1.4,o.R/3.2);const pink=i<o.pink;
+      const tk=colored(new THREE.CylinderGeometry(.05*s,.09*s,.7*s,6),[.12,.07,.05]);tk.translate(x,.35*s,z);tr.push(tk);
+      for(let b=0;b<3;b++){const c=colored(new THREE.IcosahedronGeometry((.32+rng()*.18)*s,1),pink?[.85,.42,.55]:[.07,.19+rng()*.06,.05]);c.translate(x+(rng()-.5)*.35*s,(.85+rng()*.35)*s,z+(rng()-.5)*.35*s);tr.push(c);}}
+    if(tr.length){const tm=new THREE.Mesh(mergeGeometries(tr.map(q=>q.index?q.toNonIndexed():q)),treeMat);grp.add(tm);}
+    grp.position.set(...o.p);grp.userData={y:o.p[1],ph};g.add(grp);FAR.push(grp);}
+  return g;}
+
+/* ═══════════ 🎲 원목 주사위 — 둥근 모서리 + 실제로 파인 눈(구면 캡) · 짙은 호두나무 · 밝은 원목 상감 눈금 · 1은 빨강 (10번과 같은 형상 · 같은 색 규칙) ═══════════ */
+function buildDieGeometry(size=1,rr=.11,N=44){const h=size/2,R=.085*size,dep=.03*size,Rs=(R*R+dep*dep)/(2*dep);
+  const F=[[[1,0,0],[0,0,-1],[0,1,0]],[[-1,0,0],[0,0,1],[0,1,0]],[[0,1,0],[1,0,0],[0,0,-1]],[[0,-1,0],[1,0,0],[0,0,1]],[[0,0,1],[1,0,0],[0,1,0]],[[0,0,-1],[-1,0,0],[0,1,0]]];
+  const FACEVAL=[1,6,2,5,3,4],PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
+  const pos=[],nrm=[],uv=[],face=[],idx=[];const add=(a,b,k)=>[a[0]+b[0]*k,a[1]+b[1]*k,a[2]+b[2]*k];
+  F.forEach(([n,u,v],fi)=>{const base=pos.length/3;const pips=PIPS[FACEVAL[fi]].map(k=>[(-.25+(k%3)*.25)*size,(-.25+Math.floor(k/3)*.25)*size]);
+    for(let j=0;j<=N;j++)for(let i=0;i<=N;i++){const a=(i/N*2-1)*h,b=(j/N*2-1)*h;const P0=[n[0]*h+u[0]*a+v[0]*b,n[1]*h+u[1]*a+v[1]*b,n[2]*h+u[2]*a+v[2]*b];
+      const q=P0.map(x=>Math.max(-(h-rr),Math.min(h-rr,x)));const d=[P0[0]-q[0],P0[1]-q[1],P0[2]-q[2]];const len=Math.hypot(...d);let P,nn;
+      if(len>1e-6){P=add(q,d,rr/len);nn=d.map(x=>x/len);}else{P=P0;nn=n;}
+      if(Math.abs(a)<h-rr&&Math.abs(b)<h-rr)for(const [pa,pb] of pips){const dd=Math.hypot(a-pa,b-pb);if(dd<R){const dl=Math.sqrt(Rs*Rs-dd*dd)-(Rs-dep);P=add(P,n,-dl);
+        const C=add([n[0]*h+u[0]*pa+v[0]*pb,n[1]*h+u[1]*pa+v[1]*pb,n[2]*h+u[2]*pa+v[2]*pb],n,Rs-dep);const w=[C[0]-P[0],C[1]-P[1],C[2]-P[2]];const wl=Math.hypot(...w);nn=w.map(x=>x/wl);break;}}
+      pos.push(...P);nrm.push(...nn);uv.push((a/h+1)/2,(b/h+1)/2);face.push(fi);}
+    for(let j=0;j<N;j++)for(let i=0;i<N;i++){const p=base+j*(N+1)+i,q=p+N+1;idx.push(p,p+1,q,p+1,q+1,q);}});
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('normal',new THREE.Float32BufferAttribute(nrm,3));
+  g.setAttribute('dieUv',new THREE.Float32BufferAttribute(uv,2));g.setAttribute('dieFace',new THREE.Float32BufferAttribute(face,1));g.setIndex(idx);return g;}
+const DIE_U={uHot:{value:0},uGlow:{value:0}};
+function buildDie(){const mat=new THREE.MeshPhysicalMaterial({roughness:.6,metalness:0,clearcoat:.38,clearcoatRoughness:.36});
+  mat.onBeforeCompile=sh=>{Object.assign(sh.uniforms,DIE_U);
+    sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nattribute float dieFace;attribute vec2 dieUv;varying float vFace;varying vec2 vDUv;varying vec3 vObj;').replace('#include <begin_vertex>','#include <begin_vertex>\nvFace=dieFace;vDUv=dieUv;vObj=position;');
+    sh.fragmentShader=sh.fragmentShader.replace('#include <common>',`#include <common>
+uniform float uHot;uniform float uGlow;varying float vFace;varying vec2 vDUv;varying vec3 vObj;${GL_NOISE}
+const uint PIPM[7]=uint[7](0u,16u,257u,273u,325u,341u,365u);
+float faceVal(float f){int i=int(f+.5);return i==0?1.:i==1?6.:i==2?2.:i==3?5.:i==4?3.:4.;}
+vec3 dieAlbedo(out vec2 info){float val=faceVal(vFace);uint mask=PIPM[int(val)];float d=10.;
+  for(int k=0;k<9;k++){if((mask&(1u<<uint(k)))!=0u){vec2 c=vec2(.25+float(k%3)*.25,.25+float(k/3)*.25);d=min(d,distance(vDUv,c));}}
+  float grain=fbm(vec2(vDUv.x*3.,vDUv.y*20.)+vec2(val*11.7,val*3.3));float knot=vnoise3(vObj*1.6+val);
+  vec3 base=mix(vec3(.045,.019,.008),vec3(.15,.07,.03),grain)*(.82+.36*knot);                       // 짙은 호두나무 · 면마다 다른 나뭇결
+  float rough=.56+.22*vnoise3(vObj*13.);float paint=1.-smoothstep(.072,.08,d);                      // 구멍 안쪽만 칠한다(가장자리 원목 유지)
+  base=mix(base,val==1.?vec3(.4,.012,.01):vec3(.62,.42,.17),paint);rough=mix(rough,.4,paint);        // 밝은 원목 상감 · 1은 빨간 점
+  float ao=1.-.35*(1.-smoothstep(.055,.1,d));base=mix(base,vec3(.6,.2,.12),uHot*.6);info=vec2(rough,ao);return base*ao;}`)
+      .replace('#include <map_fragment>','#include <map_fragment>\nvec2 dieInfo;diffuseColor.rgb=dieAlbedo(dieInfo);')
+      .replace('#include <roughnessmap_fragment>','float roughnessFactor=dieInfo.x;')
+      .replace('#include <emissivemap_fragment>','#include <emissivemap_fragment>\ntotalEmissiveRadiance+=vec3(1.,.82,.5)*uGlow*.35+vec3(1.,.3,.15)*uHot*.12;')
+      .replace('#include <aomap_fragment>','#include <aomap_fragment>\nreflectedLight.indirectDiffuse*=dieInfo.y;reflectedLight.indirectSpecular*=mix(1.,dieInfo.y,.6);');};
+  mat.customProgramCacheKey=()=>'die';
+  const m=new THREE.Mesh(buildDieGeometry(),mat);m.castShadow=m.receiveShadow=true;return m;}
+
+/* ═══════════ 🌸 꽃잎 340장 — 10번의 공기역학 계산 그대로 · 인스턴스 곡면 꽃잎 ═══════════ */
+const PETALS=[];
+const qrot=(q,v)=>{const ux=q[0],uy=q[1],uz=q[2],w=q[3];const tx=2*(uy*v[2]-uz*v[1]),ty=2*(uz*v[0]-ux*v[2]),tz=2*(ux*v[1]-uy*v[0]);return [v[0]+w*tx+uy*tz-uz*ty,v[1]+w*ty+uz*tx-ux*tz,v[2]+w*tz+ux*ty-uy*tx];};
+const qmul=(a,b)=>[a[3]*b[0]+a[0]*b[3]+a[1]*b[2]-a[2]*b[1],a[3]*b[1]-a[0]*b[2]+a[1]*b[3]+a[2]*b[0],a[3]*b[2]+a[0]*b[1]-a[1]*b[0]+a[2]*b[3],a[3]*b[3]-a[0]*b[0]-a[1]*b[1]-a[2]*b[2]];
+const qaxis=(ax,a)=>{const s=Math.sin(a/2),l=Math.hypot(...ax)||1;return [ax[0]/l*s,ax[1]/l*s,ax[2]/l*s,Math.cos(a/2)];};
+const qnorm=q=>{const l=Math.hypot(...q)||1;return q.map(x=>x/l);};
+const qrand=()=>qnorm([rnd(-1,1),rnd(-1,1),rnd(-1,1),rnd(-1,1)]);
+const vsub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]],vadd=(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]],vscl=(a,k)=>[a[0]*k,a[1]*k,a[2]*k],vdot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],vcross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+function spawnPetal(p,initial){p.fg=false;const fromTree=Math.random()<.75;
+  if(fromTree){const c=TREE.tips[Math.floor(Math.random()*TREE.tips.length)]||TREE.pos;p.p=[c.x+rnd(-.3,.3),c.y+rnd(-.2,.2)+(initial?rnd(-1,4):0),c.z+rnd(-.3,.3)];}
+  else if(Math.random()<.45){p.fg=true;p.p=[rnd(-5,5),rnd(3,7),rnd(3.5,8.5)];}   // 전경: 카메라 바로 앞을 지난다
+  else p.p=[rnd(-7,7),rnd(6,9),rnd(-8,3)];
+  if(initial&&!fromTree)p.p[1]=rnd(-2,8);
+  p.v=[rnd(-.3,.3),rnd(-.2,0),rnd(-.3,.3)];p.q=qrand();p.w=[rnd(-3,3),rnd(-3,3),rnd(-3,3)];p.size=rnd(.12,.19)*(p.fg?1.6:1);p.state=0;p.alpha=1;p.tile=Math.floor(Math.random()*4);p.ce=rnd(.08,.5);p.ct=rnd(-.15,.55);p.cph=rnd(0,6.28);
+  const k=Math.random();p.tint=[.95+k*.08,.9+k*.1,.92+k*.08];p.timer=0;}
+function windAt(p,tt){const gust=Math.max(0,Math.sin(tt*.31)+Math.sin(tt*.77)*.5-.55)*2.2;
+  return [.45+.35*Math.sin(tt*.13)+gust+Math.sin(p[1]*1.3+tt*.9)*.25,.15*Math.sin(tt*.5+p[0])+gust*.15,.2*Math.cos(tt*.09)+Math.cos(p[0]*.9+tt*.7)*.2];}
+function stepPetals(dt,tt){const A=petalGeo.attributes;const P=A.iPos.array,Qa=A.iQuat.array,Ti=A.iTint.array,X=A.iExt.array;
+  PETALS.forEach((p,i)=>{
+    if(p.state===0){const n=qrot(p.q,[0,0,1]);const W=windAt(p.p,tt);const vrel=vsub(p.v,W);const facing=vdot(n,vrel);
+      const drag=vadd(vscl(n,-facing*Math.abs(facing)*2.6),vscl(vrel,-.4));const acc=vadd([0,-3.2,0],drag);
+      p.v=vadd(p.v,vscl(acc,dt));p.p=vadd(p.p,vscl(p.v,dt));
+      const tq=vadd(vscl(vcross(n,vrel),1.6),[rnd(-1,1)*2.5,rnd(-1,1)*2.5,rnd(-1,1)*2.5]);p.w=vscl(vadd(p.w,vscl(tq,dt)),1-1.1*dt);   // 흐름을 마주보려는 토크 + 난류 → 팔랑임
+      const dq=qmul([p.w[0],p.w[1],p.w[2],0],p.q);p.q=qnorm([p.q[0]+dq[0]*.5*dt,p.q[1]+dq[1]*.5*dt,p.q[2]+dq[2]*.5*dt,p.q[3]+dq[3]*.5*dt]);
+      const r=Math.hypot(p.p[0],p.p[2]),ang=Math.atan2(p.p[2],p.p[0]);
+      if(p.p[1]<.035&&r<ISLE_R(ang)*.98){p.state=1;p.p[1]=Math.max(.035,groundY(p.p[0],p.p[2])+.03);p.v=[0,0,0];p.w=[0,0,0];p.q=qmul(qaxis([0,1,0],rnd(0,6.28)),qaxis([1,0,0],-Math.PI/2+rnd(-.25,.25)));p.timer=rnd(4,10);}
+      else if(p.p[1]<-9||r>16)spawnPetal(p,false);}
+    else{p.timer-=dt;if(p.timer<1)p.alpha=Math.max(0,p.timer);if(p.timer<=0)spawnPetal(p,false);}
+    const flex=p.state===0?1+.35*Math.sin(tt*2.2+p.cph):1;
+    P.set([p.p[0],p.p[1],p.p[2],p.size],i*4);Qa.set(p.q,i*4);Ti.set([p.tint[0],p.tint[1],p.tint[2],p.alpha],i*4);X.set([p.tile,p.ce*flex,p.ct*flex,0],i*4);});
+  for(const k of ['iPos','iQuat','iTint','iExt'])A[k].needsUpdate=true;}
+// 주사위가 세게 떨어지면 둘레에 내려앉은 꽃잎이 다시 날아오른다
+function kickPetals(x,z,v){for(const p of PETALS){if(p.state!==1)continue;const dx=p.p[0]-x,dz=p.p[2]-z,d=Math.hypot(dx,dz);if(d>1.25)continue;
+  const k=(1.25-d)/1.25*Math.min(1,v/10);p.state=0;p.alpha=1;p.v=[dx/(d+.01)*2.2*k,1.2+3.2*k,dz/(d+.01)*2.2*k];p.w=[rnd(-6,6),rnd(-6,6),rnd(-6,6)];}}
+function buildPetals(atlasTex){for(let i=0;i<Q.petals;i++){const p={};spawnPetal(p,true);PETALS.push(p);}
+  const NU=4,NV=6,pv=[],pi=[];for(let b=0;b<=NV;b++)for(let a=0;a<=NU;a++)pv.push(a/NU*2-1,b/NV*2-1,0);for(let b=0;b<NV;b++)for(let a=0;a<NU;a++){const p=b*(NU+1)+a,q=p+NU+1;pi.push(p,p+1,q,p+1,q+1,q);}
+  petalGeo=new THREE.InstancedBufferGeometry();petalGeo.setAttribute('position',new THREE.Float32BufferAttribute(pv,3));petalGeo.setIndex(pi);
+  for(const k of ['iPos','iQuat','iTint','iExt'])petalGeo.setAttribute(k,new THREE.InstancedBufferAttribute(new Float32Array(Q.petals*4),4).setUsage(THREE.DynamicDrawUsage));
+  petalGeo.instanceCount=Q.petals;
+  const mat=new THREE.ShaderMaterial({uniforms:{...U,uAtlas:{value:atlasTex}},side:THREE.DoubleSide,alphaToCoverage:true,
+    vertexShader:`attribute vec4 iPos;attribute vec4 iQuat;attribute vec4 iTint;attribute vec4 iExt;varying vec3 vWorld;varying vec3 vNrm;varying vec2 vQ;varying vec4 vTint;varying float vTile;
+      vec3 qr(vec4 q,vec3 v){return v+2.*cross(q.xyz,cross(q.xyz,v)+q.w*v);}
+      void main(){float u=position.x,v=position.y,cup=.28,ce=iExt.y,ct=iExt.z,tv=max(0.,v-.4);
+        float z=cup*(u*u*.8+v*v*.35)-cup*.45+ce*u*u*u*u+ct*tv*tv*2.8;float dzu=cup*1.6*u+4.*ce*u*u*u,dzv=cup*.7*v+ct*5.6*tv;
+        vec3 n=normalize(vec3(-dzu,-.5*dzv,.5));vec3 wp=iPos.xyz+qr(iQuat,vec3(u*.5,v,z)*iPos.w);
+        vWorld=wp;vNrm=qr(iQuat,n);vQ=position.xy;vTint=iTint;vTile=iExt.x;gl_Position=projectionMatrix*viewMatrix*vec4(wp,1.);}`,
+    fragmentShader:GL_SHADOW+GL_SPIRIT+`uniform sampler2D uAtlas;uniform vec3 uLightDir;uniform vec3 uLightCol;uniform vec3 uSkyAmb;uniform vec3 uGroundAmb;
+      varying vec3 vWorld;varying vec3 vNrm;varying vec2 vQ;varying vec4 vTint;varying float vTile;
+      void main(){vec2 tuv=vec2(vQ.x*.5+.5,vQ.y*.5+.5);vec2 auv=vec2((mod(vTile,2.)+tuv.x)*.5,(1.-floor(vTile/2.)+tuv.y)*.5);
+        vec4 tex=texture2D(uAtlas,auv);float a=tex.a*vTint.a;if(a<.05)discard;
+        vec3 col=tex.rgb*vTint.rgb;vec3 n=normalize(vNrm);vec3 vd=normalize(cameraPosition-vWorld);if(dot(n,vd)<0.)n=-n;
+        float sh=shadowAt(vWorld,.002);float ndl=dot(n,uLightDir);float wrap=clamp((ndl+.4)/1.4,0.,1.);
+        vec3 lit=col*uLightCol*wrap*mix(.3,1.,sh)*.33;lit+=col*mix(uGroundAmb,uSkyAmb,n.y*.5+.5);lit+=col*spiritLight(vWorld,n);
+        lit+=col*max(0.,-ndl)*.26*uLightCol*sh*vec3(1.,.9,.95);                  // 역광 투과(얇은 꽃잎이 밝게)
+        vec3 h=normalize(uLightDir+vd);lit+=pow(max(dot(n,h),0.),24.)*.04*uLightCol*sh;  // 왁스질 약한 하이라이트
+        gl_FragColor=vec4(lit,smoothstep(.35,.6,a));}`});
+  const m=new THREE.Mesh(petalGeo,mat);m.frustumCulled=false;return m;}
+
+/* ═══════════ ✦ 이펙트 파티클 — 별빛 · 요정 테마(10번의 효과 함수 그대로) + 정령의 별 · 반딧불 · 물보라 · 빛줄기 ═══════════
+   종류(ty): 0 부드러운 빛방울 · 1 네 갈래 별 · 2 바닥 고리 · 3 바닥 원판 · 4 물안개(넓고 옅게) · 5 세운 고리(보이지 않는 울타리의 물결) */
+const FXN=3600,FX=[];
+function buildFX(){fxGeo=new THREE.InstancedBufferGeometry();fxGeo.setAttribute('position',new THREE.Float32BufferAttribute([-1,-1,0,1,-1,0,1,1,0,-1,1,0],3));fxGeo.setIndex([0,1,2,0,2,3]);
+  for(const k of ['iPos','iCol','iExt']){fxAttr[k]=new THREE.InstancedBufferAttribute(new Float32Array(FXN*4),4).setUsage(THREE.DynamicDrawUsage);fxGeo.setAttribute(k,fxAttr[k]);}fxGeo.instanceCount=0;
+  const mat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.CustomBlending,blendSrc:THREE.OneFactor,blendDst:THREE.OneMinusSrcAlphaFactor,
+    vertexShader:`attribute vec4 iPos;attribute vec4 iCol;attribute vec4 iExt;varying vec2 vC;varying vec4 vCol;varying float vTy;varying float vRot;
+      void main(){vec2 c=position.xy;float ty=iExt.x;vec3 R=vec3(viewMatrix[0][0],viewMatrix[1][0],viewMatrix[2][0]),Up=vec3(viewMatrix[0][1],viewMatrix[1][1],viewMatrix[2][1]);vec3 wp;
+        if(ty>1.5&&ty<3.5)wp=iPos.xyz+vec3(c.x,0.,c.y)*iPos.w;else wp=iPos.xyz+(R*c.x+Up*c.y)*iPos.w;
+        vC=c;vCol=iCol;vTy=ty;vRot=iExt.y;gl_Position=projectionMatrix*viewMatrix*vec4(wp,1.);}`,
+    fragmentShader:`varying vec2 vC;varying vec4 vCol;varying float vTy;varying float vRot;
+      void main(){float d=length(vC),a=0.;
+        if(vTy<.5){a=smoothstep(1.,0.,d);a*=a;}
+        else if(vTy<1.5){float cr=cos(vRot),sr=sin(vRot);vec2 p=mat2(cr,-sr,sr,cr)*vC;float s=max(0.,1.-abs(p.x*p.y)*30.)*(1.-d);a=s*s+smoothstep(.4,0.,d)*.9;}
+        else if(vTy<2.5||vTy>4.5)a=smoothstep(.72,.82,d)*(1.-smoothstep(.92,1.,d));
+        else if(vTy<3.5)a=1.-smoothstep(.45,1.,d);
+        else a=smoothstep(1.,.1,d)*.7;
+        a*=vCol.a;if(a<.002)discard;gl_FragColor=vec4(vCol.rgb*a,a);}`});
+  const m=new THREE.Mesh(fxGeo,mat);m.frustumCulled=false;m.layers.set(1);m.renderOrder=6;return m;}
+const C=(c,k=2.2)=>lin(c).map(x=>x*k);   // 이펙트 색은 화면값으로 적고, 빛나는 정도(k)를 곱한다 → 꽃빛 번짐(bloom)에 걸린다
+const dayK=()=>mix(.2,1,1-U.uNight.value);   // 물안개 · 물보라 · 먼지처럼 스스로 빛나지 않는 것은 밤에 어둡게
+function puff(x,y,z,n){for(let k=0;k<n;k++){const a=rnd(0,6.28),s=rnd(.5,2.5);FX.push({x,y,z,vx:Math.cos(a)*s,vy:rnd(.5,2),vz:Math.sin(a)*s,life:rnd(.3,.7),max:.7,size:rnd(.1,.2),ty:4,c:C([1,.98,.9],.8*dayK()),a:.5,g:-2});}}
+function burst(x,y,z,col,n=140,speed=5,up=3){for(let k=0;k<n;k++){const a=rnd(0,6.28),e=rnd(0,1.2),s=speed*rnd(.3,1);FX.push({x,y,z,vx:Math.cos(a)*Math.cos(e)*s,vy:Math.sin(e)*s+up*Math.random(),vz:Math.sin(a)*Math.cos(e)*s,life:rnd(.5,1.2),max:1.2,size:rnd(.06,.18),ty:k%4===0?1:0,rot:rnd(0,6),c:C(col,2.4),a:.95,g:-6});}
+  FX.push({x,y:.08,z,vx:0,vy:0,vz:0,life:.7,max:.7,size:.3,grow:6,ty:2,c:C(col,2),a:.95,g:0});}
+function goldRain(n){for(let k=0;k<n;k++)FX.push({x:rnd(-4,4),y:rnd(5,9),z:rnd(-4,4),vx:rnd(-.3,.3),vy:rnd(-1,-2.5),vz:rnd(-.3,.3),life:rnd(2,3.5),max:3.5,size:rnd(.06,.14),ty:k%3===0?1:0,rot:rnd(0,6),spin:rnd(-2,2),c:C([1,.85,.4],2.6),a:.95,g:-.5});}
+const SPARK_PAL=[[.78,.66,1],[.6,.8,1],[.55,1,.85],[1,.82,.55],[1,.92,.6]];   // 눈금 2~6 파스텔 (6 = 금빛)
+function sparkleBurst(x,y,z,v){const col=SPARK_PAL[v-2],n=18+v*8;
+  FX.push({x,y:.03,z,vx:0,vy:0,vz:0,life:.5,max:.5,size:.25+v*.05,grow:v*1.1,ty:3,c:C(col,1.4),a:.55,g:0});
+  FX.push({x,y:.05,z,vx:0,vy:0,vz:0,life:.6,max:.6,size:.3+v*.05,grow:v*.9,ty:2,c:C(col,2),a:.9,g:0});
+  for(let k=0;k<n;k++){const a=rnd(0,6.28),r=rnd(.1,.5),up=rnd(1.5,3.5);
+    FX.push({x,y:y+rnd(.55,.9),z,vx:0,vy:up,vz:0,swirl:a,sr:r,cx:x,cz:z,life:rnd(.6,1.1),max:1.1,size:rnd(.06,.14)*(k%3===0?1.8:1),ty:k%3===0?1:0,rot:rnd(0,6),spin:rnd(-3,3),c:C(col,2.8),a:.95,g:-1.2});}}
+function fizzlePoof(x,y,z){const col=[.62,.55,.72];
+  FX.push({x,y:.04,z,vx:0,vy:0,vz:0,life:.45,max:.45,size:.5,grow:-3.5,ty:2,c:C(col,1.6),a:.85,g:0});
+  for(let k=0;k<26;k++){const a=rnd(0,6.28),s=rnd(.3,1.2);FX.push({x,y:y+rnd(.5,.85),z,vx:Math.cos(a)*s,vy:rnd(.3,1.1),vz:Math.sin(a)*s,life:rnd(.4,.8),max:.8,size:rnd(.07,.15),ty:0,c:C(col,1.2),a:.7,g:-.6});}
+  for(let k=0;k<8;k++){const a=rnd(0,6.28),s=rnd(.5,1.6);FX.push({x,y:y+.9,z,vx:Math.cos(a)*s,vy:rnd(-.2,.4),vz:Math.sin(a)*s,life:rnd(.6,1.1),max:1.1,size:rnd(.04,.08),ty:0,c:C([.85,.78,.95],1.4),a:.9,g:-.4});}}
+function fairySeal(x,z,amt){const col=[1,.78,.92],n=Math.min(90,26+amt*2.2);
+  FX.push({x,y:.05,z,vx:0,vy:0,vz:0,life:.7,max:.7,size:.15,grow:amt*.05+2,ty:3,c:C(col,1.4),a:.6,g:0});
+  for(let k=0;k<n;k++){const a=rnd(0,6.28),r=rnd(1.1,1.9);FX.push({x,y:rnd(1.1,2.2),z,vx:0,vy:rnd(-1.4,-.4),vz:0,swirl:a,sr:r,cx:x,cz:z,life:rnd(.7,1.3),max:1.3,size:rnd(.06,.13),ty:k%4===0?1:0,rot:rnd(0,6),c:C(col,2.6),a:.9,g:0,srr:-1.3});}}
+function barrierRipple(x,y,z,k){const r=Math.hypot(x,z)||1;FX.push({x:x/r*3.2,y:clamp(y,.4,2.6),z:z/r*3.2,vx:0,vy:0,vz:0,life:.55,max:.55,size:.2,grow:2.6,ty:5,c:C([.6,1,.92],2.2),a:.85*k,g:0,free:true});
+  for(let i=0;i<6;i++)FX.push({x:x/r*3.2,y:clamp(y,.4,2.6),z:z/r*3.2,vx:rnd(-.6,.6),vy:rnd(-.3,.8),vz:rnd(-.6,.6),life:rnd(.3,.6),max:.6,size:rnd(.04,.07),ty:1,rot:rnd(0,6),c:C([.7,1,.95],2.8),a:.9,g:0,free:true});
+  SFX.ping(k);}
+// 계속 켜져 있는 것들: 정령 둘레 별 · 반딧불(밤) · 폭포 물보라와 물안개 · 정령이 주사위를 드는 빛줄기
+const FIREFLY=[];{const r=seeded(77);for(let i=0;i<64;i++)FIREFLY.push({x:(r()-.5)*8,y:.3+r()*2.4,z:(r()-.5)*8,ph:r()*30,sp:.3+r()*.5});}
+let sprayAcc=0,mistAcc=0;
+function stepFX(dt){let n=0;const P=fxAttr.iPos.array,Cc=fxAttr.iCol.array,X=fxAttr.iExt.array;
+  const put=(x,y,z,s,r,g,b,a,ty,rot)=>{if(n>=FXN)return;const o=n*4;P[o]=x;P[o+1]=y;P[o+2]=z;P[o+3]=s;Cc[o]=r;Cc[o+1]=g;Cc[o+2]=b;Cc[o+3]=a;X[o]=ty;X[o+1]=rot;X[o+2]=0;X[o+3]=0;n++;};
+  // 폭포 물보라(가장자리)와 물안개(구름 바다에 닿는 곳)
+  sprayAcc+=dt*26;while(sprayAcc>1){sprayAcc--;const s=rnd(-.5,.5);FX.push({x:LIP.x+TANG.x*s*.6,y:LIP.y-.05,z:LIP.z+TANG.z*s*.6,vx:OUT.x*rnd(.8,1.8)+rnd(-.3,.3),vy:rnd(.2,1.2),vz:OUT.z*rnd(.8,1.8)+rnd(-.3,.3),life:rnd(.5,.9),max:.9,size:rnd(.03,.06),ty:0,c:C([.95,1,1],1.3*dayK()),a:.7,g:-6,free:true});}
+  mistAcc+=dt*7;while(mistAcc>1){mistAcc--;const tau=rnd(1.9,2.4);const x=LIP.x+OUT.x*1.05*tau+rnd(-.6,.6),z=LIP.z+OUT.z*1.05*tau+rnd(-.6,.6);
+    FX.push({x,y:U.uCloudTop.value+rnd(.2,1.6),z,vx:rnd(-.2,.2),vy:rnd(.15,.45),vz:rnd(-.2,.2),life:rnd(1.8,2.8),max:2.8,size:rnd(.8,1.6),grow:.35,ty:4,c:C([1,1,1],.9*dayK()),a:.32,g:0,free:true});}
+  for(let i=FX.length-1;i>=0;i--){const p=FX[i];p.life-=dt;if(p.life<=0){FX.splice(i,1);continue;}
+    if(p.swirl!==undefined){p.swirl+=dt*4;p.sr=Math.max(0,p.sr+(p.srr??.3)*dt);p.x=p.cx+Math.cos(p.swirl)*p.sr;p.z=p.cz+Math.sin(p.swirl)*p.sr;}
+    p.vy+=p.g*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.z+=p.vz*dt;if(p.y<0&&!p.free&&p.ty<=1&&Math.hypot(p.x,p.z)<3.6){p.y=0;p.vy*=-.3;}
+    if(p.grow)p.size=Math.max(.001,p.size+p.grow*dt);if(p.spin)p.rot+=p.spin*dt;const k=Math.min(1,p.life/(p.max*.5));
+    put(p.x,p.y,p.z,p.size,p.c[0],p.c[1],p.c[2],p.a*k,p.ty,p.rot||0);}
+  // 정령 둘레를 도는 별 아홉 개
+  const sc=lin([.75,1,.95]);for(let i=0;i<9;i++){const a=SP.spin*(1+i*.09)+i*.7,r=(.42+.07*Math.sin(T*2+i))*SP.scale,tl=i*.35;
+    put(SP.draw.x+Math.cos(a)*r,SP.draw.y+Math.sin(a)*r*Math.sin(tl)*.6,SP.draw.z+Math.sin(a)*r*Math.cos(tl),.05*SP.scale,sc[0]*2.6,sc[1]*2.6,sc[2]*2.6,.9*SP.bright*SP.alpha,i%3===0?1:0,a);}
+  // 빛줄기: 정령에서 주사위로 흘러가는 빛 알갱이
+  if(SP.tether>.01){const a=SP.draw,b=dieMesh.position;for(let i=0;i<14;i++){const k=(i/14+T*1.6)%1;const m=V3().lerpVectors(a,b,k);m.y+=Math.sin(Math.PI*k)*.35;
+    put(m.x,m.y,m.z,.06+.04*Math.sin(k*9+T*8),sc[0]*3,sc[1]*3,sc[2]*3,SP.tether*.9,i%2,k*6);}}
+  // 반딧불: 저녁 · 밤에만
+  const nf=U.uNight.value;if(nf>.25){const fc=lin([.85,1,.45]);for(const f of FIREFLY){const k=T*f.sp+f.ph;const bl=Math.max(0,Math.sin(k*2.1))**3;
+    put(f.x+Math.sin(k*.7)*.8,f.y+Math.sin(k*1.1)*.3,f.z+Math.cos(k*.6)*.8,.045,fc[0]*3.5,fc[1]*3.5,fc[2]*3.5,(nf-.25)*1.33*bl,0,0);}}
+  fxGeo.instanceCount=n;for(const k in fxAttr)fxAttr[k].needsUpdate=true;}
+
+/* ═══════════ ✦ 빛의 정령 — 빛 덩어리 · 광채 · 맴도는 별 · 작은 눈 두 개 · 꼬리 빛 · 둘레를 비추는 빛 ═══════════
+   새 코드는 코드로 조립한 캐릭터를 쓰지 않는다(그림은 Draw Things 규칙) — 10번 계획과 같이 '빛'으로만 그린다 */
+const SP={pos:V3(.9,2.05,-1.9),home:V3(.9,2.05,-1.9),draw:V3(.9,2.05,-1.9),anchor:null,path:null,react:null,orbit:null,mood:0,moodUntil:0,blink:0,bright:1,brightT:1,brightUntil:0,scale:1,scaleT:1,alpha:1,spin:0,trail:[],tether:0,last:V3(),speed:0};
+const SPIRIT_COL=new THREE.Color('#c4fbe9'),TRAIL_N=30;let spCore,spHalo,spEyes,spTrail,eyesU;
+class Ribbon{constructor(n,mat){this.n=n;const g=new THREE.BufferGeometry();this.pos=new Float32Array(n*6);const tt=new Float32Array(n*2),sd=new Float32Array(n*2),idx=[];
+    for(let i=0;i<n;i++){tt[i*2]=tt[i*2+1]=i/(n-1);sd[i*2]=-1;sd[i*2+1]=1;}for(let i=0;i<n-1;i++){const a=i*2;idx.push(a,a+2,a+1,a+1,a+2,a+3);}
+    g.setAttribute('position',new THREE.BufferAttribute(this.pos,3).setUsage(THREE.DynamicDrawUsage));g.setAttribute('tt',new THREE.BufferAttribute(tt,1));g.setAttribute('sd',new THREE.BufferAttribute(sd,1));g.setIndex(idx);
+    this.mesh=new THREE.Mesh(g,mat);this.mesh.frustumCulled=false;this.mesh.layers.set(1);}
+  update(pts,width,cam){const n=this.n,P=this.pos,tg=V3(),to=V3(),sd=V3();
+    for(let i=0;i<n;i++){const p=pts[Math.min(i,pts.length-1)],a=pts[Math.max(0,Math.min(i,pts.length-1)-1)],b=pts[Math.min(pts.length-1,i+1)];tg.subVectors(b,a);if(tg.lengthSq()<1e-10)tg.set(0,1,0);
+      to.subVectors(cam.position,p);sd.crossVectors(tg,to);if(sd.lengthSq()<1e-10)sd.set(1,0,0);sd.normalize().multiplyScalar(width(i/(n-1)));P.set([p.x-sd.x,p.y-sd.y,p.z-sd.z,p.x+sd.x,p.y+sd.y,p.z+sd.z],i*6);}
+    this.mesh.geometry.attributes.position.needsUpdate=true;}}
+const BILLBOARD=`uniform float uSize;uniform float uAspect;varying vec2 vUv;void main(){vUv=uv;vec3 c=modelMatrix[3].xyz;vec3 R=vec3(viewMatrix[0][0],viewMatrix[1][0],viewMatrix[2][0]),Up=vec3(viewMatrix[0][1],viewMatrix[1][1],viewMatrix[2][1]);
+  vec3 w=c+(R*position.x*uAspect+Up*position.y)*uSize;gl_Position=projectionMatrix*viewMatrix*vec4(w,1.);}`;
+function buildSpirit(){const g=new THREE.Group();
+  spCore=new THREE.Mesh(new THREE.SphereGeometry(.22,32,20),new THREE.ShaderMaterial({uniforms:{uTime:U.uTime,uBright:{value:1},uAlpha:{value:1},uCore:{value:new THREE.Color('#fff2d8')},uRim:{value:new THREE.Color('#78f2d6')}},
+    vertexShader:`varying vec3 vN;varying vec3 vW;void main(){vN=normalize(mat3(modelMatrix)*normal);vec4 w=modelMatrix*vec4(position,1.);vW=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}`,
+    fragmentShader:`uniform float uTime;uniform float uBright;uniform float uAlpha;uniform vec3 uCore;uniform vec3 uRim;varying vec3 vN;varying vec3 vW;
+      void main(){vec3 v=normalize(cameraPosition-vW);vec3 n=normalize(vN);float fr=pow(1.-max(dot(n,v),0.),2.2);float sw=.5+.5*sin(dot(n,vec3(3.,5.,2.))*2.2+uTime*3.1);
+        vec3 c=(uCore*(1.15+.3*sw)+uRim*fr*2.2)*uBright*uAlpha;gl_FragColor=vec4(c,1.);}`}));
+  spHalo=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({uniforms:{uSize:{value:1.15},uAspect:{value:1},uBright:{value:1},uSpin:{value:0},uCol:{value:new THREE.Color('#7af0d4')}},transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+    vertexShader:BILLBOARD,fragmentShader:`uniform float uBright;uniform float uSpin;uniform vec3 uCol;varying vec2 vUv;
+      void main(){vec2 c=vUv*2.-1.;float r=length(c);float a=exp(-r*r*10.)*.45+exp(-r*r*55.)*.8;float ang=atan(c.y,c.x);
+        float rays=pow(abs(sin(ang*3.+uSpin*.4)),18.)*exp(-r*4.)*.35+pow(abs(sin(ang*2.-uSpin*.3)),26.)*exp(-r*3.4)*.22;
+        gl_FragColor=vec4(uCol*(a+rays)*uBright*smoothstep(1.,.7,r),1.);}`}));
+  eyesU={uSize:{value:.24},uAspect:{value:2},uMood:{value:0},uLook:{value:new THREE.Vector2()},uAlpha:{value:1}};
+  spEyes=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.ShaderMaterial({uniforms:eyesU,transparent:true,depthWrite:false,blending:THREE.CustomBlending,blendSrc:THREE.OneFactor,blendDst:THREE.OneMinusSrcAlphaFactor,
+    vertexShader:BILLBOARD,fragmentShader:`uniform float uMood;uniform vec2 uLook;uniform float uAlpha;varying vec2 vUv;
+      vec4 eye(vec2 c,float side){vec3 dk=vec3(.05,.04,.12),col=dk;float a=0.;
+        if(uMood<.5){a=1.-smoothstep(.55,.66,length(c*vec2(1.,.8)));col=mix(col,vec3(1.),1.-smoothstep(.14,.22,length(c-vec2(-.2,.3))));}
+        else if(uMood<1.5){float d=abs(length(c-vec2(0.,-.6))-.72);a=(1.-smoothstep(.13,.21,d))*step(-.08,c.y);}
+        else if(uMood<2.5){float r=length(c);a=1.-smoothstep(.8,.9,r);col=mix(vec3(1.),dk,1.-smoothstep(.28,.34,length(c-vec2(0.,-.05))));col=mix(col,dk,smoothstep(.7,.8,r));}
+        else if(uMood<3.5){float r=length(c*vec2(1.,.8));a=(1.-smoothstep(.55,.66,r))*smoothstep(-.07,.07,-(c.y-.05+c.x*side*.55));col=mix(col,vec3(1.),1.-smoothstep(.1,.17,length(c-vec2(-.15,-.22))));}
+        else a=(1.-smoothstep(.08,.15,abs(c.y+.1)))*(1.-smoothstep(.5,.64,abs(c.x)));
+        return vec4(col,a);}
+      void main(){vec2 q=(vUv*2.-1.)*vec2(2.,1.);vec2 lk=uLook*.22;vec4 L=eye((q-vec2(-.62,0.)-lk)*1.25,-1.),R=eye((q-vec2(.62,0.)-lk)*1.25,1.);
+        vec4 e=L.a>R.a?L:R;float a=max(L.a,R.a)*uAlpha;if(a<.01)discard;gl_FragColor=vec4(e.rgb*a,a);}`}));
+  spTrail=new Ribbon(TRAIL_N,new THREE.ShaderMaterial({uniforms:{uAmt:{value:0},uCol:{value:new THREE.Color('#7af0d4')}},transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+    vertexShader:`attribute float tt;attribute float sd;varying float vT;varying float vS;void main(){vT=tt;vS=sd;gl_Position=projectionMatrix*viewMatrix*vec4(position,1.);}`,
+    fragmentShader:`uniform float uAmt;uniform vec3 uCol;varying float vT;varying float vS;void main(){float a=pow(1.-vT,1.6)*(1.-vS*vS)*uAmt;gl_FragColor=vec4(uCol*a*2.2,1.);}`}));
+  spCore.renderOrder=0;spHalo.renderOrder=3;spEyes.renderOrder=4;spHalo.layers.set(1);spEyes.layers.set(1);spHalo.frustumCulled=spEyes.frustumCulled=false;
+  g.add(spCore,spHalo,spEyes,spTrail.mesh);return g;}
+function spiritFlyTo(to,dur){SFX.whoosh();return new Promise(res=>{const a=SP.pos.clone(),c=a.clone().lerp(to,.5);c.y+=.9;SP.path={a,b:to.clone(),c,t0:T,dur,res};});}
+function spiritMood(m,ms){SP.mood=m;SP.moodUntil=T+ms/1000;}
+function spiritStopPath(){if(SP.path){const r=SP.path.res;SP.path=null;r&&r();}}   // 날던 길을 끝난 것으로 치고 기다리던 쪽을 풀어 준다
+function spiritReact(kind){const D={joy:1.1,surprise:.8,sad:1.6,dash:.35}[kind]||1;SP.react={kind,t0:T,dur:D};
+  if(kind==='joy'){spiritMood(1,1300);SP.brightT=1.6;SP.brightUntil=T+1.1;}
+  if(kind==='surprise')spiritMood(2,900);
+  if(kind==='sad'){spiritMood(3,1700);SP.brightT=.55;SP.brightUntil=T+1.6;}}
+function stepSpirit(dt){
+  if(SP.orbit){const k=(T-SP.orbit.t0)/SP.orbit.dur,a=k*Math.PI*4;SP.pos.set(Math.sin(a)*3.4,2.4+Math.sin(a*1.5)*.6,Math.cos(a)*3.4);if(k>=1){SP.orbit=null;SP.anchor=SP.home.clone();}}
+  else if(SP.path){const k=clamp((T-SP.path.t0)/SP.path.dur,0,1),e=easeInOut(k),u=1-e,{a,b,c}=SP.path;
+    SP.pos.set(u*u*a.x+2*u*e*c.x+e*e*b.x,u*u*a.y+2*u*e*c.y+e*e*b.y,u*u*a.z+2*u*e*c.z+e*e*b.z);if(k>=1){SP.anchor=b.clone();const r=SP.path.res;SP.path=null;r&&r();}}
+  else{const h=SP.anchor||SP.home;SP.pos.lerp(V3(h.x+Math.sin(T*.7)*.2,h.y+Math.sin(T*1.13)*.14,h.z+Math.sin(T*.53)*.16),Math.min(1,dt*2.2));}
+  const off=V3();let boost=0;const R=SP.react;
+  if(R){const k=clamp((T-R.t0)/R.dur,0,1);
+    if(R.kind==='joy'){off.y=Math.sin(Math.PI*k)*.35;boost=7*(1-k);}
+    else if(R.kind==='surprise'){const s=Math.sin(Math.PI*Math.min(1,k*2.5));off.y=s*.2;off.z=-s*.25;}
+    else if(R.kind==='sad')off.y=-.38*smooth(0,.25,k)*(1-smooth(.75,1,k));
+    else if(R.kind==='dash'){off.z=Math.sin(Math.PI*k)*.5;off.y=-Math.sin(Math.PI*k)*.15;}
+    if(k>=1)SP.react=null;}
+  if(SP.mood&&T>SP.moodUntil)SP.mood=0;
+  if(T>SP.brightUntil&&!SP.fallen)SP.brightT=1;
+  SP.bright+=(SP.brightT-SP.bright)*Math.min(1,dt*3);SP.scale+=(SP.scaleT-SP.scale)*Math.min(1,dt*2.5);SP.spin+=dt*(1.2+boost);
+  SP.draw.copy(SP.pos).add(off);const p=SP.draw;
+  SP.speed=mix(SP.speed,p.distanceTo(SP.last)/Math.max(dt,1e-3),Math.min(1,dt*8));SP.last.copy(p);
+  spCore.position.copy(p);spCore.scale.setScalar(SP.scale);spCore.material.uniforms.uBright.value=SP.bright;spCore.material.uniforms.uAlpha.value=SP.alpha;
+  const hu=spHalo.material.uniforms;spHalo.position.copy(p);hu.uSize.value=.95*SP.scale;hu.uBright.value=SP.bright*SP.alpha;hu.uSpin.value=SP.spin;
+  const toCam=camera.position.clone().sub(p).normalize();spEyes.position.copy(p).addScaledVector(toCam,.235*SP.scale);eyesU.uSize.value=.24*SP.scale;eyesU.uAlpha.value=SP.alpha;
+  if(SP.blink>0)SP.blink-=dt;else if(SP.mood===0&&Math.random()<dt*.35)SP.blink=.13;
+  eyesU.uMood.value=SP.blink>0?4:SP.mood;
+  const toDie=dieMesh.position.clone().sub(p),cr=V3().setFromMatrixColumn(camera.matrixWorld,0),cu=V3().setFromMatrixColumn(camera.matrixWorld,1);
+  const lk=new THREE.Vector2(toDie.dot(cr),toDie.dot(cu));if(lk.lengthSq()>1e-4)lk.normalize();eyesU.uLook.value.lerp(lk,Math.min(1,dt*6));
+  spiritLight.position.copy(p);spiritLight.intensity=(1.4+U.uNight.value*4.5)*SP.bright*SP.scale*SP.alpha;
+  U.uSpiritPos.value.copy(p);U.uSpiritCol.value.copy(SPIRIT_COL).multiplyScalar(.85*SP.bright*SP.alpha);
+  SP.trail.unshift(p.clone());if(SP.trail.length>TRAIL_N)SP.trail.pop();spTrail.update(SP.trail,k=>.085*SP.scale*(1-k),camera);
+  spTrail.mesh.material.uniforms.uAmt.value=smooth(.4,3,SP.speed)*SP.alpha;
+  if(SP.tether>0&&!DIE.held)SP.tether=Math.max(0,SP.tether-dt*3);}
+
+/* ═══════════ 🌗 시간대 (10번과 같은 꼬리표 · 같은 건너뛰기) ═══════════
+   해는 아침에 섬 뒤쪽 왼편(벚나무 뒤)에서 비스듬히 비치고, 낮 동안 뒤쪽을 지나 저녁엔 뒤쪽 오른편(폭포 쪽)으로 진다. 밤에는 뒤쪽 오른편 달빛 */
+const TOD={t:.33,target:null,envT:-1,envAt:-9};
+const TOD_AT=[0,.2,.31,.45,.58,.71,.8,.87];   // 자정·새벽·아침·정오·오후·해 질 녘·저녁·밤이 시작되는 시각 (사전의 tod 와 같은 순서)
+function todIndex(x){let n=0;TOD_AT.forEach((at,i)=>{if(x>=at)n=i;});return n;}
+function skipTime(){const next=[.22,.42,.755,.9].find(x=>x>TOD.t+.02)??1.22;TOD.target=next;SFX.tick();}
+$('todBtn').addEventListener('click',skipTime);
+const KEYS=[
+  {t:0,zen:'#02040f',hor:'#0a1230',bel:'#050a1a',glow:'#101a3a',light:'#8da2e6',li:.55,night:1},
+  {t:.19,zen:'#060c24',hor:'#2c2648',bel:'#10142c',glow:'#3a2850',light:'#8f96d8',li:.5,night:.9},
+  {t:.235,zen:'#2b3f7e',hor:'#ff9e7a',bel:'#7d6a8c',glow:'#ff8f5e',light:'#ffa078',li:1.7,night:.2},
+  {t:.3,zen:'#3f7ad0',hor:'#ffd6b0',bel:'#a7b4d2',glow:'#ffcf96',light:'#ffd9b0',li:3.8,night:0},
+  {t:.36,zen:'#3d82dc',hor:'#f2e2cf',bel:'#a9bcd9',glow:'#ffe2b0',light:'#ffe6c8',li:4.4,night:0},
+  {t:.5,zen:'#2f76e2',hor:'#d4e6fb',bel:'#b1c8e8',glow:'#fff3dc',light:'#fff7ec',li:4.8,night:0},
+  {t:.64,zen:'#3874d2',hor:'#f2e0c4',bel:'#acbcd8',glow:'#ffdba4',light:'#ffe5c0',li:4.4,night:0},
+  {t:.735,zen:'#3c3f80',hor:'#ff8c4c',bel:'#9a6f86',glow:'#ff7a38',light:'#ffad6c',li:3.2,night:0},
+  {t:.79,zen:'#151d4c',hor:'#7c3d5c',bel:'#2b2648',glow:'#c84a52',light:'#a594d8',li:.8,night:.55},
+  {t:.87,zen:'#040818',hor:'#0f1a3a',bel:'#081024',glow:'#18234a',light:'#8a9fe0',li:.55,night:1}].map(k=>({...k,zen:new THREE.Color(k.zen),hor:new THREE.Color(k.hor),bel:new THREE.Color(k.bel),glow:new THREE.Color(k.glow),light:new THREE.Color(k.light)}));
+function palette(tt){let i=KEYS.length-1;for(let j=0;j<KEYS.length;j++)if(KEYS[j].t<=tt)i=j;const A=KEYS[i],B=KEYS[(i+1)%KEYS.length];
+  const span=(B.t>A.t?B.t:B.t+1)-A.t,k=smooth(0,1,((tt-A.t+1)%1)/span);
+  U.uZenith.value.lerpColors(A.zen,B.zen,k);U.uHorizon.value.lerpColors(A.hor,B.hor,k);U.uBelow.value.lerpColors(A.bel,B.bel,k);U.uGlow.value.lerpColors(A.glow,B.glow,k);
+  return{light:new THREE.Color().lerpColors(A.light,B.light,k),li:mix(A.li,B.li,k),night:mix(A.night,B.night,k)};}
+function sunDirAt(tt){const ph=(tt-.25)*Math.PI*2,el=Math.asin(Math.sin(ph)*.88),az=(tt-.5)*Math.PI*.95-.25;return V3(Math.cos(el)*Math.sin(az),Math.sin(el),-Math.cos(el)*Math.cos(az));}
+function stepTOD(dt){
+  if(TOD.target!==null){const d=TOD.target-TOD.t;TOD.t+=d*Math.min(1,dt*2.5);if(Math.abs(d)<.003){TOD.t=TOD.target%1;TOD.target=null;}}   // 누르기 전에는 시간이 흐르지 않고 고정
+  const tt=TOD.t%1,ti=todIndex(tt);if(ti!==lastTodIdx){lastTodIdx=ti;$('todLbl').textContent=t('tod')[ti];}
+  const pal=palette(tt),sd=sunDirAt(tt);U.uSunDir.value.copy(sd);const day=smooth(-.1,.05,sd.y),night=pal.night;U.uNight.value=night;
+  let dir,li;if(day>=.5){dir=V3(sd.x,Math.max(sd.y,.12),sd.z).normalize();li=pal.li*smooth(.5,1,day);}else{dir=U.uMoonDir.value.clone();li=pal.li*smooth(.5,0,day);}   // 해와 달이 바뀌는 순간은 빛이 가장 약해 그림자 방향이 튀어 보이지 않는다
+  sunLight.position.copy(dir).multiplyScalar(24);sunLight.color.copy(pal.light);sunLight.intensity=li;
+  U.uLightDir.value.copy(dir);U.uLightCol.value.copy(pal.light).multiplyScalar(li);
+  U.uSunDisk.value.copy(pal.light).multiplyScalar(60*(1-night)*smooth(-.03,.02,sd.y));
+  U.uSkyAmb.value.copy(U.uZenith.value).lerp(U.uHorizon.value,.5).multiplyScalar(.9);U.uGroundAmb.value.copy(U.uBelow.value).multiplyScalar(.3);
+  U.uAmbTop.value.copy(U.uHorizon.value).lerp(U.uZenith.value,.45).multiplyScalar(.55);U.uAmbBot.value.copy(U.uBelow.value).multiplyScalar(.2);
+  scene.environmentIntensity=mix(1,.6,night);renderer.toneMappingExposure=mix(1,1.45,night);crystalMat.emissiveIntensity=1.3+night*2.8;
+  if(Math.abs(tt-TOD.envT)>.002&&T-TOD.envAt>.25){TOD.envT=tt;TOD.envAt=T;updateEnv();}}   // 환경 지도는 시간대가 바뀔 때만 0.25초에 한 번 다시 굽는다
+// TODO(미검증 · 2026-10-06 16:27 KST): 10분 넘게 켜 두거나 시간대를 수십 번 넘겼을 때의 메모리 — 시험은 한 번에 몇 분씩만 돌렸다
+function updateEnv(){const rt=pmrem.fromScene(envScene,0,.1,100,{size:128});if(envRT)envRT.dispose();envRT=rt;scene.environment=rt.texture;}
+
+/* ═══════════ 🎥 카메라 연출 ═══════════ */
+const CAM={shot:'intro',t0:0,from:null,blend:0,arc:0,focus:V3(),a0:0,shake:0};
+function playPose(tt){const asp=innerWidth/innerHeight,k=Math.max(1,.95/asp);if(RM.matches)tt=0;   // 세로 화면일수록 물러서 섬 양 끝이 잘리지 않게 · 동작 줄이기면 느린 좌우 흐름도 멈춘다
+  return{eye:[Math.sin(tt*.16)*1.3*k,(5.6+Math.sin(tt*.43)*.15)*k,13.6*k],tgt:[Math.sin(tt*.16)*.25,.1,0],fov:38};}
+function shotPose(name,tt){const asp=innerWidth/innerHeight,k=Math.max(1,.8/asp);
+  if(name==='intro'){const a=.6+(RM.matches?0:tt*.085);return{eye:[Math.sin(a)*19*k,3.4,Math.cos(a)*19*k],tgt:[0,-2.4-Math.max(0,1-asp)*5,0],fov:44};}   // 세로 화면은 섬을 가운데 카드 위로 올린다
+  if(name==='focus'){const d=CAM.focus;return{eye:[d.x*.7+.5,d.y+2.4,d.z+3.5],tgt:[d.x,d.y+.05,d.z],fov:34};}
+  if(name==='orbit'){const a=CAM.a0+(RM.matches?0:(tt-CAM.t0)*1.3);return{eye:[Math.sin(a)*12.5*k,4.1,Math.cos(a)*12.5*k],tgt:[0,.4,0],fov:42};}
+  if(name==='fallen'){const p=playPose(tt);return{eye:[p.eye[0]*1.2,p.eye[1]*1.3,p.eye[2]*1.28],tgt:[0,-1.2,0],fov:38};}
+  return playPose(tt);}
+function curPose(){const d=V3();camera.getWorldDirection(d);return{eye:camera.position.toArray(),tgt:camera.position.clone().addScaledVector(d,10).toArray(),fov:camera.fov};}
+function setShot(name,{blend=1.4,arc=0}={}){CAM.from=curPose();CAM.shot=name;CAM.t0=T;CAM.blend=RM.matches?0:blend;CAM.arc=arc;if(name==='orbit')CAM.a0=Math.atan2(camera.position.x,camera.position.z);}
+function shake(a){if(!RM.matches)CAM.shake=Math.max(CAM.shake,a);}
+function camFocusDie(){if(RM.matches||S.over)return;CAM.focus.copy(dieMesh.position);setShot('focus',{blend:.8});setTimeout(()=>{if(CAM.shot==='focus')setShot('play',{blend:.9});},1250);}
+function stepCamera(dt){let p=shotPose(CAM.shot,T);
+  if(CAM.from&&CAM.blend>0){const k=clamp((T-CAM.t0)/CAM.blend,0,1);if(k<1){const e=easeInOut(k),f=CAM.from;p={eye:f.eye.map((v,i)=>mix(v,p.eye[i],e)+(i===1?Math.sin(Math.PI*k)*CAM.arc:0)),tgt:f.tgt.map((v,i)=>mix(v,p.tgt[i],e)),fov:mix(f.fov,p.fov,e)};}else CAM.from=null;}
+  camera.position.set(...p.eye);if(CAM.shake>.002){camera.position.x+=rnd(-1,1)*CAM.shake;camera.position.y+=rnd(-1,1)*CAM.shake;camera.position.z+=rnd(-1,1)*CAM.shake;CAM.shake*=Math.pow(.02,dt);}
+  camera.lookAt(...p.tgt);if(camera.fov!==p.fov){camera.fov=p.fov;camera.updateProjectionMatrix();}
+  skyMesh.position.copy(camera.position);}
+
+/* ═══════════ 그리기 순서 ═══════════
+   (1) 불투명 장면 → 4배 다중 표본 · 깊이 텍스처   (2) 반 해상도로 구름 바다 + 햇살 줄기 (깊이에서 광선을 다시 세운다)
+   (3) 합성: 깊이를 보며 대기층을 키워 덮고, 먼 물체는 하늘빛에 녹이고, 깊이를 그대로 옮겨 적는다
+   (4) 투명한 것(폭포 · 광채 · 별빛 · 꼬리 빛)을 구름 '위'에 그린다 — 구름이 이것들을 덮지 않게
+   (5) 꽃빛 번짐(bloom) → (6) 톤 매핑(ACES) + sRGB 출력. 9번에서 대표가 끈 초점 흐림 · 모션 블러는 이 판에 아예 없다 */
+const FSQ_V=`varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}`;
+function buildPipeline(){const w=1,h=1;
+  rtOpaque=new THREE.WebGLRenderTarget(w,h,{type:THREE.HalfFloatType,samples:4,depthTexture:new THREE.DepthTexture(w,h)});
+  rtMain=new THREE.WebGLRenderTarget(w,h,{type:THREE.HalfFloatType});
+  rtAtmo=new THREE.WebGLRenderTarget(w,h,{type:THREE.HalfFloatType,depthBuffer:false});
+  atmoMat=new THREE.ShaderMaterial({uniforms:{...U,tDepth:{value:rtOpaque.depthTexture},tNoise:{value:makeCloudNoise()},uInvProj:{value:new THREE.Matrix4()},uCamWorld:{value:new THREE.Matrix4()},uCamPos:{value:V3()},
+      uShaft:{value:.018},uShaftC:{value:V3()},uShaftR:{value:4},uCloudDens:{value:1.7},uCloudSun:{value:2.6},uWindOff:{value:new THREE.Vector2()}},depthTest:false,depthWrite:false,vertexShader:FSQ_V,
+    fragmentShader:`#define CLOUD_STEPS ${Q.cloudSteps}
+#define SHAFT_STEPS ${Q.shaftSteps}
+varying vec2 vUv;uniform sampler2D tDepth;uniform sampler2D tNoise;uniform mat4 uInvProj;uniform mat4 uCamWorld;uniform vec3 uCamPos;
+uniform vec3 uLightDir;uniform vec3 uLightCol;uniform vec3 uAmbTop;uniform vec3 uAmbBot;uniform float uShaft;uniform vec3 uShaftC;uniform float uShaftR;uniform float uCloudDens;uniform float uCloudSun;uniform float uCloudBase;uniform float uCloudTop;uniform vec2 uWindOff;
+${GL_SKY}${GL_SHADOW}
+float ign(vec2 p){return fract(52.9829189*fract(dot(p,vec2(.06711056,.00583715))));}
+float hgp(float c,float g){float g2=g*g;return (1.-g2)/(12.566*pow(max(1.+g2-2.*g*c,1e-4),1.5));}
+float cloudTopAt(vec2 xz,float lod){vec2 q=(xz+uWindOff)*.0078;vec2 w=textureLod(tNoise,q*.37+vec2(.13,.71),lod+1.).rg-.5;q+=w*.22;   // 물결로 비틀어 뭉게가 줄지어 보이지 않게
+  vec4 a=textureLod(tNoise,q,lod);vec4 b=textureLod(tNoise,q*2.2+vec2(.31,.67),lod);
+  float s=a.r*.62+a.b*.38+(b.a-.5)*.26+(b.g-.5)*.14;return mix(uCloudBase,uCloudTop,smoothstep(.22,.95,s));}
+float cloudD(vec3 p,float lod){return clamp((cloudTopAt(p.xz,lod)-p.y)*.8,0.,1.);}
+void main(){
+  float depth=texture2D(tDepth,vUv).r;vec4 vp=uInvProj*vec4(vUv*2.-1.,depth*2.-1.,1.);vp.xyz/=vp.w;
+  vec3 wp=(uCamWorld*vec4(vp.xyz,1.)).xyz;vec3 ro=uCamPos;vec3 rd=normalize(wp-ro);float tMax=depth>=.99999?1e5:length(wp-ro);
+  float jit=ign(gl_FragCoord.xy);float cosT=dot(rd,uLightDir);
+  // 햇살 줄기: 섬 둘레 공기(반지름 9 구) 안만 걷는다
+  vec3 shaft=vec3(0.);
+  {vec3 oc=ro-vec3(0.,.6,0.);float b=dot(oc,rd);float c=dot(oc,oc)-81.;float h=b*b-c;
+   if(h>0.){h=sqrt(h);float a0=max(-b-h,0.),a1=min(-b+h,tMax);
+     if(a1>a0){float dt=(a1-a0)/float(SHAFT_STEPS);float acc=0.;
+       for(int i=0;i<SHAFT_STEPS;i++){vec3 p=ro+rd*(a0+(float(i)+jit)*dt);float dn=(smoothstep(uShaftR,uShaftR*.3,distance(p,uShaftC))+.12*smoothstep(8.5,4.2,length(p.xz)))*smoothstep(-.4,.4,p.y);acc+=shadowAt(p,.003)*dn;}
+       shaft=uLightCol*acc*dt*uShaft*(hgp(cosT,.35)*3.+.2);}}}   /* 앞쪽 산란을 약하게: 해를 마주 보는 시작 화면에서 하얗게 날아가지 않게 */
+  // 구름 바다: 높이 지도 구름 · 해 쪽으로 세 걸음 그림자 · 은빛 테두리(앞쪽 산란) · 골짜기는 하늘빛 그늘
+  vec3 cl=vec3(0.);float T=1.;
+  if(rd.y<-.001&&ro.y>uCloudTop){
+    float t0=max((uCloudTop+.4-ro.y)/rd.y,0.),tb=min((uCloudBase-ro.y)/rd.y,tMax),t1=min(tb,t0+170.);
+    if(t1>t0){float dt=(t1-t0)/float(CLOUD_STEPS);float t=t0+dt*jit;float ph=hgp(cosT,.62)*.75+hgp(cosT,-.15)*.25;
+      for(int i=0;i<CLOUD_STEPS;i++){vec3 p=ro+rd*t;float lod=clamp(log2(t*.03),0.,5.);float d=cloudD(p,lod);
+        if(d>.002){float od=cloudD(p+uLightDir*.7,lod)*.7+cloudD(p+uLightDir*2.,lod)*1.3+cloudD(p+uLightDir*4.5,lod+1.)*2.5;
+          float lt=exp(-od*uCloudDens*.8);float pw=1.-exp(-d*3.);float hf=clamp((p.y-uCloudBase)/(uCloudTop-uCloudBase),0.,1.);
+          vec3 S=uLightCol*lt*pw*(ph*uCloudSun+.05)+mix(uAmbBot,uAmbTop,hf*hf);float Ts=exp(-d*uCloudDens*dt);cl+=T*S*(1.-Ts);T*=Ts;if(T<.015)break;}
+        t+=dt;}
+      if(t1<tb){cl+=T*skyBase(rd)*.92;T=0.;}   // 잘라 낸 먼 구간: 지평선 빛에 녹은 구름
+      float fog=1.-exp(-max(t0-25.,0.)*.0055);cl=mix(cl,skyBase(rd)*(1.-T),fog);}}
+  gl_FragColor=vec4(cl+shaft,T);}`});
+  compMat=new THREE.ShaderMaterial({uniforms:{...U,tScene:{value:rtOpaque.texture},tAtmo:{value:rtAtmo.texture},tDepth:{value:rtOpaque.depthTexture},uAtmoSize:{value:new THREE.Vector2(1,1)},uNear:{value:.1},uFar:{value:1200},
+      uInvProj:{value:new THREE.Matrix4()},uCamWorld:{value:new THREE.Matrix4()},uCamPos:{value:V3()},uFogDensity:{value:.012}},depthTest:true,depthWrite:true,depthFunc:THREE.AlwaysDepth,vertexShader:FSQ_V,
+    fragmentShader:`varying vec2 vUv;uniform sampler2D tScene;uniform sampler2D tAtmo;uniform sampler2D tDepth;uniform vec2 uAtmoSize;uniform float uNear;uniform float uFar;
+uniform mat4 uInvProj;uniform mat4 uCamWorld;uniform vec3 uCamPos;uniform float uFogDensity;${GL_SKY}
+float linZ(float d){float z=d*2.-1.;return 2.*uNear*uFar/(uFar+uNear-z*(uFar-uNear));}
+void main(){float d=texture2D(tDepth,vUv).r;vec3 col=texture2D(tScene,vUv).rgb;float zc=d>=.99999?1e4:linZ(d);
+  // 반 해상도 대기층을 깊이를 보며 키운다 — 섬 윤곽에서 구름이 번지지 않게
+  vec2 p=vUv*uAtmoSize-.5;vec2 i0=floor(p);vec2 f=p-i0;vec4 acc=vec4(0.);float ws=0.;
+  for(int j=0;j<2;j++)for(int i=0;i<2;i++){vec2 tc=(i0+vec2(float(i),float(j))+.5)/uAtmoSize;float ds=texture2D(tDepth,tc).r;float zs=ds>=.99999?1e4:linZ(ds);
+    float w=(i==0?1.-f.x:f.x)*(j==0?1.-f.y:f.y);w*=1./(.02+abs(zs-zc)/max(zc,.1));acc+=texture2D(tAtmo,tc)*w;ws+=w;}
+  vec4 atmo=acc/max(ws,1e-6);
+  if(d<.99999){vec4 vp=uInvProj*vec4(vUv*2.-1.,d*2.-1.,1.);vp.xyz/=vp.w;vec3 wp=(uCamWorld*vec4(vp.xyz,1.)).xyz;vec3 rd=normalize(wp-uCamPos);float dist=length(wp-uCamPos);
+    float fog=1.-exp(-max(dist-15.,0.)*uFogDensity);col=mix(col,skyBase(rd),fog);}   // 공기 원근: 먼 섬은 하늘빛에 녹는다
+  gl_FragColor=vec4(col*atmo.a+atmo.rgb,1.);gl_FragDepth=d;}`});
+  fsqAtmo=new FullScreenQuad(atmoMat);fsqComp=new FullScreenQuad(compMat);
+  bloom=new UnrealBloomPass(new THREE.Vector2(256,256),.4,.55,1.);output=new OutputPass();output.renderToScreen=true;}
+function resize(){const dpr=Math.min(Q.dprCap,devicePixelRatio||1);renderer.setPixelRatio(dpr);renderer.setSize(innerWidth,innerHeight,false);
+  const w=Math.max(2,Math.floor(innerWidth*dpr*Q.scale)),h=Math.max(2,Math.floor(innerHeight*dpr*Q.scale));
+  rtOpaque.setSize(w,h);rtMain.setSize(w,h);const aw=Math.max(2,Math.ceil(w*Q.atmo)),ah=Math.max(2,Math.ceil(h*Q.atmo));rtAtmo.setSize(aw,ah);compMat.uniforms.uAtmoSize.value.set(aw,ah);bloom.setSize(w,h);
+  camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();}
+function renderFrame(){
+  petalMesh.visible=!!U.uShadowMap.value;   // 그림자 지도가 생기기 전(첫 프레임)에는 꽃잎을 그리지 않는다 — 비교 샘플러에 빈 텍스처가 물리면 WebGL 오류가 난다
+  renderer.shadowMap.needsUpdate=true;camera.layers.set(0);renderer.setRenderTarget(rtOpaque);renderer.render(scene,camera);
+  U.uShadowMap.value=sunLight.shadow.map?sunLight.shadow.map.depthTexture:null;
+  for(const m of [atmoMat,compMat]){const u=m.uniforms;u.uInvProj.value.copy(camera.projectionMatrixInverse);u.uCamWorld.value.copy(camera.matrixWorld);u.uCamPos.value.copy(camera.position);}
+  atmoMat.uniforms.uWindOff.value.set(T*.55,T*.18);compMat.uniforms.uNear.value=camera.near;compMat.uniforms.uFar.value=camera.far;
+  // 햇살 줄기를 모을 공기: 꽃 덩어리와 그 그림자가 떨어지는 땅 사이
+  {const L=U.uLightDir.value,C=TREE.center,k=C.y/Math.max(L.y,.18);const G=V3(C.x-L.x*k,0,C.z-L.z*k);atmoMat.uniforms.uShaftC.value.copy(C).add(G).multiplyScalar(.5);atmoMat.uniforms.uShaftR.value=C.distanceTo(G)*.5+1.4;}
+  renderer.setRenderTarget(rtAtmo);if(DBG.noAtmo)renderer.clear();else fsqAtmo.render(renderer);
+  renderer.setRenderTarget(rtMain);fsqComp.render(renderer);
+  camera.layers.set(1);renderer.autoClear=false;renderer.render(scene,camera);renderer.autoClear=true;camera.layers.set(0);
+  if(!DBG.noBloom)bloom.render(renderer,null,rtMain,0,false);output.render(renderer,null,rtMain);}
+
+/* ═══════════ 물리 (10번과 같은 값 — 묵직한 원목 착지감 · 잘 튕기는 보이지 않는 울타리) ═══════════ */
+const world=new CANNON.World({gravity:new CANNON.Vec3(0,-30,0),allowSleep:true});
+const matGround=new CANNON.Material('ground'),matWall=new CANNON.Material('wall'),matDie=new CANNON.Material('die');
+world.addContactMaterial(new CANNON.ContactMaterial(matDie,matGround,{friction:.55,restitution:.12}));
+world.addContactMaterial(new CANNON.ContactMaterial(matDie,matWall,{friction:.04,restitution:.92}));
+const ground=new CANNON.Body({mass:0,shape:new CANNON.Plane(),material:matGround});ground.quaternion.setFromEuler(-Math.PI/2,0,0);world.addBody(ground);
+const WALLS=new Set();for(let k=0;k<10;k++){const a=k/10*Math.PI*2,R=3.15;const b=new CANNON.Body({mass:0,shape:new CANNON.Box(new CANNON.Vec3(1.2,3,.15)),material:matWall});b.position.set(Math.cos(a)*R,3,Math.sin(a)*R);b.quaternion.setFromEuler(0,-a+Math.PI/2,0);world.addBody(b);WALLS.add(b);}
+const body=new CANNON.Body({mass:1.6,shape:new CANNON.Box(new CANNON.Vec3(.5,.5,.5)),material:matDie,sleepSpeedLimit:.25,sleepTimeLimit:.22,angularDamping:.28,linearDamping:.05});body.position.set(0,.5,0);body.quaternion.setFromEuler(0,.5,0);world.addBody(body);
+const NORMALS=[[1,0,0,1],[-1,0,0,6],[0,1,0,2],[0,-1,0,5],[0,0,1,3],[0,0,-1,4]];
+function topFace(){let best=-2,val=0;const n=new CANNON.Vec3(),w=new CANNON.Vec3();for(const [x,y,z,v] of NORMALS){n.set(x,y,z);body.quaternion.vmult(n,w);if(w.y>best){best=w.y;val=v;}}return{val,dot:best};}
+body.addEventListener('collide',e=>{const v=Math.abs(e.contact.getImpactVelocityAlongNormal());if(v<2.5)return;const p=body.position;
+  if(WALLS.has(e.body)){barrierRipple(p.x,p.y,p.z,Math.min(1,v/14));return;}
+  puff(p.x,.05,p.z,Math.min(24,v*3));kickPetals(p.x,p.z,v);SFX.knock(Math.min(1,v/12));if(v>7)shake(.18);});
+// 멈출 때까지 기다린다 — 물리와 같은 시계(T)로 재서, 탭이 가려져 물리가 멈춘 동안은 세지 않는다(돌아오자마자 공중의 주사위로 판정하지 않게)
+function settle(min=600,max=5000){return new Promise(res=>{const t0=T;(function c(){const k=(T-t0)*1000;if((k>min&&body.sleepState===CANNON.Body.SLEEPING)||k>max)res();else requestAnimationFrame(c);})();});}
+// 주사위를 들어 올린다: 몸체를 물리 세계에서 잠시 빼고, 화면의 주사위만 놓인 자리 → 던질 자리로 돌며 떠오른다(순간 이동 없음)
+const DIE={held:null,glow:0};
+function liftDie(to,dur,spin){return new Promise(res=>{if(body.world)world.removeBody(body);const ax=V3(rnd(-1,1),rnd(-1,1),rnd(-1,1)).normalize();
+  DIE.held={p0:dieMesh.position.clone(),q0:dieMesh.quaternion.clone(),p1:to.clone(),ax,t0:T,dur,spin,res};});}
+function stepDie(dt){const h=DIE.held;
+  if(h){const k=clamp((T-h.t0)/h.dur,0,1),e=easeInOut(k);dieMesh.position.lerpVectors(h.p0,h.p1,e);dieMesh.position.y+=Math.sin(Math.PI*k)*.45;
+    dieMesh.quaternion.copy(h.q0).premultiply(new THREE.Quaternion().setFromAxisAngle(h.ax,h.spin*k*k));if(k>=1&&h.res){const r=h.res;h.res=null;r();}}
+  else{const p=body.position,q=body.quaternion;dieMesh.position.set(p.x,p.y,p.z);dieMesh.quaternion.set(q.x,q.y,q.z,q.w);}
+  DIE_U.uGlow.value=Math.max(DIE.glow,DIE.held?0.6:0);DIE.glow=Math.max(0,DIE.glow-dt*1.1);
+  const y=dieMesh.position.y;dieShadow.position.set(dieMesh.position.x,groundY(dieMesh.position.x,dieMesh.position.z)+.012,dieMesh.position.z);dieShadow.material.opacity=.5*clamp(1-(y-.5)/2.2,0,1);
+  U.uPushA.value.set(dieMesh.position.x,dieMesh.position.z,1,y<1.3?1:0);}
+function releaseDie(){const p=dieMesh.position,q=dieMesh.quaternion;body.position.set(p.x,p.y,p.z);body.quaternion.set(q.x,q.y,q.z,q.w);body.velocity.setZero();body.angularVelocity.setZero();
+  DIE.held=null;if(!body.world)world.addBody(body);body.wakeUp();}
+async function throwDie(fromCpu){const side=fromCpu?-1:1;releaseDie();body.velocity.set(rnd(-9,9),rnd(-3,1),-rnd(16,22)*side);body.angularVelocity.set(rnd(-45,45),rnd(-45,45),rnd(-45,45));await settle(600,11000);
+  for(let i=0;i<3&&topFace().dot<.93;i++){body.wakeUp();body.applyImpulse(new CANNON.Vec3(rnd(-2,2),6,rnd(-2,2)));body.angularVelocity.set(rnd(-8,8),rnd(-8,8),rnd(-8,8));await settle(500,3000);}
+  if(DBG.force){forceFace(DBG.force);DBG.force=null;}
+  return topFace().val;}
+// 확인용: 다음 결과를 정해 둔다(window.__dbg.force = 1~6) — 멈춘 주사위를 그 눈이 위로 오게 눕힌다
+function forceFace(v){const n=NORMALS.find(x=>x[3]===v);const q=new THREE.Quaternion().setFromUnitVectors(V3(n[0],n[1],n[2]),V3(0,1,0)).premultiply(new THREE.Quaternion().setFromAxisAngle(V3(0,1,0),rnd(0,6.28)));
+  body.quaternion.set(q.x,q.y,q.z,q.w);body.position.y=.5;body.velocity.setZero();body.angularVelocity.setZero();body.sleep();}
+
+/* ═══════════ 루프 ═══════════ */
+let last=performance.now(),T=0,raf=0,started=false;
+const PERF={acc:0,n:0,fps:60,lastChange:0,good:0,hist:[],probe:null,capUntil:0};
+function frame(now){raf=requestAnimationFrame(frame);const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;U.uTime.value=T;
+  world.step(1/120,dt,6);stepTOD(dt);stepDie(dt);
+  const gust=Math.max(0,Math.sin(T*.31)+Math.sin(T*.77)*.5-.55);U.uGust.value=gust;U.uWind.value=.42+gust*.5;
+  stepSpirit(dt);stepPetals(dt,T);stepFX(dt);
+  for(const m of ORBIT){const o=m.userData.orbit,a=o.a+Math.sin(T*o.spd)*.3;m.position.set(Math.cos(a)*o.r,o.y+Math.sin(T*.8+o.a)*.25,Math.sin(a)*o.r);m.rotation.y=T*.3+o.a;}
+  for(const g of FAR)g.position.y=g.userData.y+Math.sin(T*.4+g.userData.ph)*.25;
+  U.uPushB.value.set(SP.draw.x,SP.draw.z,1.3,SP.draw.y<1.6?1:0);
+  stepCamera(dt);renderFrame();perf(dt);}
+// 프레임이 1초 평균 48 아래면 해상도를 한 단계 낮춰 보고, 2초 뒤 12% 이상 빨라지지 않으면 되돌린 뒤 20초 동안 다시 낮추지 않는다
+// (브라우저가 프레임을 묶어 둔 경우 — 예: 절전 모드의 30 상한 — 해상도만 괜히 깎이지 않게). 58 위가 4초 이어지면 한 단계 올린다
+// TODO(미검증 · 2026-10-06 16:27 KST): 대표 맥의 실제 브라우저에서 1분 평균 초당 60프레임 — ego-browser 는 WebGL 페이지를 초당 30프레임으로 묶어(내용 없는 WebGL 페이지도 30) 잴 수 없었다.
+//   대신 장면을 40번 연달아 그려 한 장면 5.2ms(2802×2338) · 3.1ms(2592×1675)를 쟀다(Chrome 152 · M4 Max · 각 1회)
+function perf(dt){PERF.acc+=dt;PERF.n++;if(PERF.acc<1)return;PERF.fps=PERF.n/PERF.acc;PERF.acc=0;PERF.n=0;PERF.hist.push(Math.round(PERF.fps));if(PERF.hist.length>120)PERF.hist.shift();
+  const i=SCALES.indexOf(Q.scale),pr=PERF.probe;
+  if(pr){if(T-pr.t>2.2){if(PERF.fps<pr.fps*1.12){Q.scale=pr.prev;PERF.capUntil=T+20;resize();}PERF.probe=null;PERF.lastChange=T;}}
+  else if(T-PERF.lastChange>2.5){if(PERF.fps<48&&i<SCALES.length-1&&T>PERF.capUntil){PERF.probe={t:T,prev:Q.scale,fps:PERF.fps};Q.scale=SCALES[i+1];PERF.good=0;resize();}
+    else if(PERF.fps>58){if(++PERF.good>=4&&i>0){Q.scale=SCALES[i-1];PERF.lastChange=T;PERF.good=0;resize();}}else PERF.good=0;}
+  if(DBG.showFps)$('fps').textContent=`${Math.round(PERF.fps)} FPS · ${Math.round(Q.scale*100)}%`;}
+document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;SFX.pause();}else if(started||gateState.k==='gateReady'){if(!raf){last=performance.now();raf=requestAnimationFrame(frame);}if(started)SFX.resume();}});   // 탭이 가려지면 그리기 · 물리 · 소리를 멈춘다
+
+/* ═══════════ 게임 (10번과 같은 규칙 — 주사위 1개 · 100점 먼저 · 1이면 그 턴 모라를 잃음 · 정령 판단 규칙 같음) ═══════════ */
+const TARGET=100;const S={me:0,cpu:0,bank:0,who:'me',over:false,busy:false};
+const E={sMe:$('sMe'),sCpu:$('sCpu'),pMe:$('pMe'),pCpu:$('pCpu'),bank:$('bank'),bankbox:$('bankbox'),roll:$('roll'),hold:$('hold'),status:$('status'),callout:$('callout'),flash:$('flash'),overlay:$('overlay'),big:$('big'),final:$('final')};
+const status=f=>{lastStatus=typeof f==='function'?f:()=>f;E.status.innerHTML=lastStatus();};   // 언어를 바꾸면 마지막 문장을 새 언어로 다시 그린다
+const bumpEl=(n,c='bump')=>{n.classList.remove(c);void n.offsetWidth;n.classList.add(c);};
+function setBank(v){S.bank=v;E.bank.textContent=v;bumpEl(E.bankbox);}
+function setActive(){E.pMe.classList.toggle('active',S.who==='me');E.pCpu.classList.toggle('active',S.who==='cpu');}
+function buttons(){const mine=S.who==='me'&&!S.busy&&!S.over&&started;E.roll.disabled=!mine;E.hold.disabled=!mine||S.bank===0;}
+function countUp(node,from,to){const t0=performance.now();(function f(now){const k=Math.min(1,(now-t0)/600);node.textContent=Math.round(from+(to-from)*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f);})(t0);}
+function callout(txt,cls){E.callout.className='callout'+(cls?' '+cls:'');void E.callout.offsetWidth;E.callout.textContent=txt;E.callout.classList.add('on');}
+const GEO=[1,.78,.25];
+function goodRoll(v){const p=dieMesh.position;sparkleBurst(p.x,p.y,p.z,v);DIE.glow=.8;callout('+'+v,'spark');SFX.good(v);
+  if(S.who==='cpu')spiritReact('joy');else if(v>=5)spiritReact('surprise');
+  if(v===6)camFocusDie();}   // 6이면 주사위 쪽으로 다가갔다 돌아온다(약 2초)
+async function bust(){const p=dieMesh.position;fizzlePoof(p.x,p.y,p.z);DIE_U.uHot.value=1;bumpEl(E.flash,'on');shake(.32);callout(t('callBurned'),'bad');SFX.bust();
+  spiritReact(S.who==='me'?'joy':'sad');
+  {const who=S.who;status(()=>t(who==='me'?'burnedYou':'burnedCpu'));}await wait(900);setBank(0);await wait(600);DIE_U.uHot.value=0;}
+async function flyBank(){const who=S.who,target=who==='me'?E.sMe:E.sCpu;const p=dieMesh.position;fairySeal(p.x,p.z,S.bank);callout(t('callKeep'),'water');SFX.hold(S.bank);if(who==='cpu')spiritReact('joy');
+  const fr=E.bank.getBoundingClientRect(),tr=target.getBoundingClientRect();const fx=fr.left+fr.width/2,fy=fr.top+fr.height/2,tx=tr.left+tr.width/2,ty=tr.top+tr.height/2;
+  const f=document.createElement('div');f.className='fly';f.textContent='+'+S.bank;f.style.left=fx+'px';f.style.top=fy+'px';document.body.appendChild(f);
+  await f.animate([{transform:'translate(-50%,-50%)'},{transform:`translate(calc(-50% + ${tx-fx}px),calc(-50% + ${ty-fy}px)) scale(1.5)`,offset:.8},{transform:`translate(calc(-50% + ${tx-fx}px),calc(-50% + ${ty-fy}px)) scale(.4)`,opacity:0}],{duration:700,easing:'cubic-bezier(.2,.8,.2,1)'}).finished;
+  f.remove();const from=S[who];S[who]+=S.bank;countUp(target,from,S[who]);bumpEl(who==='me'?E.pMe:E.pCpu);setBank(0);}
+function checkWin(){if(S.me>=TARGET||S.cpu>=TARGET){S.over=true;const win=S.me>=TARGET;E.big.textContent=t(win?'win':'lose');E.big.classList.toggle('lose',!win);E.final.textContent=`${t('me')} ${S.me}  ·  ${t('cpu')} ${S.cpu}`;
+  // 이기면 섬을 한 바퀴 도는 장면 뒤에 결과 창이 뜬다 · 지면 천천히 물러난다 · 동작 줄이기면 바로 뜬다
+  const delay=RM.matches?400:win?4600:2400;
+  if(win){setShot('orbit',{blend:.8});SFX.win();SP.fallen=true;SP.brightT=.35;SP.scaleT=.55;spiritMood(3,1e6);let k=0;const iv=setInterval(()=>{goldRain(40);const p=dieMesh.position;if(k%3===0)burst(p.x,p.y,p.z,GEO,60,4,3);if(++k>16)clearInterval(iv);},150);}
+  else{setShot('fallen',{blend:1.6});SFX.lose();spiritMood(1,1e6);SP.brightT=2;SP.brightUntil=T+4;spiritStopPath();SP.orbit={t0:T,dur:3.4};}
+  setTimeout(()=>E.overlay.classList.add('on'),delay);buttons();return true;}return false;}
+async function playerRoll(){if(S.busy||S.over||S.who!=='me'||!started)return;S.busy=true;buttons();status(()=>`<b>${t('rolling')}</b>…`);
+  SFX.chime();await liftDie(V3(rnd(-1,1),3.2,2.6),.42,14);SFX.roll();const v=await throwDie(false);
+  if(v===1){await bust();S.busy=false;await cpuTurn();return;}
+  setBank(S.bank+v);goodRoll(v);status(()=>`<b>+${v}</b> — ${t('rollOrKeep')}`);S.busy=false;buttons();}
+async function playerHold(){if(S.busy||S.over||S.who!=='me'||S.bank===0||!started)return;S.busy=true;buttons();status(()=>`<b>${t('callKeep')}</b> — ${t('keepSecured')}`);await flyBank();if(checkWin())return;S.busy=false;await cpuTurn();}
+// 정령 차례: 주사위 쪽으로 날아가 빛으로 들어 올린 뒤, 곁에서 함께 떠올라 던진다
+async function spiritFetch(){const d=dieMesh.position.clone();await spiritFlyTo(V3(d.x+.6,Math.max(1.5,d.y+1.1),d.z+.15),.5);
+  SP.tether=1;SFX.chime();const to=V3(rnd(-1,1),3.2,-2.6);spiritFlyTo(V3(to.x+1.05,2.75,to.z+.35),.62);await liftDie(to,.62,10);spiritReact('dash');}   // 정령은 주사위 옆에 머문다(위로 가면 화면 위 점수판에 가린다)
+async function cpuTurn(){S.who='cpu';setActive();buttons();status(()=>`<b>${t('spiritRolls')}</b>`);await wait(500);
+  while(!S.over){await spiritFetch();SFX.roll();const throwing=throwDie(true);setTimeout(()=>{if(!SP.path&&!S.over)spiritFlyTo(V3(1.5,2.4,-1.3),.7);},250);const v=await throwing;
+    if(v===1){await bust();break;}setBank(S.bank+v);goodRoll(v);{const b=S.bank;status(()=>t('spiritPlus',v,b));}await wait(650);
+    const greedy=S.me-S.cpu>20?26:20;if(S.cpu+S.bank>=TARGET||S.bank>=greedy){status(()=>`<b>${t('spiritKeeps')}</b>`);await flyBank();if(checkWin())return;break;}}
+  if(!SP.path)spiritFlyTo(SP.home.clone(),.9);
+  S.who='me';setActive();S.busy=false;buttons();status(()=>`<b>${t('yourRoll')}</b> — ${t('windFair')}`);}
+function reset(){S.me=S.cpu=S.bank=0;S.who='me';S.over=false;S.busy=false;E.sMe.textContent=0;E.sCpu.textContent=0;setBank(0);setActive();E.overlay.classList.remove('on');
+  SP.fallen=false;SP.brightT=1;SP.scaleT=1;SP.mood=0;SP.orbit=null;SP.anchor=SP.home.clone();setShot('play',{blend:1.4});buttons();status(()=>`<b>${t('yourRoll')}</b> — ${t('windFair')}`);}
+E.roll.addEventListener('click',playerRoll);E.hold.addEventListener('click',playerHold);$('again').addEventListener('click',reset);
+addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();playerRoll();}if(e.key==='h'||e.key==='H')playerHold();if(e.key==='t'||e.key==='T')skipTime();});
+buttons();
+
+/* ═══════════ 시작 ═══════════ */
+async function buildWorld(){
+  scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(44,innerWidth/innerHeight,.1,1200);
+  skyMat=new THREE.ShaderMaterial({uniforms:{...U},side:THREE.BackSide,depthWrite:false,depthTest:false,
+    vertexShader:`varying vec3 vDir;void main(){vDir=position;vec4 p=projectionMatrix*modelViewMatrix*vec4(position,1.);gl_Position=p.xyww;}`,
+    fragmentShader:GL_NOISE+GL_SKY+GL_SKYFULL+`varying vec3 vDir;void main(){gl_FragColor=vec4(skyFull(normalize(vDir)),1.);}`});
+  skyMesh=new THREE.Mesh(new THREE.SphereGeometry(1,64,32),skyMat);skyMesh.frustumCulled=false;skyMesh.renderOrder=-100;scene.add(skyMesh);
+  pmrem=new THREE.PMREMGenerator(renderer);envScene=new THREE.Scene();envScene.add(new THREE.Mesh(new THREE.SphereGeometry(1,32,16),skyMat));
+  sunLight=new THREE.DirectionalLight(0xffffff,4);sunLight.castShadow=true;sunLight.shadow.mapSize.set(Q.shadow,Q.shadow);
+  Object.assign(sunLight.shadow.camera,{left:-6.8,right:6.8,top:6.8,bottom:-6.8,near:1,far:48});sunLight.shadow.camera.updateProjectionMatrix();sunLight.shadow.bias=-.0004;sunLight.shadow.normalBias=.025;sunLight.shadow.radius=2.2;
+  sunLight.layers.enableAll();sunLight.target.position.set(0,0,0);scene.add(sunLight,sunLight.target);U.uShadowMatrix.value=sunLight.shadow.matrix;
+  spiritLight=new THREE.PointLight(SPIRIT_COL,2,0,2);spiritLight.layers.enableAll();scene.add(spiritLight);
+  await frameYield();
+  const isl=islandGeometry(ISLE_R,{sn:MAIN_SN,seg:160,depth:5.2,rk:RK2});const top=new THREE.Mesh(isl.top,new THREE.MeshStandardMaterial({vertexColors:true,roughness:1}));top.receiveShadow=true;
+  const rock=new THREE.Mesh(isl.rock,makeRockMat());rock.receiveShadow=true;scene.add(top,rock);
+  scene.add(buildWater(),buildTree());const blossom=new THREE.CanvasTexture(makeBlossomCanvas());blossom.colorSpace=THREE.SRGBColorSpace;blossom.anisotropy=4;canopyMesh=buildCanopy(blossom);scene.add(canopyMesh);
+  await frameYield();
+  scene.add(buildGrass(),buildDecor());
+  const atlas=new THREE.CanvasTexture(makePetalAtlas());atlas.colorSpace=THREE.SRGBColorSpace;atlas.anisotropy=4;petalMesh=buildPetals(atlas);scene.add(petalMesh);
+  await frameYield();
+  scene.add(buildFarIslands());
+  dieMesh=buildDie();scene.add(dieMesh);
+  {const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d');const gr=g.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,'rgba(0,0,0,1)');gr.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=gr;g.fillRect(0,0,64,64);
+    dieShadow=new THREE.Mesh(new THREE.PlaneGeometry(1.7,1.7).rotateX(-Math.PI/2),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(c),color:0x000000,transparent:true,depthWrite:false,opacity:.5}));dieShadow.layers.set(1);dieShadow.renderOrder=1;scene.add(dieShadow);}   // 주사위 바로 밑 접촉 그늘
+  scene.add(buildSpirit(),buildFX());
+  buildPipeline();resize();addEventListener('resize',resize);
+  stepTOD(0);}
+// TODO(미검증 · 2026-10-06 16:27 KST): Safari · Firefox · Edge 에서 열기 — 크롬 계열(ego-browser · Chrome 152)에서만 열었다
+async function boot(){
+  try{renderer=new THREE.WebGLRenderer({canvas:$('stage'),antialias:false,powerPreference:'high-performance',stencil:false});}catch(err){throw new Error('errNoGL');}
+  renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFShadowMap;renderer.shadowMap.autoUpdate=false;
+  await frameYield();await buildWorld();
+  setShot('intro',{blend:0});stepCamera(0);
+  for(const L of [0,1]){camera.layers.set(L);renderer.compile(scene,camera);}camera.layers.set(0);   // 셰이더를 미리 엮어 첫 장면이 끊기지 않게
+  renderFrame();await frameYield();
+  last=performance.now();raf=requestAnimationFrame(frame);}
+const gate=$('gate'),enter=$('enter');
+boot().then(()=>{gateState={k:'gateReady'};applyI18n();gate.classList.add('ready');enter.style.display='inline-block';window.__skyisleReady=true;})
+  .catch(err=>{gateState={k:I18N.en[err.message]?err.message:'errInit'};applyI18n();console.error(err);});
+enter.addEventListener('click',()=>{SFX.unlock();SFX.tick();gate.classList.add('off');started=true;buttons();setShot('play',{blend:2.6,arc:2.2});});   // BEGIN: 섬을 돌던 카메라가 경기 자리로 날아 들어간다
+window.__dbg={S,DBG,TOD,SP,CAM,PERF,Q,FX,PETALS,body,topFace,throwDie,setShot,skipTime,spiritReact,renderFrame,resize,get renderer(){return renderer;},get atmo(){return atmoMat;},get comp(){return compMat;},get bloom(){return bloom;},get sun(){return sunLight;},U,get scene(){return scene;},get camera(){return camera;},sparkleBurst,burst,goldRain,fizzlePoof,fairySeal,barrierRipple};
+</script>
+</body>
+</html>
