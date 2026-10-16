@@ -1,18 +1,23 @@
 /**
- * 인터넷 없이 쓰기 — 첫 화면(단어장) 맨 위 띠
+ * 인터넷 없이 쓰기 — 첫 화면 맨 위 띠 (관제탑 PWA 견본 .claude/templates/pwa/offline/offline-ready.tsx 와 같은 코드 — 2026-10-15 옮김)
+ * 출처: voca-listen src/app/ui/wordbooks/components/offline-ready.tsx (2026-08-14 커밋 fb9fd1d · f24d71c · ce68028 · 385440d)
+ * 규칙: 관제탑 .claude/rules-detail/pwa.md "오프라인형 PWA"
+ * 🚨 붙일 때: frontend-design 을 먼저 부르고 그 프로젝트의 docs/DESIGN.md 와 형제 화면에 맞춘다(색은 시맨틱 토큰만).
+ *    글은 i18n 키 offline.* 를 쓴다(voca-listen 의 ko·en 파일 offline 네임스페이스를 옮긴다).
  *
  * 🚨 순서를 지킨다. 한 번에 두 가지를 같이 보여 주면 헷갈린다.
- *   ① 아직 홈 화면에 없다  → 홈 화면 추가 안내·버튼만 보여 준다
- *   ② 홈 화면 앱으로 실행 중 → 그때부터 「준비하기」로 화면을 받아 둔다
- *   ③ 받는 중             → 화면 하나씩 진행 상황·크기·속도를 보여 준다
- *   ④ 준비가 끝났다        → 조용한 한 줄만 남기고 버튼은 치운다
+ *   (1) 아직 홈 화면에 없다  → 홈 화면 추가 안내·버튼만 보여 준다
+ *   (2) 홈 화면 앱으로 실행 중 → 그때부터 「준비하기」로 화면을 받아 둔다
+ *   (3) 받는 중             → 화면 하나씩 진행 상황·크기·속도를 보여 준다
+ *   (4) 준비가 끝났다        → 조용한 한 줄만 남기고 버튼은 치운다
  *
- * ①②를 나눈 것은 취향이 아니라 필요다 — 아이폰은 사파리 탭과 홈 화면 앱의 저장 공간이
+ * (1)(2)를 나눈 것은 취향이 아니라 필요다 — 아이폰은 사파리 탭과 홈 화면 앱의 저장 공간이
  * 서로 달라서, 탭에서 미리 받아 봐야 홈 화면 앱에서는 하나도 쓸 수 없다.
  *
- * ③이 필요한 이유: 예전에는 「받는 중…」과 「0/6개」만 한참 떠 있어 멈춘 것처럼 보였다.
+ * (3)이 필요한 이유: 예전에는 「받는 중…」과 「0/6개」만 한참 떠 있어 멈춘 것처럼 보였다.
  *
- * 홈 화면 추가는 플랫폼마다 할 수 있는 한계가 다르다(@/lib/install-prompt 참고).
+ * 홈 화면 추가는 플랫폼마다 할 수 있는 한계가 다르다(install-prompt.ts 참고).
+ * import 경로는 기본 스택의 lib 배치(src/lib/ext-lib/)를 따른다 — 다른 배치의 프로젝트는 그 자리로 고친다.
  */
 
 "use client";
@@ -40,7 +45,7 @@ import {
 
 /**
  * 화면 이름은 이미 쓰고 있는 문구를 그대로 가져다 쓴다.
- * 🚨 @/lib/offline 의 OFFLINE_ROUTES 에 화면을 더하면 여기에도 더한다.
+ * 🚨 offline.ts 의 OFFLINE_ROUTES 에 화면을 더하면 여기에도 더한다 — 🚨 프로젝트의 화면과 i18n 키로 바꾼다
  */
 const ROUTE_LABEL_KEYS: Record<string, string> = {
   "/ui/wordbooks": "nav.wordbooks",
@@ -141,7 +146,7 @@ export function OfflineReady() {
   // 확인이 끝나기 전에는 아무것도 그리지 않는다(화면이 깜빡이지 않게)
   if (!supported || status === null) return null;
 
-  // ① 아직 홈 화면에 없다 — 추가하는 이야기만 한다
+  // (1) 아직 홈 화면에 없다 — 추가하는 이야기만 한다
   if (!installed) {
     if (installable) {
       return (
@@ -179,7 +184,7 @@ export function OfflineReady() {
     return null;
   }
 
-  // ③ 준비 중 — 걸음마다 다른 것을 보여 준다
+  // (3) 준비 중 — 걸음마다 다른 것을 보여 준다
   if (busy) {
     const shown: PrepareProgress = progress ?? {
       phase: "worker",
@@ -249,7 +254,7 @@ export function OfflineReady() {
     );
   }
 
-  // ④ 준비가 끝났다 — 조용한 한 줄만 남긴다(더 누를 것이 없으므로 버튼도 없앤다)
+  // (4) 준비가 끝났다 — 조용한 한 줄만 남긴다(더 누를 것이 없으므로 버튼도 없앤다)
   if (status.workerReady && status.saved === status.total) {
     return (
       <p className="flex items-center gap-2 px-0.5 text-xs text-muted-foreground">
@@ -259,7 +264,7 @@ export function OfflineReady() {
     );
   }
 
-  // ② 홈 화면 앱으로 실행 중이지만 아직 덜 받았다
+  // (2) 홈 화면 앱으로 실행 중이지만 아직 덜 받았다
   return (
     <div className="flex items-center gap-3 rounded-lg border border-primary/40 bg-primary/5 px-3.5 py-2.5">
       <CloudDownload className="size-4 shrink-0 text-primary" strokeWidth={1.8} />

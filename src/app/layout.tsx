@@ -11,6 +11,9 @@ const gowunBatang = Gowun_Batang({
   weight: ["400", "700"],
   subsets: ["latin"],
   display: "swap",
+  // 🚨 한글 글꼴은 미리받기를 끈다 — 켜 두면 화면마다 글꼴 조각 수백 개(414개 · 2026-10-15 실측)를 쓰든 안 쓰든 받는다.
+  //    끄면 브라우저가 화면에 나온 글자의 조각만 받는다(관제탑 pwa.md "PWA 공통 함정")
+  preload: false,
 });
 
 /** 본문용 한글 산세리프 */
@@ -19,6 +22,8 @@ const plexSansKr = IBM_Plex_Sans_KR({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   display: "swap",
+  // 🚨 한글 글꼴 — 위와 같은 이유로 미리받기를 끈다
+  preload: false,
 });
 
 /** 숫자·시간 표시용 */

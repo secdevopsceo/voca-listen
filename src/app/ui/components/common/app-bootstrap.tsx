@@ -12,7 +12,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { canUseOffline, prepareOffline } from "@/lib/offline";
+import { startOfflineSync } from "@/lib/offline";
 import { seedIfNeeded } from "@/lib/services/seed";
 import { dataChanged } from "@/store/slice/uiSlice";
 import { useAppDispatch } from "@/store/hooks";
@@ -33,30 +33,8 @@ export function AppBootstrap() {
     });
   }, [dispatch]);
 
-  useEffect(() => {
-    // 개발 모드에는 서비스 워커가 없어 아무것도 하지 않는다
-    if (!canUseOffline()) return;
-
-    let done = false;
-    const warm = () => {
-      // 🚨 인터넷이 없으면 요청을 아예 던지지 않는다.
-      // 비행기모드에서 요청을 던지면 iOS 가 "데이터에 접근하려면 에어플레인 모드를 끄거나
-      // Wi-Fi를 사용하십시오" 시스템 알림을 띄운다. 어차피 실패할 요청이므로 참는다.
-      if (done || !navigator.onLine) return;
-      done = true;
-      // 첫 화면 그리기를 방해하지 않도록 한가할 때 받는다
-      if (typeof window.requestIdleCallback === "function") {
-        window.requestIdleCallback(() => void prepareOffline());
-      } else {
-        window.setTimeout(() => void prepareOffline(), 2000);
-      }
-    };
-
-    void navigator.serviceWorker.ready.then(warm).catch(() => {});
-    // 비행기모드를 껐을 때 그제서야 받아 둔다
-    window.addEventListener("online", warm);
-    return () => window.removeEventListener("online", warm);
-  }, []);
+  // 앱을 열 때 · 인터넷이 다시 연결될 때 · 새 서비스 워커가 자리를 잡을 때 화면을 받아 둔다(개발 모드에는 서비스 워커가 없어 아무것도 안 한다)
+  useEffect(() => startOfflineSync(), []);
 
   return null;
 }

@@ -6,6 +6,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { prepareOffline } from "@/lib/offline";
 import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { Languages, Moon, Settings2, Sun } from "lucide-react";
@@ -29,6 +30,8 @@ export function AppHeader() {
     // 로케일은 주소가 아니라 쿠키로 정한다(제5장 "i18n (next-intl)")
     document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=31536000; SameSite=Lax`;
     router.refresh();
+    // 저장해 둔 화면이 옛 언어로 남지 않게 다시 받는다(관제탑 pwa.md "오프라인형 PWA")
+    void prepareOffline();
   };
 
   const isDark = resolvedTheme === "dark";

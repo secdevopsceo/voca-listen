@@ -8,6 +8,7 @@
 import { useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { prepareOffline } from "@/lib/offline";
 import { useTheme } from "next-themes";
 import { Download, Upload, Volume2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -94,6 +95,8 @@ export default function SettingsPage() {
     document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=31536000; SameSite=Lax`;
     update({ uiLocale: next === "en" ? "en" : "ko" });
     router.refresh();
+    // 저장해 둔 화면이 옛 언어로 남지 않게 다시 받는다(관제탑 pwa.md "오프라인형 PWA")
+    void prepareOffline();
   };
 
   const handleImport = async (file: File) => {
