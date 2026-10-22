@@ -1,6 +1,7 @@
 /**
  * voca-listen 의 next.config — PWA 부분은 관제탑 견본(.claude/templates/pwa/offline/next.config.pwa.ts)과 같은 코드다(2026-10-15 옮김)
  * 출처: voca-listen next.config.ts (2026-08-14 커밋 346938a · 38c362d · 385440d · 2026-10-15 f8e0007)
+ *       · 화면 대기 상한 · 화면 조각 끊기는 관제탑 견본 25f3404(2026-10-22 · offline-games-pwa dddf574 에서 옮김)
  * 규칙: 관제탑 .claude/rules-detail/pwa.md "오프라인형 PWA" · "PWA 공통 함정"
  *
  * 🚨 붙이는 법: 아래 withPWA 를 프로젝트 next.config.ts 에 그대로 옮기고, 기존 설정을 감싼다.
@@ -21,6 +22,29 @@ import createNextIntlPlugin from "next-intl/plugin";
  *    앱 코드는 서비스 워커 갱신 + cleanupOutdatedCaches 가 정리한다.
  */
 const OFFLINE_CACHE_ENTRIES = 64;
+
+/**
+ * 화면을 인터넷에서 받을 때 기다리는 최대 초 — 넘으면 저장본을 보여 준다(저장본이 없으면 계속 기다린다).
+ * 🚨 없으면 기내 와이파이처럼 연결만 되고 응답이 없는 곳에서 브라우저가 끝없이 기다린다
+ *    (2026-10-22 관제탑 PWA 합격 시험기 · voca-listen 2fb8ea5 사본 · 응답 없는 서버에서 화면 6개 · 앱 안 이동이 모두 30초 안에 안 열림).
+ *    서버를 끈 시험(연결 거부)은 요청이 바로 실패해서 이 함정을 못 잡는다 — 관제탑 pwa-check 의 hang_screens · hang_navigation 이 잡는다.
+ */
+// TODO(미검증 · 2026-10-22 09:13 KST): 실제 기내 와이파이(결제 전 연결)와 실제 아이폰에서 3초 뒤 저장본이 열리는지 — 합격 시험기의 크로미움과 '연결은 받고 응답하지 않는 서버'(http · localhost)로만 쟀다. 진짜 기내 와이파이는 이름 풀이(DNS)를 가로채거나 보안 연결(TLS)에서 막혀 다르게 매달릴 수 있다. 3초보다 느리지만 되는 회선에서 옛 저장본이 보이는지 · 준비하기가 옛 화면을 받은 것으로 세는지도 재지 않았다
+const NETWORK_TIMEOUT_SECONDS = 3;
+
+/**
+ * 화면 조각(RSC) 요청을 3초 뒤 끊는 플러그인 — 저장본이 없으면 위 대기 상한만으로는 계속 기다린다.
+ * 끊겨 실패하면 Next 가 저장된 화면(HTML)으로 다시 연다(next fetch-server-response 의 'Falling back to browser navigation').
+ * 🚨 이 함수는 글자로 옮겨져 서비스 워커에 들어간다 — 바깥 상수를 쓸 수 없어 3000(= NETWORK_TIMEOUT_SECONDS 초)을 그대로 적는다.
+ * 🚨 화면 HTML 규칙에는 붙이지 않는다 — 화면 이동(navigate) 요청은 new Request 로 다시 만들 수 없다.
+ */
+const abortSlowRscRequest = {
+  requestWillFetch: async ({ request }: { request: Request }) => {
+    const controller = new AbortController();
+    setTimeout(() => controller.abort(), 3000);
+    return new Request(request, { signal: controller.signal });
+  },
+};
 
 /**
  * 폰트 조각 보관 개수.
@@ -85,7 +109,9 @@ const withPWA = withPWAInit({
         handler: "NetworkFirst",
         options: {
           cacheName: "pages-rsc-prefetch",
+          networkTimeoutSeconds: NETWORK_TIMEOUT_SECONDS,
           expiration: { maxEntries: OFFLINE_CACHE_ENTRIES },
+          plugins: [abortSlowRscRequest],
         },
       },
       {
@@ -95,7 +121,9 @@ const withPWA = withPWAInit({
         handler: "NetworkFirst",
         options: {
           cacheName: "pages-rsc",
+          networkTimeoutSeconds: NETWORK_TIMEOUT_SECONDS,
           expiration: { maxEntries: OFFLINE_CACHE_ENTRIES },
+          plugins: [abortSlowRscRequest],
         },
       },
       {
@@ -107,6 +135,7 @@ const withPWA = withPWAInit({
         handler: "NetworkFirst",
         options: {
           cacheName: "pages",
+          networkTimeoutSeconds: NETWORK_TIMEOUT_SECONDS,
           expiration: { maxEntries: OFFLINE_CACHE_ENTRIES },
         },
       },
