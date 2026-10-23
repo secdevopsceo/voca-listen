@@ -273,7 +273,10 @@
     "installButton": "Add to Home Screen",
     "installing": "Adding…",
     "installDismissed": "Not added. You can also choose 'Install app' from the browser menu",
-    "iosGuide": "Tap the Share button below, then choose 'Add to Home Screen'"
+    "iosGuide": "Tap the Share button below, then choose 'Add to Home Screen'",
+    "chromeGuide": "Installing from this browser may be blocked by your phone's protection (Play Protect). Open this page in Chrome and add it to your home screen.",
+    "chromeButton": "Open in Chrome",
+    "samsungAnyway": "Already blocked? Tap 'More details' at the bottom of the warning, then 'Install anyway'. The warning comes from the install file Samsung Internet creates."
   },
   "study": {
     "title": "Study range",

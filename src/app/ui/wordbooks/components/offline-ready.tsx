@@ -23,13 +23,16 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Check, Circle, CloudDownload, LoaderCircle, Share, SquarePlus, X } from "lucide-react";
+import { Check, Circle, CloudDownload, ExternalLink, LoaderCircle, Share, SquarePlus, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   type InstallOutcome,
   canPromptInstall,
+  chromeIntentUrl,
+  isSamsungInternet,
   isStandalone,
+  needsChromeForInstall,
   needsManualInstall,
   promptInstall,
   subscribeInstall,
@@ -148,6 +151,27 @@ export function OfflineReady() {
 
   // (1) 아직 홈 화면에 없다 — 추가하는 이야기만 한다
   if (!installed) {
+    // 안드로이드의 크롬이 아닌 브라우저(삼성 인터넷 등)는 크롬으로 이어 준다 — 그 브라우저가 만든 설치 파일은
+    // 플레이 프로텍트가 막을 수 있다(관제탑 pwa.md "PWA 공통 함정"). 그 브라우저의 설치 신호가 와도 쓰지 않는다
+    if (needsChromeForInstall()) {
+      return (
+        <div className="flex gap-3 rounded-lg border border-primary/40 bg-primary/5 px-3.5 py-2.5">
+          <ExternalLink className="mt-0.5 size-4 shrink-0 text-primary" strokeWidth={1.8} />
+          <div className="min-w-0 flex-1 space-y-1.5">
+            <p className="text-sm">{t("installTitle")}</p>
+            <p className="text-xs leading-relaxed text-muted-foreground">{t("chromeGuide")}</p>
+            {/* TODO(미검증 · 2026-10-23 13:00 KST): 경고 창의 한국어 단추 이름('세부정보 더보기' · '무시하고 설치')은 대표가 준 글을 따랐다 — 기기 · 안드로이드 판마다 다를 수 있다 */}
+            {isSamsungInternet() && (
+              <p className="text-xs leading-relaxed text-muted-foreground">{t("samsungAnyway")}</p>
+            )}
+            <a className={buttonVariants({ size: "sm" })} href={chromeIntentUrl(window.location.href)}>
+              {t("chromeButton")}
+            </a>
+          </div>
+        </div>
+      );
+    }
+
     if (installable) {
       return (
         <div className="flex items-center gap-3 rounded-lg border border-primary/40 bg-primary/5 px-3.5 py-2.5">
